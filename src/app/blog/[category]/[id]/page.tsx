@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { getPostData, getSortedPostsData } from '../../../../lib/posts';
 import { Metadata } from 'next';
 
