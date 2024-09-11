@@ -59,7 +59,7 @@ export default function Home() {
         className="text-center mb-12"
       >
         <h1 className="text-4xl font-bold mb-4">WITH ANALOG</h1>
-        <p className="text-xl">나 자신을 찾으려고 노력하는 사람.</p>
+        <p className="text-xl">나 자신을 찾으려고 노력하는 사람입니다.</p>
       </motion.div>
 
       <motion.div
