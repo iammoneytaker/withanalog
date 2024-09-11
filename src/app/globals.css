@@ -2,26 +2,105 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-gray-900 text-gray-300;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* 링크 스타일 */
+a {
+  @apply text-blue-400 hover:text-blue-300 transition-colors;
+}
+
+/* 헤딩 스타일 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-white font-bold;
+}
+
+/* 코드 블록 스타일 */
+pre {
+  @apply bg-gray-800 p-4 rounded-lg overflow-x-auto;
+}
+
+code {
+  @apply bg-gray-800 px-1 py-0.5 rounded;
+}
+.post-content {
+  @apply text-white max-w-3xl mx-auto;
+}
+
+.post-content h1 {
+  @apply text-3xl font-bold mt-8 mb-4 text-white;
+}
+
+.post-content h2 {
+  @apply text-2xl font-bold mt-6 mb-3 text-white;
+}
+
+.post-content h3 {
+  @apply text-xl font-semibold mt-5 mb-2 text-white;
+}
+
+.post-content p {
+  @apply mb-4 leading-relaxed;
+}
+
+.post-content ul,
+.post-content ol {
+  @apply ml-6 mb-4 list-disc;
+}
+
+.post-content li {
+  @apply mb-2;
+}
+
+.post-content img {
+  @apply rounded-lg shadow-lg my-6 max-w-full h-auto;
+}
+
+.post-content a {
+  @apply text-blue-400 hover:underline;
+}
+
+.post-content blockquote {
+  @apply border-l-4 border-blue-500 pl-4 py-2 my-4 bg-gray-800 rounded-r-lg italic;
+}
+
+.post-content pre {
+  @apply bg-gray-800 p-4 rounded-lg overflow-x-auto my-4;
+}
+
+.post-content code {
+  @apply bg-gray-800 px-1 py-0.5 rounded text-sm;
+}
+
+.post-content table {
+  @apply w-full border-collapse my-6;
+}
+
+.post-content th,
+.post-content td {
+  @apply border border-gray-700 px-4 py-2 text-left;
+}
+
+.post-content th {
+  @apply bg-gray-800 font-semibold;
+}
+
+.post-content tr:nth-child(even) {
+  @apply bg-gray-800;
+}
+.cta-container {
+  @apply mt-12 text-center;
+}
+
+.cta-button {
+  @apply inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300 ease-in-out;
+}
+.post-content hr {
+  @apply my-8 border-gray-700;
 }
