@@ -85,7 +85,7 @@ export default function QuitSmoke() {
               Google Play
             </a>
             <a
-              href="https://apps.apple.com/app/your-app-id"
+              href="https://apps.apple.com/kr/app/%EA%B8%88%EC%97%B0%EB%A7%90%EA%B3%A0%EC%A0%88%EC%97%B0/id6670561435"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors"
