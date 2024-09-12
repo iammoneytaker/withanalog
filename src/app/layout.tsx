@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: '위드아날로그',
   description:
     '나를 찾기 위한 다양한 시도를 했던 경험과 글을 공유합니다. 또한 그 과정에서 개발하게 된 앱을 소개하기도 합니다.',
+  other: {
+    'naver-site-verification': 'bc09def2369bed5f712be5ba69ad77f163e6ab90',
+  },
 };
 
 export default function RootLayout({
