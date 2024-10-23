@@ -3,10 +3,14 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Project } from '../types/project';
 import ScreenshotGallery from './ScreenshotGallery';
+import { Project } from '@/types/project';
 
-export function ProjectDetail({ project }: { project: Project }) {
+export function ProjectDetail({ project }: { project: Project | null }) {
+  if (!project) {
+    return <div>프로젝트 정보를 불러오는 데 실패했습니다.</div>;
+  }
+
   return (
     <>
       <div className="max-w-4xl mx-auto">
@@ -18,7 +22,7 @@ export function ProjectDetail({ project }: { project: Project }) {
           {/* 앱 기본 정보 */}
           <div className="flex items-center gap-6 mb-8">
             <Image
-              src={project.iconPath}
+              src={project.icon_url}
               alt={`${project.title} 아이콘`}
               width={80}
               height={80}
@@ -32,19 +36,24 @@ export function ProjectDetail({ project }: { project: Project }) {
               <div className="flex gap-4 mt-2 text-sm text-gray-500">
                 <span>{project.category}</span>
                 <span>
-                  {project.status === 'launched' ? '출시됨' : '개발중'}
+                  {project.status === 'launched'
+                    ? '출시됨'
+                    : project.status === 'development'
+                    ? '개발중'
+                    : '계획됨'}
                 </span>
               </div>
             </div>
           </div>
-
-          {/* 스크린샷 갤러리 */}
-          <div className="mb-8">
-            <ScreenshotGallery
-              screenshots={project.screenshots}
-              projectTitle={project.title}
-            />
-          </div>
+          {project.screenshots && project.screenshots.length > 0 && (
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold text-white mb-4">스크린샷</h2>
+              <ScreenshotGallery
+                screenshots={project.screenshots}
+                projectTitle={project.title}
+              />
+            </div>
+          )}
 
           {/* 주요 기능 */}
           <div className="mb-8">
@@ -72,23 +81,31 @@ export function ProjectDetail({ project }: { project: Project }) {
           </div>
 
           {/* 다운로드 링크 */}
-          <div className="flex gap-4">
-            {project.appStoreUrl && (
+          <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            {project.app_store_url && (
               <Link
-                href={project.appStoreUrl}
-                className="flex-1 bg-black text-white text-center py-3 rounded-lg hover:bg-gray-900 transition-colors"
+                href={project.app_store_url}
+                className="flex items-center justify-center bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-900 transition-colors"
                 target="_blank"
               >
-                App Store에서 다운로드
+                <i className="fab fa-apple text-2xl mr-2"></i>
+                <div className="flex flex-col items-start">
+                  <span className="text-xs">다운로드하기</span>
+                  <span className="text-sm font-semibold">App Store</span>
+                </div>
               </Link>
             )}
-            {project.playStoreUrl && (
+            {project.play_store_url && (
               <Link
-                href={project.playStoreUrl}
-                className="flex-1 bg-green-600 text-white text-center py-3 rounded-lg hover:bg-green-700 transition-colors"
+                href={project.play_store_url}
+                className="flex items-center justify-center bg-white text-black py-2 px-4 rounded-lg hover:bg-gray-100 transition-colors border border-gray-300"
                 target="_blank"
               >
-                Play Store에서 다운로드
+                <i className="fab fa-google-play text-2xl mr-2"></i>
+                <div className="flex flex-col items-start">
+                  <span className="text-xs">다운로드하기</span>
+                  <span className="text-sm font-semibold">Google Play</span>
+                </div>
               </Link>
             )}
           </div>

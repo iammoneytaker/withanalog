@@ -6,6 +6,14 @@ const nextConfig = {
     path: '/_next/image',
     loader: 'default',
     formats: ['image/webp'],
+    domains: ['jszchnsbkfvpczxypimw.supabase.co'],
+  },
+  experimental: {
+    appDir: true,
+  },
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false, net: false, tls: false };
+    return config;
   },
 };
 

@@ -42,7 +42,7 @@ export function ProjectSection() {
                 className="bg-gray-900 rounded-xl p-6 hover:transform hover:scale-105 transition-all cursor-pointer"
               >
                 <Image
-                  src={project.iconPath}
+                  src={project.icon_url}
                   alt={project.title}
                   width={64}
                   height={64}

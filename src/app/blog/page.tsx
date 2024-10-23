@@ -1,49 +1,55 @@
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 import Link from 'next/link';
-import { getSortedPostsData } from '../../lib/posts';
-import { categories } from '../../data/blog';
+import { Metadata } from 'next';
 
-export default function Blog() {
-  const allPosts = getSortedPostsData();
+export const metadata: Metadata = {
+  title: '블로그 | 위드아날로그',
+  description: '광고 없는 앱 100개 만들기 프로젝트의 블로그 글 모음',
+};
+
+async function getBlogPosts() {
+  const supabase = createServerComponentClient({ cookies });
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('블로그 글 로딩 중 오류 발생:', error);
+    return [];
+  }
+
+  return data;
+}
+
+export default async function BlogPage() {
+  const posts = await getBlogPosts();
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8">
+    <main className="min-h-screen py-20 px-4">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8">블로그</h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {categories.map((category) => (
-            <Link
-              key={category.id}
-              href={`/blog/${category.id}`}
-              className="block"
-            >
-              <div className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors">
-                <h2 className="text-2xl font-semibold mb-2">{category.name}</h2>
-                <p className="text-gray-400">이 카테고리의 글 보기</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        <h2 className="text-2xl font-semibold mb-6">최근 게시물</h2>
-        <div className="space-y-8">
-          {allPosts.slice(0, 5).map((post) => (
-            <div key={post.id} className="bg-gray-800 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
-              <p className="text-gray-400 mb-4">{post.excerpt}</p>
-              <div className="flex justify-between items-center text-sm text-gray-500">
-                <span>{new Date(post.date).toLocaleDateString()}</span>
-                <Link
-                  href={`/blog/${post.category}/${post.id}`}
-                  className="text-blue-400 hover:underline"
-                >
-                  더 읽기
+        {posts.length === 0 ? (
+          <p className="text-gray-400 text-center">
+            아직 작성된 블로그 글이 없습니다.
+          </p>
+        ) : (
+          <div className="space-y-8">
+            {posts.map((post) => (
+              <article key={post.id} className="bg-gray-800 p-6 rounded-lg">
+                <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
+                  <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
                 </Link>
-              </div>
-            </div>
-          ))}
-        </div>
+                <p className="text-gray-400 mb-4">{post.excerpt}</p>
+                <div className="text-sm text-gray-500">
+                  {new Date(post.created_at).toLocaleDateString()}
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
       </div>
-    </div>
+    </main>
   );
 }

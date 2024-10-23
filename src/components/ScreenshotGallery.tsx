@@ -15,7 +15,19 @@ export default function ScreenshotGallery({
 }: ScreenshotGalleryProps) {
   const [showModal, setShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [imageLoading, setImageLoading] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  // screenshots가 없거나 빈 배열일 경우 null 반환
+  if (!screenshots || screenshots.length === 0) {
+    return null;
+  }
+
+  const openModal = (index: number) => {
+    setSelectedImage(index);
+    setImageLoading(true);
+    setShowModal(true);
+  };
 
   return (
     <>
@@ -29,10 +41,7 @@ export default function ScreenshotGallery({
               <div
                 key={index}
                 className="flex-shrink-0 w-[180px] md:w-full snap-start cursor-pointer first:ml-4 last:mr-4 md:first:ml-0 md:last:mr-0"
-                onClick={() => {
-                  setSelectedImage(index);
-                  setShowModal(true);
-                }}
+                onClick={() => openModal(index)}
               >
                 <div className="relative aspect-[9/19] bg-gray-900 rounded-xl overflow-hidden">
                   <Image
@@ -59,11 +68,18 @@ export default function ScreenshotGallery({
             onClick={() => setShowModal(false)}
           >
             <div className="relative w-full max-w-md aspect-[9/19]">
+              {imageLoading && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white"></div>
+                </div>
+              )}
               <Image
                 src={screenshots[selectedImage]}
                 alt={`${projectTitle} 스크린샷 ${selectedImage + 1}`}
                 fill
                 className="object-contain"
+                onLoadingComplete={() => setImageLoading(false)}
+                onLoad={() => setImageLoading(false)}
               />
               <button
                 onClick={(e) => {
