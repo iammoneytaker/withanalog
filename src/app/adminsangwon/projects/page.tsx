@@ -15,6 +15,8 @@ interface Project {
   created_at: string;
 }
 
+export const dynamic = 'force-dynamic';
+
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);

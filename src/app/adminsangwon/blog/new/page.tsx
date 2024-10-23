@@ -1,12 +1,18 @@
 'use client';
 
+import dynamic2 from 'next/dynamic';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import BlogPostEditor from '@/components/BlogPostEditor';
 import AdminHeader from '@/components/admin/AdminHeader';
 
-export function slugify(text: string): string {
+const BlogPostEditor = dynamic2(() => import('@/components/BlogPostEditor'), {
+  ssr: false,
+});
+
+export const dynamic = 'force-dynamic';
+
+function slugify(text: string): string {
   return text
     .toString()
     .trim()
