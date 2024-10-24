@@ -2,6 +2,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import Link from 'next/link';
 
 interface Props {
   params: { slug: string };
@@ -74,8 +75,50 @@ async function getBlogPost(slug: string) {
   return data;
 }
 
+async function getAdjacentPosts(currentSlug: string) {
+  try {
+    const decodedSlug = decodeURIComponent(currentSlug);
+    const supabase = createServerComponentClient({ cookies });
+    const { data: currentPost } = await supabase
+      .from('blog_posts')
+      .select('created_at')
+      .eq('slug', decodedSlug)
+      .single();
+
+    if (!currentPost) return { prev: null, next: null };
+
+    const [prevResult, nextResult] = await Promise.all([
+      supabase
+        .from('blog_posts')
+        .select('title, slug')
+        .lt('created_at', currentPost.created_at)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .maybeSingle(),
+      supabase
+        .from('blog_posts')
+        .select('title, slug')
+        .gt('created_at', currentPost.created_at)
+        .order('created_at', { ascending: true })
+        .limit(1)
+        .maybeSingle(),
+    ]);
+
+    console.log('next : ', nextResult);
+
+    return {
+      prev: prevResult.data,
+      next: nextResult.data,
+    };
+  } catch (error) {
+    console.error('이전/다음 글 로딩 중 오류 발생:', error);
+    return { prev: null, next: null };
+  }
+}
+
 export default async function BlogPostPage({ params }: Props) {
   const post = await getBlogPost(params.slug);
+  const adjacentPosts = await getAdjacentPosts(params.slug);
 
   if (!post) {
     notFound();
@@ -113,11 +156,31 @@ export default async function BlogPostPage({ params }: Props) {
         {/* 하단 구분선 */}
         <hr className="my-12 border-gray-700" />
 
-        {/* 이전/다음 글 네비게이션 (옵션) */}
-        <div className="flex justify-between text-sm text-gray-400">
-          <div>{/* 이전 글 링크 구현 필요 */}</div>
-          <div>{/* 다음 글 링크 구현 필요 */}</div>
-        </div>
+        {/* 이전/다음 글 네비게이션 */}
+        <nav className="flex justify-between text-sm text-gray-400">
+          {adjacentPosts.prev ? (
+            <Link
+              href={`/blog/${adjacentPosts.prev.slug}`}
+              className="flex items-center hover:text-blue-400"
+            >
+              <span className="mr-2">←</span>
+              <span>{adjacentPosts.prev.title}</span>
+            </Link>
+          ) : (
+            <div />
+          )}
+          {adjacentPosts.next ? (
+            <Link
+              href={`/blog/${adjacentPosts.next.slug}`}
+              className="flex items-center hover:text-blue-400"
+            >
+              <span>{adjacentPosts.next.title}</span>
+              <span className="ml-2">→</span>
+            </Link>
+          ) : (
+            <div />
+          )}
+        </nav>
       </article>
     </main>
   );

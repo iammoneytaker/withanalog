@@ -30,7 +30,7 @@ export default function NewBlogPost() {
   const router = useRouter();
   const supabase = createClientComponentClient();
 
-  const handleSave = async (content: string) => {
+  const handleSave = async (content: string, featuredImage: string) => {
     const {
       data: { user },
     } = await supabase.auth.getUser();
@@ -48,6 +48,8 @@ export default function NewBlogPost() {
       excerpt,
       slug,
       author_id: user.id,
+      og_image: featuredImage,
+      thumbnail: featuredImage,
     });
 
     if (error) {
