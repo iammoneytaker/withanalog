@@ -12,18 +12,58 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getBlogPost(decodedSlug);
   if (!post) return { title: 'Post Not Found' };
 
+  const url = `https://withanalog.com/blog/${decodedSlug}`;
+
   return {
-    title: `${post.title} | 위드아날로그 블로그`,
+    title: post.title,
     description: post.excerpt,
+    metadataBase: new URL('https://withanalog.com'),
+    alternates: {
+      canonical: url,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+      publishedTime: post.created_at,
+      modifiedTime: post.updated_at,
+      authors: ['위드아날로그'],
+      url,
+      images: [
+        {
+          url: post.og_image || '/images/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [post.og_image || '/images/og-image.png'],
+    },
   };
 }
 
 async function getBlogPost(slug: string) {
+  const decodedSlug = decodeURIComponent(slug);
+  // 기본적인 슬러그 유효성 검사
+
   const supabase = createServerComponentClient({ cookies });
   const { data, error } = await supabase
     .from('blog_posts')
     .select('*')
-    .eq('slug', decodeURIComponent(slug))
+    .eq('slug', decodedSlug)
     .single();
 
   if (error) {

@@ -37,15 +37,38 @@ export default async function BlogPage() {
         ) : (
           <div className="space-y-8">
             {posts.map((post) => (
-              <article key={post.id} className="bg-gray-800 p-6 rounded-lg">
-                <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
-                  <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
-                </Link>
-                <p className="text-gray-400 mb-4">{post.excerpt}</p>
-                <div className="text-sm text-gray-500">
-                  {new Date(post.created_at).toLocaleDateString()}
-                </div>
-              </article>
+              <Link
+                href={`/blog/${encodeURIComponent(post.slug)}`}
+                key={post.id}
+              >
+                <article
+                  className="bg-gray-800 p-6 rounded-lg transition-all duration-300 
+                  hover:bg-gray-700 cursor-pointer group
+                  shadow-[0_0_15px_rgba(0,0,0,0.2)]
+                  hover:shadow-[0_0_25px_rgba(0,0,0,0.3)]
+                  hover:translate-y-[-2px]"
+                >
+                  <h2 className="text-2xl font-semibold mb-2 group-hover:text-blue-400">
+                    {post.title}
+                  </h2>
+                  <p className="text-gray-400 mb-4">{post.excerpt}</p>
+                  <div className="flex items-center text-sm text-gray-500">
+                    <time dateTime={post.created_at}>
+                      {new Date(post.created_at).toLocaleDateString('ko-KR', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </time>
+                    {post.category && (
+                      <>
+                        <span className="mx-2">•</span>
+                        <span>{post.category}</span>
+                      </>
+                    )}
+                  </div>
+                </article>
+              </Link>
             ))}
           </div>
         )}
