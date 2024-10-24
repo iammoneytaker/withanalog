@@ -20,8 +20,32 @@ export const projects: Project[] = [
     `,
     features: ['흡연 기록 관리', '통계 분석', '목표 설정', '알림 설정'],
     category: '건강',
-    created_at: '2024-01-01',
-    updated_at: '2024-01-01',
+    created_at: '2024-10-23',
+    updated_at: '2024-10-23',
+  },
+  {
+    id: 'ac54699f-e7e5-4075-8230-7ae6c604104a',
+    title: '마음카운터',
+    description:
+      '화면 터치만으로 카운팅이! 카테고리별 카운팅에 커스텀 배경화면까지..',
+    icon_url: '/images/projects/counter/icon.png',
+    status: 'launched',
+    app_store_url: '...',
+    play_store_url: '...',
+    content: `
+      <p>마음카운터는...</p>
+      <h3>주요 기능</h3>
+      <ul>
+        <li>카운팅</li>
+        <li>통계 분석</li>
+        <li>목표 설정</li>
+        <li>배경화면 설정</li>
+      </ul>
+    `,
+    features: ['카운팅', '통계 분석', '목표 설정', '배경화면 설정'],
+    category: '생산성',
+    created_at: '2024-10-24',
+    updated_at: '2024-10-24',
   },
 ];
 

@@ -5,6 +5,8 @@ import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { projects } from '../../lib/projects';
+import { useEffect, useState } from 'react';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 export function ProjectSection() {
   const [ref, inView] = useInView({
@@ -12,6 +14,25 @@ export function ProjectSection() {
     threshold: 0.1,
     initialInView: true, // 이 부분 추가
   });
+
+  const [projectCount, setProjectCount] = useState(0);
+  const supabase = createClientComponentClient();
+
+  useEffect(() => {
+    const fetchProjectCount = async () => {
+      const { count, error } = await supabase
+        .from('projects')
+        .select('*', { count: 'exact', head: true });
+
+      if (error) {
+        console.error('프로젝트 개수 로딩 중 오류 발생:', error);
+      } else {
+        setProjectCount(count || 0);
+      }
+    };
+
+    fetchProjectCount();
+  }, []);
 
   // 처음에는 3개만 보여주기
   const displayedProjects = projects.slice(0, 3);
@@ -28,7 +49,7 @@ export function ProjectSection() {
             진행중인 프로젝트
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-400">
-            현재 {projects.length}개의 앱이 개발되었습니다
+            현재 {projectCount}개의 앱이 개발되었습니다
           </p>
         </motion.div>
 
@@ -67,7 +88,7 @@ export function ProjectSection() {
             href="/projects"
             className="inline-block px-8 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
           >
-            모든 프로젝트 보기 ({projects.length})
+            모든 프로젝트 보기 ({projectCount})
           </Link>
         </motion.div>
       </div>
