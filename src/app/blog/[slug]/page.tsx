@@ -44,14 +44,40 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <main className="min-h-screen py-20 px-4">
       <article className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-        <div className="text-gray-400 mb-8">
-          {new Date(post.created_at).toLocaleDateString()}
+        {/* 메타 정보 섹션 */}
+        <div className="mb-12 text-center">
+          <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+          <div className="flex items-center justify-center space-x-4 text-gray-400">
+            <time dateTime={post.created_at}>
+              {new Date(post.created_at).toLocaleDateString('ko-KR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </time>
+            {post.category && (
+              <>
+                <span>•</span>
+                <span>{post.category}</span>
+              </>
+            )}
+          </div>
         </div>
+
+        {/* 본문 컨텐츠 */}
         <div
-          className="prose prose-invert max-w-none"
+          className="blog-content prose prose-invert max-w-none"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+
+        {/* 하단 구분선 */}
+        <hr className="my-12 border-gray-700" />
+
+        {/* 이전/다음 글 네비게이션 (옵션) */}
+        <div className="flex justify-between text-sm text-gray-400">
+          <div>{/* 이전 글 링크 구현 필요 */}</div>
+          <div>{/* 다음 글 링크 구현 필요 */}</div>
+        </div>
       </article>
     </main>
   );

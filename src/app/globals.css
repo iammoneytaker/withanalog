@@ -114,3 +114,138 @@ code {
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+/* 블로그 콘텐츠 스타일링 */
+.blog-content {
+  @apply max-w-3xl mx-auto text-gray-300;
+}
+
+/* 블로그 콘텐츠 스타일링 개선 */
+.blog-content h1 {
+  @apply text-4xl font-bold text-white my-8;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.blog-content h2 {
+  @apply text-3xl font-bold text-white mt-10 mb-6;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.blog-content h3 {
+  @apply text-xl font-semibold text-white mt-8 mb-4;
+}
+
+.blog-content p {
+  @apply text-lg leading-relaxed mb-6 text-gray-300;
+  line-height: 1.8;
+}
+
+.blog-content hr {
+  @apply my-12 border-0 h-px bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-50;
+}
+
+.blog-content blockquote {
+  @apply pl-6 py-4 my-6 border-l-4 border-blue-500 bg-gray-800/30 rounded-r-lg italic;
+}
+
+.blog-content pre {
+  @apply bg-gray-800/50 p-6 rounded-lg my-6;
+}
+
+.blog-content code {
+  @apply bg-gray-800/50 px-2 py-1 rounded text-sm text-blue-300 font-mono;
+}
+
+/* 커스텀 구분선 스타일 */
+.custom-hr {
+  @apply my-12 border-0 h-px bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-50;
+}
+
+/* 링크 스타일 */
+.blog-content a {
+  @apply text-blue-400 hover:text-blue-300 underline-offset-4 hover:underline transition-colors;
+}
+
+/* 리스트 스타일 */
+.blog-content ul,
+.blog-content ol {
+  @apply pl-6 my-6 space-y-2;
+}
+
+.blog-content ul {
+  @apply list-disc;
+}
+
+.blog-content ol {
+  @apply list-decimal;
+}
+
+/* 헤딩 공통 스타일 */
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
+  @apply font-bold text-white mt-8 mb-4;
+}
+
+/* h1: 메인 제목 */
+.blog-content h1 {
+  @apply text-4xl md:text-5xl;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid theme('colors.blue.500');
+  padding-bottom: 0.5rem;
+}
+
+/* h2: 주요 섹션 제목 */
+.blog-content h2 {
+  @apply text-3xl md:text-4xl;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  border-left: 4px solid theme('colors.blue.500');
+  padding-left: 1rem;
+}
+
+/* h3: 서브 섹션 제목 */
+.blog-content h3 {
+  @apply text-2xl md:text-3xl text-blue-400;
+}
+
+/* h4: 소제목 */
+.blog-content h4 {
+  @apply text-xl md:text-2xl text-gray-200;
+  border-bottom: 1px solid theme('colors.gray.700');
+  display: inline-block;
+}
+
+/* h5: 작은 제목 */
+.blog-content h5 {
+  @apply text-lg md:text-xl text-gray-300;
+  font-style: italic;
+}
+
+/* h6: 가장 작은 제목 */
+.blog-content h6 {
+  @apply text-base md:text-lg text-gray-400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 헤딩 사이 간격 조정 */
+.blog-content h1 + h2,
+.blog-content h2 + h3,
+.blog-content h3 + h4,
+.blog-content h4 + h5,
+.blog-content h5 + h6 {
+  @apply mt-4; /* 연속된 헤딩의 경우 간격 줄임 */
+}
+
+/* 헤딩 뒤의 paragraph 간격 */
+.blog-content h1 + p,
+.blog-content h2 + p,
+.blog-content h3 + p,
+.blog-content h4 + p,
+.blog-content h5 + p,
+.blog-content h6 + p {
+  @apply mt-4;
+}
