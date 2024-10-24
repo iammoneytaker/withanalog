@@ -104,8 +104,6 @@ async function getAdjacentPosts(currentSlug: string) {
         .maybeSingle(),
     ]);
 
-    console.log('next : ', nextResult);
-
     return {
       prev: prevResult.data,
       next: nextResult.data,

@@ -56,13 +56,13 @@ export default async function BlogPage() {
                     shadow-lg hover:shadow-blue-900/20
                     hover:translate-y-[-2px] overflow-hidden"
                   >
-                    <div className="md:w-1/3 h-48 md:h-auto relative">
+                    <div className="md:w-1/3 h-48 md:h-auto relative bg-gray-900/50">
                       <Image
                         src={post.thumbnail || '/images/default-thumbnail.png'}
                         alt={post.title}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover"
+                        className="object-cover hover:scale-105 transition-transform duration-300"
                         priority={false}
                       />
                     </div>
