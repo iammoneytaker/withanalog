@@ -47,6 +47,28 @@ export const projects: Project[] = [
     created_at: '2024-10-24',
     updated_at: '2024-10-24',
   },
+  {
+    id: 'ac54699f-e7e5-4075-8230-7ae6c604104a',
+    title: '내손안에로또',
+    description: '다양한 게임으로 직접 로또 번호를 추출해볼까요?',
+    icon_url: '/images/projects/lotto/icon.png',
+    status: 'launched',
+    app_store_url: '...',
+    play_store_url: '...',
+    content: `
+      <p>내손안에로또는...</p>
+      <h3>주요 기능</h3>
+      <ul>
+        <li>로또 번호 추출</li>
+        <li>게임 추가</li>
+        <li>로또 번호 생성</li>
+      </ul>
+    `,
+    features: ['로또 번호 추출', '게임 기능', '로또 번호 생성'],
+    category: '생산성',
+    created_at: '2024-10-29',
+    updated_at: '2024-10-29',
+  },
 ];
 
 export async function getProjectById(
