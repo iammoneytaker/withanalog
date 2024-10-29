@@ -48,7 +48,7 @@ export const projects: Project[] = [
     updated_at: '2024-10-24',
   },
   {
-    id: 'ac54699f-e7e5-4075-8230-7ae6c604104a',
+    id: 'ab782d5b-6248-4cdd-b63f-ae4e6b68b6fd',
     title: '내손안에로또',
     description: '다양한 게임으로 직접 로또 번호를 추출해볼까요?',
     icon_url: '/images/projects/lotto/icon.png',
