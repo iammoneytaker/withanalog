@@ -278,12 +278,12 @@ export default function StoryPage() {
             whileHover={{ scale: 1.02 }}
             transition={{ type: 'spring', stiffness: 300 }}
           >
-            <h2 className="text-3xl font-bold mb-4">가치를 느끼셨나요?</h2>
+            <h2 className="text-3xl font-bold mb-4">혹시 가치를 느끼셨나요?</h2>
             <p className="text-lg mb-8 text-gray-200">
               저의 앱이 도움이 되었다면 후원으로 응원해주세요
             </p>
             <motion.a
-              href="https://maily.so/letterforyou"
+              href="https://buymeacoffee.com/withanalog"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-white text-blue-900 px-8 py-4 rounded-full font-bold"
@@ -291,29 +291,6 @@ export default function StoryPage() {
               whileTap={{ scale: 0.95 }}
             >
               후원하기
-            </motion.a>
-          </motion.div>
-
-          <motion.div
-            className="bg-gradient-to-br from-green-600 to-green-900 p-8 rounded-2xl"
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <h2 className="text-3xl font-bold mb-4">
-              더 많은 이야기가 궁금하신가요?
-            </h2>
-            <p className="text-lg mb-8 text-gray-200">
-              개발 과정과 새로운 소식을 뉴스레터로 받아보세요
-            </p>
-            <motion.a
-              href="https://maily.so/letterforyou"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-white text-green-900 px-8 py-4 rounded-full font-bold"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              뉴스레터 구독하기
             </motion.a>
           </motion.div>
         </div>
