@@ -27,6 +27,12 @@ export default function Header() {
           >
             블로그
           </Link>
+          <Link
+            href="/contact"
+            className="text-white hover:text-blue-400 transition-colors"
+          >
+            Contact
+          </Link>
         </div>
       </nav>
     </motion.header>
