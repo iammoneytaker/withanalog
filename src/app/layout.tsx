@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import './globals.css';
 import Header from '../components/Header';
-import { Analytics } from '@vercel/analytics/react';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://withanalog.com'),
@@ -45,11 +45,11 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
+        <GoogleAnalytics />
       </head>
       <body className="bg-gray-900 text-gray-300">
         <Header />
         {children}
-        <Analytics />
       </body>
     </html>
   );
