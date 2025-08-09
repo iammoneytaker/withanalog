@@ -5,8 +5,8 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: '블로그 | 위드아날로그',
-  description: '광고 없는 앱 100개 만들기 프로젝트의 블로그 글 모음',
+  title: '블로그 | WithAnalog',
+  description: '키보드, 타이핑, 기계식 키보드에 대한 전문적인 리뷰와 가이드',
 };
 
 async function getBlogPosts() {
@@ -35,11 +35,19 @@ export default async function BlogPage() {
     return (
       <main className="min-h-screen py-20 px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold mb-8">블로그</h1>
+          <h1 className="text-4xl font-bold mb-4">키보드 블로그</h1>
+          <p className="text-xl text-gray-400 mb-8">
+            키보드 리뷰, 타이핑 팁, 기계식 키보드 가이드까지
+          </p>
           {posts.length === 0 ? (
-            <p className="text-gray-400 text-center">
-              아직 작성된 블로그 글이 없습니다.
-            </p>
+            <div className="text-center py-12">
+              <p className="text-gray-400 text-xl mb-6">
+                아직 작성된 블로그 글이 없습니다.
+              </p>
+              <p className="text-gray-500">
+                곧 키보드와 타이핑에 관한 유익한 콘텐츠들을 만나보실 수 있습니다.
+              </p>
+            </div>
           ) : (
             <div className="grid gap-8">
               {posts.map((post) => (

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
 import Image from 'next/image';
-import { projects } from '../../lib/projects';
+// import { projects } from '../../lib/projects';
 import { useEffect, useState } from 'react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
@@ -34,8 +34,29 @@ export function ProjectSection() {
     fetchProjectCount();
   }, []);
 
-  // 처음에는 3개만 보여주기
-  const displayedProjects = projects.slice(0, 3);
+  // 로컬 도구 데이터 정의
+  const localTools = [
+    {
+      id: 'keyboard-performance-test',
+      title: '키보드 성능 테스트',
+      description: '텐키리스/풀사이즈 레이아웃으로 APM/CPS 정확 측정, 게이머 필수 도구',
+      icon_url: '/images/tools/keyboard-test/icon.png',
+    },
+    {
+      id: '2f4712ba-2e77-4e5c-a418-c4f6d3a03787',
+      title: '한글 타자 연습',
+      description: '체계적인 한글 타이핑 학습과 WPM 측정으로 타이핑 실력을 향상시켜보세요',
+      icon_url: '/images/tools/korean-typing/icon.png',
+    },
+    {
+      id: 'english-typing-test',
+      title: '영문 타자 연습',
+      description: '영문 타이핑 속도와 정확도를 향상시키는 체계적인 학습 도구',
+      icon_url: '/images/tools/english-typing/icon.png',
+    },
+  ];
+
+  const displayedProjects = localTools;
 
   return (
     <section ref={ref} className="py-20 px-4 bg-gray-800">
@@ -46,16 +67,16 @@ export function ProjectSection() {
           className="text-center mb-16"
         >
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-4">
-            진행중인 프로젝트
+            키보드 도구들
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-400">
-            현재 {projectCount}개의 앱이 개발되었습니다
+            현재 {localTools.length}개의 키보드 도구를 제공합니다
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayedProjects.map((project, index) => (
-            <Link href={`/projects/${project.id}`} key={project.id}>
+            <Link href={`/tools/${project.id}`} key={project.id}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -85,10 +106,10 @@ export function ProjectSection() {
           className="text-center mt-12"
         >
           <Link
-            href="/projects"
+            href="/tools"
             className="inline-block px-8 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
           >
-            모든 프로젝트 보기 ({projectCount})
+            모든 도구 보기 ({localTools.length})
           </Link>
         </motion.div>
       </div>

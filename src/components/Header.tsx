@@ -16,10 +16,16 @@ export default function Header() {
         </Link>
         <div className="flex gap-6">
           <Link
-            href="/projects"
+            href="/tools"
             className="text-white hover:text-blue-400 transition-colors"
           >
-            프로젝트
+            도구
+          </Link>
+          <Link
+            href="/reviews"
+            className="text-white hover:text-blue-400 transition-colors"
+          >
+            리뷰
           </Link>
           <Link
             href="/blog"

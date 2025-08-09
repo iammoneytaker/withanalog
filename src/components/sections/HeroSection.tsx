@@ -21,13 +21,12 @@ export function HeroSection() {
         className="text-center"
       >
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-          광고 없는 앱 100개
-          <br className="sm:hidden" /> 만들기
-          <br />
-          <span className="text-blue-400">프로젝트</span>
+          키보드와 타이핑의
+          <br className="sm:hidden" />
+          <span className="text-blue-400">새로운 경험</span>
         </h1>
         <p className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto">
-          더 나은 디지털 경험을 위한 여정
+          디지털과 현실을 잇는 키보드 전문 플랫폼
         </p>
       </motion.div>
 

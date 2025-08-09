@@ -6,15 +6,16 @@ import GoogleAnalytics from '@/components/GoogleAnalytics';
 export const metadata: Metadata = {
   metadataBase: new URL('https://withanalog.com'),
   title: {
-    template: '%s | 위드아날로그',
-    default: '위드아날로그 - 광고 없는 앱 100개 만들기',
+    template: '%s | WithAnalog',
+    default: 'WithAnalog - 키보드와 타이핑의 새로운 경험',
   },
-  description: '광고 없는 앱 100개 만들기 프로젝트',
+  description: '키보드 성능 테스트, 타이핑 연습, 반응속도 측정까지. 디지털과 현실을 잇는 키보드 전문 플랫폼',
+  keywords: ['키보드 테스트', '키보드 성능', '타이핑 연습', '한글 타자', '영문 타자', 'WPM', '반응속도', '키보드 분석', 'keyboard test', 'typing test'],
   openGraph: {
-    title: '위드아날로그',
-    description: '광고 없는 앱 100개 만들기 프로젝트',
+    title: 'WithAnalog - 키보드와 타이핑의 새로운 경험',
+    description: '키보드 성능 테스트, 타이핑 연습, 반응속도 측정까지. 디지털과 현실을 잇는 키보드 전문 플랫폼',
     url: 'https://withanalog.com',
-    siteName: '위드아날로그',
+    siteName: 'WithAnalog',
     images: [
       {
         url: '/images/og-image.png',
@@ -27,8 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '위드아날로그',
-    description: '광고 없는 앱 100개 만들기 프로젝트',
+    title: 'WithAnalog - 키보드와 타이핑의 새로운 경험',
+    description: '키보드 성능 테스트, 타이핑 연습, 반응속도 측정까지. 디지털과 현실을 잇는 키보드 전문 플랫폼',
     images: ['/images/og-image.png'],
   },
 };

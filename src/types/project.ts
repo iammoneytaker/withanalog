@@ -1,10 +1,10 @@
 export const PROJECT_CATEGORIES = [
-  '건강',
-  '생산성',
-  '라이프스타일',
-  '유틸리티',
-  '교육',
-  '엔터테인먼트',
+  '타이핑 연습',
+  '성능 테스트',
+  '사운드 분석',
+  '키보드 도구',
+  '커스터마이징',
+  '분석 도구',
 ] as const;
 
 export type ProjectCategory = (typeof PROJECT_CATEGORIES)[number];

@@ -48,7 +48,7 @@ export default function ProjectGrid({
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProjects.map((project) => (
-          <Link href={`/projects/${project.id}`} key={project.id}>
+          <Link href={`/tools/${project.id}`} key={project.id}>
             <div className="bg-gray-800 rounded-xl p-6 hover:bg-gray-700 transition-colors">
               <Image
                 src={project.icon_url}

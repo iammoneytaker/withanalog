@@ -1,19 +1,4 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
-
-export default async function sitemap() {
-  const supabase = createServerComponentClient({ cookies });
-
-  // 블로그 포스트 가져오기
-  const { data: posts } = await supabase
-    .from('blog_posts')
-    .select('slug, updated_at');
-
-  // 프로젝트 목록 가져오기
-  const { data: projects } = await supabase
-    .from('projects')
-    .select('id, updated_at');
-
+export default function sitemap() {
   const baseUrl = 'https://withanalog.com';
 
   // 정적 페이지
@@ -21,40 +6,58 @@ export default async function sitemap() {
     {
       url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'daily',
+      changeFrequency: 'weekly' as const,
       priority: 1,
     },
     {
-      url: `${baseUrl}/projects`,
+      url: `${baseUrl}/tools`,
       lastModified: new Date(),
-      changeFrequency: 'daily',
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/tools/keyboard-performance-test`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/tools/2f4712ba-2e77-4e5c-a418-c4f6d3a03787`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/tools/english-typing-test`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/tools/ac54699f-e7e5-4075-8230-7ae6c604104a`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/reviews`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.8,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
     },
   ];
 
-  // 블로그 포스트 URL
-  const blogUrls =
-    posts?.map((post) => ({
-      url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: new Date(post.updated_at),
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    })) || [];
-
-  // 프로젝트 URL
-  const projectUrls =
-    projects?.map((project) => ({
-      url: `${baseUrl}/projects/${project.id}`,
-      lastModified: new Date(project.updated_at),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    })) || [];
-
-  return [...staticPages, ...blogUrls, ...projectUrls];
+  return staticPages;
 }
