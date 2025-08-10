@@ -6,11 +6,11 @@ const nextConfig = {
     path: '/_next/image',
     loader: 'default',
     formats: ['image/webp'],
-    domains: ['jszchnsbkfvpczxypimw.supabase.co'],
+    domains: ['jszchnsbkfvpczxypimw.supabase.co', 'images.unsplash.com'],
   },
-  experimental: {
-    appDir: true,
-  },
+  // experimental: {
+  //   appDir: true,  // This is deprecated in Next.js 14+
+  // },
   webpack: (config) => {
     config.resolve.fallback = { fs: false, net: false, tls: false };
     return config;

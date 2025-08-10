@@ -1,12 +1,11 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
+// import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+// import { cookies } from 'next/headers';
 
 export default async function KeyboardReviewsPage() {
-  const supabase = createServerComponentClient({ cookies });
-
-  // 키보드 리뷰 데이터는 아직 없으므로 빈 배열 반환
-  const keyboards: any[] = [];
-  const categories = ['전체'];
+  // Future implementation will use Supabase for keyboard reviews
+  // const supabase = createServerComponentClient({ cookies });
+  // const keyboards: any[] = [];
+  // const categories = ['전체'];
 
   return (
     <main className="min-h-screen py-20 px-4 bg-gray-900">

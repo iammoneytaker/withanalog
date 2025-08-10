@@ -2,13 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 interface Project {
   id: string;
   title: string;
   description: string;
-  icon_url: string;
+  icon: string;
   status: string;
   category: string;
 }
@@ -50,13 +49,9 @@ export default function ProjectGrid({
         {filteredProjects.map((project) => (
           <Link href={`/tools/${project.id}`} key={project.id}>
             <div className="bg-gray-800 rounded-xl p-6 hover:bg-gray-700 transition-colors">
-              <Image
-                src={project.icon_url}
-                alt={project.title}
-                width={64}
-                height={64}
-                className="mb-4 rounded-xl"
-              />
+              <div className="mb-4 text-4xl">
+                {project.icon}
+              </div>
               <h3 className="text-xl font-bold text-white mb-2">
                 {project.title}
               </h3>

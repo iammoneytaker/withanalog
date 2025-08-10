@@ -99,7 +99,7 @@ const KeyboardTester: React.FC = () => {
     
     const timestamp = performance.now();
     
-    setPressedKeys(prev => new Set([...prev, keyCode]));
+    setPressedKeys(prev => new Set(Array.from(prev).concat([keyCode])));
     
     const keyData: KeyData = {
       keyCode,
@@ -145,7 +145,7 @@ const KeyboardTester: React.FC = () => {
     const totalPresses = keyHistory.length;
     
     // 평균 속도 계산 (연속 키 입력 간격)
-    let intervals: number[] = [];
+    const intervals: number[] = [];
     for (let i = 1; i < keyHistory.length; i++) {
       intervals.push(keyHistory[i].timestamp - keyHistory[i-1].timestamp);
     }

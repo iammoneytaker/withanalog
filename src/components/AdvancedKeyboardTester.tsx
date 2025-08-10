@@ -37,21 +37,12 @@ const AdvancedKeyboardTester: React.FC = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [keyTimings, setKeyTimings] = useState<Map<string, number[]>>(new Map());
   const [soundEnabled, setSoundEnabled] = useState(true);
-  const [keyboardLayout, setKeyboardLayout] = useState<'qwerty' | 'mac'>('qwerty');
   const [inputMode, setInputMode] = useState<'english' | 'korean'>('english');
-  const [isComposing, setIsComposing] = useState(false);
   
   const audioContextRef = useRef<AudioContext | null>(null);
   const startTimeRef = useRef<number>(0);
   const textInputRef = useRef<string>('');
 
-  // 한글 조합을 위한 상태
-  const [koreanInput, setKoreanInput] = useState({
-    initial: '',
-    medial: '',
-    final: '',
-    composing: false
-  });
 
   // 한글 자음/모음 매핑
   const koreanMap = {
@@ -109,7 +100,6 @@ const AdvancedKeyboardTester: React.FC = () => {
   // 한영 전환 함수
   const toggleInputMode = useCallback(() => {
     setInputMode(prev => prev === 'english' ? 'korean' : 'english');
-    setKoreanInput({ initial: '', medial: '', final: '', composing: false });
   }, []);
 
   // 한글 입력 처리
@@ -124,7 +114,7 @@ const AdvancedKeyboardTester: React.FC = () => {
       setStats(prev => ({ ...prev, currentText: prev.currentText + koreanChar }));
       textInputRef.current += koreanChar;
     }
-  }, [pressedKeys]);
+  }, [pressedKeys, koreanMap]);
 
   // 키보드 이벤트 핸들러
   const handleKeyDown = useCallback((event: KeyboardEvent) => {
@@ -155,7 +145,7 @@ const AdvancedKeyboardTester: React.FC = () => {
       startTimeRef.current = timestamp;
     }
     
-    setPressedKeys(prev => new Set([...prev, keyCode]));
+    setPressedKeys(prev => new Set(Array.from(prev).concat([keyCode])));
     
     const keyData: KeyData = {
       keyCode,
@@ -232,7 +222,7 @@ const AdvancedKeyboardTester: React.FC = () => {
     const cps = elapsedSeconds > 0 ? Number((totalPresses / elapsedSeconds).toFixed(2)) : 0;
     
     // 평균 속도 계산
-    let intervals: number[] = [];
+    const intervals: number[] = [];
     for (let i = 1; i < keyHistory.length; i++) {
       intervals.push(keyHistory[i].timestamp - keyHistory[i-1].timestamp);
     }
@@ -311,7 +301,6 @@ const AdvancedKeyboardTester: React.FC = () => {
       cps: 0,
       currentText: ''
     });
-    setKoreanInput({ initial: '', medial: '', final: '', composing: false });
     startTimeRef.current = 0;
     textInputRef.current = '';
   };

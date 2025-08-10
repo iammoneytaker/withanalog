@@ -15,7 +15,7 @@ export function ProjectSection() {
     initialInView: true, // 이 부분 추가
   });
 
-  const [projectCount, setProjectCount] = useState(0);
+  const [, setProjectCount] = useState(0);
   const supabase = createClientComponentClient();
 
   useEffect(() => {

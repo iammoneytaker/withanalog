@@ -316,7 +316,7 @@ const KeyboardPerformanceTester: React.FC = () => {
     // 키 다운 시간 기록
     keyDownTimesRef.current.set(keyCode, timestamp);
     
-    setPressedKeys(prev => new Set([...prev, keyCode]));
+    setPressedKeys(prev => new Set(Array.from(prev).concat([keyCode])));
     
     // 키 press 데이터 추가
     const keyPressData: KeyPressData = {

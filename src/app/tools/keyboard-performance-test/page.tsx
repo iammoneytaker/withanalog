@@ -1,11 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import KeyboardPerformanceTester from '../../../components/KeyboardPerformanceTester';
 import { motion } from 'framer-motion';
 
 export default function KeyboardPerformanceTestPage() {
-  const [showAdvancedStats, setShowAdvancedStats] = useState(false);
 
   return (
     <main className="min-h-screen py-20 px-4 bg-gray-900">

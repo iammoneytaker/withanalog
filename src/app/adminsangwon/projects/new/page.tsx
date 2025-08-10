@@ -28,7 +28,7 @@ export default function NewProjectPage() {
     description: '',
     icon_url: '',
     status: 'launched',
-    category: '건강',
+    category: '키보드 도구',
     features: [],
     content: '',
     app_store_url: '',

@@ -24,6 +24,7 @@ const EnglishTypingTest: React.FC<EnglishTypingTestProps> = ({ text, onComplete 
   const [startTime, setStartTime] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [errors, setErrors] = useState<Set<number>>(new Set());
+  const [isComposing, setIsComposing] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const calculateStats = useCallback((): TypingStats => {
@@ -44,9 +45,21 @@ const EnglishTypingTest: React.FC<EnglishTypingTestProps> = ({ text, onComplete 
     };
   }, [userInput.length, errors.size, startTime]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    
+  const handleCompositionStart = () => {
+    setIsComposing(true);
+  };
+
+  const handleCompositionUpdate = () => {
+    // Composition in progress, no action needed
+  };
+
+  const handleCompositionEnd = (e: React.CompositionEvent<HTMLInputElement>) => {
+    setIsComposing(false);
+    // Process the final composed text
+    processInput(e.currentTarget.value);
+  };
+
+  const processInput = (value: string) => {
     if (!isStarted) {
       setIsStarted(true);
       setStartTime(Date.now());
@@ -76,6 +89,13 @@ const EnglishTypingTest: React.FC<EnglishTypingTestProps> = ({ text, onComplete 
       setIsCompleted(true);
       const finalStats = calculateStats();
       onComplete(finalStats);
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Only process input if not composing (for non-IME input)
+    if (!isComposing) {
+      processInput(e.target.value);
     }
   };
 
@@ -157,6 +177,9 @@ const EnglishTypingTest: React.FC<EnglishTypingTestProps> = ({ text, onComplete 
           value={userInput}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
+          onCompositionStart={handleCompositionStart}
+          onCompositionUpdate={handleCompositionUpdate}
+          onCompositionEnd={handleCompositionEnd}
           disabled={isCompleted}
           className="absolute inset-0 w-full h-full opacity-0 cursor-default"
           placeholder=""

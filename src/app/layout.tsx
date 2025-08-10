@@ -2,6 +2,8 @@ import { Metadata } from 'next';
 import './globals.css';
 import Header from '../components/Header';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import { GlobalKeyboardSound } from '@/components/GlobalKeyboardSound';
+import { KeyboardSoundController } from '@/components/KeyboardSoundController';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://withanalog.com'),
@@ -49,6 +51,8 @@ export default function RootLayout({
         <GoogleAnalytics />
       </head>
       <body className="bg-gray-900 text-gray-300">
+        <GlobalKeyboardSound />
+        <KeyboardSoundController />
         <Header />
         {children}
       </body>

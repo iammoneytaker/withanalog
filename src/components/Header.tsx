@@ -22,10 +22,16 @@ export default function Header() {
             도구
           </Link>
           <Link
-            href="/reviews"
+            href="/community"
             className="text-white hover:text-blue-400 transition-colors"
           >
-            리뷰
+            커뮤니티
+          </Link>
+          <Link
+            href="/recommendations"
+            className="text-white hover:text-blue-400 transition-colors"
+          >
+            키보드 추천
           </Link>
           <Link
             href="/blog"

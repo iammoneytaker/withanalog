@@ -22,7 +22,7 @@ export default function KeyboardSoundTestPage() {
   const [currentKey, setCurrentKey] = useState<string>('');
   const [keySounds, setKeySounds] = useState<KeySoundData[]>([]);
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
-  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
+  const [, setMediaRecorder] = useState<MediaRecorder | null>(null);
   const [isSetupComplete, setIsSetupComplete] = useState(false);
   
   const analyserRef = useRef<AnalyserNode | null>(null);

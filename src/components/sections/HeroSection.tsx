@@ -18,16 +18,59 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8 }}
-        className="text-center"
+        className="text-center relative"
       >
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-          키보드와 타이핑의
-          <br className="sm:hidden" />
-          <span className="text-blue-400">새로운 경험</span>
+        {/* 키보드 배경 애니메이션 */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-5 text-9xl select-none pointer-events-none">
+          ⌨️
+        </div>
+        
+        <motion.div 
+          className="text-6xl mb-8"
+          animate={{ 
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: 4,
+            ease: "easeInOut"
+          }}
+        >
+          ⌨️
+        </motion.div>
+        
+        <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold text-white mb-6 leading-tight">
+          <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
+            WithAnalog
+          </span>
+          <br />
+          <span className="text-2xl sm:text-3xl md:text-4xl text-gray-300 font-light">
+            키보드 전문 플랫폼
+          </span>
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto">
-          디지털과 현실을 잇는 키보드 전문 플랫폼
-        </p>
+        
+        <motion.p 
+          className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-8 leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          기계식부터 무접점까지, 황축부터 적축까지
+          <br />
+          <span className="text-blue-400 font-medium">당신의 완벽한 키보드를 찾아보세요</span>
+        </motion.p>
+
+        <motion.div
+          className="flex flex-wrap justify-center gap-4 text-sm text-gray-500"
+          initial={{ opacity: 0, y: 10 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <span className="bg-gray-800/50 px-3 py-1 rounded-full border border-gray-700">🔍 키보드 리뷰</span>
+          <span className="bg-gray-800/50 px-3 py-1 rounded-full border border-gray-700">⚙️ 스위치 가이드</span>
+          <span className="bg-gray-800/50 px-3 py-1 rounded-full border border-gray-700">🎯 성능 테스트</span>
+          <span className="bg-gray-800/50 px-3 py-1 rounded-full border border-gray-700">🎨 커스텀 빌드</span>
+        </motion.div>
       </motion.div>
 
       {/* 스크롤 유도 애니메이션 */}
