@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ModernKeyboardLayout from './ModernKeyboardLayout';
 
 interface KeyPressData {
   key: string;
@@ -35,12 +36,10 @@ const KeyboardPerformanceTester: React.FC = () => {
     slowestKey: { key: '', time: 0 },
     testDuration: 0
   });
-  const [keyboardLayout, setKeyboardLayout] = useState<'tkl' | 'fullsize'>('tkl');
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [selectedSwitchSound, setSelectedSwitchSound] = useState('cherry_blue');
   
   const startTimeRef = useRef<number>(0);
-  const audioBuffersRef = useRef<Map<string, HTMLAudioElement>>(new Map());
   const keyDownTimesRef = useRef<Map<string, number>>(new Map());
 
   // 스위치 사운드 설정
@@ -52,270 +51,7 @@ const KeyboardPerformanceTester: React.FC = () => {
 
   // GlobalKeyboardSound에서 오디오 처리하므로 제거
 
-  // 텐키리스 키보드 레이아웃 (실제 TKL 키보드 형태)
-  const tklLayout = [
-    // Function Row
-    [
-      { key: 'Escape', label: 'Esc', width: 'w-12' },
-      { key: '', label: '', width: 'w-4' }, // gap
-      { key: 'F1', label: 'F1', width: 'w-10' },
-      { key: 'F2', label: 'F2', width: 'w-10' },
-      { key: 'F3', label: 'F3', width: 'w-10' },
-      { key: 'F4', label: 'F4', width: 'w-10' },
-      { key: '', label: '', width: 'w-2' }, // gap
-      { key: 'F5', label: 'F5', width: 'w-10' },
-      { key: 'F6', label: 'F6', width: 'w-10' },
-      { key: 'F7', label: 'F7', width: 'w-10' },
-      { key: 'F8', label: 'F8', width: 'w-10' },
-      { key: '', label: '', width: 'w-2' }, // gap
-      { key: 'F9', label: 'F9', width: 'w-10' },
-      { key: 'F10', label: 'F10', width: 'w-10' },
-      { key: 'F11', label: 'F11', width: 'w-10' },
-      { key: 'F12', label: 'F12', width: 'w-10' },
-      { key: '', label: '', width: 'w-4' }, // gap
-      { key: 'PrintScreen', label: 'PrtSc', width: 'w-10' },
-      { key: 'ScrollLock', label: 'ScrLk', width: 'w-10' },
-      { key: 'Pause', label: 'Pause', width: 'w-10' }
-    ],
-    // Number Row
-    [
-      { key: 'Backquote', label: '~\n`', width: 'w-10' },
-      { key: 'Digit1', label: '!\n1', width: 'w-10' },
-      { key: 'Digit2', label: '@\n2', width: 'w-10' },
-      { key: 'Digit3', label: '#\n3', width: 'w-10' },
-      { key: 'Digit4', label: '$\n4', width: 'w-10' },
-      { key: 'Digit5', label: '%\n5', width: 'w-10' },
-      { key: 'Digit6', label: '^\n6', width: 'w-10' },
-      { key: 'Digit7', label: '&\n7', width: 'w-10' },
-      { key: 'Digit8', label: '*\n8', width: 'w-10' },
-      { key: 'Digit9', label: '(\n9', width: 'w-10' },
-      { key: 'Digit0', label: ')\n0', width: 'w-10' },
-      { key: 'Minus', label: '_\n-', width: 'w-10' },
-      { key: 'Equal', label: '+\n=', width: 'w-10' },
-      { key: 'Backspace', label: 'Backspace', width: 'w-20' },
-      { key: '', label: '', width: 'w-4' }, // gap
-      { key: 'Insert', label: 'Ins', width: 'w-10' },
-      { key: 'Home', label: 'Home', width: 'w-10' },
-      { key: 'PageUp', label: 'PgUp', width: 'w-10' }
-    ],
-    // Top Row (QWERTY)
-    [
-      { key: 'Tab', label: 'Tab', width: 'w-15' },
-      { key: 'KeyQ', label: 'ㅂ\nQ', width: 'w-10' },
-      { key: 'KeyW', label: 'ㅈ\nW', width: 'w-10' },
-      { key: 'KeyE', label: 'ㄷ\nE', width: 'w-10' },
-      { key: 'KeyR', label: 'ㄱ\nR', width: 'w-10' },
-      { key: 'KeyT', label: 'ㅅ\nT', width: 'w-10' },
-      { key: 'KeyY', label: 'ㅛ\nY', width: 'w-10' },
-      { key: 'KeyU', label: 'ㅕ\nU', width: 'w-10' },
-      { key: 'KeyI', label: 'ㅑ\nI', width: 'w-10' },
-      { key: 'KeyO', label: 'ㅒ\nO', width: 'w-10' },
-      { key: 'KeyP', label: 'ㅓ\nP', width: 'w-10' },
-      { key: 'BracketLeft', label: '{\n[', width: 'w-10' },
-      { key: 'BracketRight', label: '}\n]', width: 'w-10' },
-      { key: 'Backslash', label: '|\n\\', width: 'w-15' },
-      { key: '', label: '', width: 'w-4' }, // gap
-      { key: 'Delete', label: 'Del', width: 'w-10' },
-      { key: 'End', label: 'End', width: 'w-10' },
-      { key: 'PageDown', label: 'PgDn', width: 'w-10' }
-    ],
-    // Home Row (ASDF)
-    [
-      { key: 'CapsLock', label: 'CapsLock', width: 'w-18' },
-      { key: 'KeyA', label: 'ㅁ\nA', width: 'w-10' },
-      { key: 'KeyS', label: 'ㄴ\nS', width: 'w-10' },
-      { key: 'KeyD', label: 'ㅇ\nD', width: 'w-10' },
-      { key: 'KeyF', label: 'ㄹ\nF', width: 'w-10' },
-      { key: 'KeyG', label: 'ㅎ\nG', width: 'w-10' },
-      { key: 'KeyH', label: 'ㅗ\nH', width: 'w-10' },
-      { key: 'KeyJ', label: 'ㅓ\nJ', width: 'w-10' },
-      { key: 'KeyK', label: 'ㅏ\nK', width: 'w-10' },
-      { key: 'KeyL', label: 'ㅣ\nL', width: 'w-10' },
-      { key: 'Semicolon', label: ':\n;', width: 'w-10' },
-      { key: 'Quote', label: '"\n\'', width: 'w-10' },
-      { key: 'Enter', label: 'Enter', width: 'w-22' }
-    ],
-    // Bottom Row (ZXCV)
-    [
-      { key: 'ShiftLeft', label: 'Shift', width: 'w-24' },
-      { key: 'KeyZ', label: 'ㅋ\nZ', width: 'w-10' },
-      { key: 'KeyX', label: 'ㅌ\nX', width: 'w-10' },
-      { key: 'KeyC', label: 'ㅊ\nC', width: 'w-10' },
-      { key: 'KeyV', label: 'ㅍ\nV', width: 'w-10' },
-      { key: 'KeyB', label: 'ㅠ\nB', width: 'w-10' },
-      { key: 'KeyN', label: 'ㅜ\nN', width: 'w-10' },
-      { key: 'KeyM', label: 'ㅡ\nM', width: 'w-10' },
-      { key: 'Comma', label: '<\n,', width: 'w-10' },
-      { key: 'Period', label: '>\n.', width: 'w-10' },
-      { key: 'Slash', label: '?\n/', width: 'w-10' },
-      { key: 'ShiftRight', label: 'Shift', width: 'w-28' },
-      { key: '', label: '', width: 'w-4' }, // gap
-      { key: '', label: '', width: 'w-10' }, // empty
-      { key: 'ArrowUp', label: '↑', width: 'w-10' },
-      { key: '', label: '', width: 'w-10' } // empty
-    ],
-    // Space Row + Arrow Keys
-    [
-      { key: 'ControlLeft', label: 'Ctrl', width: 'w-13' },
-      { key: 'MetaLeft', label: 'Win', width: 'w-11' },
-      { key: 'AltLeft', label: 'Alt', width: 'w-13' },
-      { key: 'Space', label: 'Space', width: 'w-60' },
-      { key: 'AltRight', label: 'Alt', width: 'w-11' },
-      { key: 'ContextMenu', label: 'Fn', width: 'w-11' },
-      { key: 'MetaRight', label: '한/영', width: 'w-11' },
-      { key: 'ControlRight', label: 'Ctrl', width: 'w-13' },
-      { key: '', label: '', width: 'w-4' }, // gap
-      { key: 'ArrowLeft', label: '←', width: 'w-10' },
-      { key: 'ArrowDown', label: '↓', width: 'w-10' },
-      { key: 'ArrowRight', label: '→', width: 'w-10' }
-    ]
-  ];
-
-  // 풀사이즈 키보드 레이아웃 (실제 풀사이즈 키보드 형태)
-  const fullsizeLayout = [
-    // Function Row
-    [
-      { key: 'Escape', label: 'Esc', width: 'w-9' },
-      { key: '', label: '', width: 'w-3' }, // gap
-      { key: 'F1', label: 'F1', width: 'w-8' },
-      { key: 'F2', label: 'F2', width: 'w-8' },
-      { key: 'F3', label: 'F3', width: 'w-8' },
-      { key: 'F4', label: 'F4', width: 'w-8' },
-      { key: '', label: '', width: 'w-2' }, // gap
-      { key: 'F5', label: 'F5', width: 'w-8' },
-      { key: 'F6', label: 'F6', width: 'w-8' },
-      { key: 'F7', label: 'F7', width: 'w-8' },
-      { key: 'F8', label: 'F8', width: 'w-8' },
-      { key: '', label: '', width: 'w-2' }, // gap
-      { key: 'F9', label: 'F9', width: 'w-8' },
-      { key: 'F10', label: 'F10', width: 'w-8' },
-      { key: 'F11', label: 'F11', width: 'w-8' },
-      { key: 'F12', label: 'F12', width: 'w-8' },
-      { key: '', label: '', width: 'w-3' }, // gap
-      { key: 'PrintScreen', label: 'PrtSc', width: 'w-8' },
-      { key: 'ScrollLock', label: 'ScrLk', width: 'w-8' },
-      { key: 'Pause', label: 'Pause', width: 'w-8' },
-      { key: '', label: '', width: 'w-3' }, // gap
-      { key: 'NumLock', label: 'Num\nLock', width: 'w-8' },
-      { key: 'NumpadDivide', label: '/', width: 'w-8' },
-      { key: 'NumpadMultiply', label: '*', width: 'w-8' },
-      { key: 'NumpadSubtract', label: '-', width: 'w-8' }
-    ],
-    // Number Row
-    [
-      { key: 'Backquote', label: '~\n`', width: 'w-8' },
-      { key: 'Digit1', label: '!\n1', width: 'w-8' },
-      { key: 'Digit2', label: '@\n2', width: 'w-8' },
-      { key: 'Digit3', label: '#\n3', width: 'w-8' },
-      { key: 'Digit4', label: '$\n4', width: 'w-8' },
-      { key: 'Digit5', label: '%\n5', width: 'w-8' },
-      { key: 'Digit6', label: '^\n6', width: 'w-8' },
-      { key: 'Digit7', label: '&\n7', width: 'w-8' },
-      { key: 'Digit8', label: '*\n8', width: 'w-8' },
-      { key: 'Digit9', label: '(\n9', width: 'w-8' },
-      { key: 'Digit0', label: ')\n0', width: 'w-8' },
-      { key: 'Minus', label: '_\n-', width: 'w-8' },
-      { key: 'Equal', label: '+\n=', width: 'w-8' },
-      { key: 'Backspace', label: 'Backspace', width: 'w-16' },
-      { key: '', label: '', width: 'w-3' }, // gap
-      { key: 'Insert', label: 'Ins', width: 'w-8' },
-      { key: 'Home', label: 'Home', width: 'w-8' },
-      { key: 'PageUp', label: 'PgUp', width: 'w-8' },
-      { key: '', label: '', width: 'w-3' }, // gap
-      { key: 'Numpad7', label: '7', width: 'w-8' },
-      { key: 'Numpad8', label: '8', width: 'w-8' },
-      { key: 'Numpad9', label: '9', width: 'w-8' },
-      { key: 'NumpadAdd', label: '+', width: 'w-8' }
-    ],
-    // Top Row (QWERTY)
-    [
-      { key: 'Tab', label: 'Tab', width: 'w-12' },
-      { key: 'KeyQ', label: 'ㅂ\nQ', width: 'w-8' },
-      { key: 'KeyW', label: 'ㅈ\nW', width: 'w-8' },
-      { key: 'KeyE', label: 'ㄷ\nE', width: 'w-8' },
-      { key: 'KeyR', label: 'ㄱ\nR', width: 'w-8' },
-      { key: 'KeyT', label: 'ㅅ\nT', width: 'w-8' },
-      { key: 'KeyY', label: 'ㅛ\nY', width: 'w-8' },
-      { key: 'KeyU', label: 'ㅕ\nU', width: 'w-8' },
-      { key: 'KeyI', label: 'ㅑ\nI', width: 'w-8' },
-      { key: 'KeyO', label: 'ㅒ\nO', width: 'w-8' },
-      { key: 'KeyP', label: 'ㅓ\nP', width: 'w-8' },
-      { key: 'BracketLeft', label: '{\n[', width: 'w-8' },
-      { key: 'BracketRight', label: '}\n]', width: 'w-8' },
-      { key: 'Backslash', label: '|\n\\', width: 'w-12' },
-      { key: '', label: '', width: 'w-3' }, // gap
-      { key: 'Delete', label: 'Del', width: 'w-8' },
-      { key: 'End', label: 'End', width: 'w-8' },
-      { key: 'PageDown', label: 'PgDn', width: 'w-8' },
-      { key: '', label: '', width: 'w-3' }, // gap
-      { key: 'Numpad4', label: '4', width: 'w-8' },
-      { key: 'Numpad5', label: '5', width: 'w-8' },
-      { key: 'Numpad6', label: '6', width: 'w-8' },
-      { key: '', label: '', width: 'w-8' } // NumpadAdd continues from above
-    ],
-    // Home Row (ASDF)
-    [
-      { key: 'CapsLock', label: 'CapsLock', width: 'w-14' },
-      { key: 'KeyA', label: 'ㅁ\nA', width: 'w-8' },
-      { key: 'KeyS', label: 'ㄴ\nS', width: 'w-8' },
-      { key: 'KeyD', label: 'ㅇ\nD', width: 'w-8' },
-      { key: 'KeyF', label: 'ㄹ\nF', width: 'w-8' },
-      { key: 'KeyG', label: 'ㅎ\nG', width: 'w-8' },
-      { key: 'KeyH', label: 'ㅗ\nH', width: 'w-8' },
-      { key: 'KeyJ', label: 'ㅓ\nJ', width: 'w-8' },
-      { key: 'KeyK', label: 'ㅏ\nK', width: 'w-8' },
-      { key: 'KeyL', label: 'ㅣ\nL', width: 'w-8' },
-      { key: 'Semicolon', label: ':\n;', width: 'w-8' },
-      { key: 'Quote', label: '"\n\'', width: 'w-8' },
-      { key: 'Enter', label: 'Enter', width: 'w-18' },
-      { key: '', label: '', width: 'w-27' }, // gap for navigation cluster  
-      { key: 'Numpad1', label: '1', width: 'w-8' },
-      { key: 'Numpad2', label: '2', width: 'w-8' },
-      { key: 'Numpad3', label: '3', width: 'w-8' },
-      { key: 'NumpadEnter', label: 'Enter', width: 'w-8' }
-    ],
-    // Bottom Row (ZXCV)
-    [
-      { key: 'ShiftLeft', label: 'Shift', width: 'w-18' },
-      { key: 'KeyZ', label: 'ㅋ\nZ', width: 'w-8' },
-      { key: 'KeyX', label: 'ㅌ\nX', width: 'w-8' },
-      { key: 'KeyC', label: 'ㅊ\nC', width: 'w-8' },
-      { key: 'KeyV', label: 'ㅍ\nV', width: 'w-8' },
-      { key: 'KeyB', label: 'ㅠ\nB', width: 'w-8' },
-      { key: 'KeyN', label: 'ㅜ\nN', width: 'w-8' },
-      { key: 'KeyM', label: 'ㅡ\nM', width: 'w-8' },
-      { key: 'Comma', label: '<\n,', width: 'w-8' },
-      { key: 'Period', label: '>\n.', width: 'w-8' },
-      { key: 'Slash', label: '?\n/', width: 'w-8' },
-      { key: 'ShiftRight', label: 'Shift', width: 'w-22' },
-      { key: '', label: '', width: 'w-3' }, // gap
-      { key: '', label: '', width: 'w-8' }, // empty
-      { key: 'ArrowUp', label: '↑', width: 'w-8' },
-      { key: '', label: '', width: 'w-8' }, // empty
-      { key: '', label: '', width: 'w-3' }, // gap
-      { key: 'Numpad0', label: '0', width: 'w-16' },
-      { key: 'NumpadDecimal', label: '.', width: 'w-8' },
-      { key: '', label: '', width: 'w-8' } // NumpadEnter continues from above
-    ],
-    // Space Row + Arrow Keys + Numpad bottom
-    [
-      { key: 'ControlLeft', label: 'Ctrl', width: 'w-10' },
-      { key: 'MetaLeft', label: 'Win', width: 'w-9' },
-      { key: 'AltLeft', label: 'Alt', width: 'w-10' },
-      { key: 'Space', label: 'Space', width: 'w-48' },
-      { key: 'AltRight', label: 'Alt', width: 'w-9' },
-      { key: 'ContextMenu', label: 'Fn', width: 'w-9' },
-      { key: 'MetaRight', label: '한/영', width: 'w-9' },
-      { key: 'ControlRight', label: 'Ctrl', width: 'w-10' },
-      { key: '', label: '', width: 'w-3' }, // gap
-      { key: 'ArrowLeft', label: '←', width: 'w-8' },
-      { key: 'ArrowDown', label: '↓', width: 'w-8' },
-      { key: 'ArrowRight', label: '→', width: 'w-8' },
-      { key: '', label: '', width: 'w-27' } // gap for numpad alignment
-    ]
-  ];
-
-  const currentLayout = keyboardLayout === 'tkl' ? tklLayout : fullsizeLayout;
+  // ModernKeyboardLayout을 사용하므로 기존 레이아웃 제거
 
 
   // GlobalKeyboardSound를 사용하므로 별도 타건음 불필요
@@ -354,10 +90,9 @@ const KeyboardPerformanceTester: React.FC = () => {
     
     setKeyPressHistory(prev => [...prev, keyPressData]);
     
-    // 실제 WAV 파일 타건음 재생
-    playKeySound();
+    // GlobalKeyboardSound에서 자동으로 타건음 재생됨
     
-  }, [isTestActive, pressedKeys, playKeySound]);
+  }, [isTestActive, pressedKeys]);
 
   // 키 뗌 이벤트
   const handleKeyUp = useCallback((event: KeyboardEvent) => {
@@ -494,16 +229,6 @@ const KeyboardPerformanceTester: React.FC = () => {
     });
   };
 
-  const getKeyStyle = (keyCode: string) => {
-    const isPressed = pressedKeys.has(keyCode);
-    const baseStyle = 'h-8 bg-gray-700 text-white text-xs font-mono rounded border border-gray-600 flex items-center justify-center transition-all duration-75 select-none';
-    
-    if (isPressed) {
-      return `${baseStyle} bg-blue-500 border-blue-400 scale-95 shadow-lg`;
-    }
-    
-    return baseStyle;
-  };
 
   return (
     <div className="max-w-7xl mx-auto p-6">
@@ -528,16 +253,6 @@ const KeyboardPerformanceTester: React.FC = () => {
             >
               리셋
             </button>
-            
-            <select
-              value={keyboardLayout}
-              onChange={(e) => setKeyboardLayout(e.target.value as 'tkl' | 'fullsize')}
-              className="px-4 py-2 bg-gray-700 text-white rounded border border-gray-600"
-              disabled={isTestActive}
-            >
-              <option value="tkl">텐키리스 (TKL)</option>
-              <option value="fullsize">풀사이즈 (넘패드)</option>
-            </select>
           </div>
           
           <div className="flex gap-4 items-center">
@@ -621,41 +336,17 @@ const KeyboardPerformanceTester: React.FC = () => {
         </div>
       </div>
 
-      {/* 키보드 시각화 */}
-      <div className="bg-gray-800 rounded-lg p-6">
+      {/* 키보드 시각화 - ModernKeyboardLayout 사용 */}
+      <div className="mb-6">
         <div className="mb-4 text-center">
-          <h3 className="text-xl font-bold text-white">
-            {keyboardLayout === 'tkl' ? '텐키리스 키보드' : '풀사이즈 키보드'}
-          </h3>
-          <p className="text-gray-400 text-sm">실제 키보드로 입력하면 해당 키가 강조됩니다</p>
+          <h3 className="text-xl font-bold text-white">실시간 키보드 테스터</h3>
+          <p className="text-gray-400 text-sm">실제 키보드로 입력하면 해당 키가 파란색으로 강조됩니다</p>
         </div>
         
-        <div className="flex flex-col items-center space-y-1 overflow-x-auto">
-          {currentLayout.map((row, rowIndex) => (
-            <div key={rowIndex} className="flex justify-center gap-1">
-              {row.map((keyObj, keyIndex) => {
-                // 빈 공간 처리
-                if (!keyObj.key && !keyObj.label) {
-                  return (
-                    <div
-                      key={`${rowIndex}-${keyIndex}`}
-                      className={`${keyObj.width} h-8`}
-                    />
-                  );
-                }
-                
-                return (
-                  <div
-                    key={`${rowIndex}-${keyIndex}`}
-                    className={`${getKeyStyle(keyObj.key)} ${keyObj.width} text-xs leading-tight whitespace-pre-line`}
-                  >
-                    {keyObj.label}
-                  </div>
-                );
-              })}
-            </div>
-          ))}
-        </div>
+        <ModernKeyboardLayout 
+          pressedKeys={pressedKeys}
+          onKeyPress={(keyCode) => console.log('Key pressed:', keyCode)}
+        />
         
         <div className="mt-6 text-center text-gray-400 text-sm">
           <p>💡 팁: 게임에서 사용하는 WASD 키나 자주 사용하는 키들을 테스트해보세요!</p>

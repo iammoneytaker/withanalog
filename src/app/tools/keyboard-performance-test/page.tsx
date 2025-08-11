@@ -5,7 +5,6 @@ import KeyboardPerformanceTester from '../../../components/KeyboardPerformanceTe
 import { motion } from 'framer-motion';
 
 export default function KeyboardPerformanceTestPage() {
-  const [isMobile, setIsMobile] = useState(false);
   const [showMobileWarning, setShowMobileWarning] = useState(false);
 
   useEffect(() => {
@@ -18,13 +17,11 @@ export default function KeyboardPerformanceTestPage() {
     };
 
     const mobile = checkIsMobile();
-    setIsMobile(mobile);
     setShowMobileWarning(mobile);
 
     // 화면 크기 변경 감지
     const handleResize = () => {
       const mobile = checkIsMobile();
-      setIsMobile(mobile);
       if (mobile) {
         setShowMobileWarning(true);
       }
