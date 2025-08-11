@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { ExternalLinkButton } from '@/components/ExternalLinkButton';
 
 // 실제 독거미 키보드 시리즈 정보 (아우라 브랜드)
 const recommendedKeyboards = [
@@ -481,21 +482,12 @@ export default function RecommendationsPage() {
                 {/* 제휴링크 버튼들 */}
                 <div className="mt-4 sm:mt-6 space-y-2">
                   {kbd.affiliateLinks.map((link, index) => (
-                    <Link
+                    <ExternalLinkButton
                       key={index}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`block text-center px-4 sm:px-6 py-2 sm:py-3 rounded-lg transition-colors font-semibold text-sm sm:text-base ${
-                        link.platform === 'coupang'
-                          ? 'bg-pink-600 hover:bg-pink-700 text-white'
-                          : link.platform === 'naver'
-                          ? 'bg-green-600 hover:bg-green-700 text-white'
-                          : 'bg-orange-600 hover:bg-orange-700 text-white'
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
+                      url={link.url}
+                      label={link.label}
+                      platform={link.platform as 'coupang' | 'naver' | 'aliexpress'}
+                    />
                   ))}
                 </div>
               </div>
