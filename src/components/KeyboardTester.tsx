@@ -118,6 +118,11 @@ const KeyboardTester: React.FC<KeyboardTesterProps> = ({
     );
   }, [pressedKeys]);
 
+  // Spacer element for proper keyboard alignment
+  const renderSpacer = useCallback((width: string) => {
+    return <div key={`spacer-${Math.random()}`} className={styles.spacer} style={{width}}></div>;
+  }, []);
+
   const renderFunctionRow = () => (
     <div className={`${styles.keyboardRow} ${styles.functionRow}`}>
       {renderKey('Escape', 'Esc')}
@@ -179,6 +184,7 @@ const KeyboardTester: React.FC<KeyboardTesterProps> = ({
 
   const renderMiddleLetterRow = () => (
     <div className={`${styles.keyboardRow} ${styles.middleLetterRow}`}>
+      {renderSpacer('1.5rem')} {/* Caps Lock 오프셋 */}
       {renderKey('CapsLock', 'Caps Lock')}
       {renderKey('KeyA', 'A')}
       {renderKey('KeyS', 'S')}

@@ -243,70 +243,59 @@
 }
 
 /* Number Row */
-.numberRow .key {
-  width: 3rem;
-  height: 3rem;
+.numberRow {
+  display: grid;
+  grid-template-columns: 3rem repeat(12, 3rem) 6rem; /* 백틱 + 12개 숫자/기호 + 백스페이스 */
+  gap: 0.25rem;
 }
 
-.numberRow .key:last-child {
-  width: 6rem; /* Backspace */
+.numberRow .key {
+  height: 3rem;
 }
 
 /* Top Letter Row (QWERTY) */
+.topLetterRow {
+  display: grid;
+  grid-template-columns: 4.5rem repeat(12, 3rem) 4.5rem; /* Tab + 12개 문자 + \ */
+  gap: 0.25rem;
+}
+
 .topLetterRow .key {
-  width: 3rem;
   height: 3rem;
-}
-
-.topLetterRow .key:first-child {
-  width: 4.5rem; /* Tab */
-}
-
-.topLetterRow .key:last-child {
-  width: 4.5rem; /* Backslash */
 }
 
 /* Middle Letter Row (ASDF) */
+.middleLetterRow {
+  display: grid;
+  grid-template-columns: 7rem repeat(11, 3rem) 6.75rem; /* Caps Lock + 11개 문자 + Enter */
+  gap: 0.25rem;
+}
+
 .middleLetterRow .key {
-  width: 3rem;
   height: 3rem;
-}
-
-.middleLetterRow .key:first-child {
-  width: 5.5rem; /* Caps Lock */
-}
-
-.middleLetterRow .key:last-child {
-  width: 7rem; /* Enter */
 }
 
 /* Bottom Letter Row (ZXCV) */
+.bottomLetterRow {
+  display: grid;
+  grid-template-columns: 7rem repeat(10, 3rem) 8.5rem; /* Left Shift + 10개 문자 + Right Shift */
+  gap: 0.25rem;
+}
+
 .bottomLetterRow .key {
-  width: 3rem;
   height: 3rem;
-}
-
-.bottomLetterRow .key:first-child {
-  width: 7rem; /* Left Shift */
-}
-
-.bottomLetterRow .key:last-child {
-  width: 8.5rem; /* Right Shift */
 }
 
 /* Space Row */
+.spaceRow {
+  display: grid;
+  grid-template-columns: 4rem 4rem 4rem 18rem 4rem 4rem 4rem 4rem; /* Ctrl Win Alt Space Alt Win Menu Ctrl */
+  gap: 0.25rem;
+}
+
 .spaceRow .key {
   height: 3rem;
 }
-
-.spaceRow .key:nth-child(1) { width: 4rem; } /* Ctrl */
-.spaceRow .key:nth-child(2) { width: 4rem; } /* Win */
-.spaceRow .key:nth-child(3) { width: 4rem; } /* Alt */
-.spaceRow .key:nth-child(4) { width: 18rem; } /* Space */
-.spaceRow .key:nth-child(5) { width: 4rem; } /* Alt */
-.spaceRow .key:nth-child(6) { width: 4rem; } /* Win */
-.spaceRow .key:nth-child(7) { width: 4rem; } /* Menu */
-.spaceRow .key:nth-child(8) { width: 4rem; } /* Ctrl */
 
 /* Navigation Keys */
 .navigationKeys {
@@ -328,7 +317,7 @@
 }
 
 .arrowKeys {
-  margin-top: 1rem; /* 0.5rem에서 1rem으로 증가 */
+  margin-top: 2rem; /* 방향키를 더 아래로 */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -362,6 +351,13 @@
 
 .numpad .key.wide {
   grid-column: span 2;
+}
+
+/* Spacer for keyboard alignment */
+.spacer {
+  display: inline-block;
+  height: 1px;
+  background: transparent;
 }
 
 /* Key Styles */

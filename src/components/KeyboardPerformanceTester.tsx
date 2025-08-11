@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import KeyboardTester from './KeyboardTester';
+import KeyboardTester from './KeyboardTesterNew';
 
 interface KeyPressData {
   key: string;
