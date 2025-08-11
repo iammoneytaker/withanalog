@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { ExternalLinkButton } from '@/components/ExternalLinkButton';
 
 // 실제 독거미 키보드 시리즈 정보 (아우라 브랜드)
