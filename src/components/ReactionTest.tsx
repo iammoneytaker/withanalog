@@ -32,21 +32,8 @@ const ReactionTest: React.FC<ReactionTestProps> = ({ onComplete }) => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const waitTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const getKeyDisplayName = (key: string): string => {
-    const keyMap: Record<string, string> = {
-      'Space': '스페이스바',
-      'KeyA': 'A',
-      'KeyS': 'S', 
-      'KeyD': 'D',
-      'KeyF': 'F',
-      'KeyJ': 'J',
-      'KeyK': 'K',
-      'KeyL': 'L',
-    };
-    return keyMap[key] || key;
-  };
 
-  const getKeyKoreanName = (key: string): string => {
+  const getKeyKoreanName = useCallback((key: string): string => {
     const keyMap: Record<string, string> = {
       'Space': '스페이스바',
       'KeyA': 'A (ㅁ)',
@@ -58,7 +45,7 @@ const ReactionTest: React.FC<ReactionTestProps> = ({ onComplete }) => {
       'KeyL': 'L (ㅣ)',
     };
     return keyMap[key] || key;
-  };
+  }, []);
 
   const clearTimeouts = useCallback(() => {
     if (timeoutRef.current) {
@@ -71,7 +58,7 @@ const ReactionTest: React.FC<ReactionTestProps> = ({ onComplete }) => {
     }
   }, []);
 
-  const startTest = useCallback(() => {
+  const startTest: () => void = useCallback(() => {
     clearTimeouts();
 
     if (currentTest >= TEST_COUNT) {
@@ -115,7 +102,7 @@ const ReactionTest: React.FC<ReactionTestProps> = ({ onComplete }) => {
         handleTimeout();
       }, 5000);
     }, delay);
-  }, []);
+  }, [getKeyKoreanName]);
 
   const handleTimeout = useCallback(() => {
     if (!isActive) return;
@@ -131,11 +118,7 @@ const ReactionTest: React.FC<ReactionTestProps> = ({ onComplete }) => {
     }]);
     setCurrentTest(prev => prev + 1);
     setInstruction('시간 초과! 다음 테스트를 준비하세요...');
-    
-    setTimeout(() => {
-      startTest();
-    }, 2000);
-  }, [isActive, targetKey, startTest, clearTimeouts]);
+  }, [isActive, targetKey, clearTimeouts]);
 
   const handleKeyPress = useCallback((event: KeyboardEvent) => {
     if (isWaiting || !isActive) return;
@@ -163,11 +146,7 @@ const ReactionTest: React.FC<ReactionTestProps> = ({ onComplete }) => {
     } else {
       setInstruction(`틀렸습니다! "${getKeyKoreanName(event.code)}" 대신 "${getKeyKoreanName(targetKey)}"를 누르셔야 했습니다.`);
     }
-
-    setTimeout(() => {
-      startTest();
-    }, 2000);
-  }, [isWaiting, isActive, startTime, targetKey, startTest, clearTimeouts]);
+  }, [isWaiting, isActive, startTime, targetKey, startTest, clearTimeouts, getKeyKoreanName]);
 
   useEffect(() => {
     if (isActive) {

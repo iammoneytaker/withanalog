@@ -37,7 +37,7 @@ const KeyboardTester: React.FC<KeyboardTesterProps> = ({
       const availableWidth = containerWidth - padding;
       
       // 최적 스케일 계산
-      let optimalScale = Math.min(availableWidth / keyboardNaturalWidth, 1);
+      const optimalScale = Math.min(availableWidth / keyboardNaturalWidth, 1);
       
       // 최소/최대 스케일 제한 (모바일에서는 더 작게)
       const minScale = window.innerWidth <= 768 ? 0.25 : 0.4;

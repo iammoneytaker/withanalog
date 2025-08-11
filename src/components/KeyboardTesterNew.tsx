@@ -12,6 +12,7 @@ const KeyboardTester: React.FC<KeyboardTesterProps> = ({
 }) => {
   const [currentTheme, setCurrentTheme] = useState<string>('retro');
   const [layout, setLayout] = useState<'fullSize' | 'tkl'>('fullSize');
+  const [language, setLanguage] = useState<'korean' | 'english'>('korean');
   const keyboardRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -57,6 +58,55 @@ const KeyboardTester: React.FC<KeyboardTesterProps> = ({
     localStorage.setItem('keyboardTheme', themeName);
   }, []);
 
+  // 한글 키보드 매핑
+  const koreanKeyMap: { [key: string]: string } = {
+    // 숫자 행
+    'Digit1': '1', 'Digit2': '2', 'Digit3': '3', 'Digit4': '4', 'Digit5': '5',
+    'Digit6': '6', 'Digit7': '7', 'Digit8': '8', 'Digit9': '9', 'Digit0': '0',
+    'Minus': '-', 'Equal': '=', 'Backquote': '`',
+    
+    // 상단 문자 행 (ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ)
+    'KeyQ': 'ㅂ', 'KeyW': 'ㅈ', 'KeyE': 'ㄷ', 'KeyR': 'ㄱ', 'KeyT': 'ㅅ',
+    'KeyY': 'ㅛ', 'KeyU': 'ㅕ', 'KeyI': 'ㅑ', 'KeyO': 'ㅐ', 'KeyP': 'ㅔ',
+    'BracketLeft': '[', 'BracketRight': ']', 'Backslash': '\\',
+    
+    // 중간 문자 행 (ㅁㄴㅇㄹㅎㅗㅓㅏㅣ)
+    'KeyA': 'ㅁ', 'KeyS': 'ㄴ', 'KeyD': 'ㅇ', 'KeyF': 'ㄹ', 'KeyG': 'ㅎ',
+    'KeyH': 'ㅗ', 'KeyJ': 'ㅓ', 'KeyK': 'ㅏ', 'KeyL': 'ㅣ',
+    'Semicolon': ';', 'Quote': "'",
+    
+    // 하단 문자 행 (ㅋㅌㅊㅍㅠㅜㅡ)
+    'KeyZ': 'ㅋ', 'KeyX': 'ㅌ', 'KeyC': 'ㅊ', 'KeyV': 'ㅍ', 'KeyB': 'ㅠ',
+    'KeyN': 'ㅜ', 'KeyM': 'ㅡ', 'Comma': ',', 'Period': '.', 'Slash': '/'
+  };
+
+  // 영문 키보드 매핑
+  const englishKeyMap: { [key: string]: string } = {
+    // 숫자 행
+    'Digit1': '1', 'Digit2': '2', 'Digit3': '3', 'Digit4': '4', 'Digit5': '5',
+    'Digit6': '6', 'Digit7': '7', 'Digit8': '8', 'Digit9': '9', 'Digit0': '0',
+    'Minus': '-', 'Equal': '=', 'Backquote': '`',
+    
+    // 상단 문자 행
+    'KeyQ': 'Q', 'KeyW': 'W', 'KeyE': 'E', 'KeyR': 'R', 'KeyT': 'T',
+    'KeyY': 'Y', 'KeyU': 'U', 'KeyI': 'I', 'KeyO': 'O', 'KeyP': 'P',
+    'BracketLeft': '[', 'BracketRight': ']', 'Backslash': '\\',
+    
+    // 중간 문자 행
+    'KeyA': 'A', 'KeyS': 'S', 'KeyD': 'D', 'KeyF': 'F', 'KeyG': 'G',
+    'KeyH': 'H', 'KeyJ': 'J', 'KeyK': 'K', 'KeyL': 'L',
+    'Semicolon': ';', 'Quote': "'",
+    
+    // 하단 문자 행
+    'KeyZ': 'Z', 'KeyX': 'X', 'KeyC': 'C', 'KeyV': 'V', 'KeyB': 'B',
+    'KeyN': 'N', 'KeyM': 'M', 'Comma': ',', 'Period': '.', 'Slash': '/'
+  };
+
+  const getKeyLabel = (keyCode: string, fallbackLabel: string): string => {
+    const keyMap = language === 'korean' ? koreanKeyMap : englishKeyMap;
+    return keyMap[keyCode] || fallbackLabel;
+  };
+
 
   const renderKey = useCallback((keyCode: string, label: string, additionalClass: string = '') => {
     const isPressed = pressedKeys.has(keyCode) || 
@@ -67,12 +117,15 @@ const KeyboardTester: React.FC<KeyboardTesterProps> = ({
     
     const classes = `${styles.key} ${additionalClass} ${isPressed ? styles.keyPressed : ''} ${isAccentKey ? styles.keyAccentColor : ''}`;
 
+    // 언어별 라벨 가져오기
+    const displayLabel = getKeyLabel(keyCode, label);
+
     return (
       <div key={keyCode} className={classes} data-key={keyCode}>
-        {label}
+        {displayLabel}
       </div>
     );
-  }, [pressedKeys]);
+  }, [pressedKeys, language]);
 
   const renderKeyboard = () => {
     return (
@@ -170,9 +223,9 @@ const KeyboardTester: React.FC<KeyboardTesterProps> = ({
           <div className={styles.fifthRow}>
             {renderKey('ControlLeft', 'Ctrl', styles.keyWide)}
             {renderKey('MetaLeft', 'Win', styles.keyWide)}
-            {renderKey('AltLeft', 'Alt', styles.keyWide)}
+            {renderKey('AltLeft', language === 'korean' ? '한/영' : 'Alt', styles.keyWide)}
             {renderKey('Space', '', styles.keySpace)}
-            {renderKey('AltRight', 'Alt', styles.keyWide)}
+            {renderKey('AltRight', language === 'korean' ? '한자' : 'Alt', styles.keyWide)}
             {renderKey('MetaRight', 'Win', styles.keyWide)}
             {renderKey('ContextMenu', 'Menu', styles.keyWide)}
             {renderKey('ControlRight', 'Ctrl', styles.keyWide)}
@@ -225,7 +278,23 @@ const KeyboardTester: React.FC<KeyboardTesterProps> = ({
   return (
     <div ref={containerRef} className={styles.container}>
       <div className={styles.themeAndLayout}>
-        <div></div>
+        {/* 언어 전환 섹션 */}
+        <div className={styles.languageSection}>
+          <div className={styles.layoutButtons}>
+            <button 
+              className={`${styles.layoutButton} ${language === 'korean' ? styles.active : ''}`}
+              onClick={() => setLanguage('korean')}
+            >
+              한글
+            </button>
+            <button 
+              className={`${styles.layoutButton} ${language === 'english' ? styles.active : ''}`}
+              onClick={() => setLanguage('english')}
+            >
+              English
+            </button>
+          </div>
+        </div>
         
         {/* 레이아웃 섹션 */}
         <div className={styles.layoutSection}>

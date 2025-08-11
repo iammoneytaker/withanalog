@@ -1,8 +1,6 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 
 interface CommunitySection {
   id: string;
@@ -122,7 +120,6 @@ const recentPosts = [
 ];
 
 export default function CommunityPage() {
-  const [activeSection, setActiveSection] = useState('');
   
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20 px-4">
