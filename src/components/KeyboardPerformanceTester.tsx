@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import ModernKeyboardLayout from './ModernKeyboardLayout';
+import KeyboardTester from './KeyboardTester';
 
 interface KeyPressData {
   key: string;
@@ -336,16 +336,15 @@ const KeyboardPerformanceTester: React.FC = () => {
         </div>
       </div>
 
-      {/* 키보드 시각화 - ModernKeyboardLayout 사용 */}
+      {/* 키보드 시각화 - KeyboardTester 사용 */}
       <div className="mb-6">
         <div className="mb-4 text-center">
           <h3 className="text-xl font-bold text-white">실시간 키보드 테스터</h3>
-          <p className="text-gray-400 text-sm">실제 키보드로 입력하면 해당 키가 파란색으로 강조됩니다</p>
+          <p className="text-gray-400 text-sm">실제 키보드로 입력하면 해당 키가 강조됩니다</p>
         </div>
         
-        <ModernKeyboardLayout 
+        <KeyboardTester 
           pressedKeys={pressedKeys}
-          onKeyPress={(keyCode) => console.log('Key pressed:', keyCode)}
         />
         
         <div className="mt-6 text-center text-gray-400 text-sm">

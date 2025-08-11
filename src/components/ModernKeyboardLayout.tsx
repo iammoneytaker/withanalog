@@ -66,18 +66,21 @@ export default function ModernKeyboardLayout({
       const screenWidth = window.innerWidth;
       let autoScale = 1;
       
-      if (screenWidth < 640) { // 모바일
-        autoScale = 0.4;
+      // 키보드가 화면에 맞도록 더 적극적으로 스케일링
+      if (screenWidth < 480) { // 매우 작은 모바일
+        autoScale = 0.25;
+      } else if (screenWidth < 640) { // 모바일
+        autoScale = 0.35;
       } else if (screenWidth < 768) { // 큰 모바일
-        autoScale = 0.5;
+        autoScale = 0.45;
       } else if (screenWidth < 1024) { // 태블릿
-        autoScale = 0.6;
+        autoScale = 0.55;
       } else if (screenWidth < 1280) { // 작은 데스크톱
-        autoScale = 0.75;
+        autoScale = 0.65;
       } else if (screenWidth < 1536) { // 일반 데스크톱
-        autoScale = 0.85;
+        autoScale = 0.75;
       } else { // 큰 데스크톱
-        autoScale = 1;
+        autoScale = 0.85;
       }
       
       setKeyboardScale(autoScale);
@@ -360,14 +363,14 @@ export default function ModernKeyboardLayout({
 
   // 각 행의 갭 설정
   const rowGaps = layoutType === 'tkl' ? [
-    [1, 5, 10, 15],          // Function row: after Esc, F4, F8, F12
-    [14],                     // Number row: after Backspace
-    [14],                     // QWERTY row: after Backslash
-    [],                       // ASDF row: no gaps
-    [12],                     // ZXCV row: after right Shift (arrow cluster)
-    [8]                       // Bottom row: after right Ctrl
+    [1, 5, 9, 13],           // Function row: after Esc, F4, F8, F12 
+    [14],                    // Number row: after Backspace
+    [14],                    // QWERTY row: after Backslash
+    [],                      // ASDF row: no gaps
+    [12],                    // ZXCV row: after right Shift (arrow cluster)
+    [8]                      // Bottom row: after right Ctrl
   ] : [
-    [1, 5, 10, 15],          // Function row
+    [1, 5, 9, 13],           // Function row
     [14, 18],                // Number row: after Backspace, PgUp
     [14, 18],                // QWERTY row: after Backslash, PgDn
     [13],                    // ASDF row: after Enter (numpad section)
@@ -376,7 +379,7 @@ export default function ModernKeyboardLayout({
   ];
 
   return (
-    <div className="w-full max-w-full overflow-x-auto">
+    <div className="w-full max-w-full overflow-x-auto overflow-y-hidden">
       {/* 컨트롤 패널 */}
       <div className="flex items-center justify-center mb-6 space-x-6">
         {/* 수동 스케일 조절 */}
@@ -385,14 +388,14 @@ export default function ModernKeyboardLayout({
           <div className="relative w-48">
             <input
               type="range"
-              min="0.4"
+              min="0.25"
               max="1"
               step="0.05"
               value={keyboardScale}
               onChange={(e) => setKeyboardScale(Number(e.target.value))}
               className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
               style={{
-                background: `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${((keyboardScale - 0.4) / 0.6) * 100}%, #d1d5db ${((keyboardScale - 0.4) / 0.6) * 100}%, #d1d5db 100%)`
+                background: `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${((keyboardScale - 0.25) / 0.75) * 100}%, #d1d5db ${((keyboardScale - 0.25) / 0.75) * 100}%, #d1d5db 100%)`
               }}
             />
             <div className="absolute -top-6 left-0 right-0 text-center text-gray-600 text-xs">
@@ -464,7 +467,7 @@ export default function ModernKeyboardLayout({
                     const hasGap = gapIndex !== -1;
                     const gapSize = hasGap ? (
                       rowIndex === 0 ? // Function row
-                        (keyIndex === 1 ? 20 : keyIndex === 5 || keyIndex === 10 ? 10 : 15) :
+                        (keyIndex === 1 ? 20 : keyIndex === 5 || keyIndex === 9 ? 10 : 15) :
                       rowIndex === 1 ? // Number row
                         (layoutType === 'full' && keyIndex === 18 ? 15 : 15) :
                       rowIndex === 2 ? // QWERTY row  

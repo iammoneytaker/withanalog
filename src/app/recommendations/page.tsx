@@ -15,13 +15,8 @@ const recommendedKeyboards = [
     affiliateLinks: [
       {
         platform: 'coupang',
-        url: '#',
+        url: 'https://link.coupang.com/a/cJVCtZ',
         label: '쿠팡에서 보기',
-      },
-      {
-        platform: 'naver',
-        url: '#',
-        label: '네이버에서 보기',
       },
       {
         platform: 'aliexpress',
@@ -57,12 +52,12 @@ const recommendedKeyboards = [
     affiliateLinks: [
       {
         platform: 'coupang',
-        url: '#',
+        url: 'https://link.coupang.com/a/cJVDuT',
         label: '쿠팡에서 보기',
       },
       {
         platform: 'naver',
-        url: '#',
+        url: 'https://naver.me/FSSQBNhs',
         label: '네이버에서 보기',
       },
       {
@@ -99,13 +94,8 @@ const recommendedKeyboards = [
     affiliateLinks: [
       {
         platform: 'coupang',
-        url: '#',
+        url: 'https://link.coupang.com/a/cJVFLk',
         label: '쿠팡에서 보기',
-      },
-      {
-        platform: 'naver',
-        url: '#',
-        label: '네이버에서 보기',
       },
       {
         platform: 'aliexpress',
@@ -141,13 +131,8 @@ const recommendedKeyboards = [
     affiliateLinks: [
       {
         platform: 'coupang',
-        url: '#',
+        url: 'https://link.coupang.com/a/cJVHuv',
         label: '쿠팡에서 보기',
-      },
-      {
-        platform: 'naver',
-        url: '#',
-        label: '네이버에서 보기',
       },
       {
         platform: 'aliexpress',
@@ -173,6 +158,41 @@ const recommendedKeyboards = [
     dampening: '5중 흡음재',
   },
   {
+    name: '독거미 F98',
+    description:
+      '풀사이즈의 편의성을 유지하면서도 컴팩트하게! 숫자키패드까지 필요한 사용자를 위한 완벽한 선택.',
+    imageUrl:
+      'https://ae01.alicdn.com/kf/Sef67ac6d7cbb4104935cba8c422ed39aq.jpg_350x350.jpg',
+    affiliateLinks: [
+      {
+        platform: 'coupang',
+        url: 'https://link.coupang.com/a/cJVLjU',
+        label: '쿠팡에서 보기',
+      },
+      {
+        platform: 'naver',
+        url: 'https://naver.me/xYvUava2',
+        label: '네이버에서 보기',
+      },
+      {
+        platform: 'aliexpress',
+        url: 'https://s.click.aliexpress.com/e/_oCUeDnl',
+        label: 'AliExpress에서 보기',
+      },
+    ],
+    priceRange: '6만원대',
+    tags: ['풀사이즈', '숫자패드', '실용성', 'F98'],
+    switchType: '경해축/황축/피치축/청축/골드축',
+    layout: '98키 (컴팩트 풀사이즈)',
+    features: ['핫스왑 지원', 'RGB 백라이트', '유무선 겸용', '숫자패드'],
+    useCase: '사무/회계/데이터 입력',
+    brand: '아우라 (중국)',
+    connectivity: '유무선',
+    knobSupport: false,
+    gasketMount: false,
+    dampening: '기본 흡음재',
+  },
+  {
     name: '독거미 F98 PRO',
     description:
       '풀사이즈의 편의성을 유지하면서도 컴팩트하게! 숫자키패드까지 필요한 사용자를 위한 완벽한 선택.',
@@ -181,13 +201,8 @@ const recommendedKeyboards = [
     affiliateLinks: [
       {
         platform: 'coupang',
-        url: '#',
+        url: 'https://link.coupang.com/a/cJVMvn',
         label: '쿠팡에서 보기',
-      },
-      {
-        platform: 'naver',
-        url: '#',
-        label: '네이버에서 보기',
       },
       {
         platform: 'aliexpress',
@@ -216,7 +231,7 @@ const recommendedKeyboards = [
     affiliateLinks: [
       {
         platform: 'coupang',
-        url: '#',
+        url: 'https://link.coupang.com/a/cJVMWv',
         label: '쿠팡에서 보기',
       },
       {
@@ -251,7 +266,7 @@ const recommendedKeyboards = [
     affiliateLinks: [
       {
         platform: 'coupang',
-        url: '#',
+        url: 'https://link.coupang.com/a/cJVOqq',
         label: '쿠팡에서 보기',
       },
       {
@@ -286,13 +301,8 @@ const recommendedKeyboards = [
     affiliateLinks: [
       {
         platform: 'coupang',
-        url: '#',
+        url: 'https://link.coupang.com/a/cJVOIG',
         label: '쿠팡에서 보기',
-      },
-      {
-        platform: 'naver',
-        url: '#',
-        label: '네이버에서 보기',
       },
       {
         platform: 'aliexpress',
@@ -318,45 +328,6 @@ const recommendedKeyboards = [
     gasketMount: true,
     dampening: '최고급 흡음재',
   },
-];
-
-const priceRanges = [
-  '전체',
-  '5만원대',
-  '6만원대',
-  '7만원대',
-  '8만원대',
-  '9만원대',
-  '10만원대',
-];
-const usageTypes = ['전체', '사무용', '업무용', '게이밍', '프리미엄'];
-const allTags = [
-  '전체',
-  '가성비',
-  '입문용',
-  '프리미엄',
-  '최고급',
-  'TKL',
-  '풀사이즈',
-  '컴팩트',
-  '게이밍',
-  '업무용',
-  '노브',
-  '가스켓',
-  'RGB',
-  '핫스왑',
-  'F65',
-  'F75',
-  'F87',
-  'F87Pro',
-  'F98',
-  'F99',
-  'F99Pro',
-  'F108',
-  '플래그십',
-  '실용성',
-  '클래식',
-  '숫자패드',
 ];
 
 export default function RecommendationsPage() {

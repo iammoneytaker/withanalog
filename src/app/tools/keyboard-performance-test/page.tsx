@@ -1,81 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import KeyboardPerformanceTester from '../../../components/KeyboardPerformanceTester';
 import { motion } from 'framer-motion';
 
 export default function KeyboardPerformanceTestPage() {
-  const [showMobileWarning, setShowMobileWarning] = useState(false);
-
-  useEffect(() => {
-    // 모바일 기기 감지
-    const checkIsMobile = () => {
-      const userAgent = navigator.userAgent.toLowerCase();
-      const isMobileDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
-      const isSmallScreen = window.innerWidth < 768; // 768px 미만을 모바일로 간주
-      return isMobileDevice || isSmallScreen;
-    };
-
-    const mobile = checkIsMobile();
-    setShowMobileWarning(mobile);
-
-    // 화면 크기 변경 감지
-    const handleResize = () => {
-      const mobile = checkIsMobile();
-      if (mobile) {
-        setShowMobileWarning(true);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   return (
     <main className="min-h-screen py-20 px-4 bg-gray-900">
-      {/* 모바일 경고 오버레이 */}
-      {showMobileWarning && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-gray-800 rounded-2xl p-6 max-w-md w-full border border-gray-600 shadow-xl"
-          >
-            <div className="text-center">
-              <div className="text-6xl mb-4">📱⚠️</div>
-              <h3 className="text-2xl font-bold text-white mb-4">
-                모바일에서 지원되지 않음
-              </h3>
-              <p className="text-gray-400 mb-6 leading-relaxed">
-                키보드 성능 테스트는 실제 키보드 입력이 필요한 기능으로, 
-                모바일 기기에서는 정확한 측정이 어렵습니다.
-              </p>
-              <div className="bg-blue-900/30 rounded-lg p-4 mb-6">
-                <div className="text-blue-400 font-semibold mb-2">💻 권장 환경</div>
-                <ul className="text-sm text-gray-300 text-left space-y-1">
-                  <li>• 데스크톱 또는 노트북 컴퓨터</li>
-                  <li>• 물리적 키보드 연결</li>
-                  <li>• 최신 브라우저 (Chrome, Firefox, Safari)</li>
-                </ul>
-              </div>
-              <div className="flex flex-col gap-3">
-                <button
-                  onClick={() => setShowMobileWarning(false)}
-                  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
-                >
-                  그래도 계속하기
-                </button>
-                <button
-                  onClick={() => window.history.back()}
-                  className="px-6 py-2 bg-gray-700 hover:bg-gray-600 text-gray-300 rounded-lg transition-colors"
-                >
-                  이전 페이지로 돌아가기
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      )}
 
       <div className="max-w-6xl mx-auto">
         <motion.div 
