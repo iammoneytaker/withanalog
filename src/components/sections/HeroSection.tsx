@@ -39,18 +39,18 @@ export function HeroSection() {
           ⌨️
         </motion.div>
         
-        <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold text-white mb-6 leading-tight">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight">
           <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
             WithAnalog
           </span>
           <br />
-          <span className="text-2xl sm:text-3xl md:text-4xl text-gray-300 font-light">
+          <span className="text-lg sm:text-xl md:text-2xl lg:text-4xl text-gray-300 font-light">
             키보드 전문 플랫폼
           </span>
         </h1>
         
         <motion.p 
-          className="text-lg sm:text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-8 leading-relaxed"
+          className="text-sm sm:text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed px-4"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -61,21 +61,21 @@ export function HeroSection() {
         </motion.p>
 
         <motion.div
-          className="flex flex-wrap justify-center gap-4 text-sm text-gray-500"
+          className="flex flex-wrap justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-500 px-4"
           initial={{ opacity: 0, y: 10 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <span className="bg-gray-800/50 px-3 py-1 rounded-full border border-gray-700">🔍 키보드 리뷰</span>
-          <span className="bg-gray-800/50 px-3 py-1 rounded-full border border-gray-700">⚙️ 스위치 가이드</span>
-          <span className="bg-gray-800/50 px-3 py-1 rounded-full border border-gray-700">🎯 성능 테스트</span>
-          <span className="bg-gray-800/50 px-3 py-1 rounded-full border border-gray-700">🎨 커스텀 빌드</span>
+          <span className="bg-gray-800/50 px-2 sm:px-3 py-1 rounded-full border border-gray-700">🔍 키보드 리뷰</span>
+          <span className="bg-gray-800/50 px-2 sm:px-3 py-1 rounded-full border border-gray-700">⚙️ 스위치 가이드</span>
+          <span className="bg-gray-800/50 px-2 sm:px-3 py-1 rounded-full border border-gray-700">🎯 성능 테스트</span>
+          <span className="bg-gray-800/50 px-2 sm:px-3 py-1 rounded-full border border-gray-700">🎨 커스텀 빌드</span>
         </motion.div>
       </motion.div>
 
       {/* 스크롤 유도 애니메이션 */}
       <motion.div
-        className="absolute bottom-10 flex flex-col items-center"
+        className="absolute bottom-6 sm:bottom-10 flex flex-col items-center"
         animate={{
           y: [0, 10, 0],
         }}
@@ -84,9 +84,9 @@ export function HeroSection() {
           duration: 2,
         }}
       >
-        <p className="text-gray-400 mb-2">스크롤해서 더 알아보기</p>
+        <p className="text-gray-400 mb-2 text-xs sm:text-sm">스크롤해서 더 알아보기</p>
         <svg
-          className="w-6 h-6 text-gray-400"
+          className="w-4 h-4 sm:w-6 sm:h-6 text-gray-400"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"

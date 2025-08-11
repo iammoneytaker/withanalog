@@ -80,11 +80,11 @@ export function SwitchComparison() {
   const [selectedSwitch, setSelectedSwitch] = useState(0);
 
   return (
-    <section className="py-20 px-4 bg-gray-900/50">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 bg-gray-900/50">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -94,7 +94,7 @@ export function SwitchComparison() {
             </span>
           </motion.h2>
           <motion.p 
-            className="text-xl text-gray-400 max-w-3xl mx-auto"
+            className="text-sm sm:text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto px-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -105,16 +105,16 @@ export function SwitchComparison() {
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
           {/* 스위치 선택 */}
           <div className="lg:col-span-1">
-            <h3 className="text-2xl font-bold mb-6 text-center lg:text-left">스위치 선택</h3>
-            <div className="space-y-3">
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 sm:mb-6 text-center lg:text-left">스위치 선택</h3>
+            <div className="space-y-2 sm:space-y-3">
               {switches.map((switch_, index) => (
                 <motion.button
                   key={index}
                   onClick={() => setSelectedSwitch(index)}
-                  className={`w-full p-4 rounded-lg text-left transition-all duration-300 border ${
+                  className={`w-full p-3 sm:p-4 rounded-lg text-left transition-all duration-300 border ${
                     selectedSwitch === index
                       ? 'bg-gray-700 border-blue-500 shadow-lg shadow-blue-500/20'
                       : 'bg-gray-800 border-gray-600 hover:bg-gray-700 hover:border-gray-500'
@@ -123,10 +123,10 @@ export function SwitchComparison() {
                   whileTap={{ scale: 0.98 }}
                 >
                   <div className="flex items-center mb-2">
-                    <div className={`w-4 h-4 rounded-full ${switch_.color} mr-3`}></div>
-                    <div className="font-semibold">{switch_.name}</div>
+                    <div className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full ${switch_.color} mr-2 sm:mr-3`}></div>
+                    <div className="font-semibold text-sm sm:text-base">{switch_.name}</div>
                   </div>
-                  <div className="text-sm text-gray-400">{switch_.type} • {switch_.actuationForce}</div>
+                  <div className="text-xs sm:text-sm text-gray-400">{switch_.type} • {switch_.actuationForce}</div>
                 </motion.button>
               ))}
             </div>
@@ -139,75 +139,75 @@ export function SwitchComparison() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
-              className="bg-gray-800/80 rounded-xl p-8 border border-gray-700"
+              className="bg-gray-800/80 rounded-xl p-4 sm:p-6 lg:p-8 border border-gray-700"
             >
-              <div className="flex items-center mb-6">
-                <div className={`w-6 h-6 rounded-full ${switches[selectedSwitch].color} mr-4`}></div>
-                <h3 className="text-3xl font-bold">{switches[selectedSwitch].name}</h3>
+              <div className="flex items-center mb-4 sm:mb-6">
+                <div className={`w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 rounded-full ${switches[selectedSwitch].color} mr-3 sm:mr-4`}></div>
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold">{switches[selectedSwitch].name}</h3>
               </div>
 
-              <p className="text-lg text-gray-300 mb-8">{switches[selectedSwitch].description}</p>
+              <p className="text-sm sm:text-base lg:text-lg text-gray-300 mb-6 sm:mb-8 leading-relaxed">{switches[selectedSwitch].description}</p>
 
               {/* 스펙 정보 */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-400">{switches[selectedSwitch].actuationForce}</div>
-                  <div className="text-sm text-gray-400">작동 압력</div>
+                  <div className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-400">{switches[selectedSwitch].actuationForce}</div>
+                  <div className="text-xs sm:text-sm text-gray-400">작동 압력</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-400">{switches[selectedSwitch].travelDistance}</div>
-                  <div className="text-sm text-gray-400">총 이동거리</div>
+                  <div className="text-lg sm:text-xl lg:text-2xl font-bold text-green-400">{switches[selectedSwitch].travelDistance}</div>
+                  <div className="text-xs sm:text-sm text-gray-400">총 이동거리</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-400">{switches[selectedSwitch].actuationPoint}</div>
-                  <div className="text-sm text-gray-400">작동점</div>
+                  <div className="text-lg sm:text-xl lg:text-2xl font-bold text-purple-400">{switches[selectedSwitch].actuationPoint}</div>
+                  <div className="text-xs sm:text-sm text-gray-400">작동점</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-400">{switches[selectedSwitch].sound}</div>
-                  <div className="text-sm text-gray-400">사운드</div>
+                  <div className="text-lg sm:text-xl lg:text-2xl font-bold text-orange-400">{switches[selectedSwitch].sound}</div>
+                  <div className="text-xs sm:text-sm text-gray-400">사운드</div>
                 </div>
               </div>
 
               {/* 특징 */}
-              <div className="mb-8">
-                <div className="flex items-center mb-4">
-                  <div className="text-lg font-semibold mr-4">적합한 용도:</div>
-                  <div className="px-3 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-blue-400 text-sm">
+              <div className="mb-6 sm:mb-8">
+                <div className="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-4 gap-2 sm:gap-4">
+                  <div className="text-base sm:text-lg font-semibold">적합한 용도:</div>
+                  <div className="px-3 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-blue-400 text-xs sm:text-sm w-fit">
                     {switches[selectedSwitch].bestFor}
                   </div>
                 </div>
               </div>
 
               {/* 장단점 */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <h4 className="text-lg font-semibold text-green-400 mb-3 flex items-center">
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <h4 className="text-base sm:text-lg font-semibold text-green-400 mb-2 sm:mb-3 flex items-center">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     장점
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1 sm:space-y-2">
                     {switches[selectedSwitch].pros.map((pro, index) => (
-                      <li key={index} className="text-sm text-gray-300 flex items-center">
-                        <span className="w-1.5 h-1.5 bg-green-400 rounded-full mr-3"></span>
-                        {pro}
+                      <li key={index} className="text-xs sm:text-sm text-gray-300 flex items-start">
+                        <span className="w-1.5 h-1.5 bg-green-400 rounded-full mr-2 sm:mr-3 mt-1.5 flex-shrink-0"></span>
+                        <span>{pro}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-red-400 mb-3 flex items-center">
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <h4 className="text-base sm:text-lg font-semibold text-red-400 mb-2 sm:mb-3 flex items-center">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
                     </svg>
                     단점
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1 sm:space-y-2">
                     {switches[selectedSwitch].cons.map((con, index) => (
-                      <li key={index} className="text-sm text-gray-300 flex items-center">
-                        <span className="w-1.5 h-1.5 bg-red-400 rounded-full mr-3"></span>
-                        {con}
+                      <li key={index} className="text-xs sm:text-sm text-gray-300 flex items-start">
+                        <span className="w-1.5 h-1.5 bg-red-400 rounded-full mr-2 sm:mr-3 mt-1.5 flex-shrink-0"></span>
+                        <span>{con}</span>
                       </li>
                     ))}
                   </ul>
@@ -217,13 +217,13 @@ export function SwitchComparison() {
           </div>
         </div>
 
-        <div className="text-center mt-16">
+        <div className="text-center mt-12 sm:mt-16">
           <motion.div
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+            className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 text-sm sm:text-base"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             실제 키보드에서 테스트해보세요

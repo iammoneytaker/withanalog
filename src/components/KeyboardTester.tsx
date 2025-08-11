@@ -56,8 +56,8 @@ const KeyboardTester: React.FC = () => {
 
   const currentLayout = keyboardLayout === 'mac' ? macLayout : qwertyLayout;
 
-  // 사운드 재생 함수
-  const playKeySound = useCallback((frequency: number = 800) => {
+  // 현실적인 키보드 사운드 재생 함수
+  const playKeySound = useCallback((key: string = '') => {
     if (!soundEnabled) return;
     
     try {
@@ -66,20 +66,64 @@ const KeyboardTester: React.FC = () => {
       }
       
       const ctx = audioContextRef.current;
-      const oscillator = ctx.createOscillator();
-      const gainNode = ctx.createGain();
       
-      oscillator.connect(gainNode);
+      // 키보드 소리를 시뮬레이션하기 위한 노이즈와 클릭음 조합
+      const createKeyClickSound = () => {
+        // 1. 클릭 소리 (짧은 노이즈 버스트)
+        const bufferSize = ctx.sampleRate * 0.05; // 50ms
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const output = buffer.getChannelData(0);
+        
+        for (let i = 0; i < bufferSize; i++) {
+          // 화이트 노이즈 생성
+          const noise = Math.random() * 2 - 1;
+          // 엔벨로프 적용 (빠른 어택, 빠른 디케이)
+          const envelope = Math.exp(-i / (ctx.sampleRate * 0.01));
+          output[i] = noise * envelope * 0.1;
+        }
+        
+        return buffer;
+      };
+      
+      // 키 유형별 다른 주파수 특성
+      const getKeyCharacteristics = (key: string) => {
+        if (key === 'Space') {
+          return { pitch: 0.8, volume: 0.15, duration: 0.06 }; // 스페이스바는 더 깊은 소리
+        } else if (['Enter', 'Return', 'Backspace', 'Delete', 'Tab', 'Shift'].includes(key)) {
+          return { pitch: 0.9, volume: 0.12, duration: 0.05 }; // 큰 키들
+        } else {
+          return { pitch: 1.0, volume: 0.08, duration: 0.04 }; // 일반 키들
+        }
+      };
+      
+      const keyChar = getKeyCharacteristics(key);
+      
+      // 버퍼 소스 생성
+      const source = ctx.createBufferSource();
+      const gainNode = ctx.createGain();
+      const filterNode = ctx.createBiquadFilter();
+      
+      // 키 클릭 사운드 버퍼 생성
+      source.buffer = createKeyClickSound();
+      
+      // 필터로 톤 조정 (키별로 다른 특성)
+      filterNode.type = 'highpass';
+      filterNode.frequency.value = 200 * keyChar.pitch;
+      filterNode.Q.value = 1;
+      
+      // 연결
+      source.connect(filterNode);
+      filterNode.connect(gainNode);
       gainNode.connect(ctx.destination);
       
-      oscillator.frequency.value = frequency;
-      oscillator.type = 'sine';
+      // 볼륨 조절
+      gainNode.gain.setValueAtTime(keyChar.volume, ctx.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + keyChar.duration);
       
-      gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+      // 재생
+      source.start(ctx.currentTime);
+      source.stop(ctx.currentTime + keyChar.duration);
       
-      oscillator.start(ctx.currentTime);
-      oscillator.stop(ctx.currentTime + 0.1);
     } catch (error) {
       console.log('Audio context error:', error);
     }
@@ -119,9 +163,8 @@ const KeyboardTester: React.FC = () => {
       return newTimings;
     });
     
-    // 사운드 재생 (키에 따라 다른 주파수)
-    const frequency = 400 + (keyCode.charCodeAt(0) % 400);
-    playKeySound(frequency);
+    // 사운드 재생 (키에 따라 다른 특성)
+    playKeySound(key);
     
   }, [isRecording, pressedKeys, playKeySound]);
 
@@ -221,7 +264,7 @@ const KeyboardTester: React.FC = () => {
 
   // 키 스타일 가져오기
   const getKeyStyle = (key: string) => {
-    const baseStyle = "m-1 px-3 py-2 bg-gray-700 text-white rounded-lg border border-gray-600 transition-all duration-75 text-center font-mono text-sm select-none";
+    const baseStyle = "m-0.5 sm:m-1 px-1 sm:px-3 py-1 sm:py-2 bg-gray-700 text-white rounded border sm:rounded-lg border-gray-600 transition-all duration-75 text-center font-mono text-xs sm:text-sm select-none";
     
     // 키코드 매핑
     const keyCodeMap: { [key: string]: string } = {
@@ -252,22 +295,22 @@ const KeyboardTester: React.FC = () => {
   };
 
   const getKeyWidth = (key: string) => {
-    if (key === 'Space') return 'w-64';
-    if (key === 'Backspace' || key === 'Delete' || key === 'Enter' || key === 'Return') return 'w-20';
-    if (key === 'Tab' || key === 'CapsLock') return 'w-16';
-    if (key === 'Shift') return 'w-24';
-    return 'w-12';
+    if (key === 'Space') return 'w-32 sm:w-48 md:w-64';
+    if (key === 'Backspace' || key === 'Delete' || key === 'Enter' || key === 'Return') return 'w-10 sm:w-16 md:w-20';
+    if (key === 'Tab' || key === 'CapsLock') return 'w-8 sm:w-12 md:w-16';
+    if (key === 'Shift') return 'w-12 sm:w-18 md:w-24';
+    return 'w-6 sm:w-10 md:w-12';
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-6xl mx-auto p-4 sm:p-6">
       {/* 컨트롤 패널 */}
-      <div className="mb-8 bg-gray-800 rounded-lg p-6">
-        <div className="flex flex-wrap gap-4 items-center justify-between">
-          <div className="flex gap-4">
+      <div className="mb-6 sm:mb-8 bg-gray-800 rounded-lg p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
             <button
               onClick={isRecording ? stopTesting : startTesting}
-              className={`px-6 py-3 rounded-lg font-semibold transition-colors ${
+              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-colors text-sm sm:text-base ${
                 isRecording 
                   ? 'bg-red-600 hover:bg-red-700 text-white' 
                   : 'bg-green-600 hover:bg-green-700 text-white'
@@ -278,14 +321,14 @@ const KeyboardTester: React.FC = () => {
             
             <button
               onClick={resetTest}
-              className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-semibold"
+              className="px-4 sm:px-6 py-2 sm:py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-semibold text-sm sm:text-base"
             >
               리셋
             </button>
           </div>
 
-          <div className="flex gap-4">
-            <label className="flex items-center gap-2 text-white">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
+            <label className="flex items-center justify-center sm:justify-start gap-2 text-white text-sm sm:text-base">
               <input
                 type="checkbox"
                 checked={soundEnabled}
@@ -298,7 +341,7 @@ const KeyboardTester: React.FC = () => {
             <select
               value={keyboardLayout}
               onChange={(e) => setKeyboardLayout(e.target.value as 'qwerty' | 'mac')}
-              className="px-3 py-1 bg-gray-700 text-white rounded border border-gray-600"
+              className="px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 text-sm sm:text-base"
             >
               <option value="qwerty">Windows/PC</option>
               <option value="mac">Mac</option>
@@ -312,7 +355,7 @@ const KeyboardTester: React.FC = () => {
             animate={{ opacity: 1 }}
             className="mt-4 text-center"
           >
-            <div className="text-green-400 text-lg font-semibold">
+            <div className="text-green-400 text-base sm:text-lg font-semibold">
               🔴 테스트 진행 중... 키보드를 눌러보세요!
             </div>
           </motion.div>
@@ -320,56 +363,58 @@ const KeyboardTester: React.FC = () => {
       </div>
 
       {/* 통계 패널 */}
-      <div className="mb-8 grid grid-cols-1 md:grid-cols-5 gap-4">
-        <div className="bg-gray-800 p-4 rounded-lg text-center">
-          <div className="text-2xl font-bold text-blue-400">{stats.totalPresses}</div>
-          <div className="text-gray-400 text-sm">총 입력</div>
+      <div className="mb-6 sm:mb-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+        <div className="bg-gray-800 p-3 sm:p-4 rounded-lg text-center">
+          <div className="text-lg sm:text-2xl font-bold text-blue-400">{stats.totalPresses}</div>
+          <div className="text-gray-400 text-xs sm:text-sm">총 입력</div>
         </div>
         
-        <div className="bg-gray-800 p-4 rounded-lg text-center">
-          <div className="text-2xl font-bold text-green-400">{stats.uniqueKeys.size}</div>
-          <div className="text-gray-400 text-sm">사용된 키</div>
+        <div className="bg-gray-800 p-3 sm:p-4 rounded-lg text-center">
+          <div className="text-lg sm:text-2xl font-bold text-green-400">{stats.uniqueKeys.size}</div>
+          <div className="text-gray-400 text-xs sm:text-sm">사용된 키</div>
         </div>
         
-        <div className="bg-gray-800 p-4 rounded-lg text-center">
-          <div className="text-2xl font-bold text-purple-400">{stats.averageSpeed}ms</div>
-          <div className="text-gray-400 text-sm">평균 간격</div>
+        <div className="bg-gray-800 p-3 sm:p-4 rounded-lg text-center">
+          <div className="text-lg sm:text-2xl font-bold text-purple-400">{stats.averageSpeed}ms</div>
+          <div className="text-gray-400 text-xs sm:text-sm">평균 간격</div>
         </div>
         
-        <div className="bg-gray-800 p-4 rounded-lg text-center">
-          <div className="text-lg font-bold text-yellow-400">
+        <div className="bg-gray-800 p-3 sm:p-4 rounded-lg text-center">
+          <div className="text-sm sm:text-lg font-bold text-yellow-400">
             {stats.fastestKey ? stats.fastestKey.replace('Key', '').replace('Digit', '') : '-'}
           </div>
-          <div className="text-gray-400 text-sm">가장 빠른 키</div>
+          <div className="text-gray-400 text-xs sm:text-sm">가장 빠른 키</div>
         </div>
         
-        <div className="bg-gray-800 p-4 rounded-lg text-center">
-          <div className="text-lg font-bold text-red-400">
+        <div className="bg-gray-800 p-3 sm:p-4 rounded-lg text-center">
+          <div className="text-sm sm:text-lg font-bold text-red-400">
             {stats.slowestKey ? stats.slowestKey.replace('Key', '').replace('Digit', '') : '-'}
           </div>
-          <div className="text-gray-400 text-sm">가장 느린 키</div>
+          <div className="text-gray-400 text-xs sm:text-sm">가장 느린 키</div>
         </div>
       </div>
 
       {/* 가상 키보드 */}
-      <div className="bg-gray-800 rounded-lg p-6">
-        <div className="flex flex-col items-center space-y-2">
+      <div className="bg-gray-800 rounded-lg p-3 sm:p-6">
+        <div className="flex flex-col items-center space-y-1 sm:space-y-2 overflow-x-auto">
           {currentLayout.map((row, rowIndex) => (
-            <div key={rowIndex} className="flex justify-center">
+            <div key={rowIndex} className="flex justify-center min-w-fit">
               {row.map((key, keyIndex) => (
                 <div
                   key={`${rowIndex}-${keyIndex}`}
-                  className={`${getKeyStyle(key)} ${getKeyWidth(key)} min-h-[40px] flex items-center justify-center`}
+                  className={`${getKeyStyle(key)} ${getKeyWidth(key)} min-h-[28px] sm:min-h-[40px] flex items-center justify-center`}
                 >
-                  {key === 'Space' ? '스페이스' : key}
+                  <span className="text-xs sm:text-sm truncate">
+                    {key === 'Space' ? '스페이스' : key}
+                  </span>
                 </div>
               ))}
             </div>
           ))}
         </div>
         
-        <div className="mt-6 text-center text-gray-400 text-sm">
-          <p>실제 키보드로 입력하면 위의 가상 키보드에서 해당 키가 강조됩니다</p>
+        <div className="mt-4 sm:mt-6 text-center text-gray-400 text-xs sm:text-sm">
+          <p className="mb-1">실제 키보드로 입력하면 위의 가상 키보드에서 해당 키가 강조됩니다</p>
           <p>테스트를 시작한 후 아무 키나 눌러보세요!</p>
         </div>
       </div>
@@ -379,21 +424,21 @@ const KeyboardTester: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-8 bg-gray-800 rounded-lg p-6"
+          className="mt-6 sm:mt-8 bg-gray-800 rounded-lg p-4 sm:p-6"
         >
-          <h3 className="text-xl font-bold text-white mb-4">최근 입력 기록</h3>
-          <div className="grid grid-cols-8 md:grid-cols-12 gap-2">
+          <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">최근 입력 기록</h3>
+          <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-12 gap-1 sm:gap-2">
             {keyHistory.slice(-24).map((keyData, index) => (
               <div
                 key={index}
-                className="bg-gray-700 rounded px-2 py-1 text-center text-sm text-white font-mono"
+                className="bg-gray-700 rounded px-1 sm:px-2 py-1 text-center text-xs sm:text-sm text-white font-mono"
               >
                 {keyData.key === ' ' ? 'SP' : keyData.key.toUpperCase()}
               </div>
             ))}
           </div>
           {keyHistory.length > 24 && (
-            <p className="text-gray-400 text-sm mt-2">
+            <p className="text-gray-400 text-xs sm:text-sm mt-2">
               ... 그리고 {keyHistory.length - 24}개 더
             </p>
           )}

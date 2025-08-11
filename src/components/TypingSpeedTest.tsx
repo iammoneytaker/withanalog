@@ -19,6 +19,8 @@ interface TypingSpeedTestProps {
   onComplete: (stats: TypingStats) => void;
 }
 
+type InputMode = 'preview' | 'textbox';
+
 const TypingSpeedTest: React.FC<TypingSpeedTestProps> = ({ text, language, onComplete }) => {
   const [userInput, setUserInput] = useState('');
   const [isStarted, setIsStarted] = useState(false);
@@ -27,7 +29,10 @@ const TypingSpeedTest: React.FC<TypingSpeedTestProps> = ({ text, language, onCom
   const [currentIndex, setCurrentIndex] = useState(0);
   const [errors, setErrors] = useState<Set<number>>(new Set());
   const [timeElapsed, setTimeElapsed] = useState(0);
+  const [inputMode, setInputMode] = useState<InputMode>('textbox');
+  const [isComposing, setIsComposing] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const textboxRef = useRef<HTMLTextAreaElement>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // 타자 속도 등급 계산
@@ -68,9 +73,21 @@ const TypingSpeedTest: React.FC<TypingSpeedTestProps> = ({ text, language, onCom
     };
   }, [userInput.length, errors.size, startTime, getTypingGrade, language]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    
+  const handleCompositionStart = () => {
+    setIsComposing(true);
+  };
+
+  const handleCompositionUpdate = () => {
+    // Composition in progress, no action needed
+  };
+
+  const handleCompositionEnd = (e: React.CompositionEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setIsComposing(false);
+    // Process the final composed text
+    processInput(e.currentTarget.value);
+  };
+
+  const processInput = (value: string) => {
     if (!isStarted) {
       setIsStarted(true);
       setStartTime(Date.now());
@@ -111,6 +128,23 @@ const TypingSpeedTest: React.FC<TypingSpeedTestProps> = ({ text, language, onCom
     }
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    // For Korean input, we need to handle composition carefully
+    // Allow real-time updates but be careful with final processing
+    const value = e.target.value;
+    
+    // Always update the user input to show what they're typing
+    if (value.length <= text.length) {
+      setUserInput(value);
+      setCurrentIndex(value.length);
+    }
+    
+    // Only process for completion and error checking if not composing
+    if (!isComposing) {
+      processInput(value);
+    }
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Tab') {
       e.preventDefault();
@@ -128,7 +162,11 @@ const TypingSpeedTest: React.FC<TypingSpeedTestProps> = ({ text, language, onCom
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
-    inputRef.current?.focus();
+    if (inputMode === 'preview') {
+      inputRef.current?.focus();
+    } else {
+      textboxRef.current?.focus();
+    }
   };
 
   const getCharacterStyle = (index: number) => {
@@ -143,8 +181,10 @@ const TypingSpeedTest: React.FC<TypingSpeedTestProps> = ({ text, language, onCom
   };
 
   useEffect(() => {
-    if (inputRef.current) {
+    if (inputMode === 'preview' && inputRef.current) {
       inputRef.current.focus();
+    } else if (inputMode === 'textbox' && textboxRef.current) {
+      textboxRef.current.focus();
     }
     
     return () => {
@@ -152,7 +192,7 @@ const TypingSpeedTest: React.FC<TypingSpeedTestProps> = ({ text, language, onCom
         clearInterval(intervalRef.current);
       }
     };
-  }, []);
+  }, [inputMode]);
 
   const currentStats = calculateStats();
 
@@ -195,7 +235,7 @@ const TypingSpeedTest: React.FC<TypingSpeedTestProps> = ({ text, language, onCom
       )}
 
       {/* 컨트롤 */}
-      <div className="mb-6 flex justify-between items-center">
+      <div className="mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
         <div className="text-white">
           <div className="text-sm text-gray-400">
             {language === 'korean' ? '한글' : '영문'} 타자 연습
@@ -205,37 +245,95 @@ const TypingSpeedTest: React.FC<TypingSpeedTestProps> = ({ text, language, onCom
           </div>
         </div>
         
-        <button
-          onClick={resetTest}
-          className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-        >
-          다시 시작
-        </button>
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full sm:w-auto">
+          {/* 입력 모드 전환 버튼 */}
+          <div className="flex rounded-lg bg-gray-800 p-1">
+            <button
+              onClick={() => setInputMode('preview')}
+              className={`px-3 py-1 rounded text-xs sm:text-sm transition-colors ${
+                inputMode === 'preview'
+                  ? 'bg-blue-600 text-white'
+                  : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              미리보기
+            </button>
+            <button
+              onClick={() => setInputMode('textbox')}
+              className={`px-3 py-1 rounded text-xs sm:text-sm transition-colors ${
+                inputMode === 'textbox'
+                  ? 'bg-blue-600 text-white'
+                  : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              입력창
+            </button>
+          </div>
+          
+          <button
+            onClick={resetTest}
+            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+          >
+            다시 시작
+          </button>
+        </div>
       </div>
 
       {/* 텍스트 입력 영역 */}
-      <div className="relative mb-6">
-        <div className="text-xl leading-relaxed p-6 bg-gray-800 rounded-lg font-mono border-2 border-gray-600 min-h-[120px]">
-          {text.split('').map((char, index) => (
-            <span key={index} className={`${getCharacterStyle(index)} transition-all duration-150`}>
-              {char}
-            </span>
-          ))}
+      {inputMode === 'preview' ? (
+        <div className="relative mb-6">
+          <div className="text-xl leading-relaxed p-6 bg-gray-800 rounded-lg font-mono border-2 border-gray-600 min-h-[120px]">
+            {text.split('').map((char, index) => (
+              <span key={index} className={`${getCharacterStyle(index)} transition-all duration-150`}>
+                {char}
+              </span>
+            ))}
+          </div>
+          
+          <input
+            ref={inputRef}
+            type="text"
+            value={userInput}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+            onCompositionStart={handleCompositionStart}
+            onCompositionUpdate={handleCompositionUpdate}
+            onCompositionEnd={handleCompositionEnd}
+            disabled={isCompleted}
+            className="absolute inset-0 w-full h-full opacity-0 cursor-default"
+            placeholder=""
+            autoComplete="off"
+            spellCheck="false"
+          />
         </div>
-        
-        <input
-          ref={inputRef}
-          type="text"
-          value={userInput}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
-          disabled={isCompleted}
-          className="absolute inset-0 w-full h-full opacity-0 cursor-default"
-          placeholder=""
-          autoComplete="off"
-          spellCheck="false"
-        />
-      </div>
+      ) : (
+        <div className="mb-6">
+          {/* 미리보기 텍스트 */}
+          <div className="text-xl leading-relaxed p-6 bg-gray-800 rounded-lg font-mono border-2 border-gray-600 min-h-[120px] mb-4">
+            {text.split('').map((char, index) => (
+              <span key={index} className={`${getCharacterStyle(index)} transition-all duration-150`}>
+                {char}
+              </span>
+            ))}
+          </div>
+          
+          {/* 입력 텍스트박스 */}
+          <textarea
+            ref={textboxRef}
+            value={userInput}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+            onCompositionStart={handleCompositionStart}
+            onCompositionUpdate={handleCompositionUpdate}
+            onCompositionEnd={handleCompositionEnd}
+            disabled={isCompleted}
+            className="w-full h-32 sm:h-40 p-4 bg-gray-700 text-white rounded-lg font-mono text-lg leading-relaxed border-2 border-gray-600 focus:border-blue-500 focus:outline-none resize-none"
+            placeholder="위 텍스트를 여기에 입력하세요..."
+            autoComplete="off"
+            spellCheck="false"
+          />
+        </div>
+      )}
 
       {/* 시작 안내 */}
       {!isStarted && (
@@ -248,7 +346,7 @@ const TypingSpeedTest: React.FC<TypingSpeedTestProps> = ({ text, language, onCom
             📝 타자 연습 시작하기
           </div>
           <p className="text-gray-400">
-            위 텍스트를 보고 입력을 시작하면 자동으로 측정이 시작됩니다
+            {inputMode === 'preview' ? '위 텍스트를 보고 입력을 시작하면 자동으로 측정이 시작됩니다' : '위 텍스트를 입력창에 입력하면 자동으로 측정이 시작됩니다'}
           </p>
           <div className="mt-3 text-sm text-gray-500">
             💡 팁: 정확도를 우선으로 하고, 속도는 자연스럽게 늘려가세요

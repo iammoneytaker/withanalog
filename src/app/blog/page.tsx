@@ -33,70 +33,70 @@ export default async function BlogPage() {
     }
 
     return (
-      <main className="min-h-screen py-20 px-4">
+      <main className="min-h-screen py-16 sm:py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <div className="text-center mb-10 sm:mb-12">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               키보드 블로그
             </h1>
-            <p className="text-xl text-gray-400 mb-8">
+            <p className="text-lg sm:text-xl text-gray-400 mb-6 sm:mb-8 max-w-4xl mx-auto px-4">
               키보드 리뷰부터 스위치 분석, 커스텀 가이드까지 - 키보드의 모든 것
             </p>
             
-            <div className="flex flex-wrap justify-center gap-3 mb-8">
-              <span className="px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full text-blue-300 text-sm">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 px-4">
+              <span className="px-3 sm:px-4 py-1 sm:py-2 bg-blue-500/20 border border-blue-500/30 rounded-full text-blue-300 text-xs sm:text-sm">
                 🎯 키보드 리뷰
               </span>
-              <span className="px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-300 text-sm">
+              <span className="px-3 sm:px-4 py-1 sm:py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-300 text-xs sm:text-sm">
                 ⚙️ 스위치 가이드
               </span>
-              <span className="px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full text-purple-300 text-sm">
+              <span className="px-3 sm:px-4 py-1 sm:py-2 bg-purple-500/20 border border-purple-500/30 rounded-full text-purple-300 text-xs sm:text-sm">
                 🎨 커스텀 빌드
               </span>
-              <span className="px-4 py-2 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-300 text-sm">
+              <span className="px-3 sm:px-4 py-1 sm:py-2 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-300 text-xs sm:text-sm">
                 ⚡ 타이핑 팁
               </span>
-              <span className="px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-full text-red-300 text-sm">
+              <span className="px-3 sm:px-4 py-1 sm:py-2 bg-red-500/20 border border-red-500/30 rounded-full text-red-300 text-xs sm:text-sm">
                 🎮 게이밍 설정
               </span>
             </div>
           </div>
           {posts.length === 0 ? (
-            <div className="text-center py-16 bg-gray-800/50 rounded-2xl border border-gray-700/50">
-              <div className="mb-8">
-                <div className="text-6xl mb-4">⌨️</div>
-                <p className="text-gray-400 text-xl mb-6">
+            <div className="text-center py-12 sm:py-16 bg-gray-800/50 rounded-2xl border border-gray-700/50 mx-4 sm:mx-0">
+              <div className="mb-6 sm:mb-8">
+                <div className="text-4xl sm:text-6xl mb-3 sm:mb-4">⌨️</div>
+                <p className="text-gray-400 text-lg sm:text-xl mb-4 sm:mb-6 px-4">
                   아직 작성된 블로그 글이 없습니다.
                 </p>
-                <p className="text-gray-500 mb-8 max-w-2xl mx-auto">
+                <p className="text-gray-500 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base px-4">
                   곧 다음과 같은 키보드 전문 콘텐츠들을 만나보실 수 있습니다.
                 </p>
               </div>
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto text-left">
-                <div className="bg-gray-700/30 p-6 rounded-lg border border-gray-600/30">
-                  <h3 className="text-lg font-semibold text-blue-400 mb-2">🔍 키보드 리뷰</h3>
-                  <p className="text-sm text-gray-400">레오폴드, 리얼포스, HHKB 등 인기 키보드들의 상세한 사용 후기와 성능 분석</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto text-left px-4">
+                <div className="bg-gray-700/30 p-4 sm:p-6 rounded-lg border border-gray-600/30">
+                  <h3 className="text-base sm:text-lg font-semibold text-blue-400 mb-2">🔍 키보드 리뷰</h3>
+                  <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">레오폴드, 리얼포스, HHKB 등 인기 키보드들의 상세한 사용 후기와 성능 분석</p>
                 </div>
-                <div className="bg-gray-700/30 p-6 rounded-lg border border-gray-600/30">
-                  <h3 className="text-lg font-semibold text-green-400 mb-2">⚙️ 스위치 가이드</h3>
-                  <p className="text-sm text-gray-400">Cherry MX, Gateron, Kailh 스위치별 특성과 황축, 적축, 청축, 갈축 비교 분석</p>
+                <div className="bg-gray-700/30 p-4 sm:p-6 rounded-lg border border-gray-600/30">
+                  <h3 className="text-base sm:text-lg font-semibold text-green-400 mb-2">⚙️ 스위치 가이드</h3>
+                  <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">Cherry MX, Gateron, Kailh 스위치별 특성과 황축, 적축, 청축, 갈축 비교 분석</p>
                 </div>
-                <div className="bg-gray-700/30 p-6 rounded-lg border border-gray-600/30">
-                  <h3 className="text-lg font-semibold text-purple-400 mb-2">🎨 커스텀 가이드</h3>
-                  <p className="text-sm text-gray-400">핫스왑, 개스켓 마운트, 키캡 교체 등 나만의 키보드 만들기 가이드</p>
+                <div className="bg-gray-700/30 p-4 sm:p-6 rounded-lg border border-gray-600/30 md:col-span-2 lg:col-span-1">
+                  <h3 className="text-base sm:text-lg font-semibold text-purple-400 mb-2">🎨 커스텀 가이드</h3>
+                  <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">핫스왑, 개스켓 마운트, 키캡 교체 등 나만의 키보드 만들기 가이드</p>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="grid gap-8">
+            <div className="grid gap-6 sm:gap-8">
               {posts.map((post) => (
                 <Link
                   href={`/blog/${encodeURIComponent(post.slug)}`}
                   key={post.id}
                 >
                   <article
-                    className="flex flex-col lg:flex-row gap-6 bg-gray-800/80 rounded-xl 
+                    className="flex flex-col lg:flex-row gap-4 sm:gap-6 bg-gray-800/80 rounded-xl 
                     transition-all duration-300 
                     hover:bg-gray-700 cursor-pointer group
                     border border-gray-700/50
@@ -105,7 +105,7 @@ export default async function BlogPage() {
                     hover:translate-y-[-4px] overflow-hidden
                     backdrop-blur-sm"
                   >
-                    <div className="lg:w-1/3 h-64 lg:h-auto relative bg-gray-900/50">
+                    <div className="lg:w-1/3 h-48 sm:h-64 lg:h-auto relative bg-gray-900/50">
                       <Image
                         src={post.thumbnail || '/images/default-thumbnail.png'}
                         alt={post.title}
@@ -116,10 +116,10 @@ export default async function BlogPage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                     </div>
-                    <div className="flex-1 p-6 lg:p-8">
-                      <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex-1 p-4 sm:p-6 lg:p-8">
+                      <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
                         {post.category && (
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-500/20 text-blue-400 border border-blue-500/30">
+                          <span className="inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs font-medium bg-blue-500/20 text-blue-400 border border-blue-500/30">
                             {post.category}
                           </span>
                         )}
@@ -130,18 +130,18 @@ export default async function BlogPage() {
                         ))}
                       </div>
                       
-                      <h2 className="text-2xl lg:text-3xl font-bold mb-3 group-hover:text-blue-400 transition-colors line-clamp-2 leading-tight">
+                      <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold mb-2 sm:mb-3 group-hover:text-blue-400 transition-colors line-clamp-2 leading-tight">
                         {post.title}
                       </h2>
                       
-                      <p className="text-gray-400 mb-6 line-clamp-3 text-base leading-relaxed">
+                      <p className="text-gray-400 mb-4 sm:mb-6 line-clamp-3 text-sm sm:text-base leading-relaxed">
                         {post.excerpt}
                       </p>
                       
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center text-sm text-gray-500">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+                        <div className="flex items-center text-xs sm:text-sm text-gray-500">
                           <time dateTime={post.created_at} className="flex items-center">
-                            <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                             </svg>
                             {new Date(post.created_at).toLocaleDateString(
@@ -155,9 +155,9 @@ export default async function BlogPage() {
                           </time>
                           {post.read_time && (
                             <>
-                              <span className="mx-2">•</span>
+                              <span className="mx-1 sm:mx-2">•</span>
                               <span className="flex items-center">
-                                <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                                 </svg>
                                 {post.read_time}분 읽기
@@ -166,9 +166,9 @@ export default async function BlogPage() {
                           )}
                         </div>
                         
-                        <div className="flex items-center text-blue-400 text-sm font-medium group-hover:text-blue-300 transition-colors">
+                        <div className="flex items-center text-blue-400 text-xs sm:text-sm font-medium group-hover:text-blue-300 transition-colors">
                           읽어보기
-                          <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-3 h-3 sm:w-4 sm:h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                           </svg>
                         </div>

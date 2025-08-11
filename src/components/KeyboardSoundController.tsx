@@ -5,12 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useKeyboardSoundStore } from './GlobalKeyboardSound';
 
 const switchOptions = [
-  { value: 'cherry_blue', name: 'Cherry MX Blue (청축)', color: 'bg-blue-500', description: '클릭' },
-  { value: 'cherry_red', name: 'Cherry MX Red (적축)', color: 'bg-red-500', description: '선형' },
-  { value: 'cherry_brown', name: 'Cherry MX Brown (갈축)', color: 'bg-orange-600', description: '택틸' },
-  { value: 'topre', name: 'Topre (무접점)', color: 'bg-purple-500', description: 'Thock' },
-  { value: 'alps_white', name: 'Alps White', color: 'bg-gray-300', description: '빈티지' },
-  { value: 'gateron_yellow', name: 'Gateron Yellow', color: 'bg-yellow-400', description: '부드러움' }
+  { value: 'cherry_blue', name: 'Cherry MX Blue (청축)', color: 'bg-blue-500', description: '실제 청축 타건음' },
+  { value: 'cherry_red', name: 'Cherry MX Red (적축)', color: 'bg-red-500', description: '실제 적축 타건음' },
+  { value: 'cherry_brown', name: 'Cherry MX Brown (갈축)', color: 'bg-orange-600', description: '실제 갈축 타건음' }
 ];
 
 export function KeyboardSoundController() {

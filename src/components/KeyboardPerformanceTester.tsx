@@ -37,263 +37,288 @@ const KeyboardPerformanceTester: React.FC = () => {
   });
   const [keyboardLayout, setKeyboardLayout] = useState<'tkl' | 'fullsize'>('tkl');
   const [soundEnabled, setSoundEnabled] = useState(true);
+  const [selectedSwitchSound, setSelectedSwitchSound] = useState('cherry_blue');
   
   const startTimeRef = useRef<number>(0);
-  const audioContextRef = useRef<AudioContext | null>(null);
+  const audioBuffersRef = useRef<Map<string, HTMLAudioElement>>(new Map());
   const keyDownTimesRef = useRef<Map<string, number>>(new Map());
 
-  // 텐키리스 키보드 레이아웃
+  // 스위치 사운드 설정
+  const switchSounds = [
+    { name: 'cherry_blue', displayName: '청축', audioFile: '/sounds/청축.wav' },
+    { name: 'cherry_red', displayName: '적축', audioFile: '/sounds/적축.wav' },
+    { name: 'cherry_brown', displayName: '갈축', audioFile: '/sounds/갈축.wav' }
+  ];
+
+  // GlobalKeyboardSound에서 오디오 처리하므로 제거
+
+  // 텐키리스 키보드 레이아웃 (실제 TKL 키보드 형태)
   const tklLayout = [
     // Function Row
     [
       { key: 'Escape', label: 'Esc', width: 'w-12' },
-      { key: 'F1', label: 'F1', width: 'w-12' },
-      { key: 'F2', label: 'F2', width: 'w-12' },
-      { key: 'F3', label: 'F3', width: 'w-12' },
-      { key: 'F4', label: 'F4', width: 'w-12' },
-      { key: 'F5', label: 'F5', width: 'w-12' },
-      { key: 'F6', label: 'F6', width: 'w-12' },
-      { key: 'F7', label: 'F7', width: 'w-12' },
-      { key: 'F8', label: 'F8', width: 'w-12' },
-      { key: 'F9', label: 'F9', width: 'w-12' },
-      { key: 'F10', label: 'F10', width: 'w-12' },
-      { key: 'F11', label: 'F11', width: 'w-12' },
-      { key: 'F12', label: 'F12', width: 'w-12' }
+      { key: '', label: '', width: 'w-4' }, // gap
+      { key: 'F1', label: 'F1', width: 'w-10' },
+      { key: 'F2', label: 'F2', width: 'w-10' },
+      { key: 'F3', label: 'F3', width: 'w-10' },
+      { key: 'F4', label: 'F4', width: 'w-10' },
+      { key: '', label: '', width: 'w-2' }, // gap
+      { key: 'F5', label: 'F5', width: 'w-10' },
+      { key: 'F6', label: 'F6', width: 'w-10' },
+      { key: 'F7', label: 'F7', width: 'w-10' },
+      { key: 'F8', label: 'F8', width: 'w-10' },
+      { key: '', label: '', width: 'w-2' }, // gap
+      { key: 'F9', label: 'F9', width: 'w-10' },
+      { key: 'F10', label: 'F10', width: 'w-10' },
+      { key: 'F11', label: 'F11', width: 'w-10' },
+      { key: 'F12', label: 'F12', width: 'w-10' },
+      { key: '', label: '', width: 'w-4' }, // gap
+      { key: 'PrintScreen', label: 'PrtSc', width: 'w-10' },
+      { key: 'ScrollLock', label: 'ScrLk', width: 'w-10' },
+      { key: 'Pause', label: 'Pause', width: 'w-10' }
     ],
     // Number Row
     [
-      { key: 'Backquote', label: '`', width: 'w-12' },
-      { key: 'Digit1', label: '1', width: 'w-12' },
-      { key: 'Digit2', label: '2', width: 'w-12' },
-      { key: 'Digit3', label: '3', width: 'w-12' },
-      { key: 'Digit4', label: '4', width: 'w-12' },
-      { key: 'Digit5', label: '5', width: 'w-12' },
-      { key: 'Digit6', label: '6', width: 'w-12' },
-      { key: 'Digit7', label: '7', width: 'w-12' },
-      { key: 'Digit8', label: '8', width: 'w-12' },
-      { key: 'Digit9', label: '9', width: 'w-12' },
-      { key: 'Digit0', label: '0', width: 'w-12' },
-      { key: 'Minus', label: '-', width: 'w-12' },
-      { key: 'Equal', label: '=', width: 'w-12' },
-      { key: 'Backspace', label: 'Backspace', width: 'w-20' }
+      { key: 'Backquote', label: '~\n`', width: 'w-10' },
+      { key: 'Digit1', label: '!\n1', width: 'w-10' },
+      { key: 'Digit2', label: '@\n2', width: 'w-10' },
+      { key: 'Digit3', label: '#\n3', width: 'w-10' },
+      { key: 'Digit4', label: '$\n4', width: 'w-10' },
+      { key: 'Digit5', label: '%\n5', width: 'w-10' },
+      { key: 'Digit6', label: '^\n6', width: 'w-10' },
+      { key: 'Digit7', label: '&\n7', width: 'w-10' },
+      { key: 'Digit8', label: '*\n8', width: 'w-10' },
+      { key: 'Digit9', label: '(\n9', width: 'w-10' },
+      { key: 'Digit0', label: ')\n0', width: 'w-10' },
+      { key: 'Minus', label: '_\n-', width: 'w-10' },
+      { key: 'Equal', label: '+\n=', width: 'w-10' },
+      { key: 'Backspace', label: 'Backspace', width: 'w-20' },
+      { key: '', label: '', width: 'w-4' }, // gap
+      { key: 'Insert', label: 'Ins', width: 'w-10' },
+      { key: 'Home', label: 'Home', width: 'w-10' },
+      { key: 'PageUp', label: 'PgUp', width: 'w-10' }
     ],
-    // Top Row
+    // Top Row (QWERTY)
     [
-      { key: 'Tab', label: 'Tab', width: 'w-16' },
-      { key: 'KeyQ', label: 'Q', width: 'w-12' },
-      { key: 'KeyW', label: 'W', width: 'w-12' },
-      { key: 'KeyE', label: 'E', width: 'w-12' },
-      { key: 'KeyR', label: 'R', width: 'w-12' },
-      { key: 'KeyT', label: 'T', width: 'w-12' },
-      { key: 'KeyY', label: 'Y', width: 'w-12' },
-      { key: 'KeyU', label: 'U', width: 'w-12' },
-      { key: 'KeyI', label: 'I', width: 'w-12' },
-      { key: 'KeyO', label: 'O', width: 'w-12' },
-      { key: 'KeyP', label: 'P', width: 'w-12' },
-      { key: 'BracketLeft', label: '[', width: 'w-12' },
-      { key: 'BracketRight', label: ']', width: 'w-12' },
-      { key: 'Backslash', label: '\\', width: 'w-16' }
+      { key: 'Tab', label: 'Tab', width: 'w-15' },
+      { key: 'KeyQ', label: 'ㅂ\nQ', width: 'w-10' },
+      { key: 'KeyW', label: 'ㅈ\nW', width: 'w-10' },
+      { key: 'KeyE', label: 'ㄷ\nE', width: 'w-10' },
+      { key: 'KeyR', label: 'ㄱ\nR', width: 'w-10' },
+      { key: 'KeyT', label: 'ㅅ\nT', width: 'w-10' },
+      { key: 'KeyY', label: 'ㅛ\nY', width: 'w-10' },
+      { key: 'KeyU', label: 'ㅕ\nU', width: 'w-10' },
+      { key: 'KeyI', label: 'ㅑ\nI', width: 'w-10' },
+      { key: 'KeyO', label: 'ㅒ\nO', width: 'w-10' },
+      { key: 'KeyP', label: 'ㅓ\nP', width: 'w-10' },
+      { key: 'BracketLeft', label: '{\n[', width: 'w-10' },
+      { key: 'BracketRight', label: '}\n]', width: 'w-10' },
+      { key: 'Backslash', label: '|\n\\', width: 'w-15' },
+      { key: '', label: '', width: 'w-4' }, // gap
+      { key: 'Delete', label: 'Del', width: 'w-10' },
+      { key: 'End', label: 'End', width: 'w-10' },
+      { key: 'PageDown', label: 'PgDn', width: 'w-10' }
     ],
-    // Home Row
+    // Home Row (ASDF)
     [
-      { key: 'CapsLock', label: 'Caps', width: 'w-20' },
-      { key: 'KeyA', label: 'A', width: 'w-12' },
-      { key: 'KeyS', label: 'S', width: 'w-12' },
-      { key: 'KeyD', label: 'D', width: 'w-12' },
-      { key: 'KeyF', label: 'F', width: 'w-12' },
-      { key: 'KeyG', label: 'G', width: 'w-12' },
-      { key: 'KeyH', label: 'H', width: 'w-12' },
-      { key: 'KeyJ', label: 'J', width: 'w-12' },
-      { key: 'KeyK', label: 'K', width: 'w-12' },
-      { key: 'KeyL', label: 'L', width: 'w-12' },
-      { key: 'Semicolon', label: ';', width: 'w-12' },
-      { key: 'Quote', label: '\'', width: 'w-12' },
-      { key: 'Enter', label: 'Enter', width: 'w-24' }
+      { key: 'CapsLock', label: 'CapsLock', width: 'w-18' },
+      { key: 'KeyA', label: 'ㅁ\nA', width: 'w-10' },
+      { key: 'KeyS', label: 'ㄴ\nS', width: 'w-10' },
+      { key: 'KeyD', label: 'ㅇ\nD', width: 'w-10' },
+      { key: 'KeyF', label: 'ㄹ\nF', width: 'w-10' },
+      { key: 'KeyG', label: 'ㅎ\nG', width: 'w-10' },
+      { key: 'KeyH', label: 'ㅗ\nH', width: 'w-10' },
+      { key: 'KeyJ', label: 'ㅓ\nJ', width: 'w-10' },
+      { key: 'KeyK', label: 'ㅏ\nK', width: 'w-10' },
+      { key: 'KeyL', label: 'ㅣ\nL', width: 'w-10' },
+      { key: 'Semicolon', label: ':\n;', width: 'w-10' },
+      { key: 'Quote', label: '"\n\'', width: 'w-10' },
+      { key: 'Enter', label: 'Enter', width: 'w-22' }
     ],
-    // Bottom Row
+    // Bottom Row (ZXCV)
     [
       { key: 'ShiftLeft', label: 'Shift', width: 'w-24' },
-      { key: 'KeyZ', label: 'Z', width: 'w-12' },
-      { key: 'KeyX', label: 'X', width: 'w-12' },
-      { key: 'KeyC', label: 'C', width: 'w-12' },
-      { key: 'KeyV', label: 'V', width: 'w-12' },
-      { key: 'KeyB', label: 'B', width: 'w-12' },
-      { key: 'KeyN', label: 'N', width: 'w-12' },
-      { key: 'KeyM', label: 'M', width: 'w-12' },
-      { key: 'Comma', label: ',', width: 'w-12' },
-      { key: 'Period', label: '.', width: 'w-12' },
-      { key: 'Slash', label: '/', width: 'w-12' },
-      { key: 'ShiftRight', label: 'Shift', width: 'w-32' }
+      { key: 'KeyZ', label: 'ㅋ\nZ', width: 'w-10' },
+      { key: 'KeyX', label: 'ㅌ\nX', width: 'w-10' },
+      { key: 'KeyC', label: 'ㅊ\nC', width: 'w-10' },
+      { key: 'KeyV', label: 'ㅍ\nV', width: 'w-10' },
+      { key: 'KeyB', label: 'ㅠ\nB', width: 'w-10' },
+      { key: 'KeyN', label: 'ㅜ\nN', width: 'w-10' },
+      { key: 'KeyM', label: 'ㅡ\nM', width: 'w-10' },
+      { key: 'Comma', label: '<\n,', width: 'w-10' },
+      { key: 'Period', label: '>\n.', width: 'w-10' },
+      { key: 'Slash', label: '?\n/', width: 'w-10' },
+      { key: 'ShiftRight', label: 'Shift', width: 'w-28' },
+      { key: '', label: '', width: 'w-4' }, // gap
+      { key: '', label: '', width: 'w-10' }, // empty
+      { key: 'ArrowUp', label: '↑', width: 'w-10' },
+      { key: '', label: '', width: 'w-10' } // empty
     ],
-    // Space Row
+    // Space Row + Arrow Keys
     [
-      { key: 'ControlLeft', label: 'Ctrl', width: 'w-16' },
-      { key: 'MetaLeft', label: 'Win', width: 'w-14' },
-      { key: 'AltLeft', label: 'Alt', width: 'w-16' },
-      { key: 'Space', label: 'Space', width: 'w-48' },
-      { key: 'AltRight', label: 'Alt', width: 'w-16' },
-      { key: 'MetaRight', label: 'Win', width: 'w-14' },
-      { key: 'ContextMenu', label: 'Menu', width: 'w-14' },
-      { key: 'ControlRight', label: 'Ctrl', width: 'w-16' }
+      { key: 'ControlLeft', label: 'Ctrl', width: 'w-13' },
+      { key: 'MetaLeft', label: 'Win', width: 'w-11' },
+      { key: 'AltLeft', label: 'Alt', width: 'w-13' },
+      { key: 'Space', label: 'Space', width: 'w-60' },
+      { key: 'AltRight', label: 'Alt', width: 'w-11' },
+      { key: 'ContextMenu', label: 'Fn', width: 'w-11' },
+      { key: 'MetaRight', label: '한/영', width: 'w-11' },
+      { key: 'ControlRight', label: 'Ctrl', width: 'w-13' },
+      { key: '', label: '', width: 'w-4' }, // gap
+      { key: 'ArrowLeft', label: '←', width: 'w-10' },
+      { key: 'ArrowDown', label: '↓', width: 'w-10' },
+      { key: 'ArrowRight', label: '→', width: 'w-10' }
     ]
   ];
 
-  // 풀사이즈 키보드 레이아웃 (넘패드 추가)
+  // 풀사이즈 키보드 레이아웃 (실제 풀사이즈 키보드 형태)
   const fullsizeLayout = [
-    // Function Row + Print Screen area
+    // Function Row
     [
-      { key: 'Escape', label: 'Esc', width: 'w-12' },
-      { key: 'F1', label: 'F1', width: 'w-12' },
-      { key: 'F2', label: 'F2', width: 'w-12' },
-      { key: 'F3', label: 'F3', width: 'w-12' },
-      { key: 'F4', label: 'F4', width: 'w-12' },
-      { key: 'F5', label: 'F5', width: 'w-12' },
-      { key: 'F6', label: 'F6', width: 'w-12' },
-      { key: 'F7', label: 'F7', width: 'w-12' },
-      { key: 'F8', label: 'F8', width: 'w-12' },
-      { key: 'F9', label: 'F9', width: 'w-12' },
-      { key: 'F10', label: 'F10', width: 'w-12' },
-      { key: 'F11', label: 'F11', width: 'w-12' },
-      { key: 'F12', label: 'F12', width: 'w-12' },
-      { key: 'PrintScreen', label: 'PrtSc', width: 'w-12' },
-      { key: 'ScrollLock', label: 'ScrLk', width: 'w-12' },
-      { key: 'Pause', label: 'Pause', width: 'w-12' }
+      { key: 'Escape', label: 'Esc', width: 'w-9' },
+      { key: '', label: '', width: 'w-3' }, // gap
+      { key: 'F1', label: 'F1', width: 'w-8' },
+      { key: 'F2', label: 'F2', width: 'w-8' },
+      { key: 'F3', label: 'F3', width: 'w-8' },
+      { key: 'F4', label: 'F4', width: 'w-8' },
+      { key: '', label: '', width: 'w-2' }, // gap
+      { key: 'F5', label: 'F5', width: 'w-8' },
+      { key: 'F6', label: 'F6', width: 'w-8' },
+      { key: 'F7', label: 'F7', width: 'w-8' },
+      { key: 'F8', label: 'F8', width: 'w-8' },
+      { key: '', label: '', width: 'w-2' }, // gap
+      { key: 'F9', label: 'F9', width: 'w-8' },
+      { key: 'F10', label: 'F10', width: 'w-8' },
+      { key: 'F11', label: 'F11', width: 'w-8' },
+      { key: 'F12', label: 'F12', width: 'w-8' },
+      { key: '', label: '', width: 'w-3' }, // gap
+      { key: 'PrintScreen', label: 'PrtSc', width: 'w-8' },
+      { key: 'ScrollLock', label: 'ScrLk', width: 'w-8' },
+      { key: 'Pause', label: 'Pause', width: 'w-8' },
+      { key: '', label: '', width: 'w-3' }, // gap
+      { key: 'NumLock', label: 'Num\nLock', width: 'w-8' },
+      { key: 'NumpadDivide', label: '/', width: 'w-8' },
+      { key: 'NumpadMultiply', label: '*', width: 'w-8' },
+      { key: 'NumpadSubtract', label: '-', width: 'w-8' }
     ],
-    // Number Row + Numpad top
+    // Number Row
     [
-      { key: 'Backquote', label: '`', width: 'w-12' },
-      { key: 'Digit1', label: '1', width: 'w-12' },
-      { key: 'Digit2', label: '2', width: 'w-12' },
-      { key: 'Digit3', label: '3', width: 'w-12' },
-      { key: 'Digit4', label: '4', width: 'w-12' },
-      { key: 'Digit5', label: '5', width: 'w-12' },
-      { key: 'Digit6', label: '6', width: 'w-12' },
-      { key: 'Digit7', label: '7', width: 'w-12' },
-      { key: 'Digit8', label: '8', width: 'w-12' },
-      { key: 'Digit9', label: '9', width: 'w-12' },
-      { key: 'Digit0', label: '0', width: 'w-12' },
-      { key: 'Minus', label: '-', width: 'w-12' },
-      { key: 'Equal', label: '=', width: 'w-12' },
-      { key: 'Backspace', label: 'Backspace', width: 'w-20' },
-      { key: 'Insert', label: 'Ins', width: 'w-12' },
-      { key: 'Home', label: 'Home', width: 'w-12' },
-      { key: 'PageUp', label: 'PgUp', width: 'w-12' },
-      { key: 'NumLock', label: 'Num', width: 'w-12' },
-      { key: 'NumpadDivide', label: '/', width: 'w-12' },
-      { key: 'NumpadMultiply', label: '*', width: 'w-12' },
-      { key: 'NumpadSubtract', label: '-', width: 'w-12' }
+      { key: 'Backquote', label: '~\n`', width: 'w-8' },
+      { key: 'Digit1', label: '!\n1', width: 'w-8' },
+      { key: 'Digit2', label: '@\n2', width: 'w-8' },
+      { key: 'Digit3', label: '#\n3', width: 'w-8' },
+      { key: 'Digit4', label: '$\n4', width: 'w-8' },
+      { key: 'Digit5', label: '%\n5', width: 'w-8' },
+      { key: 'Digit6', label: '^\n6', width: 'w-8' },
+      { key: 'Digit7', label: '&\n7', width: 'w-8' },
+      { key: 'Digit8', label: '*\n8', width: 'w-8' },
+      { key: 'Digit9', label: '(\n9', width: 'w-8' },
+      { key: 'Digit0', label: ')\n0', width: 'w-8' },
+      { key: 'Minus', label: '_\n-', width: 'w-8' },
+      { key: 'Equal', label: '+\n=', width: 'w-8' },
+      { key: 'Backspace', label: 'Backspace', width: 'w-16' },
+      { key: '', label: '', width: 'w-3' }, // gap
+      { key: 'Insert', label: 'Ins', width: 'w-8' },
+      { key: 'Home', label: 'Home', width: 'w-8' },
+      { key: 'PageUp', label: 'PgUp', width: 'w-8' },
+      { key: '', label: '', width: 'w-3' }, // gap
+      { key: 'Numpad7', label: '7', width: 'w-8' },
+      { key: 'Numpad8', label: '8', width: 'w-8' },
+      { key: 'Numpad9', label: '9', width: 'w-8' },
+      { key: 'NumpadAdd', label: '+', width: 'w-8' }
     ],
-    // Top Row + Numpad
+    // Top Row (QWERTY)
     [
-      { key: 'Tab', label: 'Tab', width: 'w-16' },
-      { key: 'KeyQ', label: 'Q', width: 'w-12' },
-      { key: 'KeyW', label: 'W', width: 'w-12' },
-      { key: 'KeyE', label: 'E', width: 'w-12' },
-      { key: 'KeyR', label: 'R', width: 'w-12' },
-      { key: 'KeyT', label: 'T', width: 'w-12' },
-      { key: 'KeyY', label: 'Y', width: 'w-12' },
-      { key: 'KeyU', label: 'U', width: 'w-12' },
-      { key: 'KeyI', label: 'I', width: 'w-12' },
-      { key: 'KeyO', label: 'O', width: 'w-12' },
-      { key: 'KeyP', label: 'P', width: 'w-12' },
-      { key: 'BracketLeft', label: '[', width: 'w-12' },
-      { key: 'BracketRight', label: ']', width: 'w-12' },
-      { key: 'Backslash', label: '\\', width: 'w-16' },
-      { key: 'Delete', label: 'Del', width: 'w-12' },
-      { key: 'End', label: 'End', width: 'w-12' },
-      { key: 'PageDown', label: 'PgDn', width: 'w-12' },
-      { key: 'Numpad7', label: '7', width: 'w-12' },
-      { key: 'Numpad8', label: '8', width: 'w-12' },
-      { key: 'Numpad9', label: '9', width: 'w-12' },
-      { key: 'NumpadAdd', label: '+', width: 'w-12' }
+      { key: 'Tab', label: 'Tab', width: 'w-12' },
+      { key: 'KeyQ', label: 'ㅂ\nQ', width: 'w-8' },
+      { key: 'KeyW', label: 'ㅈ\nW', width: 'w-8' },
+      { key: 'KeyE', label: 'ㄷ\nE', width: 'w-8' },
+      { key: 'KeyR', label: 'ㄱ\nR', width: 'w-8' },
+      { key: 'KeyT', label: 'ㅅ\nT', width: 'w-8' },
+      { key: 'KeyY', label: 'ㅛ\nY', width: 'w-8' },
+      { key: 'KeyU', label: 'ㅕ\nU', width: 'w-8' },
+      { key: 'KeyI', label: 'ㅑ\nI', width: 'w-8' },
+      { key: 'KeyO', label: 'ㅒ\nO', width: 'w-8' },
+      { key: 'KeyP', label: 'ㅓ\nP', width: 'w-8' },
+      { key: 'BracketLeft', label: '{\n[', width: 'w-8' },
+      { key: 'BracketRight', label: '}\n]', width: 'w-8' },
+      { key: 'Backslash', label: '|\n\\', width: 'w-12' },
+      { key: '', label: '', width: 'w-3' }, // gap
+      { key: 'Delete', label: 'Del', width: 'w-8' },
+      { key: 'End', label: 'End', width: 'w-8' },
+      { key: 'PageDown', label: 'PgDn', width: 'w-8' },
+      { key: '', label: '', width: 'w-3' }, // gap
+      { key: 'Numpad4', label: '4', width: 'w-8' },
+      { key: 'Numpad5', label: '5', width: 'w-8' },
+      { key: 'Numpad6', label: '6', width: 'w-8' },
+      { key: '', label: '', width: 'w-8' } // NumpadAdd continues from above
     ],
-    // Home Row + Numpad
+    // Home Row (ASDF)
     [
-      { key: 'CapsLock', label: 'Caps', width: 'w-20' },
-      { key: 'KeyA', label: 'A', width: 'w-12' },
-      { key: 'KeyS', label: 'S', width: 'w-12' },
-      { key: 'KeyD', label: 'D', width: 'w-12' },
-      { key: 'KeyF', label: 'F', width: 'w-12' },
-      { key: 'KeyG', label: 'G', width: 'w-12' },
-      { key: 'KeyH', label: 'H', width: 'w-12' },
-      { key: 'KeyJ', label: 'J', width: 'w-12' },
-      { key: 'KeyK', label: 'K', width: 'w-12' },
-      { key: 'KeyL', label: 'L', width: 'w-12' },
-      { key: 'Semicolon', label: ';', width: 'w-12' },
-      { key: 'Quote', label: '\'', width: 'w-12' },
-      { key: 'Enter', label: 'Enter', width: 'w-24' },
-      { key: 'Numpad4', label: '4', width: 'w-12' },
-      { key: 'Numpad5', label: '5', width: 'w-12' },
-      { key: 'Numpad6', label: '6', width: 'w-12' }
+      { key: 'CapsLock', label: 'CapsLock', width: 'w-14' },
+      { key: 'KeyA', label: 'ㅁ\nA', width: 'w-8' },
+      { key: 'KeyS', label: 'ㄴ\nS', width: 'w-8' },
+      { key: 'KeyD', label: 'ㅇ\nD', width: 'w-8' },
+      { key: 'KeyF', label: 'ㄹ\nF', width: 'w-8' },
+      { key: 'KeyG', label: 'ㅎ\nG', width: 'w-8' },
+      { key: 'KeyH', label: 'ㅗ\nH', width: 'w-8' },
+      { key: 'KeyJ', label: 'ㅓ\nJ', width: 'w-8' },
+      { key: 'KeyK', label: 'ㅏ\nK', width: 'w-8' },
+      { key: 'KeyL', label: 'ㅣ\nL', width: 'w-8' },
+      { key: 'Semicolon', label: ':\n;', width: 'w-8' },
+      { key: 'Quote', label: '"\n\'', width: 'w-8' },
+      { key: 'Enter', label: 'Enter', width: 'w-18' },
+      { key: '', label: '', width: 'w-27' }, // gap for navigation cluster  
+      { key: 'Numpad1', label: '1', width: 'w-8' },
+      { key: 'Numpad2', label: '2', width: 'w-8' },
+      { key: 'Numpad3', label: '3', width: 'w-8' },
+      { key: 'NumpadEnter', label: 'Enter', width: 'w-8' }
     ],
-    // Bottom Row + Numpad
+    // Bottom Row (ZXCV)
     [
-      { key: 'ShiftLeft', label: 'Shift', width: 'w-24' },
-      { key: 'KeyZ', label: 'Z', width: 'w-12' },
-      { key: 'KeyX', label: 'X', width: 'w-12' },
-      { key: 'KeyC', label: 'C', width: 'w-12' },
-      { key: 'KeyV', label: 'V', width: 'w-12' },
-      { key: 'KeyB', label: 'B', width: 'w-12' },
-      { key: 'KeyN', label: 'N', width: 'w-12' },
-      { key: 'KeyM', label: 'M', width: 'w-12' },
-      { key: 'Comma', label: ',', width: 'w-12' },
-      { key: 'Period', label: '.', width: 'w-12' },
-      { key: 'Slash', label: '/', width: 'w-12' },
-      { key: 'ShiftRight', label: 'Shift', width: 'w-32' },
-      { key: 'ArrowUp', label: '↑', width: 'w-12' },
-      { key: 'Numpad1', label: '1', width: 'w-12' },
-      { key: 'Numpad2', label: '2', width: 'w-12' },
-      { key: 'Numpad3', label: '3', width: 'w-12' },
-      { key: 'NumpadEnter', label: 'Enter', width: 'w-12' }
+      { key: 'ShiftLeft', label: 'Shift', width: 'w-18' },
+      { key: 'KeyZ', label: 'ㅋ\nZ', width: 'w-8' },
+      { key: 'KeyX', label: 'ㅌ\nX', width: 'w-8' },
+      { key: 'KeyC', label: 'ㅊ\nC', width: 'w-8' },
+      { key: 'KeyV', label: 'ㅍ\nV', width: 'w-8' },
+      { key: 'KeyB', label: 'ㅠ\nB', width: 'w-8' },
+      { key: 'KeyN', label: 'ㅜ\nN', width: 'w-8' },
+      { key: 'KeyM', label: 'ㅡ\nM', width: 'w-8' },
+      { key: 'Comma', label: '<\n,', width: 'w-8' },
+      { key: 'Period', label: '>\n.', width: 'w-8' },
+      { key: 'Slash', label: '?\n/', width: 'w-8' },
+      { key: 'ShiftRight', label: 'Shift', width: 'w-22' },
+      { key: '', label: '', width: 'w-3' }, // gap
+      { key: '', label: '', width: 'w-8' }, // empty
+      { key: 'ArrowUp', label: '↑', width: 'w-8' },
+      { key: '', label: '', width: 'w-8' }, // empty
+      { key: '', label: '', width: 'w-3' }, // gap
+      { key: 'Numpad0', label: '0', width: 'w-16' },
+      { key: 'NumpadDecimal', label: '.', width: 'w-8' },
+      { key: '', label: '', width: 'w-8' } // NumpadEnter continues from above
     ],
-    // Space Row + Arrow Keys + Numpad
+    // Space Row + Arrow Keys + Numpad bottom
     [
-      { key: 'ControlLeft', label: 'Ctrl', width: 'w-16' },
-      { key: 'MetaLeft', label: 'Win', width: 'w-14' },
-      { key: 'AltLeft', label: 'Alt', width: 'w-16' },
-      { key: 'Space', label: 'Space', width: 'w-32' },
-      { key: 'AltRight', label: 'Alt', width: 'w-16' },
-      { key: 'MetaRight', label: 'Win', width: 'w-14' },
-      { key: 'ContextMenu', label: 'Menu', width: 'w-14' },
-      { key: 'ControlRight', label: 'Ctrl', width: 'w-16' },
-      { key: 'ArrowLeft', label: '←', width: 'w-12' },
-      { key: 'ArrowDown', label: '↓', width: 'w-12' },
-      { key: 'ArrowRight', label: '→', width: 'w-12' },
-      { key: 'Numpad0', label: '0', width: 'w-24' },
-      { key: 'NumpadDecimal', label: '.', width: 'w-12' }
+      { key: 'ControlLeft', label: 'Ctrl', width: 'w-10' },
+      { key: 'MetaLeft', label: 'Win', width: 'w-9' },
+      { key: 'AltLeft', label: 'Alt', width: 'w-10' },
+      { key: 'Space', label: 'Space', width: 'w-48' },
+      { key: 'AltRight', label: 'Alt', width: 'w-9' },
+      { key: 'ContextMenu', label: 'Fn', width: 'w-9' },
+      { key: 'MetaRight', label: '한/영', width: 'w-9' },
+      { key: 'ControlRight', label: 'Ctrl', width: 'w-10' },
+      { key: '', label: '', width: 'w-3' }, // gap
+      { key: 'ArrowLeft', label: '←', width: 'w-8' },
+      { key: 'ArrowDown', label: '↓', width: 'w-8' },
+      { key: 'ArrowRight', label: '→', width: 'w-8' },
+      { key: '', label: '', width: 'w-27' } // gap for numpad alignment
     ]
   ];
 
   const currentLayout = keyboardLayout === 'tkl' ? tklLayout : fullsizeLayout;
 
-  // 사운드 재생
-  const playKeySound = useCallback((frequency: number = 800, duration: number = 0.1) => {
-    if (!soundEnabled) return;
-    
-    try {
-      if (!audioContextRef.current) {
-        audioContextRef.current = new AudioContext();
-      }
-      
-      const ctx = audioContextRef.current;
-      const oscillator = ctx.createOscillator();
-      const gainNode = ctx.createGain();
-      
-      oscillator.connect(gainNode);
-      gainNode.connect(ctx.destination);
-      
-      oscillator.frequency.value = frequency;
-      oscillator.type = 'sine';
-      
-      gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
-      
-      oscillator.start(ctx.currentTime);
-      oscillator.stop(ctx.currentTime + duration);
-    } catch (error) {
-      console.log('Audio context error:', error);
-    }
-  }, [soundEnabled]);
+
+  // GlobalKeyboardSound를 사용하므로 별도 타건음 불필요
 
   // 키 눌림 이벤트
   const handleKeyDown = useCallback((event: KeyboardEvent) => {
@@ -305,6 +330,8 @@ const KeyboardPerformanceTester: React.FC = () => {
     if (pressedKeys.has(keyCode)) return;
     
     event.preventDefault();
+    
+    // GlobalKeyboardSound에서 자동으로 타건음 재생됨
     
     const timestamp = performance.now();
     
@@ -327,9 +354,8 @@ const KeyboardPerformanceTester: React.FC = () => {
     
     setKeyPressHistory(prev => [...prev, keyPressData]);
     
-    // 사운드 재생 (키에 따라 다른 주파수)
-    const frequency = 400 + (keyCode.charCodeAt(0) % 500);
-    playKeySound(frequency, 0.05);
+    // 실제 WAV 파일 타건음 재생
+    playKeySound();
     
   }, [isTestActive, pressedKeys, playKeySound]);
 
@@ -470,7 +496,7 @@ const KeyboardPerformanceTester: React.FC = () => {
 
   const getKeyStyle = (keyCode: string) => {
     const isPressed = pressedKeys.has(keyCode);
-    const baseStyle = 'h-10 bg-gray-700 text-white text-xs font-mono rounded border border-gray-600 flex items-center justify-center transition-all duration-75 select-none';
+    const baseStyle = 'h-8 bg-gray-700 text-white text-xs font-mono rounded border border-gray-600 flex items-center justify-center transition-all duration-75 select-none';
     
     if (isPressed) {
       return `${baseStyle} bg-blue-500 border-blue-400 scale-95 shadow-lg`;
@@ -524,6 +550,21 @@ const KeyboardPerformanceTester: React.FC = () => {
               />
               사운드 효과
             </label>
+            
+            {soundEnabled && (
+              <select
+                value={selectedSwitchSound}
+                onChange={(e) => setSelectedSwitchSound(e.target.value)}
+                className="px-3 py-2 bg-gray-700 text-white rounded border border-gray-600 text-sm"
+                disabled={isTestActive}
+              >
+                {switchSounds.map(sound => (
+                  <option key={sound.name} value={sound.name}>
+                    {sound.displayName} 사운드
+                  </option>
+                ))}
+              </select>
+            )}
             
             {isTestActive && (
               <motion.div
@@ -589,17 +630,29 @@ const KeyboardPerformanceTester: React.FC = () => {
           <p className="text-gray-400 text-sm">실제 키보드로 입력하면 해당 키가 강조됩니다</p>
         </div>
         
-        <div className="flex flex-col items-center space-y-2 overflow-x-auto">
+        <div className="flex flex-col items-center space-y-1 overflow-x-auto">
           {currentLayout.map((row, rowIndex) => (
             <div key={rowIndex} className="flex justify-center gap-1">
-              {row.map((keyObj, keyIndex) => (
-                <div
-                  key={`${rowIndex}-${keyIndex}`}
-                  className={`${getKeyStyle(keyObj.key)} ${keyObj.width}`}
-                >
-                  {keyObj.label}
-                </div>
-              ))}
+              {row.map((keyObj, keyIndex) => {
+                // 빈 공간 처리
+                if (!keyObj.key && !keyObj.label) {
+                  return (
+                    <div
+                      key={`${rowIndex}-${keyIndex}`}
+                      className={`${keyObj.width} h-8`}
+                    />
+                  );
+                }
+                
+                return (
+                  <div
+                    key={`${rowIndex}-${keyIndex}`}
+                    className={`${getKeyStyle(keyObj.key)} ${keyObj.width} text-xs leading-tight whitespace-pre-line`}
+                  >
+                    {keyObj.label}
+                  </div>
+                );
+              })}
             </div>
           ))}
         </div>

@@ -7,13 +7,8 @@ interface SwitchSoundConfig {
   name: string;
   displayName: string;
   color: string;
-  // 소리 특성 (Web Audio API로 합성)
-  clickFrequency: number;      // 클릭 소리 주파수
-  clickDuration: number;       // 클릭 소리 지속시간 (ms)
-  thockFrequency: number;      // 바닥에 닿는 소리 주파수
-  thockDelay: number;          // 클릭 후 바닥 소리까지의 지연시간 (ms)
-  volume: number;              // 기본 볼륨 (0-1)
-  hasClick: boolean;           // 클릭 소리 여부
+  audioFile: string;      // 실제 오디오 파일 경로
+  volume: number;         // 기본 볼륨 (0-1)
   description: string;
 }
 
@@ -22,73 +17,25 @@ const switchConfigs: SwitchSoundConfig[] = [
     name: 'cherry_blue',
     displayName: 'Cherry MX Blue (청축)',
     color: 'bg-blue-500',
-    clickFrequency: 2500,
-    clickDuration: 50,
-    thockFrequency: 150,
-    thockDelay: 30,
+    audioFile: '/sounds/청축.wav',
     volume: 0.8,
-    hasClick: true,
     description: '명확한 클릭 소리와 촉각 피드백'
   },
   {
     name: 'cherry_red',
     displayName: 'Cherry MX Red (적축)',
     color: 'bg-red-500',
-    clickFrequency: 0, // 클릭 소리 없음
-    clickDuration: 0,
-    thockFrequency: 120,
-    thockDelay: 20,
-    volume: 0.4,
-    hasClick: false,
+    audioFile: '/sounds/적축.wav',
+    volume: 0.6,
     description: '부드럽고 조용한 선형 스위치'
   },
   {
     name: 'cherry_brown',
     displayName: 'Cherry MX Brown (갈축)',
     color: 'bg-orange-600',
-    clickFrequency: 1800, // 약한 클릭
-    clickDuration: 30,
-    thockFrequency: 140,
-    thockDelay: 25,
-    volume: 0.5,
-    hasClick: true,
-    description: '적당한 택틸감과 소음의 균형'
-  },
-  {
-    name: 'topre',
-    displayName: 'Topre (무접점)',
-    color: 'bg-purple-500',
-    clickFrequency: 0,
-    clickDuration: 0,
-    thockFrequency: 200, // 깊은 thock 소리
-    thockDelay: 15,
+    audioFile: '/sounds/갈축.wav',
     volume: 0.7,
-    hasClick: false,
-    description: '독특한 무접점 방식의 깊은 소리'
-  },
-  {
-    name: 'alps_white',
-    displayName: 'Alps White',
-    color: 'bg-gray-300',
-    clickFrequency: 2800,
-    clickDuration: 40,
-    thockFrequency: 180,
-    thockDelay: 25,
-    volume: 0.6,
-    hasClick: true,
-    description: '빈티지 Alps 스위치의 독특한 소리'
-  },
-  {
-    name: 'gateron_yellow',
-    displayName: 'Gateron Yellow',
-    color: 'bg-yellow-400',
-    clickFrequency: 0,
-    clickDuration: 0,
-    thockFrequency: 110,
-    thockDelay: 18,
-    volume: 0.45,
-    hasClick: false,
-    description: '부드러운 선형 스위치'
+    description: '적당한 택틸감과 소음의 균형'
   }
 ];
 
@@ -99,7 +46,7 @@ interface KeyboardSoundPlayerProps {
 }
 
 export function KeyboardSoundPlayer({ 
-  currentSwitch = 'cherry_blue', 
+  currentSwitch = 'cherry_red', // 기본을 적축으로 변경
   onSwitchChange,
   showControls = true 
 }: KeyboardSoundPlayerProps) {
@@ -108,105 +55,68 @@ export function KeyboardSoundPlayer({
   const [isEnabled, setIsEnabled] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   
-  const audioContextRef = useRef<AudioContext | null>(null);
-  const gainNodeRef = useRef<GainNode | null>(null);
-
-  // 오디오 컨텍스트 초기화
+  // 오디오 파일들을 미리 로드해서 캐싱
+  const audioBuffersRef = useRef<Map<string, HTMLAudioElement>>(new Map());
+  
+  // 오디오 파일들 미리 로드
   useEffect(() => {
-    const initAudio = () => {
-      try {
-        audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
-        gainNodeRef.current = audioContextRef.current.createGain();
-        gainNodeRef.current.connect(audioContextRef.current.destination);
-        gainNodeRef.current.gain.setValueAtTime(volume, audioContextRef.current.currentTime);
-      } catch (error) {
-        console.error('오디오 컨텍스트 초기화 실패:', error);
+    const preloadAudio = async () => {
+      for (const config of switchConfigs) {
+        try {
+          const audio = new Audio(config.audioFile);
+          audio.preload = 'auto';
+          audio.volume = volume * config.volume;
+          
+          // 오디오 로드 완료 대기
+          await new Promise((resolve, reject) => {
+            audio.addEventListener('canplaythrough', resolve);
+            audio.addEventListener('error', reject);
+          });
+          
+          audioBuffersRef.current.set(config.name, audio);
+        } catch (error) {
+          console.warn(`오디오 파일 로드 실패: ${config.audioFile}`, error);
+        }
       }
     };
 
-    initAudio();
-
-    return () => {
-      if (audioContextRef.current && audioContextRef.current.state !== 'closed') {
-        audioContextRef.current.close();
-      }
-    };
+    preloadAudio();
   }, []);
 
   // 볼륨 업데이트
   useEffect(() => {
-    if (gainNodeRef.current && audioContextRef.current) {
-      gainNodeRef.current.gain.setValueAtTime(
-        isEnabled ? volume : 0, 
-        audioContextRef.current.currentTime
-      );
-    }
+    audioBuffersRef.current.forEach((audio, switchName) => {
+      const config = switchConfigs.find(c => c.name === switchName);
+      if (config) {
+        audio.volume = isEnabled ? volume * config.volume : 0;
+      }
+    });
   }, [volume, isEnabled]);
 
-  const generateKeySound = useCallback((config: SwitchSoundConfig) => {
-    if (!audioContextRef.current || !gainNodeRef.current || !isEnabled) return;
-
-    const audioContext = audioContextRef.current;
-    const currentTime = audioContext.currentTime;
-
-    // 클릭 소리 생성 (청축 등)
-    if (config.hasClick && config.clickFrequency > 0) {
-      const clickOscillator = audioContext.createOscillator();
-      const clickGain = audioContext.createGain();
-      
-      clickOscillator.connect(clickGain);
-      clickGain.connect(gainNodeRef.current);
-      
-      clickOscillator.frequency.setValueAtTime(config.clickFrequency, currentTime);
-      clickOscillator.type = 'square';
-      
-      // 클릭 소리 엔벨로프
-      clickGain.gain.setValueAtTime(0, currentTime);
-      clickGain.gain.linearRampToValueAtTime(config.volume * 0.7, currentTime + 0.005);
-      clickGain.gain.exponentialRampToValueAtTime(0.001, currentTime + config.clickDuration / 1000);
-      
-      clickOscillator.start(currentTime);
-      clickOscillator.stop(currentTime + config.clickDuration / 1000);
-    }
-
-    // 바닥에 닿는 소리 (thock)
-    const thockDelay = config.thockDelay / 1000;
-    const thockOscillator = audioContext.createOscillator();
-    const thockGain = audioContext.createGain();
-    const thockFilter = audioContext.createBiquadFilter();
-    
-    thockOscillator.connect(thockFilter);
-    thockFilter.connect(thockGain);
-    thockGain.connect(gainNodeRef.current);
-    
-    thockOscillator.frequency.setValueAtTime(config.thockFrequency, currentTime + thockDelay);
-    thockOscillator.type = 'sine';
-    
-    // 로우패스 필터로 더 자연스러운 소리
-    thockFilter.type = 'lowpass';
-    thockFilter.frequency.setValueAtTime(800, currentTime + thockDelay);
-    thockFilter.Q.setValueAtTime(2, currentTime + thockDelay);
-    
-    // Thock 소리 엔벨로프
-    thockGain.gain.setValueAtTime(0, currentTime + thockDelay);
-    thockGain.gain.linearRampToValueAtTime(config.volume, currentTime + thockDelay + 0.01);
-    thockGain.gain.exponentialRampToValueAtTime(0.001, currentTime + thockDelay + 0.15);
-    
-    thockOscillator.start(currentTime + thockDelay);
-    thockOscillator.stop(currentTime + thockDelay + 0.15);
-
-  }, [isEnabled]);
-
-  const playSound = useCallback(() => {
+  const playSound = useCallback((switchName?: string) => {
     if (!isEnabled) return;
     
-    const config = switchConfigs.find(s => s.name === selectedSwitch);
-    if (config) {
-      setIsPlaying(true);
-      generateKeySound(config);
-      setTimeout(() => setIsPlaying(false), 200);
+    const targetSwitch = switchName || selectedSwitch;
+    const audio = audioBuffersRef.current.get(targetSwitch);
+    
+    if (audio) {
+      try {
+        // 현재 재생 중인 오디오 정지 및 리셋
+        audio.pause();
+        audio.currentTime = 0;
+        
+        // 오디오 재생
+        audio.play().catch(error => {
+          console.warn('오디오 재생 실패:', error);
+        });
+        
+        setIsPlaying(true);
+        setTimeout(() => setIsPlaying(false), 200);
+      } catch (error) {
+        console.warn('사운드 재생 오류:', error);
+      }
     }
-  }, [selectedSwitch, generateKeySound, isEnabled]);
+  }, [selectedSwitch, isEnabled]);
 
   const handleSwitchChange = (switchName: string) => {
     setSelectedSwitch(switchName);
@@ -214,11 +124,22 @@ export function KeyboardSoundPlayer({
       onSwitchChange(switchName);
     }
     // 스위치 변경 시 즉시 소리 재생
-    const config = switchConfigs.find(s => s.name === switchName);
-    if (config) {
-      generateKeySound(config);
-    }
+    playSound(switchName);
   };
+
+  // 외부에서 키 입력 시 소리 재생하는 함수를 전역에 노출
+  useEffect(() => {
+    const handleKeyPress = () => {
+      playSound();
+    };
+
+    // 전역 이벤트 리스너로 키보드 입력 감지
+    window.addEventListener('keydown', handleKeyPress);
+    
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [playSound]);
 
   const currentConfig = switchConfigs.find(s => s.name === selectedSwitch) || switchConfigs[0];
 
@@ -292,7 +213,7 @@ export function KeyboardSoundPlayer({
       {/* 테스트 버튼 */}
       <div className="mb-6 text-center">
         <motion.button
-          onClick={playSound}
+          onClick={() => playSound()}
           disabled={!isEnabled}
           className={`px-8 py-3 rounded-lg font-semibold transition-all duration-200 ${
             isEnabled
@@ -309,7 +230,7 @@ export function KeyboardSoundPlayer({
       {/* 스위치 선택 */}
       <div>
         <h4 className="text-lg font-semibold text-white mb-4">스위치 선택</h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {switchConfigs.map((config) => (
             <motion.button
               key={config.name}
@@ -327,12 +248,7 @@ export function KeyboardSoundPlayer({
                 <span className="font-medium text-white text-sm">{config.displayName}</span>
               </div>
               <p className="text-gray-400 text-xs">{config.description}</p>
-              <div className="flex items-center mt-2 space-x-2">
-                {config.hasClick && (
-                  <span className="text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded">
-                    클릭
-                  </span>
-                )}
+              <div className="flex items-center mt-2">
                 <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">
                   볼륨 {Math.round(config.volume * 100)}%
                 </span>
@@ -348,3 +264,9 @@ export function KeyboardSoundPlayer({
     </motion.div>
   );
 }
+
+// 외부에서 사용할 수 있는 전역 사운드 함수
+export const playKeySoundGlobally = (switchType: string = 'cherry_blue') => {
+  const event = new CustomEvent('playKeySound', { detail: { switchType } });
+  window.dispatchEvent(event);
+};

@@ -120,8 +120,8 @@ export default function EnglishTypingPage() {
         </motion.div>
 
         {/* Difficulty Selection */}
-        <div className="mb-8 flex justify-center">
-          <div className="flex bg-gray-800 rounded-lg p-1">
+        <div className="mb-8 flex justify-center px-4">
+          <div className="flex bg-gray-800 rounded-lg p-1 w-full max-w-md sm:w-auto">
             {englishTexts.map((level) => (
               <button
                 key={level.level}
@@ -130,7 +130,7 @@ export default function EnglishTypingPage() {
                   setSelectedTextIndex(0);
                   setTestKey(prev => prev + 1);
                 }}
-                className={`px-6 py-2 rounded-md transition-colors ${
+                className={`flex-1 sm:flex-none px-3 sm:px-6 py-2 rounded-md transition-colors text-sm sm:text-base ${
                   selectedLevel === level.level
                     ? 'bg-blue-600 text-white'
                     : 'text-gray-400 hover:text-white'
@@ -147,34 +147,34 @@ export default function EnglishTypingPage() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-8"
+            className="mb-8 px-4"
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div className="bg-gray-800 p-6 rounded-lg text-center">
-                <div className="text-3xl font-bold text-blue-400">{averageWPM}</div>
-                <div className="text-gray-400">Average WPM</div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+              <div className="bg-gray-800 p-4 sm:p-6 rounded-lg text-center">
+                <div className="text-2xl sm:text-3xl font-bold text-blue-400">{averageWPM}</div>
+                <div className="text-gray-400 text-sm sm:text-base">Average WPM</div>
               </div>
-              <div className="bg-gray-800 p-6 rounded-lg text-center">
-                <div className="text-3xl font-bold text-green-400">{averageAccuracy}%</div>
-                <div className="text-gray-400">Average Accuracy</div>
+              <div className="bg-gray-800 p-4 sm:p-6 rounded-lg text-center">
+                <div className="text-2xl sm:text-3xl font-bold text-green-400">{averageAccuracy}%</div>
+                <div className="text-gray-400 text-sm sm:text-base">Average Accuracy</div>
               </div>
-              <div className="bg-gray-800 p-6 rounded-lg text-center">
-                <div className="text-3xl font-bold text-purple-400">{stats.length}</div>
-                <div className="text-gray-400">Tests Completed</div>
+              <div className="bg-gray-800 p-4 sm:p-6 rounded-lg text-center">
+                <div className="text-2xl sm:text-3xl font-bold text-purple-400">{stats.length}</div>
+                <div className="text-gray-400 text-sm sm:text-base">Tests Completed</div>
               </div>
             </div>
 
             {/* Performance Category */}
-            <div className="bg-gray-800 rounded-lg p-6 text-center">
-              <h3 className="text-lg font-semibold text-gray-300 mb-3">Your Typing Level</h3>
+            <div className="bg-gray-800 rounded-lg p-4 sm:p-6 text-center">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-300 mb-3">Your Typing Level</h3>
               {(() => {
                 const category = getWPMCategory(averageWPM);
                 return (
-                  <div className="flex items-center justify-center gap-4">
-                    <div className={`text-3xl font-bold ${category.color}`}>
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+                    <div className={`text-2xl sm:text-3xl font-bold ${category.color}`}>
                       {category.category}
                     </div>
-                    <div className="text-gray-400">
+                    <div className="text-gray-400 text-sm sm:text-base text-center">
                       {category.description}
                     </div>
                   </div>
@@ -188,15 +188,15 @@ export default function EnglishTypingPage() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-gray-800 rounded-lg p-8 mb-8"
+          className="bg-gray-800 rounded-lg p-4 sm:p-8 mb-8 mx-4"
         >
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-white">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-white text-center sm:text-left">
               {selectedLevel} Level
             </h2>
             <button
               onClick={selectNewText}
-              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+              className="w-full sm:w-auto px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base"
             >
               New Text
             </button>
@@ -216,18 +216,18 @@ export default function EnglishTypingPage() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-gray-800 rounded-lg p-8"
+            className="bg-gray-800 rounded-lg p-4 sm:p-8 mx-4"
           >
-            <h2 className="text-2xl font-bold text-white mb-6">Recent Results</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Recent Results</h2>
             <div className="overflow-x-auto">
-              <table className="w-full text-left">
+              <table className="w-full text-left min-w-[600px]">
                 <thead>
                   <tr className="border-b border-gray-700">
-                    <th className="py-3 px-4 text-gray-400">Time</th>
-                    <th className="py-3 px-4 text-gray-400">WPM</th>
-                    <th className="py-3 px-4 text-gray-400">Accuracy</th>
-                    <th className="py-3 px-4 text-gray-400">Duration</th>
-                    <th className="py-3 px-4 text-gray-400">Level</th>
+                    <th className="py-2 sm:py-3 px-2 sm:px-4 text-gray-400 text-xs sm:text-sm">Time</th>
+                    <th className="py-2 sm:py-3 px-2 sm:px-4 text-gray-400 text-xs sm:text-sm">WPM</th>
+                    <th className="py-2 sm:py-3 px-2 sm:px-4 text-gray-400 text-xs sm:text-sm">Accuracy</th>
+                    <th className="py-2 sm:py-3 px-2 sm:px-4 text-gray-400 text-xs sm:text-sm">Duration</th>
+                    <th className="py-2 sm:py-3 px-2 sm:px-4 text-gray-400 text-xs sm:text-sm">Level</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -235,19 +235,19 @@ export default function EnglishTypingPage() {
                     const category = getWPMCategory(stat.wpm);
                     return (
                       <tr key={index} className="border-b border-gray-700">
-                        <td className="py-3 px-4 text-gray-300">
+                        <td className="py-2 sm:py-3 px-2 sm:px-4 text-gray-300 text-xs sm:text-sm">
                           {new Date().toLocaleTimeString()}
                         </td>
-                        <td className="py-3 px-4 text-blue-400 font-semibold">
+                        <td className="py-2 sm:py-3 px-2 sm:px-4 text-blue-400 font-semibold text-xs sm:text-sm">
                           {stat.wpm}
                         </td>
-                        <td className="py-3 px-4 text-green-400 font-semibold">
+                        <td className="py-2 sm:py-3 px-2 sm:px-4 text-green-400 font-semibold text-xs sm:text-sm">
                           {stat.accuracy}%
                         </td>
-                        <td className="py-3 px-4 text-gray-300">
+                        <td className="py-2 sm:py-3 px-2 sm:px-4 text-gray-300 text-xs sm:text-sm">
                           {Math.floor(stat.timeElapsed)}s
                         </td>
-                        <td className={`py-3 px-4 font-semibold ${category.color}`}>
+                        <td className={`py-2 sm:py-3 px-2 sm:px-4 font-semibold text-xs sm:text-sm ${category.color}`}>
                           {category.category}
                         </td>
                       </tr>

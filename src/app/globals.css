@@ -249,3 +249,125 @@ code {
 .blog-content h6 + p {
   @apply mt-4;
 }
+
+/* 모바일 터치 최적화 */
+@media (max-width: 768px) {
+  /* 터치 타겟 최소 크기 (Apple HIG: 44px, Material: 48dp) */
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* 터치 시 하이라이트 제거 */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* 텍스트는 선택 가능 */
+  p,
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  div,
+  article,
+  section {
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+
+  /* 입력 요소는 선택 가능 */
+  input,
+  textarea {
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+
+  /* iOS Safari 줌 방지 */
+  input[type="search"],
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea {
+    font-size: 16px;
+  }
+
+  /* 스크롤 성능 향상 */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 터치 피드백 개선 */
+  button:active,
+  .touchable:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease-out;
+  }
+}
+
+/* 호버 효과는 마우스/트랙패드에서만 */
+@media (hover: hover) and (pointer: fine) {
+  button:hover,
+  a:hover,
+  .hover\\:bg-gray-700:hover,
+  .hover\\:bg-blue-700:hover,
+  .hover\\:text-blue-400:hover {
+    transition: all 0.2s ease-out;
+  }
+}
+
+/* 터치 디바이스에서 호버 효과 비활성화 */
+@media (hover: none) and (pointer: coarse) {
+  *:hover {
+    transition: none;
+  }
+}
+
+/* 텍스트 렌더링 최적화 */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* 스크롤바 커스터마이징 (모바일에서는 숨김) */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+}
+
+/* line-clamp 유틸리티 클래스 */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

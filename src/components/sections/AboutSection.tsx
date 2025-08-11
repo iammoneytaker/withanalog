@@ -37,26 +37,26 @@ export function AboutSection() {
   });
 
   return (
-    <section ref={ref} className="py-20 px-4 bg-gradient-to-b from-gray-900/50 to-transparent">
+    <section ref={ref} className="py-12 sm:py-16 lg:py-20 px-4 bg-gradient-to-b from-gray-900/50 to-transparent">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
             <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               왜 키보드에 주목하나요?
             </span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">
             키보드는 디지털과 현실을 잇는 가장 중요한 인터페이스입니다.
             <br />
             <span className="text-blue-400">전문적인 분석과 체험으로 최적의 키보드를 찾아보세요.</span>
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {reasons.map((reason, index) => (
             <motion.div
               key={index}
@@ -65,24 +65,24 @@ export function AboutSection() {
               transition={{ delay: index * 0.2, duration: 0.6 }}
               className="group relative"
             >
-              <div className="bg-gray-800/60 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 h-full hover:transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/10">
+              <div className="bg-gray-800/60 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 h-full hover:transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/10">
                 {/* 그라디언트 배경 */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${reason.gradient} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
                 
                 <div className="relative z-10">
-                  <div className={`text-6xl mb-6 text-center transform group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`text-4xl sm:text-5xl lg:text-6xl mb-4 sm:mb-6 text-center transform group-hover:scale-110 transition-transform duration-300`}>
                     {reason.icon}
                   </div>
                   
-                  <h3 className={`text-2xl font-bold mb-4 text-center bg-gradient-to-r ${reason.gradient} bg-clip-text text-transparent`}>
+                  <h3 className={`text-lg sm:text-xl lg:text-2xl font-bold mb-3 sm:mb-4 text-center bg-gradient-to-r ${reason.gradient} bg-clip-text text-transparent`}>
                     {reason.title}
                   </h3>
                   
-                  <p className="text-gray-300 leading-relaxed whitespace-pre-line text-center mb-6 text-sm">
+                  <p className="text-gray-300 leading-relaxed whitespace-pre-line text-center mb-4 sm:mb-6 text-xs sm:text-sm">
                     {reason.description}
                   </p>
                   
-                  <div className="space-y-2">
+                  <div className="space-y-1 sm:space-y-2">
                     {reason.details.map((detail, detailIndex) => (
                       <div key={detailIndex} className="flex items-center justify-center text-xs text-gray-400">
                         <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${reason.gradient} mr-2`}></div>

@@ -6,7 +6,7 @@ const nextConfig = {
     path: '/_next/image',
     loader: 'default',
     formats: ['image/webp'],
-    domains: ['jszchnsbkfvpczxypimw.supabase.co', 'images.unsplash.com'],
+    domains: ['jszchnsbkfvpczxypimw.supabase.co', 'images.unsplash.com', 'ae01.alicdn.com'],
   },
   // experimental: {
   //   appDir: true,  // This is deprecated in Next.js 14+

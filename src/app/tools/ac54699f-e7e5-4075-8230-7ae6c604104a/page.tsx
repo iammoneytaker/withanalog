@@ -9,6 +9,7 @@ interface ReactionResult {
   reactionTime: number;
   timestamp: number;
   isValid: boolean;
+  targetKey: string;
 }
 
 interface TestSession {
@@ -119,31 +120,31 @@ export default function KeyboardReactionTestPage() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-8 grid grid-cols-1 md:grid-cols-4 gap-4"
+            className="mb-8 grid grid-cols-2 md:grid-cols-4 gap-4 px-4"
           >
-            <div className="bg-gray-800 p-6 rounded-lg text-center">
-              <div className="text-3xl font-bold text-blue-400">
+            <div className="bg-gray-800 p-4 sm:p-6 rounded-lg text-center">
+              <div className="text-2xl sm:text-3xl font-bold text-blue-400">
                 {overallStats.averageReactionTime}ms
               </div>
-              <div className="text-gray-400">전체 평균</div>
+              <div className="text-gray-400 text-sm sm:text-base">전체 평균</div>
             </div>
-            <div className="bg-gray-800 p-6 rounded-lg text-center">
-              <div className="text-3xl font-bold text-green-400">
+            <div className="bg-gray-800 p-4 sm:p-6 rounded-lg text-center">
+              <div className="text-2xl sm:text-3xl font-bold text-green-400">
                 {overallStats.averageAccuracy}%
               </div>
-              <div className="text-gray-400">전체 정확도</div>
+              <div className="text-gray-400 text-sm sm:text-base">전체 정확도</div>
             </div>
-            <div className="bg-gray-800 p-6 rounded-lg text-center">
-              <div className="text-3xl font-bold text-purple-400">
+            <div className="bg-gray-800 p-4 sm:p-6 rounded-lg text-center">
+              <div className="text-2xl sm:text-3xl font-bold text-purple-400">
                 {overallStats.bestReactionTime}ms
               </div>
-              <div className="text-gray-400">최고 기록</div>
+              <div className="text-gray-400 text-sm sm:text-base">최고 기록</div>
             </div>
-            <div className="bg-gray-800 p-6 rounded-lg text-center">
-              <div className="text-3xl font-bold text-yellow-400">
+            <div className="bg-gray-800 p-4 sm:p-6 rounded-lg text-center">
+              <div className="text-2xl sm:text-3xl font-bold text-yellow-400">
                 {overallStats.totalTests}
               </div>
-              <div className="text-gray-400">총 테스트</div>
+              <div className="text-gray-400 text-sm sm:text-base">총 테스트</div>
             </div>
           </motion.div>
         )}
@@ -153,20 +154,20 @@ export default function KeyboardReactionTestPage() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-8 bg-gray-800 rounded-lg p-6"
+            className="mb-8 bg-gray-800 rounded-lg p-4 sm:p-6 mx-4"
           >
-            <h2 className="text-2xl font-bold text-white mb-4">성능 벤치마크</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-4">성능 벤치마크</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-lg font-semibold text-gray-300 mb-3">당신의 등급</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-gray-300 mb-3">당신의 등급</h3>
                 {(() => {
                   const benchmark = getBenchmarkCategory(overallStats.averageReactionTime);
                   return (
-                    <div className="flex items-center gap-4">
-                      <div className={`text-4xl font-bold ${benchmark.color}`}>
+                    <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+                      <div className={`text-3xl sm:text-4xl font-bold ${benchmark.color}`}>
                         {benchmark.category}
                       </div>
-                      <div className="text-gray-400">
+                      <div className="text-gray-400 text-sm sm:text-base text-center sm:text-left">
                         {benchmark.description}
                       </div>
                     </div>
@@ -174,8 +175,8 @@ export default function KeyboardReactionTestPage() {
                 })()}
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-300 mb-3">참고 기준</h3>
-                <div className="space-y-2 text-sm">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-300 mb-3">참고 기준</h3>
+                <div className="space-y-2 text-xs sm:text-sm">
                   <div className="flex justify-between">
                     <span className="text-purple-400">엘리트 (&lt;200ms)</span>
                     <span className="text-gray-400">e스포츠 프로게이머</span>
@@ -202,7 +203,7 @@ export default function KeyboardReactionTestPage() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-gray-800 rounded-lg p-8 mb-8"
+          className="bg-gray-800 rounded-lg p-4 sm:p-8 mb-8 mx-4"
         >
           {!isTestActive ? (
             <div className="text-center">
@@ -229,18 +230,18 @@ export default function KeyboardReactionTestPage() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-gray-800 rounded-lg p-8"
+            className="bg-gray-800 rounded-lg p-4 sm:p-8 mx-4"
           >
-            <h2 className="text-2xl font-bold text-white mb-6">최근 테스트 기록</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">최근 테스트 기록</h2>
             <div className="overflow-x-auto">
-              <table className="w-full text-left">
+              <table className="w-full text-left min-w-[600px]">
                 <thead>
                   <tr className="border-b border-gray-700">
-                    <th className="py-3 px-4 text-gray-400">시간</th>
-                    <th className="py-3 px-4 text-gray-400">평균 반응시간</th>
-                    <th className="py-3 px-4 text-gray-400">정확도</th>
-                    <th className="py-3 px-4 text-gray-400">유효/전체</th>
-                    <th className="py-3 px-4 text-gray-400">등급</th>
+                    <th className="py-2 sm:py-3 px-2 sm:px-4 text-gray-400 text-xs sm:text-sm">시간</th>
+                    <th className="py-2 sm:py-3 px-2 sm:px-4 text-gray-400 text-xs sm:text-sm">평균 반응시간</th>
+                    <th className="py-2 sm:py-3 px-2 sm:px-4 text-gray-400 text-xs sm:text-sm">정확도</th>
+                    <th className="py-2 sm:py-3 px-2 sm:px-4 text-gray-400 text-xs sm:text-sm">유효/전체</th>
+                    <th className="py-2 sm:py-3 px-2 sm:px-4 text-gray-400 text-xs sm:text-sm">등급</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -248,19 +249,19 @@ export default function KeyboardReactionTestPage() {
                     const benchmark = getBenchmarkCategory(session.averageReactionTime);
                     return (
                       <tr key={session.id} className="border-b border-gray-700">
-                        <td className="py-3 px-4 text-gray-300">
+                        <td className="py-2 sm:py-3 px-2 sm:px-4 text-gray-300 text-xs sm:text-sm">
                           {new Date(session.timestamp).toLocaleTimeString()}
                         </td>
-                        <td className="py-3 px-4 text-blue-400 font-semibold">
+                        <td className="py-2 sm:py-3 px-2 sm:px-4 text-blue-400 font-semibold text-xs sm:text-sm">
                           {session.averageReactionTime}ms
                         </td>
-                        <td className="py-3 px-4 text-green-400 font-semibold">
+                        <td className="py-2 sm:py-3 px-2 sm:px-4 text-green-400 font-semibold text-xs sm:text-sm">
                           {session.accuracy}%
                         </td>
-                        <td className="py-3 px-4 text-gray-300">
+                        <td className="py-2 sm:py-3 px-2 sm:px-4 text-gray-300 text-xs sm:text-sm">
                           {session.validResults}/{session.totalResults}
                         </td>
-                        <td className={`py-3 px-4 font-semibold ${benchmark.color}`}>
+                        <td className={`py-2 sm:py-3 px-2 sm:px-4 font-semibold text-xs sm:text-sm ${benchmark.color}`}>
                           {benchmark.category}
                         </td>
                       </tr>
