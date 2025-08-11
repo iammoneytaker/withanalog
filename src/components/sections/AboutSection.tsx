@@ -5,28 +5,28 @@ import { useInView } from 'react-intersection-observer';
 
 const reasons = [
   {
-    title: '키감의 예술',
+    title: '현실과 디지털의 가교',
     description:
-      "Cherry MX부터 Topre까지, 각 스위치마다 고유한 키감이 있습니다.\n청축의 클릭감, 적축의 부드러움, 무접점의 독특함.\n키보드는 단순한 도구가 아닌 감각의 예술품입니다.",
-    icon: '⌨️',
+      "키보드는 단순한 입력 도구가 아닙니다.\n당신의 생각과 창의력이 디지털 세상으로 전달되는 가장 중요한 매개체입니다.\n올바른 키보드 선택은 당신의 잠력을 극대화시켜줍니다.",
+    icon: '🌉',
     gradient: 'from-blue-400 to-cyan-400',
-    details: ['30+ 스위치 종류', '촉감 분석', '소음 측정']
+    details: ['인간-컴퓨터 인터페이스', '생산성 향상', '창의력 발현']
   },
   {
-    title: '성능의 극한',
+    title: '과학적 성능 분석',
     description:
-      '1ms 응답속도, N-Key Rollover, Anti-Ghosting.\n게이머든 프로그래머든, 최고의 성능을 위해서는\n올바른 키보드 선택이 필수입니다.',
-    icon: '⚡',
+      '감에 의존하지 않는 정확한 데이터로 최고의 키보드를 찾아드립니다.\n반응속도, 키감, 내구성까지 모든 요소를 측정하고 분석합니다.\n당신의 사용 패턴에 가장 적합한 선택을 도와드립니다.',
+    icon: '🔬',
     gradient: 'from-orange-400 to-red-400',
-    details: ['응답속도 테스트', 'APM 측정', '내구성 검증']
+    details: ['1ms 단위 정밀 측정', '데이터 기반 분석', '개인화된 추천']
   },
   {
-    title: '커스텀의 무한함',
+    title: '완벽한 사용자 경험',
     description:
-      '60%부터 Full Size까지, 핫스왑부터 가스켓 마운트까지.\nPBT 키캡, 알루미늄 케이스, 커스텀 스위치까지.\n나만의 키보드를 만들어보세요.',
-    icon: '🎨',
+      '초보부터 전문가까지, 모든 사용자가 만족할 수 있는 커스텀 경험을 제공합니다.\n실시간 피드백, 상세한 모니터링, 개인화된 추천까지\n키보드 여정의 모든 단계를 완벽하게 지원합니다.',
+    icon: '✨',
     gradient: 'from-purple-400 to-pink-400',
-    details: ['커스텀 빌드 가이드', '호환성 체크', '부품 추천']
+    details: ['직관적인 UI/UX', '실시간 피드백', '커뮤니티 지원']
   },
 ];
 
@@ -46,13 +46,15 @@ export function AboutSection() {
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
             <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              왜 키보드에 주목하나요?
+              WithAnalog이 특별한 이유
             </span>
           </h2>
-          <p className="text-sm sm:text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">
-            키보드는 디지털과 현실을 잇는 가장 중요한 인터페이스입니다.
+          <p className="text-sm sm:text-lg lg:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed px-4">
+            "키보드는 현실과 디지털을 연결해주는 훌륭한 도구"라는 철학 하에
             <br />
-            <span className="text-blue-400">전문적인 분석과 체험으로 최적의 키보드를 찾아보세요.</span>
+            <span className="text-blue-400 font-medium">과학적 접근과 사용자 경험을 모두 고려한 완벽한 플랫폼</span>을 만들었습니다.
+            <br />
+            <span className="text-purple-400">당신의 키보드 여정을 더욱 의미있고 정확하게 만들어 드립니다.</span>
           </p>
         </motion.div>
 
@@ -95,6 +97,33 @@ export function AboutSection() {
             </motion.div>
           ))}
         </div>
+        
+        {/* 진솔한 메시지 */}
+        <motion.div
+          className="text-center mt-12 sm:mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.8, duration: 0.6 }}
+        >
+          <div className="bg-gradient-to-r from-gray-800/50 to-gray-700/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-gray-600/50">
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-4">
+              🌱 키보드 초보자가 만든 진솔한 플랫폼
+            </h3>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+              저도 키보드에 대해 공부하면서, 같은 고민을 하는 분들에게
+              <br />
+              <span className="text-blue-400 font-medium">조금이라도 도움이 되었으면 하는 마음</span>으로 만들었습니다.
+              <br />
+              <span className="text-purple-400">함께 배워가며 더 나은 키보드 경험을 찾아가요!</span>
+            </p>
+            
+            <div className="mt-6 pt-6 border-t border-gray-700/50">
+              <p className="text-xs text-gray-500">
+                💡 "키린이"부터 "키보드 덕후"까지, 모든 분들의 키보드 여정을 응원합니다
+              </p>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
