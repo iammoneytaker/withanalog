@@ -45,19 +45,13 @@ export default async function BlogPage() {
 
             <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 px-4">
               <span className="px-3 sm:px-4 py-1 sm:py-2 bg-blue-500/20 border border-blue-500/30 rounded-full text-blue-300 text-xs sm:text-sm">
-                🎯 키보드 리뷰
+                🎯 일상
               </span>
               <span className="px-3 sm:px-4 py-1 sm:py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-300 text-xs sm:text-sm">
-                ⚙️ 스위치 가이드
+                ⚙️ 키보드 공부 내용
               </span>
               <span className="px-3 sm:px-4 py-1 sm:py-2 bg-purple-500/20 border border-purple-500/30 rounded-full text-purple-300 text-xs sm:text-sm">
-                🎨 커스텀 빌드
-              </span>
-              <span className="px-3 sm:px-4 py-1 sm:py-2 bg-orange-500/20 border border-orange-500/30 rounded-full text-orange-300 text-xs sm:text-sm">
-                ⚡ 타이핑 팁
-              </span>
-              <span className="px-3 sm:px-4 py-1 sm:py-2 bg-red-500/20 border border-red-500/30 rounded-full text-red-300 text-xs sm:text-sm">
-                🎮 게이밍 설정
+                🎨 키보드 개인 후기
               </span>
             </div>
           </div>
