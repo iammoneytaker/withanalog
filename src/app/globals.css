@@ -371,3 +371,17 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* 헤더가 fixed이므로 모든 페이지 콘텐츠에 기본 padding */
+main > section:not([class*="min-h-screen"]),
+main > div:not([class*="hero"]) {
+  padding-top: 4rem; /* 64px - 헤더 높이 */
+}
+
+/* 모바일에서 헤더 높이 조정 */
+@media (max-width: 768px) {
+  main > section:not([class*="min-h-screen"]),
+  main > div:not([class*="hero"]) {
+    padding-top: 5rem; /* 80px - 모바일 헤더 높이 */
+  }
+}

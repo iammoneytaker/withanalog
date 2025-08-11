@@ -13,7 +13,7 @@ export function HeroSection() {
   return (
     <section
       ref={ref}
-      className="h-screen flex flex-col items-center justify-center px-4 relative"
+      className="min-h-screen pt-20 md:pt-24 flex flex-col items-center justify-center px-4 relative"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}

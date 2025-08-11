@@ -335,11 +335,7 @@ export default function RecommendationsPage() {
 
   return (
     <>
-      <div className="max-w-6xl mx-auto py-8 sm:py-12 md:py-16 px-4">
-        <div className="bg-yellow-300 text-black text-center p-3 rounded-lg text-sm font-semibold mb-6">
-          해당 링크로 구매시 소정의 수수료를 받습니다 (쿠팡, 네이버
-          스마트스토어, AliExpress)
-        </div>
+      <div className="max-w-6xl mx-auto py-8 sm:py-12 md:py-16 px-4 mt-12 sm:mt-10"> {/* 배너 위한 추가 여백 */}
 
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-red-400 via-orange-500 to-yellow-400 bg-clip-text text-transparent px-4">

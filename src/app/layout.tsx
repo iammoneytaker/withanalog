@@ -1,9 +1,11 @@
 import { Metadata } from 'next';
 import './globals.css';
+import '../styles/marquee.css';
 import Header from '../components/Header';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { GlobalKeyboardSound } from '@/components/GlobalKeyboardSound';
 import { KeyboardSoundController } from '@/components/KeyboardSoundController';
+import { AffiliateNotice } from '@/components/AffiliateNotice';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://withanalog.com'),
@@ -53,8 +55,11 @@ export default function RootLayout({
       <body className="bg-gray-900 text-gray-300">
         <GlobalKeyboardSound />
         <KeyboardSoundController />
+        <AffiliateNotice />
         <Header />
-        {children}
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   );

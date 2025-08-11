@@ -1,0 +1,43 @@
+/* 좌측으로 움직이는 마키 애니메이션 */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 15s linear infinite;
+}
+
+/* 호버시 일시정지 */
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* 부드러운 그라디언트 효과 */
+.marquee-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(to right, rgba(250, 204, 21, 1), rgba(250, 204, 21, 0));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.marquee-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(to left, rgba(250, 204, 21, 1), rgba(250, 204, 21, 0));
+  z-index: 1;
+  pointer-events: none;
+}
