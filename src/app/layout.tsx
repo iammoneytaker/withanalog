@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: 'WithAnalog - 키보드와 타이핑의 새로운 경험',
   },
   description: '키보드 성능 테스트, 타이핑 연습, 반응속도 측정까지. 디지털과 현실을 잇는 키보드 전문 플랫폼',
-  keywords: ['키보드 테스트', '키보드 성능', '타이핑 연습', '한글 타자', '영문 타자', 'WPM', '반응속도', '키보드 분석', 'keyboard test', 'typing test'],
+  keywords: ['키보드 테스트', '키보드 성능', '타이핑 연습', '타자 연습', '한글 타자', '영문 타자', 'WPM 측정', '타자 속도', '키보드 타자 연습', '반응속도', '키보드 분석', 'keyboard test', 'typing test', 'typing practice'],
   openGraph: {
     title: 'WithAnalog - 키보드와 타이핑의 새로운 경험',
     description: '키보드 성능 테스트, 타이핑 연습, 반응속도 측정까지. 디지털과 현실을 잇는 키보드 전문 플랫폼',

@@ -35,6 +35,12 @@ export default function Header() {
             도구
           </Link>
           <Link
+            href="/typing-practice"
+            className="text-white hover:text-blue-400 transition-colors"
+          >
+            타자 연습
+          </Link>
+          <Link
             href="/community"
             className="text-white hover:text-blue-400 transition-colors"
           >
@@ -108,6 +114,13 @@ export default function Header() {
             onClick={closeMenu}
           >
             🔧 도구
+          </Link>
+          <Link
+            href="/typing-practice"
+            className="block px-3 py-2 text-white hover:text-blue-400 hover:bg-gray-800/50 rounded-lg transition-colors"
+            onClick={closeMenu}
+          >
+            ⌨️ 타자 연습
           </Link>
           <Link
             href="/community"

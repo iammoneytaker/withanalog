@@ -8,6 +8,15 @@ export default function ToolsPage() {
   // 웹 도구 데이터
   const webTools = [
     {
+      id: 'typing-practice',
+      title: '키보드 타자 연습',
+      description: '실시간 WPM 측정과 정확도 분석으로 체계적인 타자 실력 향상, 새 키보드 적응에 최적',
+      icon: '⌨️',
+      category: '타이핑 연습',
+      iconBg: 'from-green-400 to-emerald-600',
+      type: 'web' as const,
+    },
+    {
       id: 'keyboard-performance-test',
       title: '키보드 성능 테스트',
       description: '텐키리스/풀사이즈 레이아웃으로 APM/CPS 정확 측정, 게이머 필수 도구',
