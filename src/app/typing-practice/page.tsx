@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import Head from 'next/head';
 
 const sampleTexts = [
   '키보드 타자 연습은 정확성과 속도를 향상시키는 데 중요합니다. 매일 꾸준히 연습하면 실력이 늘어납니다.',
