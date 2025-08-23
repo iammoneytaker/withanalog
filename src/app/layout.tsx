@@ -6,6 +6,8 @@ import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { GlobalKeyboardSound } from '@/components/GlobalKeyboardSound';
 import { KeyboardSoundController } from '@/components/KeyboardSoundController';
 import { AffiliateNotice } from '@/components/AffiliateNotice';
+import { ThemeProvider } from '@/components/ThemeProvider';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://withanalog.com'),
@@ -54,13 +56,16 @@ export default function RootLayout({
         <GoogleAnalytics />
       </head>
       <body className="bg-gray-900 text-gray-300">
-        <GlobalKeyboardSound />
-        <KeyboardSoundController />
-        <AffiliateNotice />
-        <Header />
-        <main>
-          {children}
-        </main>
+        <ThemeProvider>
+          <GlobalKeyboardSound />
+          <KeyboardSoundController />
+          <ThemeToggle />
+          <AffiliateNotice />
+          <Header />
+          <main>
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );

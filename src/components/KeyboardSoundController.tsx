@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useKeyboardSoundStore } from './GlobalKeyboardSound';
+import { usePathname } from 'next/navigation';
 
 const switchOptions = [
   { value: 'cherry_blue', name: 'Cherry MX Blue (청축)', color: 'bg-blue-500', description: '실제 청축 타건음' },
@@ -13,6 +14,13 @@ const switchOptions = [
 export function KeyboardSoundController() {
   const [isOpen, setIsOpen] = useState(false);
   const { isEnabled, volume, selectedSwitch, setEnabled, setVolume, setSelectedSwitch } = useKeyboardSoundStore();
+  const pathname = usePathname();
+
+  // 특정 페이지에서는 키보드 사운드 UI를 숨김
+  const hideOnPages = ['/household-items', '/recommendations'];
+  if (hideOnPages.includes(pathname)) {
+    return null;
+  }
 
   const currentSwitch = switchOptions.find(s => s.value === selectedSwitch) || switchOptions[0];
 

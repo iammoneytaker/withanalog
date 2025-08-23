@@ -5,8 +5,8 @@ import { usePathname } from 'next/navigation';
 export function AffiliateNotice() {
   const pathname = usePathname();
   
-  // 키보드 추천 페이지에서만 표시
-  if (pathname !== '/recommendations') {
+  // 키보드 추천 페이지와 가구 추천 페이지에서만 표시
+  if (pathname !== '/recommendations' && pathname !== '/household-items') {
     return null;
   }
 

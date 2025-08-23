@@ -24,10 +24,20 @@ export function ExternalLinkButton({ url, label, platform, className }: External
     }
   };
 
+  const isMobile = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  };
+
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     
-    // 1차: 일반 window.open 시도
+    // 모바일에서는 같은 탭에서 이동 (더 나은 UX)
+    if (isMobile()) {
+      window.location.href = url;
+      return;
+    }
+    
+    // 데스크탑에서는 새 탭에서 열기
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
     
     // 팝업이 차단된 경우 대안 제시
