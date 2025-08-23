@@ -17,27 +17,22 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // 로컬스토리지에서 테마 가져오기
     const savedTheme = localStorage.getItem('theme') as Theme;
-    console.log('Saved theme:', savedTheme);
     if (savedTheme) {
       setTheme(savedTheme);
       document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-      console.log('Applied saved theme:', savedTheme);
     } else {
       // 시스템 테마 감지
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       setTheme(prefersDark ? 'dark' : 'light');
       document.documentElement.classList.toggle('dark', prefersDark);
-      console.log('Applied system theme:', prefersDark ? 'dark' : 'light');
     }
   }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
-    console.log('Toggling theme from', theme, 'to', newTheme);
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
-    console.log('HTML class list after toggle:', document.documentElement.className);
   };
 
   return (

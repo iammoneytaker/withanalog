@@ -7,9 +7,6 @@ export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
   const pathname = usePathname();
 
-  console.log('ThemeToggle - Current pathname:', pathname);
-  console.log('ThemeToggle - Current theme:', theme);
-
   // 자취템 추천 페이지에서만 표시
   if (pathname !== '/household-items') {
     return null;

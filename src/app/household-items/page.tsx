@@ -55,24 +55,18 @@ export default function HouseholdItemsPage() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleExpand = (itemId: string) => {
-    console.log('Toggling expand for item:', itemId);
-    console.log('Current expanded items:', Array.from(expandedItems));
     setExpandedItems((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(itemId)) {
         newSet.delete(itemId);
-        console.log('Removed item from expanded');
       } else {
         newSet.add(itemId);
-        console.log('Added item to expanded');
       }
-      console.log('New expanded items:', Array.from(newSet));
       return newSet;
     });
   };
 
   const toggleDarkMode = () => {
-    console.log('Toggling dark mode from:', isDarkMode, 'to:', !isDarkMode);
     setIsDarkMode(!isDarkMode);
   };
 
@@ -84,10 +78,7 @@ export default function HouseholdItemsPage() {
     >
       {/* Theme Toggle Button */}
       <button
-        onClick={(e) => {
-          console.log('Dark mode button clicked!');
-          toggleDarkMode();
-        }}
+        onClick={toggleDarkMode}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-xl flex items-center justify-center hover:scale-110 transition-all border-2"
         style={{
           backgroundColor: isDarkMode ? '#f3f4f6' : '#1f2937',
@@ -253,7 +244,6 @@ export default function HouseholdItemsPage() {
                   <button
                     onClick={(e) => {
                       e.preventDefault();
-                      console.log('Button clicked for item:', item.id);
                       toggleExpand(item.id);
                     }}
                     className={`w-full text-sm py-3 rounded-lg transition-colors font-semibold ${
