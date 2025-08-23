@@ -119,9 +119,6 @@ export default function HouseholdItemsPage() {
             💡 1인 가구 자취러들을 위한 필수템아님. <br />
             그냥 필요한 사람이 구매하길 바랍니다.
           </p>
-          <p className="text-xs mt-2 opacity-50">
-            디버그: 다크모드 = {isDarkMode ? '활성' : '비활성'} | 확장된 아이템 = {expandedItems.size}개
-          </p>
         </div>
 
         {/* Instagram Style Grid */}
