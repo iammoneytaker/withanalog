@@ -48,6 +48,27 @@ const householdItems: HouseholdItem[] = [
     category: '생활용품',
     personalRecommendation: '태양을 피하고 싶었어~',
   },
+  {
+    id: '2',
+    name: '하포스 침대',
+    shortDescription: '가성비 짱 침대',
+    fullDescription:
+      '퀸 사이즈는 생각보다 무거워서 여성분들이라면 혼자 옮기기 힘들 수 있습니다. 다만, 발통 설치는 쉽게 할 수 있고 조립 자체는 쉽습니다. 만약 구매하신다면 발통 19CM 추천드릴게요. 아래에 수납용으로 활용할 수 있으니까요. 그리고 85-87KG인 제가 뛰어도 상관 없을 정도로 튼튼합니다.',
+    imageUrl:
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/IMG_3764.JPG',
+    affiliateLinks: [
+      {
+        platform: 'coupang',
+        url: 'https://link.coupang.com/a/cMsMXn',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '10만원대',
+    originalPrice: '11만원~10만원(쿠폰차이)',
+    tags: ['퀸사이즈', '지정일설치'],
+    category: '가구',
+    personalRecommendation: '돗자리를 벗어나게 해준 침대야 고마워',
+  },
 ];
 
 export default function HouseholdItemsPage() {
