@@ -69,6 +69,70 @@ const householdItems: HouseholdItem[] = [
     category: '가구',
     personalRecommendation: '돗자리를 벗어나게 해준 침대야 고마워',
   },
+  {
+    id: '3',
+    name: '리시스커스텀 베이직 1400X800',
+    shortDescription: '내 맘에 들어온 책상',
+    fullDescription:
+      '집에서 작업하시는 분들에게 추천드려요. 또한 책상을 넓게 쓰고 싶고 이쁜 디자인 좋아하시면 마음에 드실거에요. 제가 책상을 쿵쿵쳐도 괜찮을만큼 탄탄합니다. 모니터암을 연결할 수 있게 책상 틀 구조도 좋게 되었어요. 다만, 피스 박는거 어려우시면 조립은 조금 힘들 수 있어요. 조립하고나면 짱짱 좋아요~',
+    imageUrl:
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/IMG_3856.JPG',
+    affiliateLinks: [
+      {
+        platform: 'naver',
+        url: 'https://naver.me/II4fI6fH',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '11만원대',
+    originalPrice: '11만원~12만원(쿠폰차이)',
+    tags: ['1400X800', '지정일설치'],
+    category: '가구',
+    personalRecommendation: '바닥에서 밥 먹는거 벗어나게 해줘서 고마워!',
+  },
+  {
+    id: '4',
+    name: '카멜 싱글 모니터암 CA1',
+    shortDescription: '내 목을 지켜주는 아이',
+    fullDescription:
+      '360도 회전되는 모니터암, 27인치까지라고 나와있는데, 제가 사용하는 28인치 모니터도 조립이 가능합니다! 틸트 기능도 있어서 위 아래로도 모니터 이동도 가능합니다. ',
+    imageUrl:
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/IMG_3857.jpg',
+    affiliateLinks: [
+      {
+        platform: 'coupang',
+        url: 'https://link.coupang.com/a/cMHd3V',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '2만원대',
+    originalPrice: '2만6천원(와우할인)',
+    tags: ['360도 회전', '틸트 상하 움직임'],
+    category: 'IT제품',
+    personalRecommendation:
+      '과장 조금 하면 이거 없으면 모니터 보기 힘들 지경..',
+  },
+  {
+    id: '5',
+    name: '한성 무접점키보드(GK868B)',
+    shortDescription: '내 손목을 지켜주는 아이',
+    fullDescription:
+      '3년, 하루 8시간 매일 함께하던 녀석이라 소중한 아이입니다. 키보드를 잘 모를 때 샀지만 매일 사무실에서 치더라도 혼나지 않았으며 손에 피로감이 덜했어요. 무접점이라 소리는 조용하며 타건감은 도각도각은 아니지만 부드럽게 눌리며 굉장히 좋습니다.',
+    imageUrl:
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/SE-b7e1d2ff-8c4d-4b86-9a2e-9451e7a055ff.jpg',
+    affiliateLinks: [
+      {
+        platform: 'naver',
+        url: 'https://naver.me/FnVmBcwW',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '14만원대',
+    originalPrice: '13만9천원',
+    tags: ['무접점 기분좋음', '피로감 덜한 35g'],
+    category: 'IT제품',
+    personalRecommendation: '나랑 3년 넘게 8시간씩 함께한 녀석..',
+  },
 ];
 
 export default function HouseholdItemsPage() {
