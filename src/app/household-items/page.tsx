@@ -129,7 +129,7 @@ const householdItems: HouseholdItem[] = [
     ],
     priceRange: '14만원대',
     originalPrice: '13만9천원',
-    tags: ['무접점 기분좋음', '피로감 덜한 35g'],
+    tags: ['무접점 기분좋음', '텐키리스'],
     category: 'IT제품',
     personalRecommendation: '나랑 3년 넘게 8시간씩 함께한 녀석..',
   },
