@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { ExternalLinkButton } from '@/components/ExternalLinkButton';
 
+type CategoryType = '실용성' | '가성비' | '디자인';
+
 interface HouseholdItem {
   id: string;
   name: string;
@@ -20,6 +22,7 @@ interface HouseholdItem {
   discount?: string;
   tags: string[];
   category: string;
+  categoryType: CategoryType;
   personalRecommendation: string;
   isHot?: boolean;
   isSale?: boolean;
@@ -46,6 +49,7 @@ const householdItems: HouseholdItem[] = [
     originalPrice: '8,800원',
     tags: ['커튼브라켓', '못없이'],
     category: '생활용품',
+    categoryType: '가성비',
     personalRecommendation: '태양을 피하고 싶었어~',
   },
   {
@@ -67,6 +71,7 @@ const householdItems: HouseholdItem[] = [
     originalPrice: '11만원~10만원(쿠폰차이)',
     tags: ['퀸사이즈', '지정일설치'],
     category: '가구',
+    categoryType: '가성비',
     personalRecommendation: '돗자리를 벗어나게 해준 침대야 고마워',
   },
   {
@@ -88,6 +93,7 @@ const householdItems: HouseholdItem[] = [
     originalPrice: '11만원~12만원(쿠폰차이)',
     tags: ['1400X800', '지정일설치'],
     category: '가구',
+    categoryType: '가성비',
     personalRecommendation: '바닥에서 밥 먹는거 벗어나게 해줘서 고마워!',
   },
   {
@@ -109,6 +115,7 @@ const householdItems: HouseholdItem[] = [
     originalPrice: '2만6천원(와우할인)',
     tags: ['360도 회전', '틸트 상하 움직임'],
     category: 'IT제품',
+    categoryType: '가성비',
     personalRecommendation:
       '과장 조금 하면 이거 없으면 모니터 보기 힘들 지경..',
   },
@@ -131,13 +138,45 @@ const householdItems: HouseholdItem[] = [
     originalPrice: '13만9천원',
     tags: ['무접점 기분좋음', '텐키리스'],
     category: 'IT제품',
+    categoryType: '디자인',
     personalRecommendation: '나랑 3년 넘게 8시간씩 함께한 녀석..',
   },
+  {
+    id: '6',
+    name: '가구레시피 국내생산 조립식 스마트 렌지대 선반',
+    shortDescription: '정리 스트레스 막아준 아이',
+    fullDescription:
+      '선반이 필요한데 저처럼 밥솥이나 커피머신기 자주 사용하는 분들이라면 실용적이라고 느끼실 것 같아요. 조립의 난이도는 정말 간단했습니다.(개인적인 경험이므로 사람마다 다르겠지만 저는 10분-30분 예상됩니다) 지금은 만족하며 잘 쓰고 있어요. 아마 화장대로도 활용이 가능할 것 같긴 하지만, 저는 화장을 하지 않기 때문에 밥솥장으로 쓰고 있답니다!',
+    imageUrl:
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/da.png',
+    affiliateLinks: [
+      {
+        platform: 'coupang',
+        url: 'https://link.coupang.com/a/cM1Zhl',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '5만원대',
+    originalPrice: '5만2천9백원',
+    tags: ['슬라이딩, 밥솥에 좋음'],
+    category: '가구',
+    categoryType: '실용성',
+    personalRecommendation: '우리 집에서 정리를 제일 잘하는 녀석',
+  },
+];
+
+const categories: { id: CategoryType; label: string; icon: string }[] = [
+  { id: '가성비', label: '가성비', icon: '💰' },
+  { id: '실용성', label: '실용성', icon: '🔧' },
+  { id: '디자인', label: '디자인', icon: '🎨' },
 ];
 
 export default function HouseholdItemsPage() {
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<
+    CategoryType | 'all'
+  >('all');
 
   const toggleExpand = (itemId: string) => {
     setExpandedItems((prev) => {
@@ -155,16 +194,30 @@ export default function HouseholdItemsPage() {
     setIsDarkMode(!isDarkMode);
   };
 
+  const filteredItems =
+    selectedCategory === 'all'
+      ? householdItems
+      : householdItems.filter((item) => item.categoryType === selectedCategory);
+
   return (
     <div
       className={`min-h-screen transition-colors ${
         isDarkMode ? 'bg-gray-900' : 'bg-white'
       }`}
     >
+      <style jsx>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
       {/* Theme Toggle Button */}
       <button
         onClick={toggleDarkMode}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-xl flex items-center justify-center hover:scale-110 transition-all border-2"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-xl flex items-center justify-center hover:scale-110 transition-all border-2"
         style={{
           backgroundColor: isDarkMode ? '#f3f4f6' : '#1f2937',
           color: isDarkMode ? '#1f2937' : '#f3f4f6',
@@ -173,7 +226,11 @@ export default function HouseholdItemsPage() {
         aria-label="테마 변경"
       >
         {isDarkMode ? (
-          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <svg
+            className="w-5 h-5 sm:w-6 sm:h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
             <path
               fillRule="evenodd"
               d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
@@ -181,7 +238,11 @@ export default function HouseholdItemsPage() {
             />
           </svg>
         ) : (
-          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <svg
+            className="w-5 h-5 sm:w-6 sm:h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
           </svg>
         )}
@@ -206,9 +267,46 @@ export default function HouseholdItemsPage() {
           </p>
         </div>
 
+        {/* Category Tabs - Mobile Optimized */}
+        <div className="mb-6 overflow-x-auto scrollbar-hide">
+          <div className="flex gap-2 min-w-max px-2">
+            <button
+              onClick={() => setSelectedCategory('all')}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
+                selectedCategory === 'all'
+                  ? isDarkMode
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-blue-500 text-white'
+                  : isDarkMode
+                  ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              }`}
+            >
+              전체보기
+            </button>
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
+                  selectedCategory === category.id
+                    ? isDarkMode
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-blue-500 text-white'
+                    : isDarkMode
+                    ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                {category.icon} {category.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Instagram Style Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-          {householdItems.map((item) => (
+          {filteredItems.map((item) => (
             <div
               key={item.id}
               className={`relative rounded-xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-all ${
@@ -253,11 +351,11 @@ export default function HouseholdItemsPage() {
 
                 {/* Price Info */}
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-lg font-bold text-green-400">
+                  <span className="text-sm sm:text-lg font-bold text-green-400">
                     {item.priceRange}
                   </span>
                   {item.discount && (
-                    <span className="text-xs text-red-400 font-semibold">
+                    <span className="text-[10px] sm:text-xs text-red-400 font-semibold">
                       {item.discount} ↓
                     </span>
                   )}
@@ -265,7 +363,7 @@ export default function HouseholdItemsPage() {
 
                 {/* Short Description */}
                 <p
-                  className={`text-xs mb-2 line-clamp-2 ${
+                  className={`text-[10px] sm:text-xs mb-2 line-clamp-2 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-600'
                   }`}
                 >
@@ -277,7 +375,7 @@ export default function HouseholdItemsPage() {
                   {item.tags.slice(0, 2).map((tag) => (
                     <span
                       key={tag}
-                      className={`text-xs px-2 py-0.5 rounded-full ${
+                      className={`text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full ${
                         isDarkMode
                           ? 'bg-gray-700 text-gray-300'
                           : 'bg-gray-200 text-gray-700'
@@ -296,14 +394,14 @@ export default function HouseholdItemsPage() {
                     }`}
                   >
                     <p
-                      className={`text-xs mb-2 ${
+                      className={`text-[11px] sm:text-xs mb-2 ${
                         isDarkMode ? 'text-gray-200' : 'text-gray-700'
                       }`}
                     >
                       💬 {item.fullDescription}
                     </p>
                     <p
-                      className={`text-xs font-semibold ${
+                      className={`text-[11px] sm:text-xs font-semibold ${
                         isDarkMode ? 'text-blue-300' : 'text-blue-600'
                       }`}
                     >
@@ -328,13 +426,13 @@ export default function HouseholdItemsPage() {
                       e.preventDefault();
                       toggleExpand(item.id);
                     }}
-                    className={`w-full text-sm py-3 rounded-lg transition-colors font-semibold ${
+                    className={`w-full text-xs sm:text-sm py-2 sm:py-3 rounded-lg transition-colors font-semibold ${
                       isDarkMode
                         ? 'bg-blue-600 hover:bg-blue-700 text-white'
                         : 'bg-blue-500 hover:bg-blue-600 text-white'
                     }`}
                   >
-                    {expandedItems.has(item.id) ? '❌ 접기' : '📝 자세히 보기'}
+                    {expandedItems.has(item.id) ? '접기' : '자세히 보기'}
                   </button>
 
                   <ExternalLinkButton
@@ -351,21 +449,21 @@ export default function HouseholdItemsPage() {
 
         {/* Bottom Notice */}
         <div
-          className={`mt-12 p-4 rounded-lg text-center ${
+          className={`mt-8 sm:mt-12 p-3 sm:p-4 rounded-lg text-center ${
             isDarkMode
               ? 'bg-blue-900/20 border border-blue-500/30'
               : 'bg-blue-100 border border-blue-300'
           }`}
         >
           <p
-            className={`text-sm ${
+            className={`text-xs sm:text-sm ${
               isDarkMode ? 'text-blue-300' : 'text-blue-700'
             }`}
           >
             💡 모든 제품은 제가 직접 사용해보고 추천드리는 제품입니다
           </p>
           <p
-            className={`text-xs mt-1 ${
+            className={`text-[10px] sm:text-xs mt-1 ${
               isDarkMode ? 'text-gray-400' : 'text-gray-600'
             }`}
           >
