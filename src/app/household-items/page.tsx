@@ -235,6 +235,7 @@ const categories: { id: CategoryType; label: string; icon: string }[] = [
   { id: '가성비', label: '가성비', icon: '💰' },
   { id: '실용성', label: '실용성', icon: '🔧' },
   { id: '디자인', label: '디자인', icon: '🎨' },
+  { id: '호기심', label: '호기심', icon: '🤔' },
 ];
 
 export default function HouseholdItemsPage() {
@@ -330,7 +331,7 @@ export default function HouseholdItemsPage() {
               isDarkMode ? 'text-white' : 'text-gray-900'
             }`}
           >
-            우리집에 있는 가구
+            취향에 맞다면..
           </h1>
           <p
             className={`text-sm ${
