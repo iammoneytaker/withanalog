@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { ExternalLinkButton } from '@/components/ExternalLinkButton';
 
-type CategoryType = '실용성' | '가성비' | '디자인';
+type CategoryType = '실용성' | '가성비' | '디자인' | '호기심';
 
 interface HouseholdItem {
   id: string;
@@ -76,7 +76,7 @@ const householdItems: HouseholdItem[] = [
   },
   {
     id: '3',
-    name: '리시스커스텀 베이직 1400X800',
+    name: '리시스커스텀 베이직 1400X800 책상',
     shortDescription: '내 맘에 들어온 책상',
     fullDescription:
       '집에서 작업하시는 분들에게 추천드려요. 또한 책상을 넓게 쓰고 싶고 이쁜 디자인 좋아하시면 마음에 드실거에요. 제가 책상을 쿵쿵쳐도 괜찮을만큼 탄탄합니다. 모니터암을 연결할 수 있게 책상 틀 구조도 좋게 되었어요. 다만, 피스 박는거 어려우시면 조립은 조금 힘들 수 있어요. 조립하고나면 짱짱 좋아요~',
@@ -163,6 +163,72 @@ const householdItems: HouseholdItem[] = [
     categoryType: '실용성',
     personalRecommendation: '우리 집에서 정리를 제일 잘하는 녀석',
   },
+  {
+    id: '7',
+    name: '자동차 마운트 전기 진공 마그네틱 홀더 아이폰(흡착식)',
+    shortDescription: '딱 붙여서 사용 가능한 만능 홀더, 촬영용으로 딱',
+    fullDescription:
+      '흡착 방식이라 마음에 들었고, 광고를 보고 될까? 하며 제일 저렴한 제품을 구매한건데 되서 깜짝 놀란 제품입니다. 타일, 냉장고 등 다 잘 붙는데 벽지나 나무는 안 붙으니 이 점 유의해주세요. 아마 차량에는 잘 붙을 것 같아요. 소재에 따라 다르다는 점 유의해주세요!',
+    imageUrl:
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/IMG_4016.jpg',
+    affiliateLinks: [
+      {
+        platform: 'aliexpress',
+        url: 'https://s.click.aliexpress.com/e/_on5Wo73',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '2-3천원대',
+    originalPrice: '4천원',
+    tags: ['촬영용', '네비용', '이게되네'],
+    category: '생활용품',
+    categoryType: '호기심',
+    personalRecommendation: '필요한 경우라면 강추 아니면 안추',
+  },
+  {
+    id: '8',
+    name: '자동 감지 쓰레기통 12L',
+    shortDescription: '집안에 손님 왔을 때 있어보이려고 산 쓰레기통',
+    fullDescription:
+      '이게 작동 안될 줄 알았는데, 되서 제일 기쁜 제품이에요. 저는 할인받아서 6천5백원에 샀는데 지금 가격이 다시 보니 2만원으로 되어 있어서 찜해두었다가 나중에 할인할 때 사시는 것을 추천드려요!! 천원마트인가 할인할 때 사면 개이득!',
+    imageUrl:
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/IMG_4015.jpg',
+    affiliateLinks: [
+      {
+        platform: 'aliexpress',
+        url: 'https://s.click.aliexpress.com/e/_oFbLr81',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '1-2만원대',
+    originalPrice: '3만5천원',
+    tags: ['위생', '멋짐폭발', '자동센서'],
+    category: '생활용품',
+    categoryType: '호기심',
+    personalRecommendation: '이제 손으로 쓰레기통 여는게 귀찮아짐',
+  },
+  {
+    id: '9',
+    name: '조정 가능한 알루미늄 노트북 스탠드(접이식)',
+    shortDescription: '접어서 들고 다니기 편리한 노트북 스탠드입니다.',
+    fullDescription:
+      '카페에서 작업 많이 하시는 분들이라면 하나쯤 쟁여둬도 괜찮지 않을까 생각이 드는 제품입니다. 저의 경우는 집에서 사용하려고 샀지만, 휴대성이라는 장점이 있어서 말씀드립니다 ㅎㅎ',
+    imageUrl:
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/IMG_4010.JPG',
+    affiliateLinks: [
+      {
+        platform: 'aliexpress',
+        url: 'https://s.click.aliexpress.com/e/_oDtHfbR',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '3-4천원대',
+    originalPrice: '4600원',
+    tags: ['휴대성', '접이식'],
+    category: 'IT제품',
+    categoryType: '호기심',
+    personalRecommendation: '거북목 좀 없애보려고...',
+  },
 ];
 
 const categories: { id: CategoryType; label: string; icon: string }[] = [
@@ -177,6 +243,7 @@ export default function HouseholdItemsPage() {
   const [selectedCategory, setSelectedCategory] = useState<
     CategoryType | 'all'
   >('all');
+  const [searchTerm, setSearchTerm] = useState('');
 
   const toggleExpand = (itemId: string) => {
     setExpandedItems((prev) => {
@@ -194,10 +261,18 @@ export default function HouseholdItemsPage() {
     setIsDarkMode(!isDarkMode);
   };
 
-  const filteredItems =
-    selectedCategory === 'all'
-      ? householdItems
-      : householdItems.filter((item) => item.categoryType === selectedCategory);
+  // Sort items by ID in descending order (newest first)
+  const sortedItems = [...householdItems].sort(
+    (a, b) => parseInt(b.id) - parseInt(a.id)
+  );
+
+  // Filter by category and search term
+  const filteredItems = sortedItems
+    .filter(
+      (item) =>
+        selectedCategory === 'all' || item.categoryType === selectedCategory
+    )
+    .filter((item) => searchTerm === '' || item.name.includes(searchTerm));
 
   return (
     <div
@@ -265,6 +340,44 @@ export default function HouseholdItemsPage() {
             💡 1인 가구 자취러들을 위한 필수템아님. <br />
             그냥 필요한 사람이 구매하길 바랍니다.
           </p>
+        </div>
+
+        {/* Search Bar */}
+        <div className="mb-6">
+          <div className="relative max-w-md mx-auto">
+            <input
+              type="text"
+              placeholder="제품 이름으로 검색..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className={`w-full px-4 py-2 pl-10 rounded-full text-sm transition-all ${
+                isDarkMode
+                  ? 'bg-gray-800 text-white placeholder-gray-400 focus:bg-gray-700'
+                  : 'bg-gray-100 text-gray-900 placeholder-gray-500 focus:bg-white'
+              } focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            />
+            <svg
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            {searchTerm && (
+              <button
+                onClick={() => setSearchTerm('')}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              >
+                ✕
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Category Tabs - Mobile Optimized */}
