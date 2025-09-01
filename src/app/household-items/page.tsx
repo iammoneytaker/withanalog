@@ -229,6 +229,28 @@ const householdItems: HouseholdItem[] = [
     categoryType: '호기심',
     personalRecommendation: '거북목 좀 없애보려고...',
   },
+  {
+    id: '10',
+    name: '코멧 홈 흡착식 샤워기 홀더 3개',
+    shortDescription: '이동이 가능한 샤워기 홀더 느낌',
+    fullDescription:
+      '있으면 좋고, 없으면 허전한 그런 물건 하나씩 있으시죠? 비슷한 느낌입니다. 고정되어 있는 샤워기 홀더의 높이가 높거나 내가 원하는 곳에 부착하고 사용하고 싶으신 분들에게 추천드려요.',
+    imageUrl:
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/IMG_4101.jpg',
+    affiliateLinks: [
+      {
+        platform: 'aliexpress',
+        url: 'https://link.coupang.com/a/cN7a2k',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '2330원(3개)',
+    originalPrice: '2330원',
+    tags: ['편리함', '있으면 좋은?'],
+    category: '생활용품',
+    categoryType: '실용성',
+    personalRecommendation: '발에만 뿌리고 싶을 때 유용..',
+  },
 ];
 
 const categories: { id: CategoryType; label: string; icon: string }[] = [
