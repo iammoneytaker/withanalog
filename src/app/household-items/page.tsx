@@ -440,81 +440,103 @@ export default function HouseholdItemsPage() {
           </div>
         </div>
 
-        {/* Instagram Style Grid */}
+        {/* Optimized Mobile Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
           {filteredItems.map((item) => (
             <div
               key={item.id}
-              className={`relative rounded-xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-all ${
-                isDarkMode ? 'bg-gray-800' : 'bg-gray-100'
+              className={`relative rounded-2xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] ${
+                isDarkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'
               }`}
             >
-              {/* Sale/Hot Badge */}
+              {/* Enhanced Sale/Hot Badge */}
               {(item.isSale || item.isHot) && (
-                <div className="absolute top-2 left-2 z-10 flex gap-1">
+                <div className="absolute top-3 left-3 z-20 flex gap-1">
                   {item.isSale && (
-                    <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold">
-                      특가
-                    </span>
+                    <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs px-3 py-1.5 rounded-full font-bold shadow-lg animate-pulse">
+                      💥특가
+                    </div>
                   )}
                   {item.isHot && (
-                    <span className="bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-bold">
+                    <div className="bg-gradient-to-r from-orange-400 to-red-500 text-white text-xs px-3 py-1.5 rounded-full font-bold shadow-lg">
                       🔥핫딜
-                    </span>
+                    </div>
                   )}
                 </div>
               )}
 
-              {/* Image Container */}
-              <div className="aspect-square relative bg-white">
+              {/* Enhanced Image Container with Overlay */}
+              <div className="aspect-square relative bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
                 <Image
                   src={item.imageUrl}
                   alt={item.name}
                   fill
-                  className="object-contain p-4"
+                  className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
-              {/* Content */}
+              {/* Optimized Content Layout */}
               <div className="p-3 sm:p-4">
+                {/* Category Badge - Top Right */}
+                <div className="flex justify-end mb-2">
+                  <div className={`text-[10px] sm:text-xs px-2 py-1 rounded-full font-medium ${
+                    isDarkMode ? 'bg-blue-900/30 text-blue-300' : 'bg-blue-100 text-blue-600'
+                  }`}>
+                    {item.categoryType}
+                  </div>
+                </div>
+
+                {/* Price First - Most Important */}
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-lg sm:text-xl font-black bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+                    {item.priceRange}
+                  </span>
+                  {item.originalPrice && (
+                    <span className="text-[10px] sm:text-xs text-gray-400 line-through">
+                      {item.originalPrice}
+                    </span>
+                  )}
+                </div>
+
+                {/* Title */}
                 <h3
-                  className={`font-bold text-sm sm:text-base mb-1 line-clamp-1 ${
+                  className={`font-bold text-sm sm:text-base mb-2 line-clamp-2 leading-tight ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}
                 >
                   {item.name}
                 </h3>
 
-                {/* Price Info */}
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-sm sm:text-lg font-bold text-green-400">
-                    {item.priceRange}
-                  </span>
-                  {item.discount && (
-                    <span className="text-[10px] sm:text-xs text-red-400 font-semibold">
-                      {item.discount} ↓
-                    </span>
-                  )}
+                {/* Personal Recommendation - Key Selling Point */}
+                <div className={`p-2 rounded-lg mb-3 border-l-4 ${
+                  isDarkMode 
+                    ? 'bg-blue-900/20 border-blue-400 text-blue-300' 
+                    : 'bg-blue-50 border-blue-400 text-blue-700'
+                }`}>
+                  <p className="text-[11px] sm:text-xs font-medium">
+                    💭 {item.personalRecommendation}
+                  </p>
                 </div>
 
-                {/* Short Description */}
+                {/* Compact Description */}
                 <p
-                  className={`text-[10px] sm:text-xs mb-2 line-clamp-2 ${
-                    isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                  className={`text-[10px] sm:text-xs mb-3 line-clamp-2 ${
+                    isDarkMode ? 'text-gray-400' : 'text-gray-600'
                   }`}
                 >
                   {item.shortDescription}
                 </p>
 
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1 mb-3">
+                {/* Enhanced Tags */}
+                <div className="flex flex-wrap gap-1 mb-4">
                   {item.tags.slice(0, 2).map((tag) => (
                     <span
                       key={tag}
-                      className={`text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full ${
+                      className={`text-[10px] sm:text-xs px-2 py-1 rounded-full border ${
                         isDarkMode
-                          ? 'bg-gray-700 text-gray-300'
-                          : 'bg-gray-200 text-gray-700'
+                          ? 'bg-gray-700/50 border-gray-600 text-gray-300'
+                          : 'bg-gray-50 border-gray-300 text-gray-600'
                       }`}
                     >
                       #{tag}
@@ -525,27 +547,20 @@ export default function HouseholdItemsPage() {
                 {/* Expandable Details */}
                 {expandedItems.has(item.id) && (
                   <div
-                    className={`mb-3 p-3 rounded-lg ${
-                      isDarkMode ? 'bg-gray-700/50' : 'bg-gray-200'
+                    className={`mb-4 p-3 rounded-xl border-2 border-dashed ${
+                      isDarkMode ? 'bg-gray-700/30 border-gray-600' : 'bg-gray-50 border-gray-300'
                     }`}
                   >
                     <p
-                      className={`text-[11px] sm:text-xs mb-2 ${
+                      className={`text-[11px] sm:text-xs mb-2 leading-relaxed ${
                         isDarkMode ? 'text-gray-200' : 'text-gray-700'
                       }`}
                     >
-                      💬 {item.fullDescription}
-                    </p>
-                    <p
-                      className={`text-[11px] sm:text-xs font-semibold ${
-                        isDarkMode ? 'text-blue-300' : 'text-blue-600'
-                      }`}
-                    >
-                      ⭐ {item.personalRecommendation}
+                      📝 {item.fullDescription}
                     </p>
                     {item.saleEndDate && (
                       <p
-                        className={`text-xs mt-2 ${
+                        className={`text-xs mt-2 font-semibold ${
                           isDarkMode ? 'text-red-300' : 'text-red-600'
                         }`}
                       >
@@ -555,27 +570,33 @@ export default function HouseholdItemsPage() {
                   </div>
                 )}
 
-                {/* Action Buttons */}
+                {/* Enhanced CTA Buttons */}
                 <div className="space-y-2">
                   <button
                     onClick={(e) => {
                       e.preventDefault();
                       toggleExpand(item.id);
                     }}
-                    className={`w-full text-xs sm:text-sm py-2 sm:py-3 rounded-lg transition-colors font-semibold ${
-                      isDarkMode
-                        ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                        : 'bg-blue-500 hover:bg-blue-600 text-white'
+                    className={`w-full text-xs sm:text-sm py-3 sm:py-3.5 rounded-xl transition-all duration-200 font-bold border-2 ${
+                      expandedItems.has(item.id)
+                        ? isDarkMode
+                          ? 'bg-gray-700 border-gray-600 text-gray-300 hover:bg-gray-600'
+                          : 'bg-gray-200 border-gray-300 text-gray-700 hover:bg-gray-300'
+                        : isDarkMode
+                        ? 'bg-blue-600 border-blue-500 text-white hover:bg-blue-700 hover:border-blue-400'
+                        : 'bg-blue-500 border-blue-400 text-white hover:bg-blue-600 hover:border-blue-300'
                     }`}
+                    style={{ minHeight: '44px' }}
                   >
-                    {expandedItems.has(item.id) ? '접기' : '자세히 보기'}
+                    {expandedItems.has(item.id) ? '📚 접기' : '👀 리뷰보기'}
                   </button>
 
+                  {/* Enhanced Purchase Button */}
                   <ExternalLinkButton
                     url={item.affiliateLinks[0].url}
-                    label={item.affiliateLinks[0].label}
+                    label="🛒 지금 구매하기"
                     platform={item.affiliateLinks[0].platform}
-                    className="w-full text-xs py-2"
+                    className="w-full !bg-gradient-to-r !from-emerald-500 !to-green-600 hover:!from-emerald-600 hover:!to-green-700 !text-white !font-bold !rounded-xl !shadow-lg hover:!shadow-xl !transition-all !duration-200 !border-0 !py-3.5 !text-sm"
                   />
                 </div>
               </div>
