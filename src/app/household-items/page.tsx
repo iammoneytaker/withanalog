@@ -165,7 +165,7 @@ const householdItems: HouseholdItem[] = [
   },
   {
     id: '7',
-    name: '자동차 마운트 전기 진공 마그네틱 홀더 아이폰(흡착식)',
+    name: '자동차 마운트 전기 진공 마그네틱 홀더 아이폰(흡착식 거치대)',
     shortDescription: '딱 붙여서 사용 가능한 만능 홀더, 촬영용으로 딱',
     fullDescription:
       '흡착 방식이라 마음에 들었고, 광고를 보고 될까? 하며 제일 저렴한 제품을 구매한건데 되서 깜짝 놀란 제품입니다. 타일, 냉장고 등 다 잘 붙는데 벽지나 나무는 안 붙으니 이 점 유의해주세요. 아마 차량에는 잘 붙을 것 같아요. 소재에 따라 다르다는 점 유의해주세요!',
@@ -250,6 +250,28 @@ const householdItems: HouseholdItem[] = [
     category: '생활용품',
     categoryType: '실용성',
     personalRecommendation: '발에만 뿌리고 싶을 때 유용..',
+  },
+  {
+    id: '11',
+    name: '자동차 마운트 전기 진공 마그네틱 홀더 아이폰(흡착식 거치대)',
+    shortDescription: '다이얼 소리가 마음에 드는 흡착식 촬영용 거치대였습니다.',
+    fullDescription:
+      '흡착 방식의 거치대를 2천원 주고 구매했는데 비싸면 뭐가 다른데? 생각하며 구매한 것입니다. 근데 다이얼 방식으로 흡착이 강화되는 와중에 다이얼 소리가 마음에 들어서 저는 이게 더 좋아요. 타일, 냉장고 등 다 잘 붙는데 벽지나 나무는 안 붙으니 이 점 유의해주세요. 차량에는 따로 벽지 소재가 아니라면 잘 붙을 것 같아요. 안되면 이 제품은 바닥판을 제공하니 붙이고 사용 가능할 것 같습니다. 소재에 따라 다르다는 점 유의해주세요!',
+    imageUrl:
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/IMG_4114.jpg',
+    affiliateLinks: [
+      {
+        platform: 'aliexpress',
+        url: 'https://s.click.aliexpress.com/e/_oBKUS99',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '9천원 - 1만원대',
+    originalPrice: '11,565원',
+    tags: ['촬영용', '다이얼방식', '이게되네'],
+    category: '생활용품',
+    categoryType: '호기심',
+    personalRecommendation: '개인적으로 저는 마음에 듦',
   },
 ];
 
@@ -446,7 +468,9 @@ export default function HouseholdItemsPage() {
             <div
               key={item.id}
               className={`relative rounded-2xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] ${
-                isDarkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'
+                isDarkMode
+                  ? 'bg-gray-800 border border-gray-700'
+                  : 'bg-white border border-gray-200'
               }`}
             >
               {/* Enhanced Sale/Hot Badge */}
@@ -480,9 +504,13 @@ export default function HouseholdItemsPage() {
               <div className="p-3 sm:p-4">
                 {/* Category Badge - Top Right */}
                 <div className="flex justify-end mb-2">
-                  <div className={`text-[10px] sm:text-xs px-2 py-1 rounded-full font-medium ${
-                    isDarkMode ? 'bg-blue-900/30 text-blue-300' : 'bg-blue-100 text-blue-600'
-                  }`}>
+                  <div
+                    className={`text-[10px] sm:text-xs px-2 py-1 rounded-full font-medium ${
+                      isDarkMode
+                        ? 'bg-blue-900/30 text-blue-300'
+                        : 'bg-blue-100 text-blue-600'
+                    }`}
+                  >
                     {item.categoryType}
                   </div>
                 </div>
@@ -509,11 +537,13 @@ export default function HouseholdItemsPage() {
                 </h3>
 
                 {/* Personal Recommendation - Key Selling Point */}
-                <div className={`p-2 rounded-lg mb-3 border-l-4 ${
-                  isDarkMode 
-                    ? 'bg-blue-900/20 border-blue-400 text-blue-300' 
-                    : 'bg-blue-50 border-blue-400 text-blue-700'
-                }`}>
+                <div
+                  className={`p-2 rounded-lg mb-3 border-l-4 ${
+                    isDarkMode
+                      ? 'bg-blue-900/20 border-blue-400 text-blue-300'
+                      : 'bg-blue-50 border-blue-400 text-blue-700'
+                  }`}
+                >
                   <p className="text-[11px] sm:text-xs font-medium">
                     💭 {item.personalRecommendation}
                   </p>
@@ -548,7 +578,9 @@ export default function HouseholdItemsPage() {
                 {expandedItems.has(item.id) && (
                   <div
                     className={`mb-4 p-3 rounded-xl border-2 border-dashed ${
-                      isDarkMode ? 'bg-gray-700/30 border-gray-600' : 'bg-gray-50 border-gray-300'
+                      isDarkMode
+                        ? 'bg-gray-700/30 border-gray-600'
+                        : 'bg-gray-50 border-gray-300'
                     }`}
                   >
                     <p
