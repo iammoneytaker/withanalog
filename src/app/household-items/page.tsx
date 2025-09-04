@@ -626,7 +626,7 @@ export default function HouseholdItemsPage() {
                   {/* Enhanced Purchase Button */}
                   <ExternalLinkButton
                     url={item.affiliateLinks[0].url}
-                    label="🛒 지금 구매하기"
+                    label="🔍 상품 자세히 보기"
                     platform={item.affiliateLinks[0].platform}
                     className="w-full !bg-gradient-to-r !from-emerald-500 !to-green-600 hover:!from-emerald-600 hover:!to-green-700 !text-white !font-bold !rounded-xl !shadow-lg hover:!shadow-xl !transition-all !duration-200 !border-0 !py-3.5 !text-sm"
                   />
