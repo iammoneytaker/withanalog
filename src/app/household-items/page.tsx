@@ -289,7 +289,7 @@ const householdItems: HouseholdItem[] = [
       },
     ],
     priceRange: '7,900원',
-    originalPrice: '7,900원',
+    originalPrice: '12,000원',
     tags: ['욕실용', '규조토', '미끄럼방지', '베이지'],
     category: '생활용품',
     categoryType: 'AI추천',
