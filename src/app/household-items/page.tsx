@@ -280,7 +280,7 @@ const householdItems: HouseholdItem[] = [
     fullDescription:
       'AI가 추천해줘서 욕실용 발매트를 구입하게 되었는데 색상은 베이지로 구매하였고 흡수력 좋고 디자인 좋아서 너무 마음에 들었던 상품입니다.',
     imageUrl:
-      'https://dthumb-phinf.pstatic.net/?src=%22https%3A%…3_6907799.jpg%22&type=brandconnect_f50_50_product',
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/fda.jpg',
     affiliateLinks: [
       {
         platform: 'naver',
