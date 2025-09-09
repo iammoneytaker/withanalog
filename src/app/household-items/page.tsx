@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { ExternalLinkButton } from '@/components/ExternalLinkButton';
 
-type CategoryType = '실용성' | '가성비' | '디자인' | '호기심';
+type CategoryType = '실용성' | '가성비' | '디자인' | '호기심' | 'AI추천';
 
 interface HouseholdItem {
   id: string;
@@ -273,6 +273,28 @@ const householdItems: HouseholdItem[] = [
     categoryType: '호기심',
     personalRecommendation: '개인적으로 저는 마음에 듦',
   },
+  {
+    id: '12',
+    name: '하루의공간 소프트 규조토 발매트 화장실 욕실 주방 빨아쓰는 미끄럼방지',
+    shortDescription: '흡수력 좋고 디자인 좋은 욕실용 발매트',
+    fullDescription:
+      'AI가 추천해줘서 욕실용 발매트를 구입하게 되었는데 색상은 베이지로 구매하였고 흡수력 좋고 디자인 좋아서 너무 마음에 들었던 상품입니다.',
+    imageUrl:
+      'https://dthumb-phinf.pstatic.net/?src=%22https%3A%…3_6907799.jpg%22&type=brandconnect_f50_50_product',
+    affiliateLinks: [
+      {
+        platform: 'naver',
+        url: 'https://naver.me/GsoA0pHN',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '7,900원',
+    originalPrice: '7,900원',
+    tags: ['욕실용', '규조토', '미끄럼방지', '베이지'],
+    category: '생활용품',
+    categoryType: 'AI추천',
+    personalRecommendation: 'AI가 추천해줘서 구매했는데 만족해서 신기함',
+  },
 ];
 
 const categories: { id: CategoryType; label: string; icon: string }[] = [
@@ -280,6 +302,7 @@ const categories: { id: CategoryType; label: string; icon: string }[] = [
   { id: '실용성', label: '실용성', icon: '🔧' },
   { id: '디자인', label: '디자인', icon: '🎨' },
   { id: '호기심', label: '호기심', icon: '🤔' },
+  { id: 'AI추천', label: 'AI추천', icon: '🤖' },
 ];
 
 export default function HouseholdItemsPage() {
