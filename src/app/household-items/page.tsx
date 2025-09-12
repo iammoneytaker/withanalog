@@ -295,6 +295,29 @@ const householdItems: HouseholdItem[] = [
     categoryType: 'AI추천',
     personalRecommendation: 'AI가 추천해줘서 구매했는데 만족해서 신기함',
   },
+  {
+    id: '12',
+    name: '독거미 키보드 F87 PRO',
+    shortDescription: '이쁘고 다 되는데 가성비..',
+    fullDescription:
+      'AI가 추천해준 현시점 가성비 키보드 끝판왕, 타건음도 마음에 들고 피로도도 적어 저에게는 딱 맞았습니다. 약간 도각도각소리가 나서 치는 맛이 생겼어요 ㅎㅎ',
+    imageUrl:
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/IMG_4427.jpg',
+    affiliateLinks: [
+      {
+        platform: 'coupang',
+        url: 'https://link.coupang.com/a/cQtCzc',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '42,600원',
+    originalPrice: '99,900원',
+    tags: ['가성비', '보글보글', '기계식', '이쁨'],
+    category: 'IT제품',
+    categoryType: 'AI추천',
+    personalRecommendation:
+      'AI가 추천해줬는데 생각보다 마음에 듦, 무엇보다 한성키보드 약 20만원 주고 산게 후회되는 중',
+  },
 ];
 
 const categories: { id: CategoryType; label: string; icon: string }[] = [
