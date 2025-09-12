@@ -296,7 +296,7 @@ const householdItems: HouseholdItem[] = [
     personalRecommendation: 'AI가 추천해줘서 구매했는데 만족해서 신기함',
   },
   {
-    id: '12',
+    id: '13',
     name: '독거미 키보드 F87 PRO',
     shortDescription: '이쁘고 다 되는데 가성비..',
     fullDescription:
