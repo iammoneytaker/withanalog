@@ -318,6 +318,29 @@ const householdItems: HouseholdItem[] = [
     personalRecommendation:
       'AI가 추천해줬는데 생각보다 마음에 듦, 무엇보다 한성키보드 약 20만원 주고 산게 후회되는 중',
   },
+  {
+    id: '14',
+    name: '돌체구스토 인피니시마 터치',
+    shortDescription: '이쁘고 실용적이야.. ',
+    fullDescription:
+      '일단 예뻐서 인테리어 하기 좋고, 무엇보다 캡슐이 가성비가 좋아서 원하는 맛을 골라서 뽑아먹을 수 있는게 장점이라면 장점이죠!',
+    imageUrl:
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/1.jpg',
+    affiliateLinks: [
+      {
+        platform: 'coupang',
+        url: 'https://link.coupang.com/a/cNFwwb',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '80,000원',
+    originalPrice: '16,9000원',
+    tags: ['커피머신', '가성비', '느좋', '이쁨'],
+    category: '생활용품',
+    categoryType: '디자인',
+    personalRecommendation:
+      '캡슐 커피 머신은 내 맘대로 맛을 선택할 수 있어서 최고!',
+  },
 ];
 
 const categories: { id: CategoryType; label: string; icon: string }[] = [
