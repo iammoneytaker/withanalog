@@ -365,7 +365,7 @@ const householdItems: HouseholdItem[] = [
       'AI가 추천해줬는데 생각보다 마음에 듦, 무엇보다 한성키보드 약 20만원 주고 산게 후회되는 중',
   },
   {
-    id: '14',
+    id: '15',
     name: '라인트 보틀 램프',
     shortDescription: 'DIY 조명 만드는 아주 간단한 방법.. 돈 쓰기',
     fullDescription:
