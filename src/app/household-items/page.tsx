@@ -387,6 +387,28 @@ const householdItems: HouseholdItem[] = [
     personalRecommendation:
       '무엇이든 꽂아도 조명으로 바꿔줘서 메가커피 컵으로도 조명을 만들어 봤던... 재미가 있는 제품',
   },
+  {
+    id: '16',
+    name: '누븐(NUVN) 탈취제',
+    shortDescription: '이제 베개 빨래 안해야지..',
+    fullDescription: '향균이 아닌 본질인 탈취에 집중한 탈취제입니다.',
+    imageUrl:
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/DSC04279.JPG',
+    affiliateLinks: [
+      {
+        platform: 'naver',
+        url: 'https://naver.me/GwSbNVW1',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '18,900원',
+    originalPrice: '21,000원',
+    tags: ['탈치제', '반려동물', '담배냄새', '이쁨'],
+    category: '생활용품',
+    categoryType: '디자인',
+    personalRecommendation:
+      '탈취에 강하다 했지만 왜 향도 좋은건지.. 일단 마음에 들어버렸다.',
+  },
 ];
 
 const categories: { id: CategoryType; label: string; icon: string }[] = [
