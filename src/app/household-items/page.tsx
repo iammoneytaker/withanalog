@@ -409,6 +409,51 @@ const householdItems: HouseholdItem[] = [
     personalRecommendation:
       '탈취에 강하다 했지만 왜 향도 좋은건지.. 일단 마음에 들어버렸다.',
   },
+  {
+    id: '17',
+    name: '마이크로화이버이불솜',
+    shortDescription: '수많은 포기 끝에 선택한 이불솜',
+    fullDescription: '겨울 이불에 적당합니다. 푹 눌려앉아서 찬공기를 막아줘요.',
+    imageUrl:
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/DSC04314.JPG',
+    affiliateLinks: [
+      {
+        platform: 'naver',
+        url: 'https://link.coupang.com/a/cTOHTy',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '55,800원',
+    originalPrice: '68,000원',
+    tags: ['겨울이불', '진드기퇴치', '솜100%'],
+    category: '생활용품',
+    categoryType: '실용성',
+    personalRecommendation:
+      '진짜 따뜻하다. 그래서 아직 너무 추워지지 않아서 못 사용하고 있어서 에어컨 키고 자버렸다.',
+  },
+  {
+    id: '18',
+    name: '코마사틴 이불커버',
+    shortDescription: '사각사각이 싫고 실크느낌도 싫었어요.',
+    fullDescription:
+      '면 60수 이상인 것으로 고르고 가성비 따지다보니 구매하게 된 것..',
+    imageUrl:
+      'https://jszchnsbkfvpczxypimw.supabase.co/storage/v1/object/public/projects/recommends/IMG_5040%202.JPG',
+    affiliateLinks: [
+      {
+        platform: 'naver',
+        url: 'https://link.coupang.com/a/cTOHTy',
+        label: '구매하러가기',
+      },
+    ],
+    priceRange: '47,000원',
+    originalPrice: '79,000원',
+    tags: ['이불커버', '사틴처리'],
+    category: '생활용품',
+    categoryType: '실용성',
+    personalRecommendation:
+      '색깔 참 많은데 초록색이 사람 심신 안정에 좋다는 카더라를 듣고 초록색으로..',
+  },
 ];
 
 const categories: { id: CategoryType; label: string; icon: string }[] = [
