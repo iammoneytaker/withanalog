@@ -8,6 +8,7 @@ import { KeyboardSoundController } from '@/components/KeyboardSoundController';
 import { AffiliateNotice } from '@/components/AffiliateNotice';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import GoogleTagManager from '@/components/GoogleTagManager';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://withanalog.com'),
@@ -54,6 +55,7 @@ export default function RootLayout({
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
         <GoogleAnalytics />
+        <GoogleTagManager />
       </head>
       <body className="bg-gray-900 text-gray-300">
         <ThemeProvider>
