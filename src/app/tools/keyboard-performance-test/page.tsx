@@ -48,6 +48,33 @@ export default function KeyboardPerformanceTestPage() {
           </div>
         </motion.div>
 
+        {/* 한글 타자왕 추천 배너 */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-gradient-to-r from-blue-900/40 to-indigo-900/40 border border-blue-500/30 rounded-xl p-6 mb-12 flex flex-col md:flex-row items-center justify-between gap-6"
+        >
+          <div className="flex items-center gap-4 text-left">
+            <div className="bg-blue-500/20 p-3 rounded-full shrink-0">
+              <span className="text-2xl">⌨️</span>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-white mb-1">타자 속도(WPM)를 더 높이고 싶나요?</h3>
+              <p className="text-gray-400 text-sm md:text-base">
+                한글 타자왕에서 재미있는 타자 게임과 실전 연습으로 기록을 단축해 보세요!
+              </p>
+            </div>
+          </div>
+          <a 
+            href="https://www.hangul-tajawang.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="whitespace-nowrap px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold transition-all shadow-lg hover:shadow-blue-500/20 active:scale-95"
+          >
+            한글 타자왕 바로가기
+          </a>
+        </motion.div>
+
         {/* 키보드 테스터 컴포넌트 */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
