@@ -3,12 +3,13 @@ import './globals.css';
 import '../styles/marquee.css';
 import Header from '../components/Header';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import GoogleTagManager from '@/components/GoogleTagManager';
+import GoogleAdsense from '@/components/GoogleAdsense';
 import { GlobalKeyboardSound } from '@/components/GlobalKeyboardSound';
 import { KeyboardSoundController } from '@/components/KeyboardSoundController';
 import { AffiliateNotice } from '@/components/AffiliateNotice';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import GoogleTagManager from '@/components/GoogleTagManager';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://withanalog.com'),
@@ -16,11 +17,28 @@ export const metadata: Metadata = {
     template: '%s | WithAnalog',
     default: 'WithAnalog - 키보드와 타이핑의 새로운 경험',
   },
-  description: '키보드 성능 테스트, 타이핑 연습, 반응속도 측정까지. 디지털과 현실을 잇는 키보드 전문 플랫폼',
-  keywords: ['키보드 테스트', '키보드 성능', '타이핑 연습', '타자 연습', '한글 타자', '영문 타자', 'WPM 측정', '타자 속도', '키보드 타자 연습', '반응속도', '키보드 분석', 'keyboard test', 'typing test', 'typing practice'],
+  description:
+    '키보드 성능 테스트, 타이핑 연습, 반응속도 측정까지. 디지털과 현실을 잇는 키보드 전문 플랫폼',
+  keywords: [
+    '키보드 테스트',
+    '키보드 성능',
+    '타이핑 연습',
+    '타자 연습',
+    '한글 타자',
+    '영문 타자',
+    'WPM 측정',
+    '타자 속도',
+    '키보드 타자 연습',
+    '반응속도',
+    '키보드 분석',
+    'keyboard test',
+    'typing test',
+    'typing practice',
+  ],
   openGraph: {
     title: 'WithAnalog - 키보드와 타이핑의 새로운 경험',
-    description: '키보드 성능 테스트, 타이핑 연습, 반응속도 측정까지. 디지털과 현실을 잇는 키보드 전문 플랫폼',
+    description:
+      '키보드 성능 테스트, 타이핑 연습, 반응속도 측정까지. 디지털과 현실을 잇는 키보드 전문 플랫폼',
     url: 'https://withanalog.com',
     siteName: 'WithAnalog',
     images: [
@@ -36,7 +54,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'WithAnalog - 키보드와 타이핑의 새로운 경험',
-    description: '키보드 성능 테스트, 타이핑 연습, 반응속도 측정까지. 디지털과 현실을 잇는 키보드 전문 플랫폼',
+    description:
+      '키보드 성능 테스트, 타이핑 연습, 반응속도 측정까지. 디지털과 현실을 잇는 키보드 전문 플랫폼',
     images: ['/images/og-image.png'],
   },
 };
@@ -49,13 +68,17 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        <meta name="naver-site-verification" content="bc09def2369bed5f712be5ba69ad77f163e6ab90" />
+        <meta
+          name="naver-site-verification"
+          content="bc09def2369bed5f712be5ba69ad77f163e6ab90"
+        />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
         <GoogleAnalytics />
         <GoogleTagManager />
+        <GoogleAdsense />
       </head>
       <body className="bg-gray-900 text-gray-300">
         <ThemeProvider>
@@ -64,9 +87,7 @@ export default function RootLayout({
           <ThemeToggle />
           <AffiliateNotice />
           <Header />
-          <main>
-            {children}
-          </main>
+          <main>{children}</main>
         </ThemeProvider>
       </body>
     </html>
