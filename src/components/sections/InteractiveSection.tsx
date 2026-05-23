@@ -224,7 +224,7 @@ export function InteractiveSection() {
               </div>
 
               <div className="mt-4 text-center">
-                <Link href="/tools/keyboard-performance-test">
+                <Link href="/tools/keyboard-performance-test" prefetch={false}>
                   <motion.button
                     className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold rounded-lg transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
@@ -256,7 +256,7 @@ export function InteractiveSection() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/recommendations">
+              <Link href="/recommendations" prefetch={false}>
                 <motion.button
                   className="px-6 py-3 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white font-semibold rounded-lg transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
@@ -266,7 +266,7 @@ export function InteractiveSection() {
                 </motion.button>
               </Link>
               
-              <Link href="/tools">
+              <Link href="/tools" prefetch={false}>
                 <motion.button
                   className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded-lg border border-gray-600 hover:border-gray-500 transition-all duration-300"
                   whileHover={{ scale: 1.05 }}

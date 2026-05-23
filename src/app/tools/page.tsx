@@ -235,7 +235,7 @@ export default function ToolsPage() {
 
             // 웹 도구인 경우
             return (
-              <Link href={`/tools/${tool.id}`} key={tool.id}>
+              <Link href={`/tools/${tool.id}`} key={tool.id} prefetch={false}>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}

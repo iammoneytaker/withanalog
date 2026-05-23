@@ -45,12 +45,7 @@ export default function sitemap() {
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.6,
-    },
+
     {
       url: `${baseUrl}/contact`,
       lastModified: new Date(),

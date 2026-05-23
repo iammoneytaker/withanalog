@@ -4,8 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
 // import { projects } from '../../lib/projects';
-import { useEffect, useState } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { useState } from 'react';
 
 export function ProjectSection() {
   const [ref, inView] = useInView({
@@ -13,25 +12,6 @@ export function ProjectSection() {
     threshold: 0.1,
     initialInView: true, // 이 부분 추가
   });
-
-  const [, setProjectCount] = useState(0);
-  const supabase = createClientComponentClient();
-
-  useEffect(() => {
-    const fetchProjectCount = async () => {
-      const { count, error } = await supabase
-        .from('projects')
-        .select('*', { count: 'exact', head: true });
-
-      if (error) {
-        console.error('프로젝트 개수 로딩 중 오류 발생:', error);
-      } else {
-        setProjectCount(count || 0);
-      }
-    };
-
-    fetchProjectCount();
-  }, []);
 
   // 웹 도구 데이터
   const webTools = [
@@ -203,7 +183,7 @@ export function ProjectSection() {
 
             // 웹 프로젝트인 경우 기존 렌더링
             return (
-              <Link href={`/tools/${project.id}`} key={project.id}>
+              <Link href={`/tools/${project.id}`} key={project.id} prefetch={false}>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -248,6 +228,7 @@ export function ProjectSection() {
         >
           <Link
             href="/tools"
+            prefetch={false}
             className="inline-block px-8 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
           >
             모든 도구 보기 ({webTools.length + appTools.length})

@@ -47,30 +47,15 @@ export default function Header() {
           >
             타자 연습
           </Link>
-          <Link
-            href="/community"
-            className="text-white hover:text-blue-400 transition-colors"
-          >
-            커뮤니티
-          </Link>
+
           <Link
             href="/recommendations"
             className="text-white hover:text-blue-400 transition-colors"
           >
             키보드 추천
           </Link>
-          <Link
-            href="/blog"
-            className="text-white hover:text-blue-400 transition-colors"
-          >
-            블로그
-          </Link>
-          <Link
-            href="/contact"
-            className="text-white hover:text-blue-400 transition-colors"
-          >
-            Contact
-          </Link>
+
+
         </div>
 
         {/* Mobile Menu Button */}
@@ -129,13 +114,7 @@ export default function Header() {
           >
             ⌨️ 타자 연습
           </Link>
-          <Link
-            href="/community"
-            className="block px-3 py-2 text-white hover:text-blue-400 hover:bg-gray-800/50 rounded-lg transition-colors"
-            onClick={closeMenu}
-          >
-            👥 커뮤니티
-          </Link>
+
           <Link
             href="/recommendations"
             className="block px-3 py-2 text-white hover:text-blue-400 hover:bg-gray-800/50 rounded-lg transition-colors"
@@ -143,20 +122,8 @@ export default function Header() {
           >
             💡 키보드 추천
           </Link>
-          <Link
-            href="/blog"
-            className="block px-3 py-2 text-white hover:text-blue-400 hover:bg-gray-800/50 rounded-lg transition-colors"
-            onClick={closeMenu}
-          >
-            📝 블로그
-          </Link>
-          <Link
-            href="/contact"
-            className="block px-3 py-2 text-white hover:text-blue-400 hover:bg-gray-800/50 rounded-lg transition-colors"
-            onClick={closeMenu}
-          >
-            📧 Contact
-          </Link>
+
+
         </div>
       </motion.div>
     </motion.header>

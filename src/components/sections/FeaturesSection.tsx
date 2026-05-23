@@ -60,17 +60,6 @@ const features = [
     bgGradient: 'from-indigo-900/20 to-blue-900/20',
     borderColor: 'border-indigo-500/30'
   },
-  {
-    category: '커뮤니티',
-    title: '키보드 커뮤니티',
-    description: '키보드 애호가들과 경험을 공유하고 최신 정보를 얻어보세요.',
-    features: ['사용자 리뷰 공유', '커스텀 빌드 갤러리', 'Q&A 게시판', '최신 트렌드 정보'],
-    href: '/community',
-    icon: '💬',
-    gradient: 'from-pink-500 to-rose-500',
-    bgGradient: 'from-pink-900/20 to-rose-900/20',
-    borderColor: 'border-pink-500/30'
-  }
 ];
 
 export function FeaturesSection() {

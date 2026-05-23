@@ -52,7 +52,7 @@ export default function ProjectGrid({
       {/* 프로젝트 그리드 */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {filteredProjects.map((project) => (
-          <Link href={`/tools/${project.id}`} key={project.id}>
+          <Link href={`/tools/${project.id}`} key={project.id} prefetch={false}>
             <div className="bg-gray-800 rounded-xl p-4 sm:p-6 hover:bg-gray-700 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-lg h-full">
               <div className="mb-3 sm:mb-4 text-3xl sm:text-4xl">
                 {project.icon}

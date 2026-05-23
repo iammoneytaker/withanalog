@@ -69,7 +69,7 @@ export function HeroSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <Link href="/tools/keyboard-performance-test" className="group block">
+          <Link href="/tools/keyboard-performance-test" className="group block" prefetch={false}>
             <div className="bg-gradient-to-br from-blue-900/50 to-blue-800/30 border border-blue-500/30 rounded-2xl p-4 sm:p-6 hover:from-blue-800/60 hover:to-blue-700/40 hover:border-blue-400/50 transition-all duration-300 transform hover:scale-105">
               <div className="text-3xl sm:text-4xl mb-3 text-center">⚡</div>
               <h3 className="text-lg font-bold text-blue-300 text-center mb-2">성능 테스트</h3>
@@ -77,7 +77,7 @@ export function HeroSection() {
             </div>
           </Link>
           
-          <Link href="/tools/english-typing-test" className="group block">
+          <Link href="/tools/english-typing-test" className="group block" prefetch={false}>
             <div className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 border border-purple-500/30 rounded-2xl p-4 sm:p-6 hover:from-purple-800/60 hover:to-purple-700/40 hover:border-purple-400/50 transition-all duration-300 transform hover:scale-105">
               <div className="text-3xl sm:text-4xl mb-3 text-center">⌨️</div>
               <h3 className="text-lg font-bold text-purple-300 text-center mb-2">타이핑 테스트</h3>
@@ -85,7 +85,7 @@ export function HeroSection() {
             </div>
           </Link>
           
-          <Link href="/recommendations" className="group block">
+          <Link href="/recommendations" className="group block" prefetch={false}>
             <div className="bg-gradient-to-br from-green-900/50 to-green-800/30 border border-green-500/30 rounded-2xl p-4 sm:p-6 hover:from-green-800/60 hover:to-green-700/40 hover:border-green-400/50 transition-all duration-300 transform hover:scale-105">
               <div className="text-3xl sm:text-4xl mb-3 text-center">🎯</div>
               <h3 className="text-lg font-bold text-green-300 text-center mb-2">맞춤 추천</h3>
@@ -93,13 +93,7 @@ export function HeroSection() {
             </div>
           </Link>
           
-          <Link href="/community" className="group block">
-            <div className="bg-gradient-to-br from-orange-900/50 to-orange-800/30 border border-orange-500/30 rounded-2xl p-4 sm:p-6 hover:from-orange-800/60 hover:to-orange-700/40 hover:border-orange-400/50 transition-all duration-300 transform hover:scale-105">
-              <div className="text-3xl sm:text-4xl mb-3 text-center">💬</div>
-              <h3 className="text-lg font-bold text-orange-300 text-center mb-2">커뮤니티</h3>
-              <p className="text-xs text-gray-400 text-center leading-relaxed">키보드 애호가들과 경험을 공유하고 소통하세요</p>
-            </div>
-          </Link>
+
         </motion.div>
         
         {/* CTA 버튼 */}
@@ -109,7 +103,7 @@ export function HeroSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.9 }}
         >
-          <Link href="/tools/keyboard-performance-test" className="group">
+          <Link href="/tools/keyboard-performance-test" className="group" prefetch={false}>
             <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25">
               <span className="flex items-center justify-center gap-2">
                 <span>⚡</span>
@@ -118,7 +112,7 @@ export function HeroSection() {
             </button>
           </Link>
           
-          <Link href="/recommendations" className="group">
+          <Link href="/recommendations" className="group" prefetch={false}>
             <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gray-800/80 hover:bg-gray-700/80 text-white font-semibold rounded-xl border border-gray-600 hover:border-gray-500 transition-all duration-300 transform hover:scale-105">
               <span className="flex items-center justify-center gap-2">
                 <span>🎯</span>
