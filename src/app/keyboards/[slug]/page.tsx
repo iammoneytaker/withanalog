@@ -114,11 +114,7 @@ export default function ProductPage({ params }: Props) {
 					{product.sourceName} · {product.model} ↗
 				</a>
 				<p className={styles.meta}>
-					유형:{" "}
-					{product.brand === "AULA"
-						? "브랜드 판매 페이지"
-						: "공개 자료(기사·스펙 페이지)"}{" "}
-					· 확인일: {VERIFIED_DATE}
+					유형: 브랜드 판매 페이지 · 확인일: {VERIFIED_DATE}
 					<br />
 					공개 자료를 요약했으며 직접 측정하거나 제조사로부터 검증 인증을 받은
 					데이터가 아닙니다.

@@ -228,11 +228,11 @@ export const keyboards: readonly KeyboardProduct[] = [
 		},
 		summary:
 			"0.005mm 단위 래피드 트리거와 8,000Hz 폴링을 표기한 자석축 유선 68키. 반응 세팅을 세밀하게 조절하려는 경우 살펴볼 모델입니다.",
-		source: "https://kbench.com/?q=node%2F279485",
-		sourceName: "케이벤치 신제품 보도자료",
+		source: "https://g-clicker.com/product/detail.html?product_no=517",
+		sourceName: "지클릭커 공식몰 판매 페이지",
 		scope: "지클릭커 MAGNEON X XRT68 국내 출시 사양. Magneon GRT 시리즈 제외.",
 		caveat:
-			"보도자료 기반 공개값입니다. ARM Core×4 MCU, 펄스 탭(마지막 입력 우선), 3중 흡음 구조, PBT 투광 키캡을 표기하며 크기·무게는 공개되지 않았습니다.",
+			"공식몰·보도자료 공개값입니다. ARM Core×4 MCU, 펄스 탭(마지막 입력 우선), 3중 흡음 구조, PBT 투광 키캡을 표기하며 크기·무게는 공개되지 않았습니다.",
 		facts: [
 			{ label: "핫스왑", value: "미확인" },
 			{ label: "마운트", value: "미확인" },
@@ -263,8 +263,8 @@ export const keyboards: readonly KeyboardProduct[] = [
 		},
 		summary:
 			"키압 35g 자석축과 8,000Hz 폴링을 표기한 유선 68키. XRT68보다 낮은 가격의 래피드 트리거 입문 구성입니다.",
-		source: "https://prod.danawa.com/info/?pcode=104987477",
-		sourceName: "다나와 공개 스펙",
+		source: "https://g-clicker.com/product/detail.html?product_no=488",
+		sourceName: "지클릭커 공식몰 판매 페이지",
 		scope: "지클릭커 Magneon 8K GRT68. GRT107(풀배열)·MAGNEON X XRT68 제외.",
 		caveat:
 			"쿠팡 판매 페이지는 GRT68·GRT107 옵션을 함께 판매합니다. 구매 시 68키(GRT68) 옵션인지 확인하세요. 0.125ms 응답·키압 35g은 판매처 공개값입니다.",
@@ -298,8 +298,8 @@ export const keyboards: readonly KeyboardProduct[] = [
 		},
 		summary:
 			"78키로 줄인 저소음 멤브레인 무선 모델. LCD 표시창과 볼륨 노브를 갖춘 사무용 구성입니다.",
-		source: "https://www.newstap.co.kr/news/articleView.html?idxno=318297",
-		sourceName: "뉴스탭 신제품 기사",
+		source: "https://g-clicker.com/product/detail.html?product_no=470",
+		sourceName: "지클릭커 공식몰 판매 페이지",
 		scope: "지클릭커 오피스프로 WK50 사일런스 M 78키. 87키·108키 변형 제외.",
 		caveat:
 			"무소음·풀윤활은 판매처 표현입니다. 폴링레이트 등 성능 수치는 공개되지 않았으며 게임용 지표로 비교하지 않습니다. 생활방수·레인보우 백라이트 표기.",
@@ -329,8 +329,8 @@ export const keyboards: readonly KeyboardProduct[] = [
 		},
 		summary:
 			"87키 텐키리스 저소음 멤브레인 유무선 모델. 2만 원대에 3가지 연결을 갖춘 사무용 구성입니다.",
-		source: "https://prod.danawa.com/info/?pcode=74887559",
-		sourceName: "다나와 공개 스펙",
+		source: "https://g-clicker.com/product/detail.html?product_no=350",
+		sourceName: "지클릭커 공식몰 판매 페이지",
 		scope: "지클릭커 오피스프로 WK50 사일런스 M RGB 87키(RC1). 108키 OPK50 제외.",
 		caveat:
 			"무소음은 판매처 표현입니다. 동시입력 19키·생활방수는 공개 스펙 기준이며 게임용 동시입력·폴링레이트 수치는 공개되지 않았습니다.",
