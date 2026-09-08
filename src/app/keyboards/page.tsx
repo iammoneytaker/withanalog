@@ -1,28 +1,28 @@
 import Link from "next/link";
 import { Shell, styles, Breadcrumbs, JsonLd } from "@/components/catalog/Shell";
 import { Catalog } from "@/components/catalog/Catalog";
-import { keyboards } from "@/lib/keyboards";
+import { keyboards, productTitle } from "@/lib/keyboards";
 import { pageMetadata, SITE_URL, VERIFIED_DATE } from "@/lib/seo";
 
 export const metadata = pageMetadata(
 	"/keyboards",
-	"독거미 AULA 키보드 비교 · F65 F75 F87 Pro F99",
-	"독거미 F65, F75, F75 MAX, F87 Pro, F99, F99 PRO의 배열·배터리·연결·공개 성능을 출처와 함께 비교합니다.",
+	"키보드 도감 · 독거미 AULA · 지클릭커 비교",
+	"독거미 F65부터 F99 PRO, 지클릭커 XRT68·사일런스 M까지 배열·연결·가격대·공개 성능을 출처와 함께 비교합니다.",
 );
 export default function KeyboardsPage() {
 	return (
 		<Shell>
 			<Breadcrumbs items={[{ name: "키보드 도감", path: "/keyboards" }]} />
-			<p className={styles.eyebrow}>THE AULA COLLECTION</p>
+			<p className={styles.eyebrow}>THE KEYBOARD COLLECTION</p>
 			<h1 className={styles.title}>
-				독거미 시리즈.
+				키보드 도감.
 				<br />
 				이름보다, 차이를 보세요.
 			</h1>
 			<p className={styles.lead}>
-				F65부터 F99 PRO까지. 배열·키 수·연결 방식과 공개된 성능을 정리했습니다.
-				국내 옵션이 아닌 글로벌 판매 페이지 기준이며, 확인일은 {VERIFIED_DATE}
-				입니다.
+				독거미 F65부터 F99 PRO, 지클릭커 자석축·사일런스 라인까지. 배열·연결
+				방식·가격대와 공개된 성능을 출처와 함께 정리했습니다. 확인일은{" "}
+				{VERIFIED_DATE}입니다.
 			</p>
 			<div className={styles.actions}>
 				<Link href="/compare" className={styles.button}>
@@ -42,11 +42,11 @@ export default function KeyboardsPage() {
 				data={{
 					"@context": "https://schema.org",
 					"@type": "ItemList",
-					name: "독거미 AULA 키보드 도감",
+					name: "WithAnalog 키보드 도감",
 					itemListElement: keyboards.map((product, i) => ({
 						"@type": "ListItem",
 						position: i + 1,
-						name: `AULA ${product.model}`,
+						name: productTitle(product),
 						url: `${SITE_URL}/keyboards/${product.slug}`,
 					})),
 				}}

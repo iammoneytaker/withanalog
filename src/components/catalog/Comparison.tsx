@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { keyboards, productFacts } from "@/lib/keyboards";
+import { keyboards, productFacts, productTitle } from "@/lib/keyboards";
 import styles from "./catalog.module.css";
 
 type Props = { readonly initialSlugs: readonly string[] };
@@ -62,7 +62,7 @@ export function Comparison({ initialSlugs }: Props) {
 										slugs.includes(option.slug) && option.slug !== product.slug
 									}
 								>
-									AULA {option.model}
+									{productTitle(option)}
 								</option>
 							))}
 						</select>
@@ -114,14 +114,14 @@ export function Comparison({ initialSlugs }: Props) {
 				aria-label="제품 비교표"
 			>
 				<table className={styles.table}>
-					<caption>독거미 공개 스펙 비교 · 독립 실측 순위가 아닙니다</caption>
+					<caption>공개 스펙 비교 · 독립 실측 순위가 아닙니다</caption>
 					<thead>
 						<tr>
 							<th scope="col">비교 항목</th>
 							{products.map((product) => (
 								<th scope="col" key={product.slug}>
 									<Link href={`/keyboards/${product.slug}`}>
-										AULA {product.model} ↗
+										{productTitle(product)} ↗
 									</Link>
 								</th>
 							))}
@@ -154,7 +154,7 @@ export function Comparison({ initialSlugs }: Props) {
 										target="_blank"
 										rel="noopener noreferrer"
 									>
-										AULA Gear 원문 ↗
+										{product.sourceName} ↗
 									</a>
 									<small>{product.scope}</small>
 								</td>

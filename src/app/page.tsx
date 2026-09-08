@@ -6,8 +6,8 @@ import { pageMetadata, SITE_URL } from "@/lib/seo";
 
 export const metadata = pageMetadata(
 	"/",
-	"키보드 테스트와 독거미 AULA 비교",
-	"키보드 입력·KPS 테스트와 독거미 AULA 시리즈 비교. 제품별 공개 스펙, 측정 조건과 출처를 확인하세요.",
+	"키보드 테스트와 독거미·지클릭커 비교",
+	"키보드 입력·KPS 테스트와 독거미 AULA·지클릭커 비교. 제품별 공개 스펙, 가격대, 측정 조건과 출처를 확인하세요.",
 );
 
 export default function Home() {
@@ -48,15 +48,15 @@ export default function Home() {
 						</Link>
 					</div>
 					<p className={styles.meta}>
-						독거미 AULA부터 시작합니다. 공개 스펙과 실측은 구분합니다.
+						독거미 AULA와 지클릭커를 다룹니다. 공개 스펙과 실측은 구분합니다.
 					</p>
 				</div>
 				<KeyboardArt />
 			</section>
 			<div className={styles.stats}>
 				<div>
-					<strong>06</strong>
-					<span>출처를 정리한 AULA 모델</span>
+					<strong>10</strong>
+					<span>출처를 정리한 키보드 모델</span>
 				</div>
 				<div>
 					<strong>03</strong>
@@ -69,8 +69,8 @@ export default function Home() {
 			</div>
 			<section className={styles.section}>
 				<div className={styles.sectionHead}>
-					<h2>독거미, 어떤 배열이 맞을까요?</h2>
-					<Link href="/keyboards">시리즈 전체 보기 ↗</Link>
+					<h2>어떤 키보드가 맞을까요?</h2>
+					<Link href="/keyboards">도감 전체 보기 ↗</Link>
 				</div>
 				<div className={styles.grid}>
 					{keyboards.slice(0, 3).map((product) => (

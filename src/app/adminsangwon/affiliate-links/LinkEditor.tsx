@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import type { AffiliateLink } from "@/lib/affiliate-links";
-import { keyboards } from "@/lib/keyboards";
+import { keyboards, productTitle } from "@/lib/keyboards";
 import { saveAffiliateLink } from "./actions";
 import styles from "@/components/catalog/catalog.module.css";
 
@@ -16,7 +16,7 @@ export function LinkEditor({
 				<LinkForm
 					key={product.slug}
 					slug={product.slug}
-					model={product.model}
+					model={productTitle(product)}
 					saved={links.find((link) => link.model_slug === product.slug)}
 				/>
 			))}
@@ -51,7 +51,7 @@ function LinkForm({
 				}
 			}}
 		>
-			<h2>AULA {model}</h2>
+			<h2>{model}</h2>
 			<input name="model_slug" type="hidden" value={slug} />
 			<div className={styles.filters}>
 				<label className={styles.field}>

@@ -1,5 +1,5 @@
 import { PurchaseLink } from "@/components/catalog/PurchaseLink";
-import { keyboardImage } from "@/lib/keyboards";
+import { keyboardImage, productTitle, productAlias } from "@/lib/keyboards";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -16,7 +16,9 @@ export function generateMetadata({ params }: Props) {
 	return product
 		? pageMetadata(
 				`/keyboards/${product.slug}`,
-				`독거미 AULA ${product.model} 스펙·성능·출처`,
+				product.brand === "AULA"
+					? `독거미 AULA ${product.model} 스펙·성능·출처`
+					: `지클릭커 ${product.model} 스펙·성능·출처`,
 				product.summary,
 			)
 		: { title: "모델을 찾을 수 없습니다", robots: { index: false } };
@@ -33,9 +35,11 @@ export default function ProductPage({ params }: Props) {
 					{ name: product.model, path: `/keyboards/${product.slug}` },
 				]}
 			/>
-			<p className={styles.eyebrow}>AULA / {product.layout} / SOURCE CHECKED</p>
-			<h1 className={styles.title}>독거미 {product.model}</h1>
-			<PurchaseLink slug={product.slug} />
+			<p className={styles.eyebrow}>
+				{product.brand === "AULA" ? "AULA" : "G-CLICKER"} / {product.layout} /
+				SOURCE CHECKED
+			</p>
+			<h1 className={styles.title}>{productAlias(product)}</h1>
 			<p className={styles.lead}>{product.summary}</p>
 			<p className={styles.meta}>
 				{product.scope}
@@ -59,26 +63,31 @@ export default function ProductPage({ params }: Props) {
 			<figure className={styles.productImage}>
 				<Image
 					src={keyboardImage(product.slug)}
-					alt={`AULA ${product.model} 제품 사진`}
+					alt={`${productTitle(product)} 제품 사진`}
 					width={640}
 					height={640}
 					priority
 				/>
 				<figcaption className={styles.meta}>
-					사진 출처: AULA Gear 제품 페이지. 색상·스위치는 판매 옵션에 따라
-					달라질 수 있습니다.
+					사진 출처:{" "}
+					{product.brand === "AULA"
+						? "AULA Gear 제품 페이지"
+						: "쿠팡 판매 페이지 대표 이미지"}
+					. 색상·스위치는 판매 옵션에 따라 달라질 수 있습니다.
 				</figcaption>
 			</figure>
 			<div className={styles.note}>{product.caveat}</div>
 			<section className={styles.section}>
 				<h2>확인된 공개 스펙</h2>
 				<p className={styles.meta}>
-					아래 표의 공개값은 AULA Gear 제품 페이지 기준입니다. 독립 실측 결과는
+					아래 표의 공개값은 {product.sourceName} 기준입니다. 독립 실측 결과는
 					등록되어 있지 않습니다.
 				</p>
 				<div className={styles.tableWrap}>
 					<table className={styles.table}>
-						<caption>AULA {product.model} · 판매 사양과 미확인 항목</caption>
+						<caption>
+							{productTitle(product)} · 공개 사양과 미확인 항목
+						</caption>
 						<tbody>
 							{facts.map((fact) => (
 								<tr key={fact.label}>
@@ -102,15 +111,20 @@ export default function ProductPage({ params }: Props) {
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					AULA Gear · {product.model} 제품 페이지 ↗
+					{product.sourceName} · {product.model} ↗
 				</a>
 				<p className={styles.meta}>
-					유형: 브랜드 판매 페이지 · 확인일: {VERIFIED_DATE}
+					유형:{" "}
+					{product.brand === "AULA"
+						? "브랜드 판매 페이지"
+						: "공개 자료(기사·스펙 페이지)"}{" "}
+					· 확인일: {VERIFIED_DATE}
 					<br />
 					공개 자료를 요약했으며 직접 측정하거나 제조사로부터 검증 인증을 받은
 					데이터가 아닙니다.
 				</p>
 			</section>
+			<PurchaseLink slug={product.slug} model={productAlias(product)} />
 			<section className={styles.section}>
 				<h2>함께 확인하세요</h2>
 				<div className={styles.actions}>
@@ -123,22 +137,19 @@ export default function ProductPage({ params }: Props) {
 					<Link className={styles.secondary} href="/methodology">
 						측정 기준
 					</Link>
-					<Link
-						className={styles.secondary}
-						href={`/contribute?model=${product.slug}`}
-					>
-						출처·스펙 정정
-					</Link>
 				</div>
 			</section>
 			<JsonLd
 				data={{
 					"@context": "https://schema.org",
 					"@type": "Product",
-					name: `AULA ${product.model}`,
-					alternateName: `독거미 ${product.model}`,
+					name: productTitle(product),
+					alternateName: productAlias(product),
 					model: product.model,
-					brand: { "@type": "Brand", name: "AULA" },
+					brand: {
+						"@type": "Brand",
+						name: product.brand === "AULA" ? "AULA" : "G-Clicker",
+					},
 					description: product.summary,
 					url: `${SITE_URL}/keyboards/${product.slug}`,
 					subjectOf: { "@type": "WebPage", url: product.source },

@@ -34,7 +34,7 @@ for (const url of urls) {
 		...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g),
 	].map((match) => JSON.parse(match[1]));
 	if (path.startsWith("/keyboards/")) {
-		assert(html.includes("AULA Gear"));
+		if (path.startsWith("/keyboards/aula-")) assert(html.includes("AULA Gear"));
 		assert(schemas.some((value) => value["@type"] === "Product"));
 	}
 	results.push({ path, status: response.status, schemaCount: schemas.length });

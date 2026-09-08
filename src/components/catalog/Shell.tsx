@@ -22,9 +22,8 @@ export function Shell({ children }: { readonly children: ReactNode }) {
 			{children}
 			<footer className={styles.footer}>
 				<span>WITHANALOG · 근거로 비교하는 키보드</span>
-				<Link href="/keyboards">독거미 AULA 시리즈</Link>
+				<Link href="/keyboards">키보드 도감</Link>
 				<Link href="/methodology">출처·편집 기준</Link>
-				<Link href="/contribute">데이터 정정</Link>
 				<Link href="/tools/keyboard-performance-test">키보드 성능 테스트</Link>
 			</footer>
 		</div>
