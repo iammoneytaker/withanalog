@@ -2,6 +2,8 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import ProjectGrid from '../../components/ProjectGrid';
 
+export const dynamic = 'force-dynamic';
+
 export default async function ProjectsPage() {
   const supabase = createServerComponentClient({ cookies });
 

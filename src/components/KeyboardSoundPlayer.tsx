@@ -205,7 +205,7 @@ export function KeyboardSoundPlayer({
           onChange={(e) => setVolume(parseFloat(e.target.value))}
           className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
           style={{
-            background: `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${volume * 100}%, #374151 ${volume * 100}%, #374151 100%)`
+            background: `linear-gradient(to right, var(--sound-active, #3b82f6) 0%, var(--sound-active, #3b82f6) ${volume * 100}%, var(--sound-track, #374151) ${volume * 100}%, var(--sound-track, #374151) 100%)`
           }}
         />
       </div>

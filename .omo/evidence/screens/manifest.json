@@ -1,0 +1,324 @@
+[
+  {
+    "path": "/",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-home.png",
+    "h1": "손끝의 차이,근거로 비교하다.",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/keyboards",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-keyboards.png",
+    "h1": "독거미 시리즈.이름보다, 차이를 보세요.",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/compare",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-compare.png",
+    "h1": "같은 기준으로,다른 점을 찾으세요.",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/compare/aula-f75-vs-aula-f99",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-compare-aula-f75-vs-aula-f99.png",
+    "h1": "F75 vs F99",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/guides",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-guides.png",
+    "h1": "숫자를 읽는 방법.",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/methodology",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-methodology.png",
+    "h1": "비교의 시작은측정의 조건입니다.",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/contribute",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-contribute.png",
+    "h1": "더 정확한 자료가 있나요?",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/tools",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-tools.png",
+    "h1": "직접 눌러서확인하세요.",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/tools/keyboard-input-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-tools-keyboard-input-test.png",
+    "h1": "키보드 입력·동시입력 테스트",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/tools/kps-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-tools-kps-test.png",
+    "h1": "KPS 측정 · 키보드 연타 테스트",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/tools/rapid-trigger-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-tools-rapid-trigger-test.png",
+    "h1": "래피드 트리거 재입력 확인",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/keyboards/aula-f65",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-keyboards-aula-f65.png",
+    "h1": "독거미 F65",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/keyboards/aula-f75",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-keyboards-aula-f75.png",
+    "h1": "독거미 F75",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/keyboards/aula-f75-max",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-keyboards-aula-f75-max.png",
+    "h1": "독거미 F75 MAX",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/keyboards/aula-f87-pro",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-keyboards-aula-f87-pro.png",
+    "h1": "독거미 F87 Pro",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/keyboards/aula-f99",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-keyboards-aula-f99.png",
+    "h1": "독거미 F99",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/keyboards/aula-f99-pro",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-keyboards-aula-f99-pro.png",
+    "h1": "독거미 F99 PRO",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/guides/aula-series",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-guides-aula-series.png",
+    "h1": "독거미 AULA 시리즈, 무엇이 다른가요?",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/guides/keyboard-latency",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-guides-keyboard-latency.png",
+    "h1": "키보드 반응속도와 입력 지연은 같은가요?",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/guides/kps-cps",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-guides-kps-cps.png",
+    "h1": "KPS·CPS는 무엇을 측정하나요?",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/guides/rapid-trigger",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-guides-rapid-trigger.png",
+    "h1": "래피드 트리거를 웹에서 확인할 수 있나요?",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/guides/polling-rate",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-guides-polling-rate.png",
+    "h1": "1,000Hz·8,000Hz가 입력 지연인가요?",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/guides/keyboard-input",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/desktop-guides-keyboard-input.png",
+    "h1": "키 인식·동시입력 테스트는 어떻게 하나요?",
+    "overflow": false,
+    "width": 1280
+  },
+  {
+    "path": "/",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-home.png",
+    "h1": "손끝의 차이,근거로 비교하다.",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/keyboards",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-keyboards.png",
+    "h1": "독거미 시리즈.이름보다, 차이를 보세요.",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/compare",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-compare.png",
+    "h1": "같은 기준으로,다른 점을 찾으세요.",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/compare/aula-f75-vs-aula-f99",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-compare-aula-f75-vs-aula-f99.png",
+    "h1": "F75 vs F99",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/guides",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-guides.png",
+    "h1": "숫자를 읽는 방법.",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/methodology",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-methodology.png",
+    "h1": "비교의 시작은측정의 조건입니다.",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/contribute",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-contribute.png",
+    "h1": "더 정확한 자료가 있나요?",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/tools",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-tools.png",
+    "h1": "직접 눌러서확인하세요.",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/tools/keyboard-input-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-tools-keyboard-input-test.png",
+    "h1": "키보드 입력·동시입력 테스트",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/tools/kps-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-tools-kps-test.png",
+    "h1": "KPS 측정 · 키보드 연타 테스트",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/tools/rapid-trigger-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-tools-rapid-trigger-test.png",
+    "h1": "래피드 트리거 재입력 확인",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/keyboards/aula-f65",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-keyboards-aula-f65.png",
+    "h1": "독거미 F65",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/keyboards/aula-f75",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-keyboards-aula-f75.png",
+    "h1": "독거미 F75",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/keyboards/aula-f75-max",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-keyboards-aula-f75-max.png",
+    "h1": "독거미 F75 MAX",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/keyboards/aula-f87-pro",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-keyboards-aula-f87-pro.png",
+    "h1": "독거미 F87 Pro",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/keyboards/aula-f99",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-keyboards-aula-f99.png",
+    "h1": "독거미 F99",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/keyboards/aula-f99-pro",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-keyboards-aula-f99-pro.png",
+    "h1": "독거미 F99 PRO",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/guides/aula-series",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-guides-aula-series.png",
+    "h1": "독거미 AULA 시리즈, 무엇이 다른가요?",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/guides/keyboard-latency",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-guides-keyboard-latency.png",
+    "h1": "키보드 반응속도와 입력 지연은 같은가요?",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/guides/kps-cps",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-guides-kps-cps.png",
+    "h1": "KPS·CPS는 무엇을 측정하나요?",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/guides/rapid-trigger",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-guides-rapid-trigger.png",
+    "h1": "래피드 트리거를 웹에서 확인할 수 있나요?",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/guides/polling-rate",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-guides-polling-rate.png",
+    "h1": "1,000Hz·8,000Hz가 입력 지연인가요?",
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "path": "/guides/keyboard-input",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/screens/mobile-guides-keyboard-input.png",
+    "h1": "키 인식·동시입력 테스트는 어떻게 하나요?",
+    "overflow": false,
+    "width": 390
+  }
+]

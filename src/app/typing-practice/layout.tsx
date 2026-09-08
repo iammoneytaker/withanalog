@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description: '실시간 WPM 측정과 정확도 분석으로 체계적인 타자 실력 향상',
   },
   alternates: {
-    canonical: 'https://withanalog.com/typing-practice',
+    canonical: 'https://www.withanalog.com/typing-practice',
   },
   category: 'technology',
 };

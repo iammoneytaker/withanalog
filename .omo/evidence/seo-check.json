@@ -1,0 +1,149 @@
+{
+  "passed": 28,
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "schemaCount": 1
+    },
+    {
+      "path": "/keyboards",
+      "status": 200,
+      "schemaCount": 2
+    },
+    {
+      "path": "/compare",
+      "status": 200,
+      "schemaCount": 1
+    },
+    {
+      "path": "/compare/aula-f75-vs-aula-f99",
+      "status": 200,
+      "schemaCount": 1
+    },
+    {
+      "path": "/guides",
+      "status": 200,
+      "schemaCount": 1
+    },
+    {
+      "path": "/methodology",
+      "status": 200,
+      "schemaCount": 1
+    },
+    {
+      "path": "/tools",
+      "status": 200,
+      "schemaCount": 1
+    },
+    {
+      "path": "/tools/keyboard-performance-test",
+      "status": 200,
+      "schemaCount": 0
+    },
+    {
+      "path": "/tools/keyboard-input-test",
+      "status": 200,
+      "schemaCount": 1
+    },
+    {
+      "path": "/tools/kps-test",
+      "status": 200,
+      "schemaCount": 1
+    },
+    {
+      "path": "/tools/rapid-trigger-test",
+      "status": 200,
+      "schemaCount": 1
+    },
+    {
+      "path": "/tools/ac54699f-e7e5-4075-8230-7ae6c604104a",
+      "status": 200,
+      "schemaCount": 0
+    },
+    {
+      "path": "/tools/keyboard-sound-test",
+      "status": 200,
+      "schemaCount": 0
+    },
+    {
+      "path": "/tools/english-typing-test",
+      "status": 200,
+      "schemaCount": 0
+    },
+    {
+      "path": "/typing-practice",
+      "status": 200,
+      "schemaCount": 0
+    },
+    {
+      "path": "/tools/2f4712ba-2e77-4e5c-a418-c4f6d3a03787",
+      "status": 200,
+      "schemaCount": 0
+    },
+    {
+      "path": "/keyboards/aula-f65",
+      "status": 200,
+      "schemaCount": 2
+    },
+    {
+      "path": "/keyboards/aula-f75",
+      "status": 200,
+      "schemaCount": 2
+    },
+    {
+      "path": "/keyboards/aula-f75-max",
+      "status": 200,
+      "schemaCount": 2
+    },
+    {
+      "path": "/keyboards/aula-f87-pro",
+      "status": 200,
+      "schemaCount": 2
+    },
+    {
+      "path": "/keyboards/aula-f99",
+      "status": 200,
+      "schemaCount": 2
+    },
+    {
+      "path": "/keyboards/aula-f99-pro",
+      "status": 200,
+      "schemaCount": 2
+    },
+    {
+      "path": "/guides/aula-series",
+      "status": 200,
+      "schemaCount": 2
+    },
+    {
+      "path": "/guides/keyboard-latency",
+      "status": 200,
+      "schemaCount": 2
+    },
+    {
+      "path": "/guides/kps-cps",
+      "status": 200,
+      "schemaCount": 2
+    },
+    {
+      "path": "/guides/rapid-trigger",
+      "status": 200,
+      "schemaCount": 2
+    },
+    {
+      "path": "/guides/polling-rate",
+      "status": 200,
+      "schemaCount": 2
+    },
+    {
+      "path": "/guides/keyboard-input",
+      "status": 200,
+      "schemaCount": 2
+    }
+  ],
+  "invalidRoutes": "404",
+  "redirects": "308",
+  "temporaryComparison": "noindex",
+  "robots": "passed"
+}

@@ -1,0 +1,92 @@
+.surface {
+	background: #101113;
+	color: #f0efed;
+	min-height: 100vh;
+	padding-top: 72px;
+	--tool-panel: #191a1d;
+	--tool-border: #303236;
+	font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+.surface :global(.bg-gray-900),
+.surface :global(.bg-gradient-to-br) {
+	background: #101113;
+}
+.surface :global(.bg-gray-800),
+.surface :global(.bg-gray-800\/50),
+.surface :global(.bg-gray-700) {
+	background: var(--tool-panel);
+}
+.surface :global(.border-gray-700),
+.surface :global(.border-gray-600),
+.surface :global(.border-gray-700\/50) {
+	border-color: var(--tool-border);
+}
+.surface h1 {
+	color: #f0efed;
+	background: none;
+	-webkit-text-fill-color: currentColor;
+	font-size: clamp(30px, 4.5vw, 56px);
+	letter-spacing: -1.5px;
+	line-height: 1.2;
+}
+.surface h2 {
+	letter-spacing: -0.5px;
+}
+.surface :global(.text-blue-400),
+.surface :global(.text-purple-400) {
+	color: #ff8054;
+}
+.surface :global(.bg-blue-600),
+.surface :global(.bg-purple-600) {
+	background: #bd502b;
+	color: #fff;
+}
+.surface :global(.hover\:bg-blue-700):hover,
+.surface :global(.hover\:bg-purple-700):hover {
+	background: #9b3d1c;
+}
+.surface :global(.rounded-2xl),
+.surface :global(.rounded-xl) {
+	border-radius: 12px;
+}
+.surface a:focus-visible,
+.surface button:focus-visible,
+.surface select:focus-visible,
+.surface input:focus-visible {
+	outline: 2px solid #ff8054;
+	outline-offset: 3px;
+}
+.surface > :global(.py-20),
+.surface > :global(.py-16) {
+	padding-top: 40px;
+}
+.surface {
+	word-break: keep-all;
+	overflow-wrap: break-word;
+}
+.surface :global(.bg-gray-800\/90),
+.surface :global(.bg-gray-700\/80),
+.surface :global(.bg-gray-700\/50),
+.surface :global(.bg-blue-900\/20),
+.surface :global(.bg-green-900\/20),
+.surface :global(.bg-purple-900\/20) {
+	background: var(--tool-panel);
+}
+.surface :global(.border-blue-500\/30),
+.surface :global(.border-green-500\/30),
+.surface :global(.border-purple-500\/30) {
+	border-color: var(--tool-border);
+}
+.surface button:global(.bg-blue-500) {
+	background: #bd502b;
+}
+.surface button:global(.border-blue-500) {
+	border-color: #ff8054;
+	box-shadow: none;
+}
+.surface input[type="range"] {
+	accent-color: #ff8054;
+}
+
+.surface { --sound-active: #ff8054; --sound-track: #303236; }
+.surface input[type="range"] { height: 8px; min-height: 0; padding: 0; border-radius: 999px; }

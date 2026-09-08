@@ -1,0 +1,234 @@
+[
+  {
+    "path": "/",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-home.png"
+  },
+  {
+    "path": "/keyboards",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-keyboards.png"
+  },
+  {
+    "path": "/compare",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-compare.png"
+  },
+  {
+    "path": "/compare/aula-f75-vs-aula-f99",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-compare-aula-f75-vs-aula-f99.png"
+  },
+  {
+    "path": "/guides",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-guides.png"
+  },
+  {
+    "path": "/methodology",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-methodology.png"
+  },
+  {
+    "path": "/contribute",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-contribute.png"
+  },
+  {
+    "path": "/tools",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-tools.png"
+  },
+  {
+    "path": "/tools/keyboard-input-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-tools-keyboard-input-test.png"
+  },
+  {
+    "path": "/tools/kps-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-tools-kps-test.png"
+  },
+  {
+    "path": "/tools/rapid-trigger-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-tools-rapid-trigger-test.png"
+  },
+  {
+    "path": "/tools/keyboard-performance-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-tools-keyboard-performance-test.png"
+  },
+  {
+    "path": "/tools/keyboard-sound-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-tools-keyboard-sound-test.png"
+  },
+  {
+    "path": "/tools/english-typing-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-tools-english-typing-test.png"
+  },
+  {
+    "path": "/tools/ac54699f-e7e5-4075-8230-7ae6c604104a",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-tools-ac54699f-e7e5-4075-8230-7ae6c604104a.png"
+  },
+  {
+    "path": "/tools/2f4712ba-2e77-4e5c-a418-c4f6d3a03787",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-tools-2f4712ba-2e77-4e5c-a418-c4f6d3a03787.png"
+  },
+  {
+    "path": "/typing-practice",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-typing-practice.png"
+  },
+  {
+    "path": "/keyboards/aula-f65",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-keyboards-aula-f65.png"
+  },
+  {
+    "path": "/keyboards/aula-f75",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-keyboards-aula-f75.png"
+  },
+  {
+    "path": "/keyboards/aula-f75-max",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-keyboards-aula-f75-max.png"
+  },
+  {
+    "path": "/keyboards/aula-f87-pro",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-keyboards-aula-f87-pro.png"
+  },
+  {
+    "path": "/keyboards/aula-f99",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-keyboards-aula-f99.png"
+  },
+  {
+    "path": "/keyboards/aula-f99-pro",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-keyboards-aula-f99-pro.png"
+  },
+  {
+    "path": "/guides/aula-series",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-guides-aula-series.png"
+  },
+  {
+    "path": "/guides/keyboard-latency",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-guides-keyboard-latency.png"
+  },
+  {
+    "path": "/guides/kps-cps",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-guides-kps-cps.png"
+  },
+  {
+    "path": "/guides/rapid-trigger",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-guides-rapid-trigger.png"
+  },
+  {
+    "path": "/guides/polling-rate",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-guides-polling-rate.png"
+  },
+  {
+    "path": "/guides/keyboard-input",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/desktop-guides-keyboard-input.png"
+  },
+  {
+    "path": "/",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-home.png"
+  },
+  {
+    "path": "/keyboards",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-keyboards.png"
+  },
+  {
+    "path": "/compare",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-compare.png"
+  },
+  {
+    "path": "/compare/aula-f75-vs-aula-f99",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-compare-aula-f75-vs-aula-f99.png"
+  },
+  {
+    "path": "/guides",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-guides.png"
+  },
+  {
+    "path": "/methodology",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-methodology.png"
+  },
+  {
+    "path": "/contribute",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-contribute.png"
+  },
+  {
+    "path": "/tools",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-tools.png"
+  },
+  {
+    "path": "/tools/keyboard-input-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-tools-keyboard-input-test.png"
+  },
+  {
+    "path": "/tools/kps-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-tools-kps-test.png"
+  },
+  {
+    "path": "/tools/rapid-trigger-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-tools-rapid-trigger-test.png"
+  },
+  {
+    "path": "/tools/keyboard-performance-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-tools-keyboard-performance-test.png"
+  },
+  {
+    "path": "/tools/keyboard-sound-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-tools-keyboard-sound-test.png"
+  },
+  {
+    "path": "/tools/english-typing-test",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-tools-english-typing-test.png"
+  },
+  {
+    "path": "/tools/ac54699f-e7e5-4075-8230-7ae6c604104a",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-tools-ac54699f-e7e5-4075-8230-7ae6c604104a.png"
+  },
+  {
+    "path": "/tools/2f4712ba-2e77-4e5c-a418-c4f6d3a03787",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-tools-2f4712ba-2e77-4e5c-a418-c4f6d3a03787.png"
+  },
+  {
+    "path": "/typing-practice",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-typing-practice.png"
+  },
+  {
+    "path": "/keyboards/aula-f65",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-keyboards-aula-f65.png"
+  },
+  {
+    "path": "/keyboards/aula-f75",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-keyboards-aula-f75.png"
+  },
+  {
+    "path": "/keyboards/aula-f75-max",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-keyboards-aula-f75-max.png"
+  },
+  {
+    "path": "/keyboards/aula-f87-pro",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-keyboards-aula-f87-pro.png"
+  },
+  {
+    "path": "/keyboards/aula-f99",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-keyboards-aula-f99.png"
+  },
+  {
+    "path": "/keyboards/aula-f99-pro",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-keyboards-aula-f99-pro.png"
+  },
+  {
+    "path": "/guides/aula-series",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-guides-aula-series.png"
+  },
+  {
+    "path": "/guides/keyboard-latency",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-guides-keyboard-latency.png"
+  },
+  {
+    "path": "/guides/kps-cps",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-guides-kps-cps.png"
+  },
+  {
+    "path": "/guides/rapid-trigger",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-guides-rapid-trigger.png"
+  },
+  {
+    "path": "/guides/polling-rate",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-guides-polling-rate.png"
+  },
+  {
+    "path": "/guides/keyboard-input",
+    "file": "/Users/mac/myApp/withanalog/.omo/evidence/final-ui/mobile-guides-keyboard-input.png"
+  }
+]

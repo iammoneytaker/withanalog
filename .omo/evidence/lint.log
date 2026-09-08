@@ -1,0 +1,5 @@
+
+> withanalog@0.1.0 lint
+> next lint --quiet
+
+✔ No ESLint warnings or errors

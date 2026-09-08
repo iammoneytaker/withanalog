@@ -1,0 +1,46 @@
+export type AffiliateLink = {
+	model_slug: string;
+	affiliate_url: string;
+	variant: string;
+	enabled: boolean;
+	checked_on: string | null;
+	updated_at: string;
+};
+export type AffiliateDatabase = {
+	public: {
+		Tables: {
+			keyboard_affiliate_links: {
+				Row: AffiliateLink;
+				Insert: Omit<AffiliateLink, "updated_at"> & { updated_at?: string };
+				Update: Partial<AffiliateLink>;
+				Relationships: [];
+			};
+			keyboard_link_admins: {
+				Row: { user_id: string };
+				Insert: { user_id: string };
+				Update: { user_id?: string };
+				Relationships: [];
+			};
+		};
+		Views: Record<string, never>;
+		Functions: Record<string, never>;
+		Enums: Record<string, never>;
+		CompositeTypes: Record<string, never>;
+	};
+};
+export function validAffiliateUrl(value: string): boolean {
+	try {
+		const url = new URL(value);
+		return (
+			url.protocol === "https:" &&
+			url.hostname === "link.coupang.com" &&
+			url.pathname.length > 1 &&
+			!url.username &&
+			!url.password &&
+			!url.port &&
+			!/\s/.test(value)
+		);
+	} catch {
+		return false;
+	}
+}

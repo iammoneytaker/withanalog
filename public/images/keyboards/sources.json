@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "aula-f65",
+    "productPage": "https://aulagear.com/products/epomaker-x-aula-f65",
+    "imageSource": "https://aulagear.com/cdn/shop/files/IMG_8718.png?v=1734921204",
+    "localPath": "public/images/keyboards/aula-f65.png",
+    "checked": "2026-09-08",
+    "permissionNote": "User requested reuse of product images. Source attribution is not a copyright license; vendor reuse permission has not been independently established."
+  },
+  {
+    "slug": "aula-f75",
+    "productPage": "https://aulagear.com/products/aula-f75",
+    "imageSource": "https://aulagear.com/cdn/shop/files/203A5822.jpg?v=1734921227",
+    "localPath": "public/images/keyboards/aula-f75.jpg",
+    "checked": "2026-09-08",
+    "permissionNote": "User requested reuse of product images. Source attribution is not a copyright license; vendor reuse permission has not been independently established."
+  },
+  {
+    "slug": "aula-f75-max",
+    "productPage": "https://aulagear.com/products/aula-f75-max",
+    "imageSource": "https://aulagear.com/cdn/shop/files/IMG_5706.png?v=1734344767",
+    "localPath": "public/images/keyboards/aula-f75-max.png",
+    "checked": "2026-09-08",
+    "permissionNote": "User requested reuse of product images. Source attribution is not a copyright license; vendor reuse permission has not been independently established."
+  },
+  {
+    "slug": "aula-f87-pro",
+    "productPage": "https://aulagear.com/products/aula-f87-pro",
+    "imageSource": "https://aulagear.com/cdn/shop/files/AULA_F87_Pro_Smoke_Blue_1.jpg?v=1773471687",
+    "localPath": "public/images/keyboards/aula-f87-pro.jpg",
+    "checked": "2026-09-08",
+    "permissionNote": "User requested reuse of product images. Source attribution is not a copyright license; vendor reuse permission has not been independently established."
+  },
+  {
+    "slug": "aula-f99",
+    "productPage": "https://aulagear.com/products/aula-f99",
+    "imageSource": "https://aulagear.com/cdn/shop/files/AULA_F99_Black_White_Grey_PC_Plate_1.jpg?v=1755685551",
+    "localPath": "public/images/keyboards/aula-f99.jpg",
+    "checked": "2026-09-08",
+    "permissionNote": "User requested reuse of product images. Source attribution is not a copyright license; vendor reuse permission has not been independently established."
+  },
+  {
+    "slug": "aula-f99-pro",
+    "productPage": "https://aulagear.com/products/aula-f99-copy",
+    "imageSource": "https://aulagear.com/cdn/shop/files/IMG_6904.jpg?v=1739175600",
+    "localPath": "public/images/keyboards/aula-f99-pro.jpg",
+    "checked": "2026-09-08",
+    "permissionNote": "User requested reuse of product images. Source attribution is not a copyright license; vendor reuse permission has not been independently established."
+  }
+]

@@ -25,10 +25,10 @@ export default function LoginPage() {
 
       if (error) throw error;
 
-      router.push('/adminsangwon/projects');
+      router.push('/adminsangwon/affiliate-links');
       router.refresh();
-    } catch (error: any) {
-      setError(error.message);
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : '로그인하지 못했습니다.');
     } finally {
       setLoading(false);
     }

@@ -1,0 +1,237 @@
+
+> withanalog@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.9
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+
+./src/app/adminsangwon/blog/page.tsx
+14:6  Warning: React Hook useEffect has a missing dependency: 'fetchPosts'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/adminsangwon/projects/[id]/edit/page.tsx
+29:6  Warning: React Hook useEffect has a missing dependency: 'fetchProject'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/adminsangwon/projects/page.tsx
+28:6  Warning: React Hook useEffect has a missing dependency: 'fetchProjects'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/tools/ab782d5b-6248-4cdd-b63f-ae4e6b68b6fd/page.tsx
+142:6  Warning: React Hook useEffect has a missing dependency: 'handleKeyPress'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/components/AdvancedKeyboardTester.tsx
+48:9  Warning: The 'koreanMap' object makes the dependencies of useCallback Hook (at line 117) change on every render. To fix this, wrap the initialization of 'koreanMap' in its own useMemo() Hook.  react-hooks/exhaustive-deps
+
+./src/components/BlogPostEditor.tsx
+59:6  Warning: React Hook useCallback has a missing dependency: 'uploadImage'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/components/GlobalKeyboardSound.tsx
+85:6  Warning: React Hook useEffect has missing dependencies: 'isEnabled' and 'volume'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/components/KeyboardSoundPlayer.tsx
+84:6  Warning: React Hook useEffect has a missing dependency: 'volume'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/components/KeyboardTesterNew.tsx
+128:6  Warning: React Hook useCallback has a missing dependency: 'getKeyLabel'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/components/ReactionTest.tsx
+86:6  Warning: React Hook useCallback has a missing dependency: 'proceedWithTest'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+105:6  Warning: React Hook useCallback has a missing dependency: 'handleTimeout'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+149:6  Warning: React Hook useCallback has an unnecessary dependency: 'startTest'. Either exclude it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/components/sections/ProjectSection.tsx
+142:23  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+   Collecting page data ...
+   Generating static pages (0/48) ...
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+   Generating static pages (12/48) 
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+   Generating static pages (24/48) 
+GA is disabled in development mode
+GA is disabled in development mode
+TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Promise.all (index 0) {
+  [cause]: Error: getaddrinfo ENOTFOUND jszchnsbkfvpczxypimw.supabase.co
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'jszchnsbkfvpczxypimw.supabase.co'
+  }
+}
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  [cause]: Error: getaddrinfo ENOTFOUND jszchnsbkfvpczxypimw.supabase.co
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'jszchnsbkfvpczxypimw.supabase.co'
+  }
+}
+GA is disabled in development mode
+GA is disabled in development mode
+TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  [cause]: Error: getaddrinfo ENOTFOUND jszchnsbkfvpczxypimw.supabase.co
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'jszchnsbkfvpczxypimw.supabase.co'
+  }
+}
+TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  [cause]: Error: getaddrinfo ENOTFOUND jszchnsbkfvpczxypimw.supabase.co
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'jszchnsbkfvpczxypimw.supabase.co'
+  }
+}
+GA is disabled in development mode
+TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Promise.all (index 0) {
+  [cause]: Error: getaddrinfo ENOTFOUND jszchnsbkfvpczxypimw.supabase.co
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'jszchnsbkfvpczxypimw.supabase.co'
+  }
+}
+TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Promise.all (index 0) {
+  [cause]: Error: getaddrinfo ENOTFOUND jszchnsbkfvpczxypimw.supabase.co
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+      at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'jszchnsbkfvpczxypimw.supabase.co'
+  }
+}
+   Generating static pages (36/48) 
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+GA is disabled in development mode
+ ✓ Generating static pages (48/48)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                      Size     First Load JS
+┌ ○ /                                            762 B           100 kB
+├ ○ /_not-found                                  876 B          88.7 kB
+├ ○ /adminsangwon                                182 B            88 kB
+├ ƒ /adminsangwon/affiliate-links                3.75 kB        98.3 kB
+├ ○ /adminsangwon/blog                           1.37 kB         134 kB
+├ ƒ /adminsangwon/blog/edit/[id]                 55.2 kB         193 kB
+├ ○ /adminsangwon/blog/new                       2.33 kB         135 kB
+├ ○ /adminsangwon/login                          1.13 kB         127 kB
+├ ○ /adminsangwon/projects                       2.28 kB         140 kB
+├ ƒ /adminsangwon/projects/[id]/edit             1.82 kB         135 kB
+├ ○ /adminsangwon/projects/new                   3.08 kB         141 kB
+├ ƒ /compare                                     147 B          98.8 kB
+├ ● /compare/[pair]                              147 B          98.8 kB
+├   └ /compare/aula-f75-vs-aula-f99
+├ ƒ /contribute                                  3.6 kB         98.2 kB
+├ ○ /guides                                      760 B          95.3 kB
+├ ● /guides/[slug]                               760 B          95.3 kB
+├   ├ /guides/aula-series
+├   ├ /guides/keyboard-latency
+├   ├ /guides/kps-cps
+├   └ [+3 more paths]
+├ ○ /household-items                             13.1 kB         106 kB
+├ ○ /keyboards                                   3.96 kB         104 kB
+├ ● /keyboards/[slug]                            761 B           100 kB
+├   ├ /keyboards/aula-f65
+├   ├ /keyboards/aula-f75
+├   ├ /keyboards/aula-f75-max
+├   └ [+3 more paths]
+├ ○ /methodology                                 760 B          95.3 kB
+├ ƒ /projects                                    1.04 kB        95.6 kB
+├ ƒ /projects/[id]                               151 B           140 kB
+├ ○ /recommendations                             182 B            88 kB
+├ ○ /reviews                                     182 B            88 kB
+├ ƒ /reviews/[id]                                150 B           140 kB
+├ ○ /robots.txt                                  0 B                0 B
+├ ○ /sitemap.xml                                 0 B                0 B
+├ ○ /story                                       6.57 kB         131 kB
+├ ○ /tools                                       760 B          95.3 kB
+├ ƒ /tools/[id]                                  150 B           140 kB
+├ ○ /tools/2f4712ba-2e77-4e5c-a418-c4f6d3a03787  4.58 kB         129 kB
+├ ○ /tools/ab782d5b-6248-4cdd-b63f-ae4e6b68b6fd  2.84 kB         128 kB
+├ ○ /tools/ac54699f-e7e5-4075-8230-7ae6c604104a  4.03 kB         129 kB
+├ ○ /tools/english-typing-test                   3.75 kB         128 kB
+├ ○ /tools/keyboard-input-test                   2.74 kB        97.3 kB
+├ ○ /tools/keyboard-performance-test             8.86 kB         134 kB
+├ ○ /tools/keyboard-sound-test                   3.04 kB         128 kB
+├ ○ /tools/kps-test                              2.74 kB        97.3 kB
+├ ○ /tools/rapid-trigger-test                    2.74 kB        97.3 kB
+└ ○ /typing-practice                             2.11 kB         127 kB
++ First Load JS shared by all                    87.8 kB
+  ├ chunks/7023-a41c96f70a986770.js              31.6 kB
+  ├ chunks/fd9d1056-8d24ff03c1db56a5.js          53.6 kB
+  └ other shared chunks (total)                  2.58 kB
+
+
+ƒ Middleware                                     57.5 kB
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses getStaticProps)
+ƒ  (Dynamic)  server-rendered on demand
+
