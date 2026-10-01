@@ -7,12 +7,11 @@ import GoogleTagManager from '@/components/GoogleTagManager';
 import GoogleAdsense from '@/components/GoogleAdsense';
 import { GlobalKeyboardSound } from '@/components/GlobalKeyboardSound';
 import { KeyboardSoundController } from '@/components/KeyboardSoundController';
-import { AffiliateNotice } from '@/components/AffiliateNotice';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://withanalog.com'),
+  metadataBase: new URL('https://www.withanalog.com'),
   title: {
     template: '%s | WithAnalog',
     default: 'WithAnalog - 키보드와 타이핑의 새로운 경험',
@@ -39,7 +38,7 @@ export const metadata: Metadata = {
     title: 'WithAnalog - 키보드와 타이핑의 새로운 경험',
     description:
       '키보드 성능 테스트, 타이핑 연습, 반응속도 측정까지. 디지털과 현실을 잇는 키보드 전문 플랫폼',
-    url: 'https://withanalog.com',
+    url: 'https://www.withanalog.com',
     siteName: 'WithAnalog',
     images: [
       {
@@ -89,7 +88,6 @@ export default function RootLayout({
           <GlobalKeyboardSound />
           <KeyboardSoundController />
           <ThemeToggle />
-          <AffiliateNotice />
           <Header />
           <main>{children}</main>
         </ThemeProvider>

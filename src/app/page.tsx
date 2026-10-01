@@ -113,9 +113,14 @@ export default function Home() {
 					스펙, 판매처의 성능 주장, 독립적인 실측은 서로 다릅니다. 측정 조건이
 					확인되지 않은 값으로 가장 빠른 키보드를 정하지 않습니다.
 				</p>
-				<Link className={styles.textLink} href="/methodology">
-					측정과 편집 기준 읽기 ↗
-				</Link>
+				<div className={styles.actions}>
+					<Link className={styles.textLink} href="/methodology">
+						측정과 편집 기준 읽기 ↗
+					</Link>
+					<Link className={styles.textLink} href="/about">
+						누가 어떻게 만드는지 보기 ↗
+					</Link>
+				</div>
 			</section>
 		</Shell>
 	);

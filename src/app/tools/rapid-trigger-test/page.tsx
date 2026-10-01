@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Shell, styles, Breadcrumbs } from "@/components/catalog/Shell";
 import { InputLab } from "@/components/catalog/InputLab";
+import { ToolExplainer } from "@/components/catalog/ToolExplainer";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata(
 	"/tools/rapid-trigger-test",
@@ -26,6 +27,7 @@ export default function Page() {
 				지원 여부나 mm 감도를 인증하는 도구는 아닙니다.
 			</p>
 			<InputLab mode="rapid" />
+			<ToolExplainer path="/tools/rapid-trigger-test" />
 			<div className={styles.actions}>
 				<Link className={styles.secondary} href="/guides/rapid-trigger">
 					측정 방법과 한계

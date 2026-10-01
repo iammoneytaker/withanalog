@@ -44,7 +44,8 @@ export default function ProductPage({ params }: Props) {
 			<p className={styles.meta}>
 				{product.scope}
 				<br />
-				WithAnalog 자료 정리 · 출처 확인 {VERIFIED_DATE}
+				<Link href="/about">WithAnalog 운영자</Link> 자료 정리 · 출처 확인{" "}
+				{VERIFIED_DATE}
 			</p>
 			<div className={styles.actions}>
 				<Link

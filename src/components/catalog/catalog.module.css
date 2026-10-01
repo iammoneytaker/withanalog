@@ -602,3 +602,25 @@
 		font-size: 15px;
 	}
 }
+.prose ol {
+	padding-left: 24px;
+	list-style: decimal;
+}
+.prose details p {
+	margin: 12px 0 0;
+}
+.explainer {
+	--surface: #151618;
+	--muted: #a9aaad;
+	--line: #303236;
+	--accent: #ff8054;
+	background: #101113;
+	color: #f0efed;
+	padding: 24px max(22px, calc((100vw - 1220px) / 2)) 64px;
+	font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+	word-break: keep-all;
+	overflow-wrap: anywhere;
+}
+.explainer a {
+	color: var(--accent);
+}

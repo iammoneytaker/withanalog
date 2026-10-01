@@ -25,6 +25,10 @@ export function Shell({ children }: { readonly children: ReactNode }) {
 				<Link href="/keyboards">키보드 도감</Link>
 				<Link href="/methodology">출처·편집 기준</Link>
 				<Link href="/tools/keyboard-performance-test">키보드 성능 테스트</Link>
+				<Link href="/about">소개</Link>
+				<Link href="/privacy">개인정보처리방침</Link>
+				<Link href="/terms">이용약관</Link>
+				<Link href="/contact">문의</Link>
 			</footer>
 		</div>
 	);

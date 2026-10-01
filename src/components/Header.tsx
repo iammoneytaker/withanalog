@@ -17,7 +17,6 @@ const links = [
 export default function Header() {
 	const [open, setOpen] = useState(false);
 	const pathname = usePathname();
-	if (pathname === "/household-items") return null;
 	return (
 		<header className={styles.header}>
 			<nav className={styles.nav} aria-label="주 메뉴">

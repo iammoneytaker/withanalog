@@ -4,6 +4,12 @@ const nextConfig = {
     return [
       { source: '/recommendations', destination: '/keyboards', permanent: true },
       { source: '/reviews', destination: '/keyboards', permanent: true },
+      { source: '/reviews/:path*', destination: '/keyboards', permanent: true },
+      { source: '/contribute', destination: '/keyboards', permanent: true },
+      { source: '/story', destination: '/about', permanent: true },
+      { source: '/projects', destination: '/', permanent: true },
+      { source: '/projects/:path*', destination: '/', permanent: true },
+      { source: '/household-items', destination: '/', permanent: true },
     ];
   },
   images: {

@@ -26,6 +26,7 @@ export default function GuidesPage() {
 					>
 						<h2>{guide.title}</h2>
 						<p>{guide.answer}</p>
+						<p className={styles.meta}>최종 수정 {guide.updated}</p>
 						<span className={styles.textLink}>읽어보기 ↗</span>
 					</Link>
 				))}

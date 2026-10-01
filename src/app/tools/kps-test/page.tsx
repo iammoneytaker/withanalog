@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Shell, styles, Breadcrumbs } from "@/components/catalog/Shell";
 import { InputLab } from "@/components/catalog/InputLab";
+import { ToolExplainer } from "@/components/catalog/ToolExplainer";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata(
 	"/tools/kps-test",
@@ -22,6 +23,7 @@ export default function Page() {
 				첫 입력부터 10초 동안 새로 누른 횟수를 셉니다. 자동 반복은 제외합니다.
 			</p>
 			<InputLab mode="kps" />
+			<ToolExplainer path="/tools/kps-test" />
 			<div className={styles.actions}>
 				<Link className={styles.secondary} href="/guides/kps-cps">
 					측정 방법과 한계

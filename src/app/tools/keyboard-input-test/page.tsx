@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Shell, styles, Breadcrumbs } from "@/components/catalog/Shell";
 import { InputLab } from "@/components/catalog/InputLab";
+import { ToolExplainer } from "@/components/catalog/ToolExplainer";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata(
 	"/tools/keyboard-input-test",
@@ -26,6 +27,7 @@ export default function Page() {
 				확인하세요.
 			</p>
 			<InputLab mode="input" />
+			<ToolExplainer path="/tools/keyboard-input-test" />
 			<div className={styles.actions}>
 				<Link className={styles.secondary} href="/guides/keyboard-input">
 					측정 방법과 한계
