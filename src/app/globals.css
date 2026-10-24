@@ -216,7 +216,8 @@ img { max-width: 100%; height: auto; display: block; border-radius: 12px; }
   .article { margin: 0 auto; }
   .m-hero h1 { font-size: 40px; }
   .m-hero { padding-top: 44px; }
-  .m-choices { grid-template-columns: repeat(4, 1fr); }
+  .m-choices { grid-template-columns: repeat(5, 1fr); }
+  .m-choice { font-size: 17px; }
   .m-choice.ghost { grid-column: auto; }
   .m-feature { grid-template-columns: 1.6fr 1fr; align-items: start; }
   .m-feature-side { gap: 14px; }
