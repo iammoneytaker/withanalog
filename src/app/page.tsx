@@ -1,10 +1,14 @@
 import Link from 'next/link';
 import PostCard from '@/components/PostCard';
+import ProductGrid from '@/components/ProductGrid';
+import { PRODUCTS } from '@/lib/products';
 import { getPosts } from '@/lib/posts';
 import { CATEGORIES, SITE } from '@/lib/site';
 
 export default function Home() {
   const posts = getPosts();
+  const topClubs = PRODUCTS.filter((p) => p.type === 'club').sort((a, b) => b.reviews - a.reviews).slice(0, 8);
+  const topSets = PRODUCTS.filter((p) => p.type === 'fullset').sort((a, b) => b.reviews - a.reviews).slice(0, 4);
   return (
     <>
       <section className="hero">
@@ -29,6 +33,13 @@ export default function Home() {
           <span>모델별 할인가·리뷰 수를 한눈에</span>
         </Link>
       </div>
+
+      <h2 className="section-title">리뷰 많은 파크골프채</h2>
+      <ProductGrid items={topClubs} />
+      <p><Link href="/compare/">전체 비교표에서 무게·소재로 걸러보기 →</Link></p>
+
+      <h2 className="section-title">많이 찾는 풀세트</h2>
+      <ProductGrid items={topSets} />
 
       <h2 className="section-title">새로 올라온 글</h2>
       {posts.length ? (

@@ -3,6 +3,7 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 import { getProduct, productCardHtml } from './products';
+import { SITE } from './site';
 
 export type Faq = { q: string; a: string };
 export type PostMeta = {
@@ -54,8 +55,11 @@ function readAll(): Post[] {
 }
 
 function render(md: string): { html: string; toc: { id: string; text: string }[]; readMin: number } {
+  let cardCount = 0;
   const withCards = md.replace(/^\{\{product:([0-9A-Za-z_-]+)\}\}\s*$/gm, (_m, id: string) => {
     const p = getProduct(id);
+    if (p && cardCount >= SITE.maxProductsPerPost) return '';
+    if (p) cardCount += 1;
     return p ? '\n' + productCardHtml(p) + '\n' : '';
   });
   let html = marked.parse(withCards, { async: false, gfm: true }) as string;

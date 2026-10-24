@@ -7,6 +7,10 @@ export const SITE = {
   email: 'ksj2618159@naver.com',
   disclosure: '이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.',
   author: '위드아날로그 편집팀',
+  /** true: 네이버 쇼핑 판매 페이지 썸네일을 링크로 표시(파일 저장 안 함). false: 종류별 AI 이미지 카드로 대체 */
+  productImages: true,
+  imageCredit: '상품 이미지: 네이버 쇼핑 판매 페이지',
+  maxProductsPerPost: 10,
 };
 
 export const CATEGORIES = [
