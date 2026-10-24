@@ -4,6 +4,10 @@
   "compatibility_date": "2026-10-01",
   "account_id": "d81a9a24fbc4b590008a46a0ccdb12f8",
   "workers_dev": true,
+  "routes": [
+    { "pattern": "www.withanalog.com", "custom_domain": true },
+    { "pattern": "withanalog.com", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./out",
     "binding": "ASSETS",
