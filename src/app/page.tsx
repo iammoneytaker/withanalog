@@ -50,7 +50,7 @@ export default function Home() {
       <section className="m-hero">
         <p className="m-kicker">파크골프 용품 고르기 가이드</p>
         <h1>어떤 파크골프채가 나에게 맞을까요?</h1>
-        <p className="m-lead">상황을 고르면 먼저 읽을 글과 비교할 모델을 바로 알려 드려요. 모든 글은 판매 페이지·제조사·협회 자료로 확인한 내용만 씁니다.</p>
+        <p className="m-lead">상황을 고르면 먼저 읽을 글과 비교할 모델을 바로 알려 드려요.</p>
         <div className="m-choices">
           {PATHS.map((p) => (
             <a key={p.id} href={`#${p.id}`} className="m-choice">{p.q}</a>

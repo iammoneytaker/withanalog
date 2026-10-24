@@ -4,7 +4,7 @@ export const SITE = {
   url: 'https://www.withanalog.com',
   description:
     '파크골프채·풀세트·가방·공을 처음 고르는 분을 위한 비교 가이드. 히토미혼마, 데이비드, 프라임, 피닉스 등 모델별 가격·무게·헤드 소재 차이를 쉬운 말로 정리합니다.',
-  email: 'ksj2618159@naver.com',
+  email: 'withanalog.com@gmail.com',
   disclosure: '이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 발생 시 수수료를 제공받습니다.',
   author: '위드아날로그 편집팀',
   /** true: 네이버 쇼핑 판매 페이지 썸네일을 링크로 표시(파일 저장 안 함). false: 종류별 AI 이미지 카드로 대체 */

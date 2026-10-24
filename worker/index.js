@@ -35,6 +35,10 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
+    if (url.pathname.startsWith('/editorial-policy')) {
+      return Response.redirect(`${url.origin}/about/`, 301);
+    }
+
     if (url.pathname === '/api/click') {
       if (request.method !== 'POST') return new Response(null, { status: 405 });
       try {

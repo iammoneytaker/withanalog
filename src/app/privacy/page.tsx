@@ -13,7 +13,7 @@ export default function Page() {
       <h2>외부 서비스</h2>
       <p>제휴 링크를 누르면 네이버로 이동하며, 이후에는 네이버의 개인정보처리방침이 적용됩니다.</p>
       <h2>문의</h2>
-      <p>ksj2618159@naver.com</p>
+      <p>withanalog.com@gmail.com</p>
       <p>시행일: 2026년 10월 24일</p>
     </article>
   );

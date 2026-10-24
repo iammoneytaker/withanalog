@@ -12,7 +12,6 @@ export default function Footer() {
         <nav className="footer-links" aria-label="사이트 정보">
           <Link href="/about/">소개</Link>
           <Link href="/disclosure/">제휴 고지</Link>
-          <Link href="/editorial-policy/">작성 원칙</Link>
           <Link href="/privacy/">개인정보처리방침</Link>
           <Link href="/terms/">이용약관</Link>
           <a href="/rss.xml">RSS</a>

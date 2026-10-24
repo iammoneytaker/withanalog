@@ -213,7 +213,7 @@ export default function CompareTable({ items, checkedAt, imageCredit }: { items:
           );
         })}
       </div>
-      <p className="note small">제휴 링크가 포함되어 있습니다. {imageCredit}. 스펙은 판매 페이지·제조사 자료에서 확인한 값만 적었고, 확인하지 못한 칸은 “확인 필요”로 두었습니다.</p>
+      <p className="note small">제휴 링크가 포함되어 있습니다. {imageCredit}. 아직 확인되지 않은 칸은 “확인 필요”로 표시했어요.</p>
     </>
   );
 }

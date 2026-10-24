@@ -13,6 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/tools/club-fit/`, changeFrequency: 'monthly', priority: 0.7 },
     ...CATEGORIES.map((c) => ({ url: `${SITE.url}/category/${c.slug}/`, lastModified: latest, changeFrequency: 'daily' as const, priority: 0.8 })),
     ...posts.map((p) => ({ url: `${SITE.url}/posts/${p.slug}/`, lastModified: p.updatedAt, changeFrequency: 'monthly' as const, priority: 0.8 })),
-    ...['about', 'disclosure', 'editorial-policy', 'privacy', 'terms'].map((s) => ({ url: `${SITE.url}/${s}/`, changeFrequency: 'yearly' as const, priority: 0.3 })),
+    ...['about', 'disclosure', 'privacy', 'terms'].map((s) => ({ url: `${SITE.url}/${s}/`, changeFrequency: 'yearly' as const, priority: 0.3 })),
   ];
 }
