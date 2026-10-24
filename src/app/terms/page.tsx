@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-export const metadata: Metadata = { title: '이용약관', description: '위드아날로그 파크골프 이용약관입니다.', alternates: { canonical: '/terms/' } };
+export const metadata: Metadata = { title: '이용약관 | 위드아날로그 파크골프', description: '위드아날로그 파크골프 이용약관입니다. 사이트 정보의 성격, 가격·구성 변동, 저작권, 주문과 환불 책임 범위를 안내합니다.', alternates: { canonical: '/terms/' } };
 export default function Page() {
   return (
     <article className="article prose">

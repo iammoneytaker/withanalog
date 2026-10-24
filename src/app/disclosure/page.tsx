@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-export const metadata: Metadata = { title: '제휴 고지', description: '위드아날로그 파크골프의 네이버 쇼핑 커넥트 제휴 링크와 수수료에 대한 안내입니다.', alternates: { canonical: '/disclosure/' } };
+export const metadata: Metadata = { title: '제휴 고지 (네이버 쇼핑 커넥트)', description: '위드아날로그 파크골프의 네이버 쇼핑 커넥트 제휴 링크와 수수료 안내입니다. 링크로 사도 가격은 같고, 수수료는 추천 순서에 영향을 주지 않습니다.', alternates: { canonical: '/disclosure/' } };
 export default function Page() {
   return (
     <article className="article prose">

@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return { title: '글을 찾을 수 없습니다', robots: { index: false } };
   const url = `/posts/${post.slug}/`;
   return {
-    title: post.title,
+    title: post.title.length > 40 ? { absolute: post.title } : post.title,
     description: post.description,
     keywords: [post.keyword, ...post.tags].filter(Boolean),
     alternates: { canonical: url },

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-export const metadata: Metadata = { title: '위드아날로그 파크골프 소개', description: '파크골프 용품을 처음 고르는 분을 위해 브랜드·모델별 정보를 쉬운 말로 정리하는 비교 가이드입니다.', alternates: { canonical: '/about/' } };
+export const metadata: Metadata = { title: '위드아날로그 파크골프 소개', description: '파크골프채·풀세트·가방·공을 처음 고르는 분을 위해 브랜드·모델별 무게, 길이, 소재, 가격을 쉬운 말로 정리하는 비교 가이드입니다.', alternates: { canonical: '/about/' } };
 export default function Page() {
   return (
     <article className="article prose">

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-export const metadata: Metadata = { title: '작성 원칙', description: '위드아날로그 파크골프가 글을 쓰고 고치는 기준입니다.', alternates: { canonical: '/editorial-policy/' } };
+export const metadata: Metadata = { title: '작성 원칙과 정정 정책', description: '위드아날로그 파크골프가 글을 쓰고 고치는 기준입니다. 판매 페이지·제조사·협회 자료로 확인한 사실만 쓰고, 가격에는 확인 날짜를 붙입니다.', alternates: { canonical: '/editorial-policy/' } };
 export default function Page() {
   return (
     <article className="article prose">
