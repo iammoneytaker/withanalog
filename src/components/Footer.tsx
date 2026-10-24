@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="wrap">
         <p className="footer-disclosure">{SITE.disclosure}</p>
         <p>
-          가격·구성은 판매처 사정에 따라 바뀔 수 있습니다. 구매 전 판매 페이지에서 최신 정보를 꼭 확인해 주세요.
+          가격·구성은 판매처 상황에 따라 바뀔 수 있습니다. 구매 전 판매 페이지에서 최신 정보를 꼭 확인해 주세요.
         </p>
         <nav className="footer-links" aria-label="사이트 정보">
           <Link href="/about/">소개</Link>
