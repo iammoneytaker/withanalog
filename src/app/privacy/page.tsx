@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-export const metadata: Metadata = { title: '개인정보처리방침', description: '위드아날로그 파크골프의 개인정보 처리 기준입니다. 회원가입 없이 운영하며 제휴 링크 클릭 기록만 개인 식별 없이 저장합니다.', alternates: { canonical: '/privacy/' } };
+export const metadata: Metadata = { title: '개인정보처리방침', description: '위드아날로그 파크골프의 개인정보 처리 기준입니다. 회원가입 없이 운영하며 제휴 링크 클릭 기록만 개인 식별 없이 저장합니다.', robots: { index: false, follow: true }, alternates: { canonical: '/privacy/' } };
 export default function Page() {
   return (
     <article className="article prose">

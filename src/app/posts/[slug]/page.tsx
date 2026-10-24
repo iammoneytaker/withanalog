@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import JsonLd from '@/components/JsonLd';
 import PostCard from '@/components/PostCard';
+import Pic from '@/components/Pic';
 import { fmtDate, getPost, getPosts, relatedPosts } from '@/lib/posts';
 import { SITE, categoryName } from '@/lib/site';
 
@@ -84,9 +85,17 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         {SITE.author} · {fmtDate(post.publishAt)} 작성{post.updatedAt !== post.publishAt ? ` · ${fmtDate(post.updatedAt)} 수정` : ''} · 약 {post.readMin}분
       </p>
       <p className="disclosure">{SITE.disclosure}</p>
+      <section className="summary-box" aria-label="핵심 요약">
+        <strong className="sb-title">핵심 요약</strong>
+        {post.summary.length ? (
+          <ul>{post.summary.map((s) => (<li key={s}>{s}</li>))}</ul>
+        ) : (
+          <p>{post.description}</p>
+        )}
+      </section>
       {post.hero ? (
         <figure className="hero-img">
-          <img src={post.hero} alt={post.heroAlt || post.title} width={1200} height={675} />
+          <Pic src={post.hero} alt={post.heroAlt || post.title} width={1200} height={675} priority />
           {post.heroAi ? <figcaption>AI 생성 이미지 (실제 상품과 다를 수 있음)</figcaption> : null}
         </figure>
       ) : null}

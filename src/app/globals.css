@@ -225,3 +225,8 @@ img { max-width: 100%; height: auto; display: block; border-radius: 12px; }
   .post-list.grid3 { grid-template-columns: repeat(3, 1fr); }
   .m-cta { grid-template-columns: 1fr auto; align-items: center; }
 }
+picture { display: block; }
+.summary-box { background: #fff; border: 2px solid var(--green); border-radius: 14px; padding: 14px 16px; margin: 0 0 20px; }
+.summary-box strong.sb-title { display: block; color: var(--green-dark); font-size: 15px; margin-bottom: 4px; }
+.summary-box p { margin: 0; font-size: 17px; line-height: 1.7; }
+.summary-box ul { margin: 6px 0 0; padding-left: 20px; font-size: 17px; line-height: 1.7; }

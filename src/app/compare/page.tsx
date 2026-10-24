@@ -13,7 +13,9 @@ export const metadata: Metadata = {
 export default function ComparePage() {
   const items = PRODUCTS.map((p) => {
     const img = productImage(p);
-    return { ...p, img: img.src, external: img.external };
+    // 화면에 필요한 값만 넘겨 HTML 크기를 줄입니다.
+    const { store: _s, thumb: _t, ...rest } = p;
+    return { ...rest, store: '', img: img.src, external: img.external };
   });
   const top = [...PRODUCTS].filter((p) => p.type === 'club').sort((a, b) => b.reviews - a.reviews).slice(0, 10);
   return (

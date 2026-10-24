@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import { marked } from 'marked';
 import { getProduct, productCardHtml } from './products';
 import { SITE } from './site';
+import { pictureizeHtml } from './img';
 
 export type Faq = { q: string; a: string };
 export type PostMeta = {
@@ -19,8 +20,9 @@ export type PostMeta = {
   heroAlt: string;
   heroAi: boolean;
   faq: Faq[];
+  summary: string[];
 };
-export type Post = PostMeta & { html: string; toc: { id: string; text: string }[]; readMin: number };
+export type Post = PostMeta & { html: string; toc: { id: string; text: string }[]; readMin: number; images: string[] };
 
 /** 메타·FAQ 같은 일반 텍스트에서 마크다운 강조 기호 제거 */
 function plain(t: string): string {
@@ -51,6 +53,7 @@ function readAll(): Post[] {
         hero: String(data.hero || ''),
         heroAlt: String(data.heroAlt || ''),
         heroAi: data.heroAi !== false,
+        summary: Array.isArray(data.summary) ? data.summary.map((x: unknown) => plain(String(x))) : [],
         faq: Array.isArray(data.faq) ? data.faq.map((x: { q: unknown; a: unknown }) => ({ q: plain(String(x.q)), a: plain(String(x.a)) })) : [],
       };
       return { ...meta, ...render(content), };
@@ -59,7 +62,7 @@ function readAll(): Post[] {
     .sort((a, b) => b.publishAt.localeCompare(a.publishAt));
 }
 
-function render(md: string): { html: string; toc: { id: string; text: string }[]; readMin: number } {
+function render(md: string): { html: string; toc: { id: string; text: string }[]; readMin: number; images: string[] } {
   let cardCount = 0;
   const withCards = md.replace(/^\{\{product:([0-9A-Za-z_-]+)\}\}\s*$/gm, (_m, id: string) => {
     const p = getProduct(id);
@@ -82,8 +85,10 @@ function render(md: string): { html: string; toc: { id: string; text: string }[]
     .replace(/<table>/g, '<div class="table-wrap"><table>')
     .replace(/<\/table>/g, '</table></div>')
     .replace(/<img /g, '<img loading="lazy" decoding="async" ');
+  html = pictureizeHtml(html);
   const chars = md.replace(/\s+/g, '').length;
-  return { html, toc, readMin: Math.max(2, Math.round(chars / 600)) };
+  const images = [...md.matchAll(/!\[[^\]]*\]\((\/images\/[^)\s]+)\)/g)].map((m) => m[1]);
+  return { html, toc, readMin: Math.max(2, Math.round(chars / 600)), images };
 }
 
 let cache: Post[] | null = null;

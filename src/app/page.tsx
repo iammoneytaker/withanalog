@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import PostCard from '@/components/PostCard';
+import Pic from '@/components/Pic';
 import { fmtDate, getPost, getPosts, type Post } from '@/lib/posts';
 import { CATEGORIES, SITE, categoryName } from '@/lib/site';
 
@@ -62,7 +63,7 @@ export default function Home() {
       {lead ? (
         <section className="m-feature" aria-label="최신 글">
           <Link href={`/posts/${lead.slug}/`} className="m-feature-main">
-            {lead.hero ? <img src={lead.hero} alt={lead.heroAlt || lead.title} width={1200} height={675} /> : null}
+            {lead.hero ? <Pic src={lead.hero} alt={lead.heroAlt || lead.title} width={1200} height={675} sizes="(max-width: 720px) 100vw, 620px" priority /> : null}
             <span className="m-cat">{categoryName(lead.category)} · {fmtDate(lead.publishAt)}</span>
             <h2>{lead.title}</h2>
             <p>{lead.description}</p>
@@ -70,7 +71,7 @@ export default function Home() {
           <div className="m-feature-side">
             {side.map((p) => (
               <Link key={p.slug} href={`/posts/${p.slug}/`} className="m-side-item">
-                {p.hero ? <img src={p.hero} alt={p.heroAlt || p.title} loading="lazy" width={160} height={90} /> : null}
+                {p.hero ? <Pic src={p.hero} alt={p.heroAlt || p.title} width={160} height={90} sizes="160px" max={480} /> : null}
                 <span>
                   <span className="m-cat">{categoryName(p.category)}</span>
                   <strong>{p.title}</strong>
@@ -96,7 +97,7 @@ export default function Home() {
                 <li key={p.slug}>
                   <Link href={`/posts/${p.slug}/`}>
                     <span className="m-step-no">{i + 1}</span>
-                    {p.hero ? <img src={p.hero} alt={p.heroAlt || p.title} loading="lazy" width={120} height={68} /> : null}
+                    {p.hero ? <Pic src={p.hero} alt={p.heroAlt || p.title} width={120} height={68} sizes="120px" max={480} /> : null}
                     <span className="m-step-text">
                       <strong>{p.title}</strong>
                       <span>{p.description}</span>
