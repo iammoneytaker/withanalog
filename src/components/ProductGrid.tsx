@@ -6,6 +6,7 @@ export default function ProductGrid({ items }: { items: Product[] }) {
   const anyExternal = items.some((p) => productImage(p).external);
   return (
     <>
+      <p className="note small">제휴 링크 · {SITE.disclosure}{anyExternal ? ` ${SITE.imageCredit}.` : ''}</p>
       <div className="pgrid">
         {items.map((p) => {
           const img = productImage(p);
@@ -20,7 +21,6 @@ export default function ProductGrid({ items }: { items: Product[] }) {
           );
         })}
       </div>
-      <p className="note small">제휴 링크 · {SITE.disclosure}{anyExternal ? ` ${SITE.imageCredit}.` : ''}</p>
     </>
   );
 }
