@@ -22,6 +22,11 @@ export type PostMeta = {
 };
 export type Post = PostMeta & { html: string; toc: { id: string; text: string }[]; readMin: number };
 
+/** 메타·FAQ 같은 일반 텍스트에서 마크다운 강조 기호 제거 */
+function plain(t: string): string {
+  return t.replace(/\*\*([^*]+?)\*\*/g, '$1').replace(/\*\*/g, '');
+}
+
 const DIR = path.join(process.cwd(), 'content', 'posts');
 const NOW = Date.now();
 
@@ -36,8 +41,8 @@ function readAll(): Post[] {
       const slug = String(data.slug || f.replace(/\.md$/, ''));
       const meta: PostMeta = {
         slug,
-        title: String(data.title || slug),
-        description: String(data.description || ''),
+        title: plain(String(data.title || slug)),
+        description: plain(String(data.description || '')),
         category: String(data.category || 'guide'),
         tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
         keyword: String(data.keyword || ''),
@@ -46,7 +51,7 @@ function readAll(): Post[] {
         hero: String(data.hero || ''),
         heroAlt: String(data.heroAlt || ''),
         heroAi: data.heroAi !== false,
-        faq: Array.isArray(data.faq) ? data.faq.map((x: { q: unknown; a: unknown }) => ({ q: String(x.q), a: String(x.a) })) : [],
+        faq: Array.isArray(data.faq) ? data.faq.map((x: { q: unknown; a: unknown }) => ({ q: plain(String(x.q)), a: plain(String(x.a)) })) : [],
       };
       return { ...meta, ...render(content), };
     })
@@ -62,7 +67,9 @@ function render(md: string): { html: string; toc: { id: string; text: string }[]
     if (p) cardCount += 1;
     return p ? '\n' + productCardHtml(p) + '\n' : '';
   });
-  let html = marked.parse(withCards, { async: false, gfm: true }) as string;
+  // 한국어 조사 바로 앞의 **굵게** 가 CommonMark 규칙상 풀리지 않는 문제를 막기 위해 먼저 <strong>으로 바꿉니다.
+  const withBold = withCards.replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>');
+  let html = marked.parse(withBold, { async: false, gfm: true }) as string;
   const toc: { id: string; text: string }[] = [];
   let n = 0;
   html = html.replace(/<h2>(.*?)<\/h2>/g, (_m, inner: string) => {
