@@ -66,7 +66,7 @@ export default {
     const res = await env.ASSETS.fetch(request);
     const out = new Response(res.body, res);
     for (const [k, v] of Object.entries(SECURITY_HEADERS)) out.headers.set(k, v);
-    if (/\.(jpg|jpeg|png|webp|svg|css|js|woff2)$/.test(url.pathname) || url.pathname.startsWith('/_next/static/')) {
+    if (res.ok && (/\.(jpg|jpeg|png|webp|svg|css|js|woff2)$/.test(url.pathname) || url.pathname.startsWith('/_next/static/'))) {
       out.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
     }
     return out;
