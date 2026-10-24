@@ -1,52 +1,35 @@
-import Link from "next/link";
-import { Shell, styles, Breadcrumbs } from "@/components/catalog/Shell";
-import { Comparison } from "@/components/catalog/Comparison";
-import { findKeyboard } from "@/lib/keyboards";
-import { pageMetadata } from "@/lib/seo";
+import type { Metadata } from 'next';
+import CompareTable from './CompareTable';
+import JsonLd from '@/components/JsonLd';
+import { PRODUCTS, PRODUCTS_CHECKED_AT } from '@/lib/products';
+import { SITE } from '@/lib/site';
 
-type Props = { readonly searchParams: { readonly models?: string | string[] } };
-export function generateMetadata({ searchParams }: Props) {
-	return {
-		...pageMetadata(
-			"/compare",
-			"독거미 키보드 비교표 · AULA 스펙 비교",
-			"AULA 키보드 2~4개를 선택해 배열·배터리·공개 성능과 출처를 나란히 비교하세요.",
-		),
-		...(searchParams.models ? { robots: { index: false, follow: true } } : {}),
-	};
-}
-export default function ComparePage({ searchParams }: Props) {
-	const raw =
-		typeof searchParams.models === "string" ? searchParams.models : "";
-	const valid = Array.from(
-		new Set(raw.split(",").filter((slug) => findKeyboard(slug))),
-	).slice(0, 4);
-	const selected = valid.length >= 2 ? valid : ["aula-f75", "aula-f99"];
-	return (
-		<Shell>
-			<Breadcrumbs items={[{ name: "비교하기", path: "/compare" }]} />
-			<p className={styles.eyebrow}>SIDE BY SIDE</p>
-			<h1 className={styles.title}>
-				같은 기준으로,
-				<br />
-				다른 점을 찾으세요.
-			</h1>
-			<p className={styles.lead}>
-				최대 4개 모델을 비교합니다. 출처가 공개한 스펙과 실제로 측정한 성능은
-				서로 구분합니다.
-			</p>
-			{raw && valid.length < 2 && (
-				<p className={styles.note}>
-					유효한 모델을 두 개 이상 찾지 못해 F75와 F99를 표시합니다.
-				</p>
-			)}
-			<Comparison initialSlugs={selected} />
-			<section className={styles.section}>
-				<h2>차이를 더 자세히</h2>
-				<Link className={styles.textLink} href="/compare/aula-f75-vs-aula-f99">
-					F75와 F99, 배열과 배터리 차이 ↗
-				</Link>
-			</section>
-		</Shell>
-	);
+export const metadata: Metadata = {
+  title: '파크골프채 가격 비교표 (브랜드·예산·남녀별)',
+  description: `파크골프채·풀세트·가방·공 ${PRODUCTS.length}개 상품의 할인가와 리뷰 수를 브랜드, 예산, 남녀별로 걸러 볼 수 있는 비교표입니다.`,
+  alternates: { canonical: '/compare/' },
+};
+
+export default function ComparePage() {
+  const top = [...PRODUCTS].filter((p) => p.type === 'club').sort((a, b) => b.reviews - a.reviews).slice(0, 10);
+  return (
+    <>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: '리뷰 많은 파크골프채',
+          itemListElement: top.map((p, i) => ({ '@type': 'ListItem', position: i + 1, name: p.name })),
+        }}
+      />
+      <h1 className="section-title" style={{ marginTop: 10 }}>파크골프 가격 비교표</h1>
+      <p>
+        네이버에서 판매 중인 파크골프채, 풀세트, 가방, 공 {PRODUCTS.length}개를 한곳에 모았습니다. 브랜드와 예산, 남녀를 고르면 해당
+        상품만 남습니다. 리뷰가 많다고 무조건 좋은 건 아니니, 무게와 길이는 <a href="/tools/club-fit/">채 길이 계산기</a>로 한 번 더
+        확인해 보세요.
+      </p>
+      <p className="disclosure">{SITE.disclosure}</p>
+      <CompareTable items={PRODUCTS} checkedAt={PRODUCTS_CHECKED_AT} />
+    </>
+  );
 }

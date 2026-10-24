@@ -1,9 +1,18 @@
 import type { MetadataRoute } from 'next';
-import { SITE_URL, VERIFIED_DATE } from '@/lib/seo';
-import { keyboards } from '@/lib/keyboards';
-import { guides } from '@/lib/guides';
-import { toolCatalog } from '@/lib/tool-catalog';
+import { getPosts } from '@/lib/posts';
+import { CATEGORIES, SITE } from '@/lib/site';
+
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ['/', '/about', '/privacy', '/terms', '/contact', '/keyboards', '/compare', '/compare/aula-f75-vs-aula-f99', '/guides', '/methodology', '/tools', ...toolCatalog.map(tool => tool.path), '/tools/2f4712ba-2e77-4e5c-a418-c4f6d3a03787', ...keyboards.map(product => `/keyboards/${product.slug}`), ...guides.map(guide => `/guides/${guide.slug}`)];
-  return Array.from(new Set(paths)).map(path => ({ url: `${SITE_URL}${path === '/' ? '' : path}`, ...(path.startsWith('/keyboards') || path.startsWith('/guides') || path === '/methodology' || path === '/about' || path === '/privacy' || path === '/terms' ? { lastModified: VERIFIED_DATE } : {}) }));
+  const posts = getPosts();
+  const latest = posts[0]?.updatedAt ?? new Date().toISOString();
+  return [
+    { url: `${SITE.url}/`, lastModified: latest, changeFrequency: 'daily', priority: 1 },
+    { url: `${SITE.url}/compare/`, lastModified: latest, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${SITE.url}/tools/club-fit/`, changeFrequency: 'monthly', priority: 0.7 },
+    ...CATEGORIES.map((c) => ({ url: `${SITE.url}/category/${c.slug}/`, lastModified: latest, changeFrequency: 'daily' as const, priority: 0.8 })),
+    ...posts.map((p) => ({ url: `${SITE.url}/posts/${p.slug}/`, lastModified: p.updatedAt, changeFrequency: 'monthly' as const, priority: 0.8 })),
+    ...['about', 'disclosure', 'editorial-policy', 'privacy', 'terms'].map((s) => ({ url: `${SITE.url}/${s}/`, changeFrequency: 'yearly' as const, priority: 0.3 })),
+  ];
 }

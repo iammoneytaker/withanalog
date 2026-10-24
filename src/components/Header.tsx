@@ -1,57 +1,24 @@
-"use client";
-
-import Link from "next/link";
-import { useState } from "react";
-import { usePathname } from "next/navigation";
-import styles from "./Header.module.css";
-
-const links = [
-	{ href: "/keyboards", label: "키보드 도감" },
-	{ href: "/compare", label: "비교하기" },
-	{ href: "/tools", label: "테스트" },
-	{ href: "/typing-practice", label: "타자 연습" },
-	{ href: "/guides", label: "가이드" },
-	{ href: "/methodology", label: "측정 기준" },
-];
+import Link from 'next/link';
+import { CATEGORIES, SITE } from '@/lib/site';
 
 export default function Header() {
-	const [open, setOpen] = useState(false);
-	const pathname = usePathname();
-	return (
-		<header className={styles.header}>
-			<nav className={styles.nav} aria-label="주 메뉴">
-				<Link href="/" className={styles.brand} onClick={() => setOpen(false)}>
-					WithAnalog<span>KEYBOARD LAB</span>
-				</Link>
-				<button
-					className={styles.toggle}
-					aria-expanded={open}
-					aria-controls="primary-links"
-					onClick={() => setOpen(!open)}
-					aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
-				>
-					{open ? "닫기 ×" : "메뉴 ☰"}
-				</button>
-				<div
-					id="primary-links"
-					className={`${styles.links} ${open ? styles.open : ""}`}
-				>
-					{links.map((link) => (
-						<Link
-							key={link.href}
-							href={link.href}
-							aria-current={
-								pathname === link.href || pathname.startsWith(`${link.href}/`)
-									? "page"
-									: undefined
-							}
-							onClick={() => setOpen(false)}
-						>
-							{link.label}
-						</Link>
-					))}
-				</div>
-			</nav>
-		</header>
-	);
+  return (
+    <header className="site-header">
+      <div className="wrap header-row">
+        <Link href="/" className="logo" aria-label={`${SITE.name} 홈`}>
+          <span className="logo-mark" aria-hidden>⛳</span>
+          <span>{SITE.name}</span>
+        </Link>
+      </div>
+      <nav className="wrap nav" aria-label="카테고리">
+        {CATEGORIES.map((c) => (
+          <Link key={c.slug} href={`/category/${c.slug}/`}>
+            {c.name}
+          </Link>
+        ))}
+        <Link href="/compare/">가격 비교표</Link>
+        <Link href="/tools/club-fit/">채 길이 계산기</Link>
+      </nav>
+    </header>
+  );
 }

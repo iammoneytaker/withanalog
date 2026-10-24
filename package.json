@@ -1,37 +1,26 @@
 {
-  "name": "withanalog",
-  "version": "0.1.0",
+  "name": "withanalog-parkgolf",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "typecheck": "tsc --noEmit",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
-    "@supabase/auth-helpers-nextjs": "^0.10.0",
-    "@supabase/supabase-js": "^2.45.6",
-    "framer-motion": "^11.5.4",
-    "next": "14.2.9",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-intersection-observer": "^9.13.1",
-    "react-quill": "^2.0.0",
-    "zustand": "^5.0.7"
+    "gray-matter": "4.0.3",
+    "marked": "15.0.12",
+    "next": "15.5.28",
+    "react": "19.1.10",
+    "react-dom": "19.1.10"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.15",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "@types/react-slick": "^0.23.13",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.9",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "5.9.3",
+    "wrangler": "4.152.0"
   },
-  "engines": {
-    "node": "24.x"
-  }
+  "engines": { "node": ">=20" }
 }

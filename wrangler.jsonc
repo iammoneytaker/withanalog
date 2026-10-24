@@ -1,0 +1,18 @@
+{
+  "name": "withanalog",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-10-01",
+  "account_id": "d81a9a24fbc4b590008a46a0ccdb12f8",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "withanalog", "database_id": "1180996a-d075-4637-89f7-ee6084bec86b" }
+  ],
+  "observability": { "enabled": true }
+}

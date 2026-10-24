@@ -1,0 +1,36 @@
+name: Build and deploy to Cloudflare
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # 예약 발행 슬롯(KST 07:30, 09:30, 11:30, 13:30, 15:30, 17:30, 19:30, 21:30) 직후 재빌드
+    - cron: '35 22,0,2,4,6,8,10,12 * * *'
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          TZ: Asia/Seoul
+      - name: Deploy
+        run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: d81a9a24fbc4b590008a46a0ccdb12f8
+      - name: IndexNow (new/updated URLs)
+        continue-on-error: true
+        run: node scripts/indexnow-recent.mjs
