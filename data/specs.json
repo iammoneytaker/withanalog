@@ -280,24 +280,24 @@
    "weightG": 550,
    "lengthCm": "83/85",
    "head": "너도밤나무",
-   "leftHanded": true,
    "certified": "협회 공인",
    "level": "중급",
    "features": [
     "바닥 전체 황동",
     "여성용 83cm·520g 옵션"
-   ]
+   ],
+   "conflicts": "상품명에 좌타 가능 표기, 10/25 옵션엔 좌타 없음"
   },
   "979236018327488": {
    "weightG": 530,
    "lengthCm": "83/85",
    "head": "너도밤나무",
-   "leftHanded": true,
    "certified": "협회 공인",
    "features": [
     "여성용 83cm·510g 옵션",
     "평평한 헤드 균형 설계"
-   ]
+   ],
+   "conflicts": "상품명에 좌타 가능 표기, 10/25 옵션엔 좌타 없음"
   },
   "979236018323392": {
    "weightG": 530,
@@ -385,7 +385,8 @@
    "features": [
     "6축 케블라 카본 샤프트"
    ],
-   "conflicts": "고시 중량이 상품마다 525g·520g 등으로 상이"
+   "conflicts": "고시 중량이 상품마다 525g·520g 등으로 상이",
+   "leftHanded": true
   },
   "920154102668320": {
    "weightG": "520/530",
@@ -393,7 +394,6 @@
    "head": "감나무",
    "shaft": "카본",
    "madeIn": "국내",
-   "leftHanded": true,
    "features": [
     "왼손잡이용 옵션 있음"
    ],
