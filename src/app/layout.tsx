@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   openGraph: { type: 'website', siteName: SITE.name, locale: 'ko_KR', url: SITE.url },
   robots: { index: true, follow: true },
   icons: { icon: '/favicon.svg' },
+  verification: { other: { 'naver-site-verification': 'b336406ddbe3d2c8581a7ce067f34ae81b862c53' } },
 };
 
 export const viewport: Viewport = {
