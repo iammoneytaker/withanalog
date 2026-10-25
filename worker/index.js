@@ -27,6 +27,23 @@ const SECURITY_HEADERS = {
 };
 
 export default {
+  // 예약 발행: Cloudflare 크론이 정해진 시각에 GitHub Actions 빌드를 요청합니다(GitHub 자체 예약은 몇 시간씩 늦어짐).
+  async scheduled(event, env, ctx) {
+    if (!env.GH_DISPATCH_TOKEN) return;
+    ctx.waitUntil(
+      fetch('https://api.github.com/repos/iammoneytaker/withanalog/actions/workflows/deploy.yml/dispatches', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${env.GH_DISPATCH_TOKEN}`,
+          Accept: 'application/vnd.github+json',
+          'User-Agent': 'withanalog-scheduler',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ref: 'main' }),
+      }),
+    );
+  },
+
   async fetch(request, env) {
     const url = new URL(request.url);
 

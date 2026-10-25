@@ -5,8 +5,8 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    # 예약 발행 슬롯(KST 07:30, 09:30, 11:30, 13:30, 15:30, 17:30, 19:30, 21:30) 직후 재빌드
-    - cron: '35 22,0,2,4,6,8,10,12 * * *'
+    # 주 예약 실행은 Cloudflare Worker 크론(KST 07:31~21:31)이 workflow_dispatch로 호출. 아래는 늦게라도 도는 예비용.
+    - cron: '45 23,5,11 * * *'
 
 concurrency:
   group: deploy

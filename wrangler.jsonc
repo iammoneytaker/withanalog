@@ -18,5 +18,6 @@
   "d1_databases": [
     { "binding": "DB", "database_name": "withanalog", "database_id": "1180996a-d075-4637-89f7-ee6084bec86b" }
   ],
+  "triggers": { "crons": ["31 22,0,2,4,6,8,10,12 * * *"] },
   "observability": { "enabled": true }
 }
