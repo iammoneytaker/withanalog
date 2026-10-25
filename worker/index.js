@@ -1,3 +1,5 @@
+import { stats } from './stats.js';
+
 // Cloudflare Worker: 정적 사이트(out/) 서빙 + 제휴 링크 클릭 기록 + 옛 키보드 사이트 주소 410 처리
 const GONE = [
   /^\/keyboards(\/|$)/,
@@ -50,6 +52,10 @@ export default {
     if (url.hostname === 'withanalog.com') {
       url.hostname = 'www.withanalog.com';
       return Response.redirect(url.toString(), 301);
+    }
+
+    if (url.pathname === '/stats' || url.pathname === '/stats/') {
+      return stats(request, env);
     }
 
     if (url.pathname.startsWith('/editorial-policy')) {

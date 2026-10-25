@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ClickTracker from '@/components/ClickTracker';
+import Analytics from '@/components/Analytics';
 import JsonLd from '@/components/JsonLd';
 import { SITE } from '@/lib/site';
 
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="wrap main">{children}</main>
         <Footer />
         <ClickTracker />
+        <Analytics />
       </body>
     </html>
   );
