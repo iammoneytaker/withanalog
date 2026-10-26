@@ -10,7 +10,7 @@ const PATHS: { id: string; q: string; title: string; desc: string; slugs: string
     q: '처음 시작해요',
     title: '처음 파크골프채를 사는 분',
     desc: '규칙과 준비물부터, 내 키에 맞는 길이와 무게까지 순서대로 보세요.',
-    slugs: ['park-golf-club-buying-guide', 'park-golf-club-length-guide', 'park-golf-club-weight-guide', 'park-golf-starter-checklist', 'how-to-play-park-golf', 'park-golf-club-head-material'],
+    slugs: ['park-golf-club-buying-guide', 'park-golf-club-length-guide', 'park-golf-club-weight-guide', 'park-golf-starter-checklist', 'how-to-play-park-golf', 'park-golf-rules-basics', 'winter-park-golf-checklist', 'park-golf-club-head-material'],
   },
   {
     id: 'gift',
@@ -24,7 +24,7 @@ const PATHS: { id: string; q: string; title: string; desc: string; slugs: string
     q: '예산부터 정할래요',
     title: '예산 안에서 고르는 분',
     desc: '20만 원대 입문 세트부터 100만 원대 고급 채까지, 가격대별로 무엇이 달라지는지 보세요.',
-    slugs: ['park-golf-club-price-range', 'cheap-park-golf-fullset-under-300k', 'park-golf-club-500k-range', 'rookie-rookie-park-golf-set', 'park-golf-club-certification'],
+    slugs: ['park-golf-club-price-range', 'cheap-park-golf-fullset-under-300k', 'park-golf-club-500k-range', 'park-golf-club-300k-range', 'premium-park-golf-club-1m', 'rookie-rookie-park-golf-set', 'park-golf-club-certification'],
   },
   {
     id: 'special',

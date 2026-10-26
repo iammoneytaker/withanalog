@@ -19,6 +19,8 @@ const GONE = [
   /^\/tools\/?$/,
   /^\/tools\/(?!club-fit)/,
   /^\/compare\/.+/,
+  /^\/_next\/image/,
+  /^\/member\//,
 ];
 
 const SECURITY_HEADERS = {
