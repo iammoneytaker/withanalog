@@ -1,0 +1,9 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /stats
+
+Host: https://www.withanalog.com
+Sitemap: https://www.withanalog.com/sitemap.xml
+
+#DaumWebMasterTool:cba297c1bf02fce27071359b8eadb0f2c7c8073979ca098e4e11f4b70fbfe459:/Dn1va1+69DmjyIIIsTgww==

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/', types: { 'application/rss+xml': '/rss.xml' } },
   openGraph: { type: 'website', siteName: SITE.name, locale: 'ko_KR', url: SITE.url, images: [{ url: '/images/og-default.jpg', width: 1200, height: 675, alt: '파크골프장 풍경 (AI 생성 이미지)' }] },
   twitter: { card: 'summary_large_image', images: ['/images/og-default.jpg'] },
-  robots: { index: true, follow: true },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
   icons: { icon: '/favicon.svg' },
   verification: { other: { 'naver-site-verification': 'b336406ddbe3d2c8581a7ce067f34ae81b862c53' } },
 };
