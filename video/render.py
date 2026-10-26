@@ -90,14 +90,14 @@ def overlay_png(scene, out):
         ft, fl = font(84), font(54, bold=False)
         lines = card.get("lines", [])
         lh = 82
-        block = 110 + lh * len(lines)
+        block = 150 + lh * len(lines)
         y = max(120, (H - block) // 2 - 60)
         t = card["title"]
         while text_w(d, t, ft) > W - 240 and ft.size > 50:
             ft = font(ft.size - 4)
         d.text(((W - text_w(d, t, ft)) // 2, y), t, font=ft, fill=(255, 236, 170, 255))
-        y += 130
-        d.line([(W // 2 - 90, y - 22), (W // 2 + 90, y - 22)], fill=(255, 236, 170, 200), width=4)
+        y += 150
+        d.line([(W // 2 - 90, y - 26), (W // 2 + 90, y - 26)], fill=(255, 236, 170, 200), width=4)
         for ln in lines:
             f = fl
             while text_w(d, ln, f) > W - 240 and f.size > 34:
