@@ -13,10 +13,15 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 W, H, FPS = 1920, 1080, 30
 SR = 48000
 LEAD, GAP, TAIL = 0.5, 0.32, 0.7
-FONT_DIR = "/usr/share/fonts/opentype/noto"
-FONT_BOLD = os.path.join(FONT_DIR, "NotoSansCJK-Bold.ttc")
-FONT_REG = os.path.join(FONT_DIR, "NotoSansCJK-Regular.ttc")
-KR = 1  # Korean face index inside the Noto CJK collections
+FONT_DIR = os.environ.get("FONT_DIR", "/usr/share/fonts/opentype/noto")
+if os.path.exists(os.path.join(FONT_DIR, "NotoSansCJKkr-Bold.otf")):
+    FONT_BOLD = os.path.join(FONT_DIR, "NotoSansCJKkr-Bold.otf")
+    FONT_REG = os.path.join(FONT_DIR, "NotoSansCJKkr-Regular.otf")
+    KR = 0
+else:
+    FONT_BOLD = os.path.join(FONT_DIR, "NotoSansCJK-Bold.ttc")
+    FONT_REG = os.path.join(FONT_DIR, "NotoSansCJK-Regular.ttc")
+    KR = 1  # Korean face index inside the Noto CJK collections
 
 
 def font(size, bold=True):
