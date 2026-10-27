@@ -20,6 +20,7 @@ const GONE = [
   /^\/tools\/(?!club-fit)/,
   /^\/compare\/.+/,
   /^\/_next\/image/,
+  /^\/posts\/hitomi-honma-brand-story\/?$/,
   /^\/member\//,
 ];
 
