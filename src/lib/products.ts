@@ -94,7 +94,7 @@ export function productCardHtml(p: Product): string {
   const chips = specChips(p.spec).slice(0, 5);
   return `<div class="pcard">
 <div class="pcard-top">
-<img class="pcard-img" src="${esc(img.src)}" alt="${esc(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="96" height="96">
+<img class="pcard-img" src="${esc(img.src)}" alt="${esc(p.name)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="120" height="120">
 <div class="pcard-body">
 <p class="pcard-brand">${esc(p.brand)} · ${esc(TYPE_LABEL[p.type])}</p>
 <p class="pcard-name">${esc(p.name)}</p>
