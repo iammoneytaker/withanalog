@@ -10,10 +10,13 @@ for (const f of fs.existsSync(dir) ? fs.readdirSync(dir) : []) {
   if (!f.endsWith('.md')) continue;
   const head = fs.readFileSync(path.join(dir, f), 'utf8').split('\n---')[0];
   const pa = head.match(/publishAt:\s*"?([^"\n]+)"?/);
+  const ua = head.match(/updatedAt:\s*"?([^"\n]+)"?/);
   const sl = head.match(/slug:\s*"?([^"\n]+)"?/);
   if (!pa || !sl) continue;
   const t = new Date(pa[1].trim()).getTime();
-  if (t <= now && now - t < 3 * 3600 * 1000) urls.push(`https://${HOST}/posts/${sl[1].trim()}/`);
+  const u = ua ? new Date(ua[1].trim()).getTime() : t;
+  const fresh = (x) => x <= now && now - x < 3 * 3600 * 1000;
+  if (t <= now && (fresh(t) || fresh(u))) urls.push(`https://${HOST}/posts/${sl[1].trim()}/`);
 }
 if (!urls.length) { console.log('새로 공개된 글 없음'); process.exit(0); }
 urls.push(`https://${HOST}/`, `https://${HOST}/sitemap.xml`);

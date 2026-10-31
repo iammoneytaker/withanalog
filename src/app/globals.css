@@ -231,3 +231,28 @@ picture { display: block; }
 .summary-box strong.sb-title { display: block; color: var(--green-dark); font-size: 15px; margin-bottom: 4px; }
 .summary-box p { margin: 0; font-size: 17px; line-height: 1.7; }
 .summary-box ul { margin: 6px 0 0; padding-left: 20px; font-size: 17px; line-height: 1.7; }
+
+/* cross links & hubs */
+.cross-box { margin: 28px 0 8px; padding: 18px; background: var(--green-soft); border-radius: 18px; }
+.cross-box .section-title { margin-top: 0; }
+.cross-more { margin: 12px 0 0; font-size: 15px; }
+.cross-more a { color: var(--green-dark); font-weight: 700; }
+.hub-jump { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 20px; }
+.hub-jump a { padding: 4px 11px; border-radius: 999px; background: #fff; border: 1px solid var(--line); color: var(--green-dark); text-decoration: none; font-weight: 700; font-size: 15px; }
+.term-group { margin: 26px 0 0; }
+.term-group > h2 { font-size: 22px; margin: 0 0 6px; color: var(--green-dark); }
+.term-item { padding: 14px 0; border-top: 1px solid var(--line); margin: 0; }
+.term-item dt { font-size: 19px; font-weight: 800; margin: 0 0 4px; }
+.term-item dt small { font-size: 14px; color: var(--muted); font-weight: 600; margin-left: 6px; }
+.term-item dd { margin: 0; font-size: 17px; line-height: 1.7; }
+.term-src { display: block; font-size: 14px; color: var(--muted); margin-top: 2px; }
+.term-links { margin-top: 6px; font-size: 15px; }
+.term-links a { color: var(--green); font-weight: 700; margin-right: 10px; }
+.rule-item { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px; margin: 12px 0; }
+.rule-item h2 { font-size: 20px; margin: 0 0 8px; line-height: 1.45; }
+.rule-item p { margin: 0; font-size: 17px; line-height: 1.75; }
+.rule-src { font-size: 14px; color: var(--muted); margin-top: 6px !important; }
+.rule-gear { margin-top: 10px; padding: 10px 12px; background: var(--green-soft); border-radius: 12px; font-size: 15px; }
+.rule-gear b { color: var(--green-dark); margin-right: 6px; }
+.rule-gear a, .rule-more a { color: var(--green-dark); font-weight: 700; margin-right: 10px; }
+.rule-more { margin-top: 8px; font-size: 15px; color: var(--muted); }

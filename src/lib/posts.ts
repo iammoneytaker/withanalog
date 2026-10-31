@@ -102,12 +102,35 @@ export function getPost(slug: string): Post | undefined {
 export function getPostsByCategory(cat: string): Post[] {
   return getPosts().filter((p) => p.category === cat);
 }
-export function relatedPosts(post: Post, n = 4): Post[] {
-  const same = getPosts().filter((p) => p.slug !== post.slug && p.category === post.category);
-  const others = getPosts().filter((p) => p.slug !== post.slug && p.category !== post.category);
+export function relatedPosts(post: Post, n = 4, exclude: string[] = []): Post[] {
+  const same = getPosts().filter((p) => p.slug !== post.slug && !exclude.includes(p.slug) && p.category === post.category);
+  const others = getPosts().filter((p) => p.slug !== post.slug && !exclude.includes(p.slug) && p.category !== post.category && p.category !== 'brands');
   return [...same, ...others].slice(0, n);
 }
 export function fmtDate(iso: string): string {
   const d = new Date(new Date(iso).getTime() + 9 * 3600 * 1000);
   return `${d.getUTCFullYear()}.${String(d.getUTCMonth() + 1).padStart(2, '0')}.${String(d.getUTCDate()).padStart(2, '0')}`;
+}
+
+const TOPICS: [string, RegExp][] = [
+  ['certified', /공인|협회|대회|규정|규격/], ['length', /길이|키 |cm/], ['weight', /무게|가벼|경량/],
+  ['ball', /공|볼/], ['bag', /가방|파우치|힙색|백팩|하프백|스탠드백|홀더/], ['tee', /티잉|티 사용|고무티|파크골프 티/],
+  ['grip', /그립|장갑/], ['head', /헤드|감나무|단풍|흑단|원목/], ['women', /여성|부부|엄마|어머니/], ['left', /좌타|왼손/],
+  ['gift', /선물|환갑|칠순|부모/], ['winter', /겨울|방한|추위/], ['starter', /입문|처음|초보|준비물|규칙|치는 법|동호회/],
+  ['price', /가격|만원|만 원|예산|가성비|저렴/], ['set', /세트|풀세트|단품/], ['care', /관리|보관|중고|렌탈|대여/],
+];
+function topicsOf(p: PostMeta): Set<string> {
+  const text = [p.title, p.keyword, ...(p.tags || [])].join(' ');
+  return new Set(TOPICS.filter(([, re]) => re.test(text)).map(([k]) => k));
+}
+/** 정보 글(guide)에서는 장비 글로, 장비 글에서는 규칙·정보 글로 이어 주는 링크 */
+export function crossLinks(post: Post, n = 3): { kind: 'gear' | 'info'; posts: Post[] } {
+  const isGuide = post.category === 'guide';
+  const mine = topicsOf(post);
+  const pool = getPosts().filter((p) => p.slug !== post.slug && p.category !== 'brands' && (isGuide ? p.category !== 'guide' : p.category === 'guide'));
+  const scored = pool
+    .map((p) => { let s = 0; topicsOf(p).forEach((k) => { if (mine.has(k)) s++; }); return { p, s }; })
+    .filter((x) => x.s > 0)
+    .sort((a, b) => b.s - a.s || b.p.publishAt.localeCompare(a.p.publishAt));
+  return { kind: isGuide ? 'gear' : 'info', posts: scored.slice(0, isGuide ? n : 2).map((x) => x.p) };
 }

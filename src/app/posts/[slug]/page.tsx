@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import JsonLd from '@/components/JsonLd';
 import PostCard from '@/components/PostCard';
 import Pic from '@/components/Pic';
-import { fmtDate, getPost, getPosts, relatedPosts } from '@/lib/posts';
+import { crossLinks, fmtDate, getPost, getPosts, relatedPosts } from '@/lib/posts';
 import { SITE, categoryName } from '@/lib/site';
 
 export const dynamicParams = false;
@@ -42,7 +42,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const post = getPost(slug);
   if (!post) notFound();
   const url = `${SITE.url}/posts/${post.slug}/`;
-  const related = relatedPosts(post);
+  const cross = crossLinks(post);
+  const related = relatedPosts(post, 4, cross.posts.map((p) => p.slug));
   const ld: unknown[] = [
     {
       '@context': 'https://schema.org',
@@ -112,6 +113,19 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         </nav>
       ) : null}
       <div className="prose" dangerouslySetInnerHTML={{ __html: post.html }} />
+      {cross.posts.length ? (
+        <section className="cross-box">
+          <h2 className="section-title">{cross.kind === 'gear' ? '이 글과 함께 보면 좋은 장비' : '사기 전에 알아 두면 좋은 규칙·정보'}</h2>
+          <div className="post-list grid2">
+            {cross.posts.map((p) => (
+              <PostCard key={p.slug} post={p} />
+            ))}
+          </div>
+          <p className="cross-more">
+            <Link href="/guide/rules/">파크골프 규칙 한눈에</Link> · <Link href="/guide/terms/">파크골프 용어 사전</Link>
+          </p>
+        </section>
+      ) : null}
       {post.faq.length ? (
         <section className="faq">
           <h2 className="section-title">자주 묻는 질문</h2>

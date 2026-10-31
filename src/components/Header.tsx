@@ -11,11 +11,12 @@ export default function Header() {
         </Link>
       </div>
       <nav className="wrap nav" aria-label="카테고리">
-        {CATEGORIES.map((c) => (
+        {CATEGORIES.filter((c) => c.slug !== 'brands').map((c) => (
           <Link key={c.slug} href={`/category/${c.slug}/`}>
             {c.name}
           </Link>
         ))}
+        <Link href="/guide/rules/">규칙·용어</Link>
         <Link href="/compare/">가격 비교표</Link>
         <Link href="/tools/club-fit/">채 길이 계산기</Link>
       </nav>

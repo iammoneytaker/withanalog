@@ -35,6 +35,15 @@ const PATHS: { id: string; q: string; title: string; desc: string; slugs: string
   },
 ];
 
+const RULES_PATH = {
+  id: 'rules',
+  q: '규칙이 궁금해요',
+  title: '규칙과 용어부터 알고 싶은 분',
+  desc: '협회 경기규칙을 질문과 답으로 정리했어요. 낯선 용어는 용어 사전에서 바로 찾을 수 있어요.',
+  slugs: ['park-golf-rules-basics', 'park-golf-scorecard', 'park-golf-tee-guide', 'park-golf-hole-course-spec', 'park-golf-first-tournament', 'park-golf-dress-code', 'park-golf-ball-regulations'],
+};
+PATHS.push(RULES_PATH);
+
 const VERSUS = ['honma-vs-hitomi-vs-bukuro', 'hitomi-honma-4star-vs-5star', 'phoenix-vs-hitomi-honma', 'david-vs-prime-park-golf-club', 'prime-park-golf-3star-vs-4star', 'park-golf-half-bag-vs-single-bag'];
 
 function pick(slugs: string[]): Post[] {
@@ -91,6 +100,11 @@ export default function Home() {
               <p className="m-kicker">{path.q}</p>
               <h2>{path.title}</h2>
               <p className="m-path-desc">{path.desc}</p>
+              {path.id === 'rules' ? (
+                <p className="cross-more">
+                  <Link href="/guide/rules/">파크골프 규칙 한눈에 →</Link> · <Link href="/guide/terms/">용어 사전 →</Link>
+                </p>
+              ) : null}
             </div>
             <ol className="m-steps">
               {list.map((p, i) => (
@@ -129,7 +143,7 @@ export default function Home() {
         <Link href="/compare/" className="btn btn-green">비교표 열기</Link>
       </section>
 
-      {CATEGORIES.map((c) => {
+      {CATEGORIES.filter((c) => c.slug !== 'brands').map((c) => {
         const list = posts.filter((p) => p.category === c.slug).slice(0, 3);
         if (!list.length) return null;
         return (
