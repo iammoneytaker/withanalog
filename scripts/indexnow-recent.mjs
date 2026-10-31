@@ -20,9 +20,13 @@ for (const f of fs.existsSync(dir) ? fs.readdirSync(dir) : []) {
 }
 if (!urls.length) { console.log('새로 공개된 글 없음'); process.exit(0); }
 urls.push(`https://${HOST}/`, `https://${HOST}/sitemap.xml`);
-const res = await fetch('https://api.indexnow.org/indexnow', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json; charset=utf-8' },
-  body: JSON.stringify({ host: HOST, key: KEY, keyLocation: `https://${HOST}/${KEY}.txt`, urlList: urls }),
-});
-console.log('IndexNow', res.status, urls.length);
+const body = JSON.stringify({ host: HOST, key: KEY, keyLocation: `https://${HOST}/${KEY}.txt`, urlList: urls });
+// 공용 엔드포인트 + 네이버 서치어드바이저 + 빙에 직접 보냄
+for (const ep of ['https://api.indexnow.org/indexnow', 'https://searchadvisor.naver.com/indexnow', 'https://www.bing.com/indexnow']) {
+  try {
+    const res = await fetch(ep, { method: 'POST', headers: { 'Content-Type': 'application/json; charset=utf-8' }, body });
+    console.log('IndexNow', ep, res.status, urls.length);
+  } catch (e) {
+    console.log('IndexNow', ep, 'error', String(e));
+  }
+}
