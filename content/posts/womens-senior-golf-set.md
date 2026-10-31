@@ -5,8 +5,8 @@ slug: womens-senior-golf-set
 category: senior-golf
 keyword: "여성 골프채 풀세트"
 tags: ["여성 골프채 풀세트", "여성 골프채 세트", "젝시오13 여성 풀세트", "클리브랜드 블룸", "시니어 여성 골프채"]
-publishAt: "2026-11-03T19:30:00+09:00"
-updatedAt: "2026-11-03T19:30:00+09:00"
+publishAt: "2026-10-31T19:00:00+09:00"
+updatedAt: "2026-10-31T19:00:00+09:00"
 hero: "/images/posts/womens-senior-golf-set/hero.jpg"
 heroAlt: "단풍 든 산과 호수가 보이는 가을 골프장 페어웨이를 카트 옆으로 걸어가는 시니어 여성 세 명의 뒷모습 (AI 장면)"
 heroAi: true

@@ -5,8 +5,8 @@ slug: senior-light-driver
 category: senior-golf
 keyword: "시니어 드라이버"
 tags: ["시니어 드라이버", "경량 드라이버", "젝시오13 드라이버", "핑 G440 MAX", "여성 시니어 드라이버"]
-publishAt: "2026-11-03T11:30:00+09:00"
-updatedAt: "2026-11-03T11:30:00+09:00"
+publishAt: "2026-10-31T16:50:00+09:00"
+updatedAt: "2026-10-31T16:50:00+09:00"
 hero: "/images/posts/senior-light-driver/hero.jpg"
 heroAlt: "단풍 든 산을 마주한 야외 골프 연습장 타석에서 드라이버 스윙을 마친 시니어 남성과 여성의 뒷모습 (AI 장면)"
 heroAi: true
