@@ -8,7 +8,7 @@ tags: ["남성 파크골프채", "남자 파크골프채", "파크골프채 추�
 publishAt: "2026-10-30T13:30:00+09:00"
 updatedAt: "2026-10-30T13:30:00+09:00"
 hero: "/images/posts/mens-park-golf-club/hero.jpg"
-heroAlt: "파크골프장 티 매트 양쪽에 서서 차례를 기다리는 두 사람의 뒷모습 (AI 장면)"
+heroAlt: "맑은 하늘 아래 단풍 든 파크골프장 티 구역에서 스윙을 마친 남성의 뒷모습 (AI 장면)"
 heroAi: true
 summary:
   - "남성 기본은 길이 85cm·무게 530g 전후입니다."

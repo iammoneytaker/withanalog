@@ -8,7 +8,7 @@ tags: ["부부 파크골프채", "부부 파크골프 세트", "파크골프채 
 publishAt: "2026-10-29T11:30:00+09:00"
 updatedAt: "2026-10-29T11:30:00+09:00"
 hero: "/images/posts/couple-park-golf-club-set/hero.jpg"
-heroAlt: "코스모스가 핀 가을 강변 파크골프장에서 채 하나씩 들고 깃발 꽂힌 그린 쪽으로 걸어가는 시니어 세 명을 멀리서 본 장면 (AI 장면)"
+heroAlt: "은행잎 물든 늦가을 파크골프장 길을 채를 들고 나란히 걷는 노부부의 뒷모습 (AI 장면)"
 heroAi: true
 summary:
   - "남편 85cm·530g, 아내 83~85cm·520g 전후가 기준"

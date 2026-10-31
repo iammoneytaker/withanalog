@@ -8,7 +8,7 @@ tags: ["파크골프 스코어카드", "파크골프 타수 계산", "파크골�
 publishAt: "2026-11-01T09:30:00+09:00"
 updatedAt: "2026-11-01T09:30:00+09:00"
 hero: "/images/posts/park-golf-scorecard/hero.jpg"
-heroAlt: "첫 홀 티 매트 옆 벤치에 나란히 앉아 차례를 기다리는 60대 여성 세 명의 뒷모습, 가을 단풍이 든 파크골프장 (AI 장면)"
+heroAlt: "가을 파크골프장 벤치 위에 놓인 빈 카드와 연필, 뒤로 홀 근처에 선 네 사람 (AI 장면)"
 heroAi: true
 summary:
   - "칸에는 실제 친 타수를 숫자로, 벌타 2타도 더해 적습니다."

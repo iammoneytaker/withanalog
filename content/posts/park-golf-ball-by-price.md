@@ -8,7 +8,7 @@ tags: ["파크골프공 추천", "파크골프공 가격", "파크골프 공인�
 publishAt: "2026-10-29T15:30:00+09:00"
 updatedAt: "2026-10-29T15:30:00+09:00"
 hero: "/images/posts/park-golf-ball-by-price/hero.jpg"
-heroAlt: "멀리 깃발이 보이는 파크골프장 잔디 위에 작은 공들이 놓여 있고 어르신들이 코스 끝에 서 있는 모습 (AI 장면)"
+heroAlt: "아침 햇살이 비치는 파크골프장 그린에 흩어진 여러 색 공과 허리 숙여 공을 줍는 사람 (AI 장면)"
 heroAi: true
 summary:
   - "협회 공인구는 1구 12,900원(프로샷 BS-01)부터 있습니다."

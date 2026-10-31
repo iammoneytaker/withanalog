@@ -8,7 +8,7 @@ tags: ["파크골프채 렌탈", "파크골프채 대여", "파크골프 클럽 
 publishAt: "2026-10-30T19:30:00+09:00"
 updatedAt: "2026-10-31T13:00:00+09:00"
 hero: "/images/posts/park-golf-club-rental-vs-buy/hero.jpg"
-heroAlt: "강변 파크골프장 그린에서 퍼팅하는 시니어 동호인들을 멀리서 본 장면 (AI 장면)"
+heroAlt: "파크골프장 관리동 앞 채 보관대에 꽂힌 나무 헤드 채들과 코스로 걸어가는 사람들 (AI 장면)"
 heroAi: true
 summary:
   - "공공 구장 채 대여료는 1회 1,000원 수준입니다."

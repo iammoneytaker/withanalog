@@ -8,7 +8,7 @@ tags: ["무쯔미혼마", "무쯔미혼마 파크골프채", "MH-4S25", "파크�
 publishAt: "2026-10-31T13:30:00+09:00"
 updatedAt: "2026-10-31T13:30:00+09:00"
 hero: "/images/posts/mutsumi-honma-mh-4s25-fullset/hero.jpg"
-heroAlt: "파크골프장 옆 벤치 위에 놓인 파크골프 가방과 허리 파우치 (AI 장면)"
+heroAlt: "강변 파크골프장 쉼터 나무 테이블 위에 놓인 가방과 모자, 장갑, 뒤로 펼쳐진 늦가을 코스 (AI 장면)"
 heroAi: true
 summary:
   - "MH-4S25 풀세트는 175만 원, 채·가방·힙색 등 8종입니다."

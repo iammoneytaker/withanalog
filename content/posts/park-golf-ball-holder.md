@@ -8,7 +8,7 @@ tags: ["파크골프 볼홀더", "파크골프공 홀더", "파크골프 공 클
 publishAt: "2026-11-01T17:30:00+09:00"
 updatedAt: "2026-11-01T17:30:00+09:00"
 hero: "/images/posts/park-golf-ball-holder/hero.jpg"
-heroAlt: "버스 정류장에서 내려 백팩을 메고 강변 파크골프장으로 걸어가는 사람의 뒷모습 (AI 장면)"
+heroAlt: "늦가을 아파트 단지 옆 파크골프장에서 낙엽 깔린 길을 따라 다음 홀로 걸어가는 사람 (AI 장면)"
 heroAi: true
 summary:
   - "파우치가 있으면 2,500원 스틸 클립만 더하면 됩니다."

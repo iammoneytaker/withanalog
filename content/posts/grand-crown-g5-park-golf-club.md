@@ -8,7 +8,7 @@ tags: ["그랜드크라운 파크골프채", "그랜드 크라운 G-5", "국산 
 publishAt: "2026-10-31T15:30:00+09:00"
 updatedAt: "2026-10-31T15:30:00+09:00"
 hero: "/images/posts/grand-crown-g5-park-golf-club/hero.jpg"
-heroAlt: "가을 단풍 속 파크골프장 티 박스 앞에 선 시니어 참가자 네 명과 길가에서 기록판을 든 진행 요원의 뒷모습 (AI 장면)"
+heroAlt: "붉은 단풍잎이 깔린 파크골프장 길을 채를 들고 걸어가는 사람 (AI 장면)"
 heroAi: true
 summary:
   - "G-5: 국산 단풍나무 헤드, 45g 샤프트, 990,000원"

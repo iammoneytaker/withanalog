@@ -8,7 +8,7 @@ tags: ["파크골프 스탠드백", "파크골프 가방", "파크골프 스탠�
 publishAt: "2026-10-30T17:30:00+09:00"
 updatedAt: "2026-10-30T17:30:00+09:00"
 hero: "/images/posts/park-golf-stand-bag/hero.jpg"
-heroAlt: "단풍잎이 깔린 파크골프장 벤치에 기대 세워 둔 가방 두 개 (AI 장면)"
+heroAlt: "낙엽 진 파크골프장 잔디 위에 다리를 펴고 선 스탠드백과 멀리서 퍼팅하는 사람 (AI 장면)"
 heroAi: true
 summary:
   - "다리를 펴는 진짜 스탠드백은 17~20만 원, 1.9kg입니다."

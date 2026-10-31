@@ -8,7 +8,7 @@ tags: ["켄이치 파크골프채", "켄이치 50주년 골드", "흑단목 파�
 publishAt: "2026-10-31T07:30:00+09:00"
 updatedAt: "2026-10-31T07:30:00+09:00"
 hero: "/images/posts/kenichi-park-golf-club/hero.jpg"
-heroAlt: "은행나무가 노랗게 물든 가을 아침 강변 파크골프장에서 시니어 세 명이 깃발 쪽으로 걸어가는 뒷모습 (AI 장면)"
+heroAlt: "흐린 초겨울 오후 다리가 보이는 강변 파크골프장에서 퍼팅하는 사람 (AI 장면)"
 heroAi: true
 summary:
   - "켄이치 50주년 골드: 흑단목 헤드, 544g·85cm, 950,000원"

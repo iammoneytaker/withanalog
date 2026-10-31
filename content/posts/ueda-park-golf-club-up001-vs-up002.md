@@ -8,7 +8,7 @@ tags: ["우에다 파크골프채", "우에다 UP-001", "우에다 UP-002", "우
 publishAt: "2026-10-31T21:30:00+09:00"
 updatedAt: "2026-10-31T21:30:00+09:00"
 hero: "/images/posts/ueda-park-golf-club-up001-vs-up002/hero.jpg"
-heroAlt: "늦가을 오후 파크골프장 옆 나무 벤치에 채 케이스와 허리 파우치가 놓여 있고 멀리 잔디 위로 네 사람이 걸어가는 뒷모습 (AI 장면)"
+heroAlt: "소나무로 둘러싸인 언덕 위 파크골프장 그린에서 홀컵을 바라보는 사람 (AI 장면)"
 heroAi: true
 summary:
   - "협회 공인 목록에는 UP-001(60주년)만 올라 있습니다."

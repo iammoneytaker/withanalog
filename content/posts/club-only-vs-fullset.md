@@ -8,7 +8,7 @@ tags: ["파크골프채 단품", "파크골프 풀세트", "파크골프채 세�
 publishAt: "2026-10-29T17:30:00+09:00"
 updatedAt: "2026-10-29T17:30:00+09:00"
 hero: "/images/posts/club-only-vs-fullset/hero.jpg"
-heroAlt: "파크골프장 옆 벤치에 놓인 가방, 허리 파우치, 수건, 장갑 (AI 장면)"
+heroAlt: "파크골프장 쉼터 나무 테이블 위에 놓인 가방, 공 두 개, 장갑과 채 (AI 장면)"
 heroAi: true
 summary:
   - "같은 채의 단품과 풀세트 차이는 5만~10만 원입니다."

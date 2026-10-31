@@ -8,7 +8,7 @@ tags: ["미즈노 파크골프공", "미즈노 크로스샷G", "크로스샷G", 
 publishAt: "2026-10-31T09:30:00+09:00"
 updatedAt: "2026-10-31T09:30:00+09:00"
 hero: "/images/posts/mizuno-crossshot-g-park-golf-ball/hero.jpg"
-heroAlt: "아파트 단지 공원 안 파크골프장에서 허리 파우치를 찬 시니어 두 명이 낙엽 깔린 페어웨이를 걸어가는 뒷모습 (AI 장면)"
+heroAlt: "안개 낀 아침 이슬 맺힌 잔디 위에 놓인 주황색 파크골프공 (AI 장면)"
 heroAi: true
 summary:
   - "크로스샷G는 1구 40,000원, 약 93g 3피스입니다."

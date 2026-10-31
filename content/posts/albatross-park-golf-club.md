@@ -8,7 +8,7 @@ tags: ["알바트로스 파크골프채", "알바트로스 A3", "알바트로스
 publishAt: "2026-11-01T19:30:00+09:00"
 updatedAt: "2026-11-01T19:30:00+09:00"
 hero: "/images/posts/albatross-park-golf-club/hero.jpg"
-heroAlt: "주차장에서 어깨에 클럽 케이스를 메고 파크골프장 입구로 걸어가는 시니어 여성의 뒷모습 (AI 장면)"
+heroAlt: "늦가을 강변 파크골프장 벤치에 기대 놓인 나무 헤드 파크골프채 (AI 장면)"
 heroAi: true
 summary:
   - "A3 38만, A6 77만, A8 88만 원이고 셋 다 리뷰가 없습니다."

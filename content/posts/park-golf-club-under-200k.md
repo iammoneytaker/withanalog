@@ -8,7 +8,7 @@ tags: ["20만원 파크골프채", "저렴한 파크골프채", "렌스메이트
 publishAt: "2026-10-29T21:30:00+09:00"
 updatedAt: "2026-10-31T13:00:00+09:00"
 hero: "/images/posts/park-golf-club-under-200k/hero.jpg"
-heroAlt: "파크골프 입문 강습을 듣는 시니어들 (AI 장면)"
+heroAlt: "단풍 든 가을 파크골프장에서 함께 공을 치는 할아버지와 어린 손주 (AI 장면)"
 heroAi: true
 summary:
   - "20만원대 이하 협회 공인 채는 NP-3·AG3·이글 3종입니다."

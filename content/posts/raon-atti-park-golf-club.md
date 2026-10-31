@@ -8,7 +8,7 @@ tags: ["라온아띠 파크골프채", "라온아띠 마루", "마루 4스타", 
 publishAt: "2026-10-30T21:30:00+09:00"
 updatedAt: "2026-10-30T21:30:00+09:00"
 hero: "/images/posts/raon-atti-park-golf-club/hero.jpg"
-heroAlt: "가을 파크골프장 티 구역에 어르신 네 명이 서 있고, 한 분이 허리 파우치에서 공을 꺼내는 뒷모습 (AI 장면)"
+heroAlt: "강 건너 아파트 단지가 보이는 하천변 파크골프장 그린에 모인 세 사람 (AI 장면)"
 heroAi: true
 summary:
   - "라온아띠 채 7개 모델이 모두 협회 공인 목록에 있습니다."

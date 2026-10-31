@@ -8,7 +8,7 @@ tags: ["IMP 파크골프공", "IMP 마블", "파크골프공 4피스", "파크�
 publishAt: "2026-11-01T15:30:00+09:00"
 updatedAt: "2026-11-01T15:30:00+09:00"
 hero: "/images/posts/imp-vs-marble-park-golf-ball/hero.jpg"
-heroAlt: "해 질 무렵 파크골프장 잔디 위에 놓인 색색의 공과 멀리 보이는 깃발 (AI 장면)"
+heroAlt: "안개 낀 늦가을 아침 강변 파크골프장 잔디 위에 흩어진 공과 멀리 걸어가는 사람 (AI 장면)"
 heroAi: true
 summary:
   - "둘 다 국산 4피스, 지름 60mm인 IMP 공입니다."

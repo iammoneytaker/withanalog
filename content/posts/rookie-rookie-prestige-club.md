@@ -8,7 +8,7 @@ tags: ["프레스티지 파크골프채", "루키루키 파크골프채", "루�
 publishAt: "2026-11-01T11:30:00+09:00"
 updatedAt: "2026-11-01T11:30:00+09:00"
 hero: "/images/posts/rookie-rookie-prestige-club/hero.jpg"
-heroAlt: "가을 파크골프장 잔디길을 나란히 걸어가는 아버지와 아들의 뒷모습 (AI 장면)"
+heroAlt: "서리 내린 초겨울 아침 파크골프장에서 채를 들고 첫 홀로 걸어가는 두 사람 (AI 장면)"
 heroAi: true
 summary:
   - "카본 10종 세트 249,000원, 4스타 원목 498,000원"

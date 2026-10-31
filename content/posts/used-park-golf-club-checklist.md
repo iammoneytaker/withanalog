@@ -8,7 +8,7 @@ tags: ["파크골프채 중고", "중고 파크골프채", "파크골프채 직�
 publishAt: "2026-10-30T09:30:00+09:00"
 updatedAt: "2026-10-31T13:00:00+09:00"
 hero: "/images/posts/used-park-golf-club-checklist/hero.jpg"
-heroAlt: "늦가을 오후 파크골프장 벤치에 앉아 쉬며 손목을 풀고 있는 시니어 동호인 네 명을 멀리서 본 장면 (AI 장면)"
+heroAlt: "단풍 든 강변 파크골프장 벤치에 앉아 채를 살펴보는 사람 (AI 장면)"
 heroAi: true
 summary:
   - "중고는 협회 공인 목록에서 모델명부터 찾아보세요."

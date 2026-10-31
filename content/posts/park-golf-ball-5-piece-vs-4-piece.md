@@ -8,7 +8,7 @@ tags: ["파크골프공 5피스", "5피스 파크골프공", "파크골프공 4�
 publishAt: "2026-10-31T17:30:00+09:00"
 updatedAt: "2026-10-31T17:30:00+09:00"
 hero: "/images/posts/park-golf-ball-5-piece-vs-4-piece/hero.jpg"
-heroAlt: "해 질 녘 겨울 파크골프장 그린 근처에 선 두 사람과 잔디 위에서 빛나는 빨간 공 (AI 장면)"
+heroAlt: "맑은 가을 하늘 아래 강변 파크골프장에서 공을 치고 서 있는 사람의 뒷모습 (AI 장면)"
 heroAi: true
 summary:
   - "협회 목록의 5피스 공은 BS-03과 휠라 하이퍼 2종입니다."

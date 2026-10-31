@@ -8,7 +8,7 @@ tags: ["여성 파크골프 가방", "파크골프 가방", "파크골프 하프
 publishAt: "2026-10-29T19:30:00+09:00"
 updatedAt: "2026-10-29T19:30:00+09:00"
 hero: "/images/posts/womens-park-golf-bag/hero.jpg"
-heroAlt: "티 매트 옆에서 차례를 기다리며 이야기하는 여성 파크골퍼들 (AI 장면)"
+heroAlt: "가벼운 숄더 채 가방을 메고 늦가을 강변 파크골프장 길을 걷는 여성의 뒷모습 (AI 장면)"
 heroAi: true
 summary:
   - "가방 무게는 300g부터 1.9kg까지 6배 넘게 차이 납니다."

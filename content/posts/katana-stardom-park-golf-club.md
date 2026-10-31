@@ -8,7 +8,7 @@ tags: ["카타나 스타덤", "카타나 파크골프채", "스타덤 파크골�
 publishAt: "2026-10-31T11:30:00+09:00"
 updatedAt: "2026-10-31T11:30:00+09:00"
 hero: "/images/posts/katana-stardom-park-golf-club/hero.jpg"
-heroAlt: "가을 아침 파크골프장 티 매트 위에서 공을 치려는 시니어 여성 (AI 장면)"
+heroAlt: "감이 주렁주렁 달린 감나무 너머로 보이는 시골 마을 파크골프장과 그린 위 사람들 (AI 장면)"
 heroAi: true
 summary:
   - "채는 같고, 차이는 함께 오는 공·가방과 판매처입니다."

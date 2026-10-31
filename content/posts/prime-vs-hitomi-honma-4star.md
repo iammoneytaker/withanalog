@@ -8,7 +8,7 @@ tags: ["4스타 파크골프채", "프라임 4스타", "히토미혼마 4스타"
 publishAt: "2026-10-29T07:30:00+09:00"
 updatedAt: "2026-10-29T07:30:00+09:00"
 hero: "/images/posts/prime-vs-hitomi-honma-4star/hero.jpg"
-heroAlt: "단풍잎이 깔린 파크골프장 그린 앞에 선 두 시니어의 뒷모습 (AI 장면)"
+heroAlt: "단풍 든 파크골프장 티 구역 옆에 나란히 서서 차례를 기다리는 사람들 (AI 장면)"
 heroAi: true
 summary:
   - "판매가 차이 541,500원, 헤드는 둘 다 감나무 계열"

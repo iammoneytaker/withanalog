@@ -8,7 +8,7 @@ tags: ["프라임 5스타", "프라임 5스타 풀세트", "프라임 파크골�
 publishAt: "2026-10-30T07:30:00+09:00"
 updatedAt: "2026-10-30T07:30:00+09:00"
 hero: "/images/posts/prime-5star-single-vs-fullset/hero.jpg"
-heroAlt: "단풍나무 아래 티잉 구역에서 한 사람이 공을 치고 시니어 세 명이 벤치 옆에서 차례를 기다리는 가을 파크골프장 (AI 장면)"
+heroAlt: "해 질 녘 황금빛 역광 속 파크골프장에 채를 들고 선 사람의 실루엣과 긴 그림자 (AI 장면)"
 heroAi: true
 summary:
   - "단품 720,000원, 풀세트 798,000원, 차이 78,000원"

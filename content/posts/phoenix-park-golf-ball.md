@@ -8,7 +8,7 @@ tags: ["피닉스 파크골프공", "아트스윙 파크골프공", "파크골�
 publishAt: "2026-11-01T21:30:00+09:00"
 updatedAt: "2026-11-01T21:30:00+09:00"
 hero: "/images/posts/phoenix-park-golf-ball/hero.jpg"
-heroAlt: "가을 파크골프장 옆 나무 벤치에 선물 상자를 사이에 두고 앉아 멀리 경기하는 사람들을 바라보는 딸과 아버지의 뒷모습 (AI 장면)"
+heroAlt: "노을 지는 파크골프장 그린에서 홀컵 쪽으로 굴러가는 공 (AI 장면)"
 heroAi: true
 summary:
   - "피닉스 공은 1구 25,000원, 60mm·90~95g 4피스입니다."

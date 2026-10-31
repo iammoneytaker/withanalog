@@ -8,7 +8,7 @@ tags: ["해강 파크골프채", "HG 해강", "G-Stella Q21", "Dynamic H-07", "�
 publishAt: "2026-10-30T11:30:00+09:00"
 updatedAt: "2026-10-30T11:30:00+09:00"
 hero: "/images/posts/haegang-park-golf-club/hero.jpg"
-heroAlt: "가을 저녁 파크골프장 그린 위에서 깃대 옆에 모인 시니어 네 명과 앞쪽 나무 벤치를 멀리서 본 장면 (AI 장면)"
+heroAlt: "억새가 핀 언덕에서 내려다본 늦가을 강변 파크골프장 전경 (AI 장면)"
 heroAi: true
 summary:
   - "Q21과 H-07은 둘 다 85cm·530g, 협회 공인 모델입니다."

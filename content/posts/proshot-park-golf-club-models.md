@@ -8,7 +8,7 @@ tags: ["프로샷 파크골프채", "프로샷 이글", "프로샷 스페셜", "
 publishAt: "2026-11-01T07:30:00+09:00"
 updatedAt: "2026-11-01T07:30:00+09:00"
 hero: "/images/posts/proshot-park-golf-club-models/hero.jpg"
-heroAlt: "벚꽃이 핀 봄날 아침 강변 파크골프장 티잉 구역에서 차례를 기다리는 시니어 동호인들의 뒷모습 (AI 장면)"
+heroAlt: "단풍 든 파크골프장 티 구역에서 공을 치려는 사람의 옆모습 (AI 장면)"
 heroAi: true
 summary:
   - "9종 모두 85cm·520g, 값 차이는 헤드 소재와 장식입니다."

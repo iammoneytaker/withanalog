@@ -8,7 +8,7 @@ tags: ["아식스 파크골프공", "아식스 하이파워볼", "아식스 헥�
 publishAt: "2026-10-30T15:30:00+09:00"
 updatedAt: "2026-10-30T15:30:00+09:00"
 hero: "/images/posts/asics-park-golf-ball/hero.jpg"
-heroAlt: "파크골프 그린에서 홀컵 쪽으로 굴러가는 공 (AI 장면)"
+heroAlt: "단풍 든 가을 파크골프장 홀컵 근처 잔디 위의 주황색·흰색 공 두 개와 걸어가는 사람들 (AI 장면)"
 heroAi: true
 summary:
   - "아식스 3피스와 4피스는 94g·6cm로 같습니다."

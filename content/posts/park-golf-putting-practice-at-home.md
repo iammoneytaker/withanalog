@@ -8,7 +8,7 @@ tags: ["파크골프 퍼팅 연습", "파크골프 퍼팅 매트", "파크골프
 publishAt: "2026-10-31T19:30:00+09:00"
 updatedAt: "2026-10-31T19:30:00+09:00"
 hero: "/images/posts/park-golf-putting-practice-at-home/hero.jpg"
-heroAlt: "파크골프장에서 공 앞에 서서 자세를 잡은 여성의 옆모습 (AI 장면)"
+heroAlt: "겨울밤 아파트 거실 바닥의 녹색 퍼팅 매트에서 나무 헤드 채로 퍼팅 연습을 하는 사람 (AI 장면)"
 heroAi: true
 summary:
   - "퍼팅 감각만 지키려면 6만 원대 매트면 됩니다."

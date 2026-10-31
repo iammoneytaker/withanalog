@@ -8,7 +8,7 @@ tags: ["파크골프 동호회", "파크골프 동호회 가입", "파크골프 
 publishAt: "2026-10-29T09:30:00+09:00"
 updatedAt: "2026-10-31T13:00:00+09:00"
 hero: "/images/posts/park-golf-club-membership/hero.jpg"
-heroAlt: "아침 강변 파크골프장에서 입문 강습을 듣는 시니어들을 멀리서 본 모습 (AI 장면)"
+heroAlt: "늦가을 강변 파크골프장 한쪽에 둥글게 모여 이야기하는 동호회 회원들 (AI 장면)"
 heroAi: true
 summary:
   - "클럽 가입만으로는 대한파크골프협회 회원이 아닙니다."
