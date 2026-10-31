@@ -1,5 +1,6 @@
 import data from '../../data/products.json';
 import specData from '../../data/specs.json';
+import golfData from '../../data/golf-products.json';
 import { SITE } from './site';
 
 export type Spec = {
@@ -25,7 +26,7 @@ export type Product = {
   name: string;
   store: string;
   brand: string;
-  type: 'club' | 'fullset' | 'bag' | 'ball' | 'gear';
+  type: 'club' | 'fullset' | 'bag' | 'ball' | 'gear' | 'golf';
   gender: 'men' | 'women' | 'all';
   price: number | null;
   listPrice: number | null;
@@ -42,7 +43,9 @@ export const SPECS_CHECKED_AT: string = (specData as { checkedAt?: string }).che
 export const PRODUCTS: Product[] = (data as { items: Product[] }).items.map((p) => ({ ...p, spec: SPECS[p.id] }));
 export const PRODUCTS_CHECKED_AT: string = (data as { checkedAt: string }).checkedAt;
 
-const byId = new Map(PRODUCTS.map((p) => [p.id, p]));
+/** 시니어 골프 상품 (비교표에는 넣지 않고 글 카드에서만 사용) */
+export const GOLF_PRODUCTS: Product[] = (golfData as { items: Product[] }).items.map((p) => ({ ...p, spec: SPECS[p.id] }));
+const byId = new Map([...PRODUCTS, ...GOLF_PRODUCTS].map((p) => [p.id, p]));
 export function getProduct(id: string): Product | undefined {
   return byId.get(id);
 }
@@ -64,6 +67,7 @@ export const TYPE_LABEL: Record<Product['type'], string> = {
   bag: '가방·파우치',
   ball: '공',
   gear: '용품',
+  golf: '골프채',
 };
 
 /** 표시용 스펙 요약 (확인된 값만) */

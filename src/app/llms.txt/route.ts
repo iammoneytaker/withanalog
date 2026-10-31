@@ -17,7 +17,7 @@ export function GET() {
     `- [파크골프채 길이·무게 계산기](${SITE.url}/tools/club-fit/): 키와 성별로 추천 길이(cm)·무게(g) 범위`,
     `- [파크골프 규칙 한눈에](${SITE.url}/guide/rules/): 대한파크골프협회 경기규칙·대회 규정을 질문과 답으로 정리(조항 번호 포함)`,
     `- [파크골프 용어 사전](${SITE.url}/guide/terms/): 경기·장비 용어 정의와 근거 조항`,
-    ...CATEGORIES.map((c) => `- [${c.name}](${SITE.url}/category/${c.slug}/): ${c.desc}`),
+    ...CATEGORIES.filter((c) => posts.some((p) => p.category === c.slug)).map((c) => `- [${c.name}](${SITE.url}/category/${c.slug}/): ${c.desc}`),
     '',
     '## 글',
     ...posts.map((p) => `- [${p.title}](${SITE.url}/posts/${p.slug}/): ${p.description}`),

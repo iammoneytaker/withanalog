@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { CATEGORIES, SITE } from '@/lib/site';
+import { getPostsByCategory } from '@/lib/posts';
 
 export default function Header() {
   return (
@@ -11,7 +12,7 @@ export default function Header() {
         </Link>
       </div>
       <nav className="wrap nav" aria-label="카테고리">
-        {CATEGORIES.filter((c) => c.slug !== 'brands').map((c) => (
+        {CATEGORIES.filter((c) => c.slug !== 'brands' && getPostsByCategory(c.slug).length > 0).map((c) => (
           <Link key={c.slug} href={`/category/${c.slug}/`}>
             {c.name}
           </Link>

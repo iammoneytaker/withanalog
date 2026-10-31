@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ cat: stri
   const { cat } = await params;
   const c = CATEGORIES.find((x) => x.slug === cat);
   if (!c) return {};
-  return { title: `${c.name} 비교·고르는 법`, description: c.desc, alternates: { canonical: `/category/${c.slug}/` } };
+  return { title: `${c.name} 비교·고르는 법`, description: c.desc, alternates: { canonical: `/category/${c.slug}/` }, ...(getPostsByCategory(c.slug).length ? {} : { robots: { index: false, follow: true } }) };
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ cat: string }> }) {
