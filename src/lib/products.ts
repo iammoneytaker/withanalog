@@ -44,6 +44,7 @@ export const PRODUCTS: Product[] = (data as { items: Product[] }).items.map((p) 
 export const PRODUCTS_CHECKED_AT: string = (data as { checkedAt: string }).checkedAt;
 
 /** 시니어 골프 상품 (비교표에는 넣지 않고 글 카드에서만 사용) */
+export const GOLF_CHECKED_AT: string = (golfData as { checkedAt: string }).checkedAt;
 export const GOLF_PRODUCTS: Product[] = (golfData as { items: Product[] }).items.map((p) => ({ ...p, spec: SPECS[p.id] }));
 const byId = new Map([...PRODUCTS, ...GOLF_PRODUCTS].map((p) => [p.id, p]));
 export function getProduct(id: string): Product | undefined {
@@ -106,7 +107,7 @@ export function productCardHtml(p: Product): string {
 </div>
 </div>
 ${chips.length ? `<p class="chips">${chips.map((c) => `<span>${esc(c)}</span>`).join('')}</p>` : ''}
-<p class="pcard-meta">${p.rating ? `평점 ${p.rating} · ` : ''}리뷰 ${p.reviews.toLocaleString('ko-KR')}개 · ${esc(PRODUCTS_CHECKED_AT)} 기준${img.external ? ` · ${esc(SITE.imageCredit)}` : ' · 이미지는 종류 예시(AI)'}</p>
+<p class="pcard-meta">${p.rating ? `평점 ${p.rating} · ` : ''}리뷰 ${p.reviews.toLocaleString('ko-KR')}개 · ${esc(p.type === 'golf' ? GOLF_CHECKED_AT : PRODUCTS_CHECKED_AT)} 기준${img.external ? ` · ${esc(SITE.imageCredit)}` : ' · 이미지는 종류 예시(AI)'}</p>
 <a class="pcard-btn" href="${esc(p.url)}" target="_blank" rel="sponsored nofollow noopener" data-pid="${esc(p.id)}">네이버에서 가격 확인하기</a>
 <p class="pcard-ad">제휴 링크 · 구매 시 판매 수수료를 받을 수 있습니다</p>
 </div>`;
