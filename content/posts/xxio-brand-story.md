@@ -130,11 +130,11 @@ faq:
 | 발표 시점 | 회사 발표 내용 |
 | --- | --- |
 | 2018년 9월 | 젝시오 시리즈 누적 출하 2,021만 개(2018년 7월 말). 30초에 1개꼴. 44개 나라·지역 판매, 해외 매출 비중 5할 가까이 |
-| 2020년 2월 | 일본 국내 연간 판매액 1위 20년 연속(2000~2019년, 야노경제연구소 집계) |
+| 2020년 2월 | 일본 국내 연간 판매액 첫 자리 20년 연속(2000~2019년, 야노경제연구소 집계) |
 | 2020년 6월 | 매달 21일 '젝시오의 날' 시작 |
 | 2025년 11월 | 데뷔 25주년, 14대째 발표 |
 
-판매 1위 기록은 야노경제연구소의 일본 주요 소매점 판매 집계에서 우드와 아이언을 합한 금액 기준입니다.
+판매 순위 첫 자리 기록은 야노경제연구소의 일본 주요 소매점 판매 집계에서 우드와 아이언을 합한 금액 기준입니다.
 
 스미토모 고무의 2013년 연차보고서는 젝시오를 "일본, 한국, 중국, 동남아 골퍼들이 아끼는 브랜드"로 적었고, 2018년 누적 출하 발표도 해외 시장으로 한국과 미국을 먼저 꼽았습니다.
 
@@ -215,7 +215,7 @@ faq:
 
 - [던롭 일본 공식, 젝시오 히스토리(초대~14대)](https://sports.dunlop.co.jp/golf/xxio/xxio21/history/index.html), [젝시오의 날과 이름의 뜻](https://sports.dunlop.co.jp/golf/xxio/xxio21/), [던롭 스포츠 연혁](https://sports.dunlop.co.jp/company/history), [던롭 브랜드 소개(일본)](https://sports.dunlop.co.jp/brands/)
 - [스미토모 고무 연혁(The Growth Track)](https://www.srigroup.co.jp/english/sustainability/history.html), [미국 던롭 브랜드 소개](https://us.dunlopsports.com/about-us.html), [스미토모 고무 2013 연차보고서(스포츠 사업)](https://www.srigroup.co.jp/english/ir/library/annual-report/dvql4p000000fonx-att/2013_annual_e_11.pdf)
-- 스미토모 고무 발표: [누적 출하 2,000만 개(2018.9.26)](https://www.srigroup.co.jp/newsrelease/2018/sp/2018_p24.html), [20년 연속 국내 판매 1위(2020.2.10)](https://www.atpress.ne.jp/news/205406), [젝시오의 날(2020.6.11)](https://www.atpress.ne.jp/news/215620), [프라임(2021.1.20)](https://www.srigroup.co.jp/newsrelease/2021/sp/2021_sp06.html), [12대째 드라이버(2021.11.4)](https://www.srigroup.co.jp/newsrelease/2021/sp/2021_sp66.html), [13대째 드라이버(2023.11.9)](https://www.srigroup.co.jp/newsrelease/2023/sp/2023_sp67.html), [25주년(2025.11.6)](https://www.srigroup.co.jp/newsrelease/2025/sp/2025_sp78.html), [14 레이디스(2025.11.6)](https://www.srigroup.co.jp/newsrelease/2025/sp/2025_sp81.html)
+- 스미토모 고무 발표: [누적 출하 2,000만 개(2018.9.26)](https://www.srigroup.co.jp/newsrelease/2018/sp/2018_p24.html), [20년 연속 국내 판매 순위 첫 자리(2020.2.10)](https://www.atpress.ne.jp/news/205406), [젝시오의 날(2020.6.11)](https://www.atpress.ne.jp/news/215620), [프라임(2021.1.20)](https://www.srigroup.co.jp/newsrelease/2021/sp/2021_sp06.html), [12대째 드라이버(2021.11.4)](https://www.srigroup.co.jp/newsrelease/2021/sp/2021_sp66.html), [13대째 드라이버(2023.11.9)](https://www.srigroup.co.jp/newsrelease/2023/sp/2023_sp67.html), [25주년(2025.11.6)](https://www.srigroup.co.jp/newsrelease/2025/sp/2025_sp78.html), [14 레이디스(2025.11.6)](https://www.srigroup.co.jp/newsrelease/2025/sp/2025_sp81.html)
 - 던롭 일본 공식: [2008년 반발 규칙 안내](https://sports.dunlop.co.jp/golf/contents/sle), [12대째 개발 이야기](https://sports.dunlop.co.jp/golf/updates/detail/20211115143420.html), [12 레이디스 개발 이야기](https://sports.dunlop.co.jp/golf/updates/detail/20211208104811.html), [13 레이디스 개발 인터뷰](https://sports.dunlop.co.jp/golf/updates/detail/20231220171334.html), [아이언 연표(포지드)](https://sports.dunlop.co.jp/golf/products/clublibrary/lib_ttable_ir_xxi.html)
 - 미국 던롭: [젝시오13 발표(2024.1.10)](https://news.dunlopsports.com/us/media-news/expand-the-sweet-spot-with-the-all-new-xxio-13/s/e42b769a-7ad4-441f-bb3c-1cc3b1cf84f7), [프라임 발표(2025.3.5)](https://news.dunlopsports.com/us/news/xxio-brings-beauty--vitality--and-strength-to-all-new-prime/s/b642bffa-8ee1-4603-9a75-144aa2493fed), [젝시오14 발표(2025.12.8)](https://news.dunlopsports.com/europe/news/crafted-for-effortless-play--xxio-introduces-the-all-new-xxio-14/s/7b9da98d-0315-44fa-8c99-439a57574eb0)
 - 국내: [던롭스포츠코리아 공식몰 상품정보고시](https://dunlopsportskorea.co.kr/product/xxio13-ladies-pearl-white-fairway-wood/432), [한국경제, 12대째 국내 출시(2022.1.12)](https://www.hankyung.com/article/202201123006i), [골프저널, 13대째 국내 출시일(2023.12.26)](https://www.golfjournal.co.kr/news/articleView.html?idxno=4796), [서울신문, 젝시오14 국내 출시(2026.1.14)](https://www.seoul.co.kr/news/sport/2026/01/14/20260114500115), [한국경제, 젝시오14 화이트 정식 색상(2026.1.14)](https://www.hankyung.com/article/202601140974i)
