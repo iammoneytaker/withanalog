@@ -32,14 +32,15 @@ function shortName(name: string, brand: string): string {
 
 export default function ComparePage() {
   const posts = getPosts();
-  const postFor = (id: string) => {
-    const hit = posts.filter((p) => p.category !== 'guide' && p.html.includes(`data-pid="${id}"`))[0] || posts.find((p) => p.html.includes(`data-pid="${id}"`));
+  const postFor = (id: string, brand = '') => {
+    const has = posts.filter((p) => p.html.includes(`data-pid="${id}"`));
+    const hit = has.find((p) => brand && p.title.includes(brand) && p.category !== 'guide') || has.find((p) => p.category !== 'guide') || has[0];
     return hit ? { slug: hit.slug, title: hit.title.split('｜')[0] } : undefined;
   };
   const items = PRODUCTS.map((p) => {
     const img = productImage(p);
     const { store: _s, thumb: _t, ...rest } = p;
-    return { ...rest, store: '', img: img.src, external: img.external, short: shortName(p.name, p.brand), post: postFor(p.id) };
+    return { ...rest, store: '', img: img.src, external: img.external, short: shortName(p.name, p.brand), post: postFor(p.id, p.brand) };
   });
   const top = [...PRODUCTS].filter((p) => p.type === 'club').sort((a, b) => b.reviews - a.reviews).slice(0, 10);
   return (
