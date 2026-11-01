@@ -5,8 +5,8 @@ slug: xxio-brand-story
 category: brands
 keyword: "젝시오 브랜드"
 tags: ["젝시오 브랜드", "젝시오 역사", "젝시오14", "젝시오13", "시니어 골프채"]
-publishAt: "2026-11-03T13:30:00+09:00"
-updatedAt: "2026-11-03T13:30:00+09:00"
+publishAt: "2026-11-03T11:30:00+09:00"
+updatedAt: "2026-11-03T11:30:00+09:00"
 hero: "/images/posts/xxio-brand-story/hero.jpg"
 heroAlt: "노랗게 물든 나무 사이 골프장 티잉 구역에 나란히 서서 페어웨이를 바라보는 은발 부부의 뒷모습 (AI 장면)"
 heroAi: true
